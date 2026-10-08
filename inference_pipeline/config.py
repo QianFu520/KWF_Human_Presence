@@ -26,10 +26,13 @@ WEATHER_DATA_PATH = r"path/to/weather_data.csv"     # hourly weather from Open-M
 WEATHER_OUTPUT_CSV = r"path/to/weather_matches.csv" # weather matched to each clip
 
 ## location
-LATITUDE = 9.7489
-LONGITUDE = -83.7534
+# Mean of the simulation GPS points in simulations.csv; all six recorders are
+# within ~500 m of this point.
+LATITUDE = 8.6602
+LONGITUDE = -83.6502
 
 ## timezone
+# AudioMoth filenames are in this local time (UTC-6), not UTC.
 TIMEZONE = "America/Costa_Rica"
 
 # Weather code legend (Open-Meteo API codes)

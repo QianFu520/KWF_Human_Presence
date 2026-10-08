@@ -15,10 +15,10 @@ from config import LATITUDE, LONGITUDE, WEATHER_DATA_PATH, AUDIO_MOTH_FOLDER, WE
 
 
 ## the below function is used to add time of day classification
+## timestamp_str is local time (TIMEZONE), matching the AudioMoth filenames
 def get_time_of_day(lat, lon, timestamp_str):
     local_tz = ZoneInfo(TIMEZONE)
-    utc_dt = datetime.strptime(timestamp_str, "%Y-%m-%d %H:%M:%S").replace(tzinfo=ZoneInfo("UTC"))
-    local_dt = utc_dt.astimezone(local_tz)
+    local_dt = datetime.strptime(timestamp_str, "%Y-%m-%d %H:%M:%S").replace(tzinfo=local_tz)
 
     location = LocationInfo(latitude=lat, longitude=lon)
     s = sun(location.observer, date=local_dt.date(), tzinfo=local_tz)
@@ -60,6 +60,8 @@ def get_weather_info(wav_path, lat, lon):
         end_date = end_time.strftime("%Y-%m-%d")
 
         # making open meteo request
+        # filenames are local time, so request hourly data in local time too;
+        # the returned hours then line up with the filename timestamps
 
         url = "https://archive-api.open-meteo.com/v1/archive"
         params = {
@@ -68,7 +70,7 @@ def get_weather_info(wav_path, lat, lon):
             "start_date": start_date,
             "end_date": end_date,
             "hourly": "temperature_2m,precipitation,windspeed_10m,relative_humidity_2m,weathercode",
-            "timezone": "UTC"
+            "timezone": TIMEZONE
         }
 
         response = requests.get(url, params=params)
