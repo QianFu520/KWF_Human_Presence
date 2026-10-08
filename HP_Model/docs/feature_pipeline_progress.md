@@ -119,3 +119,18 @@ Earlier values (0.30 for the 30-feature MLP, 0.55–0.85 for XGBoost runs, ~0.38
 2. **Hold out three sets:** train / validation / test. Choose the threshold on validation only; report final metrics once on test.
 3. **Pick the threshold from operating needs**, e.g. a minimum recall on human activity while keeping false alerts per recorder per day manageable — not just best F1.
 4. **Save the model and scaler** as `hp_model.pkl` and `hp_scaler.pkl`, together with the feature order and the chosen threshold.
+
+### Weather features — undecided, train both versions
+
+Whether to keep weather depends on how the system will be deployed: Open-Meteo needs an internet connection at inference time. Until that is decided, **train two models** on the same split and compare them on the same validation and test sets:
+
+| Version | Features | Difference |
+|---|---:|---|
+| With weather | 29 | Full feature set above |
+| Without weather | 25 | Drops `Temperature`, `Humidity`, `Windspeed`, and `Volume_Wind_Ratio` (computed from `Windspeed`) |
+
+Report ROC-AUC, plus precision and recall at each model's chosen threshold, side by side. If the 25-feature model is close, dropping weather simplifies deployment.
+
+Before building weather features for the 29-feature version, fix two issues in `inference_pipeline/scripts/weather_info.py`; otherwise the comparison understates weather:
+- **Timezone:** AudioMoth filenames are local Costa Rica time (UTC−6). BirdNET detections peak at 05:00–06:00 filename time (dawn chorus), not 11:00–12:00. The script currently treats filenames as UTC, so weather is matched 6 hours off.
+- **Location:** `LATITUDE`/`LONGITUDE` in `config.py` (9.7489, −83.7534) are about 110 km from the recorders. The simulation GPS points in `simulations.csv` put them at about 8.66, −83.65.
