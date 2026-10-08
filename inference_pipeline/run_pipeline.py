@@ -19,7 +19,7 @@ Pipeline steps:
 
 Dependencies:
     - PyTorch       (Tiny CNN)
-    - onnxruntime   (Compressed BirdNET)  [update run_birdnet.py to use ONNX]
+    - onnxruntime   (Compressed BirdNET)
     - librosa       (acoustic features)
     - scikit-learn  (HP Model)
     - requests      (Open-Meteo weather API)
@@ -91,11 +91,8 @@ def step2_filter(clips_dir, outputs_dir):
 
 def step3_birdnet(clips_dir, meaningful_clips, outputs_dir):
     """
-    Run compressed BirdNET on meaningful clips only.
-
-    NOTE: run_birdnet.py currently uses the original TFLite BirdNET library.
-    Update run_birdnet.py to use birdnet_fp16_pruned493.onnx (via onnxruntime)
-    once the ONNX-compatible script is ready.
+    Run compressed BirdNET (birdnet_fp16_pruned493.onnx via onnxruntime)
+    on meaningful clips only, filtered to the regional allow-list.
     """
     log.info("STEP 3 — Compressed BirdNET: species + confidence...")
     birdnet_csv = outputs_dir / "birdnet_output.csv"
