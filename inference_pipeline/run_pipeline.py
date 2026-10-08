@@ -162,12 +162,18 @@ def step8_hp_model(features_csv, outputs_dir):
     """
     Run HP Model (MLP) inference.
 
-    PLACEHOLDER — HP model is being retrained on 29 features
-    (Human Activity Score dropped; see HP_Model/docs/feature_pipeline_progress.md).
+    PLACEHOLDER — HP model is being retrained in two versions: 29 features
+    (with weather) and 25 features (without weather). Human Activity Score is
+    dropped; see HP_Model/docs/feature_pipeline_progress.md.
+    Feature names and order are defined only in scripts/hp_features.py
+    (HP_FEATURES_29 / HP_FEATURES_25). Do not list features here.
     Once the retrained model (.pkl) is available:
         1. Load with: joblib.load("models/hp_model.pkl")
         2. Load scaler with: joblib.load("models/hp_scaler.pkl")
-        3. Select the 29 features, scale, and call model.predict_proba()
+        3. Select features with hp_features.select_features(df, HP_FEATURES_29
+           or HP_FEATURES_25), check the scaler with
+           hp_features.check_scaler_alignment(), scale, and call
+           model.predict_proba()
         4. Apply the decision threshold — TBD after retraining. It will be chosen
            on a validation set (not the test set). No official value yet.
     """
