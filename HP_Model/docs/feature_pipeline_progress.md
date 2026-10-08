@@ -134,3 +134,11 @@ Report ROC-AUC, plus precision and recall at each model's chosen threshold, side
 Before building weather features for the 29-feature version, fix two issues in `inference_pipeline/scripts/weather_info.py`; otherwise the comparison understates weather:
 - **Timezone:** AudioMoth filenames are local Costa Rica time (UTC−6). BirdNET detections peak at 05:00–06:00 filename time (dawn chorus), not 11:00–12:00. The script currently treats filenames as UTC, so weather is matched 6 hours off.
 - **Location:** `LATITUDE`/`LONGITUDE` in `config.py` (9.7489, −83.7534) are about 110 km from the recorders. The simulation GPS points in `simulations.csv` put them at about 8.66, −83.65.
+
+### Volume_Spike_15s — new definition
+
+The old notebook and the pipeline computed this differently, and both counted rows rather than time, so after AED filtering or at a gap between recordings the "previous clips" could be minutes old. Retraining uses the pipeline definition in `inference_pipeline/scripts/feature_engineering.py`:
+
+- **Window:** mean `RMS_Energy` of the same recorder's clips in the **previous 15 seconds by timestamp**, current clip excluded (normally the 5 preceding clips).
+- **Value:** `RMS_Energy − window mean`, floored at 0. No clips in the window (start of a recording) → 0.
+- **Order:** compute on **all clips, before AED filtering**, then keep the meaningful clips. Acoustic features must therefore be extracted for every clip.

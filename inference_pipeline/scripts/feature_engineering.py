@@ -19,7 +19,11 @@ Features created here:
   - Eerie_Silence                     (1 if no sentinel species detected)
   - hour_sin, hour_cos               (cyclical time from Timestamp)
   - Volume_Wind_Ratio                 (RMS / Windspeed)
-  - Volume_Spike_15s                  (sudden RMS jump vs. 5-clip rolling mean)
+  - Volume_Spike_15s                  (sudden RMS jump vs. mean RMS of the previous 15 s)
+
+acoustic_features.csv must cover all clips, not only AED-meaningful ones, so
+Volume_Spike_15s sees each clip's real neighbours. Pass keep_clips to drop the
+non-meaningful clips after the features are computed.
 """
 
 import ast
@@ -92,13 +96,18 @@ def engineer_patrick_features(df):
     # Volume to Wind Ratio
     df['Volume_Wind_Ratio'] = df['RMS_Energy'] / (df['Windspeed'] + 1e-5)
 
-    # Volume Spike (15-second memory = 5 clips of 3s each)
+    # Volume Spike: RMS jump vs. mean RMS of the same recorder's clips in the
+    # previous 15 seconds (current clip excluded). The window is by timestamp, not
+    # row count, so gaps between recordings never pull in older clips. Must run on
+    # all clips, before AED filtering, so every clip has its real neighbours.
+    # No clips in the window (start of a recording) -> 0.
+    if df['Datetime'].isna().any():
+        raise ValueError("Unparseable Timestamp values; Volume_Spike_15s needs every clip's time.")
     df = df.sort_values(by=['Recorder', 'Datetime']).reset_index(drop=True)
-    df['rolling_rms'] = (
-        df.groupby('Recorder')['RMS_Energy']
-        .transform(lambda x: x.shift(1).rolling(5, min_periods=1).mean())
+    df['rolling_rms'] = df.groupby('Recorder', group_keys=False)[['Datetime', 'RMS_Energy']].apply(
+        lambda g: g.rolling('15s', on='Datetime', closed='left')['RMS_Energy'].mean()
     )
-    df['Volume_Spike_15s'] = (df['RMS_Energy'] - df['rolling_rms']).clip(lower=0)
+    df['Volume_Spike_15s'] = (df['RMS_Energy'] - df['rolling_rms']).clip(lower=0).fillna(0)
     df.drop(columns=['rolling_rms'], inplace=True)
 
     return df
@@ -111,6 +120,7 @@ def run_feature_engineering(
     metadata_csv,
     weather_csv,
     output_csv,
+    keep_clips=None,
 ):
     print("Loading inputs...")
     acoustic = pd.read_csv(acoustic_csv)
@@ -135,6 +145,11 @@ def run_feature_engineering(
 
     print("Engineering Patrick's features...")
     df = engineer_patrick_features(df)
+
+    if keep_clips is not None:
+        keep = {str(c).replace('.wav', '') for c in keep_clips}
+        df = df[df['clip_name'].isin(keep)].reset_index(drop=True)
+        print(f"Kept {len(df):,} AED-meaningful clips.")
 
     print("Saving output...")
     Path(output_csv).parent.mkdir(parents=True, exist_ok=True)

@@ -108,7 +108,7 @@ def step3_birdnet(clips_dir, meaningful_clips, outputs_dir):
 
 
 def step4_acoustic(clips_dir, meaningful_clips, outputs_dir):
-    """Extract 10 acoustic features from meaningful clips."""
+    """Extract 10 acoustic features from all clips (Volume_Spike_15s in step 7 needs every clip)."""
     log.info("STEP 4 — Acoustic feature extraction...")
     acoustic_csv = outputs_dir / "acoustic_features.csv"
     process_split(
@@ -142,8 +142,8 @@ def step6_weather(outputs_dir):
     return weather_csv
 
 
-def step7_feature_engineering(acoustic_csv, birdnet_csv, metadata_csv, weather_csv, outputs_dir):
-    """Encode sentinel species and engineer Patrick's cross-signal features."""
+def step7_feature_engineering(acoustic_csv, birdnet_csv, metadata_csv, weather_csv, outputs_dir, meaningful_clips):
+    """Encode sentinel species and engineer Patrick's cross-signal features, then keep meaningful clips only."""
     log.info("STEP 7 — Feature engineering (sentinel species + Patrick's features)...")
     features_csv = outputs_dir / "features.csv"
     run_feature_engineering(
@@ -152,6 +152,7 @@ def step7_feature_engineering(acoustic_csv, birdnet_csv, metadata_csv, weather_c
         metadata_csv=str(metadata_csv),
         weather_csv=str(weather_csv),
         output_csv=str(features_csv),
+        keep_clips=meaningful_clips,
     )
     log.info(f"Full feature set saved to: {features_csv}")
     return features_csv
@@ -204,7 +205,7 @@ def main():
     acoustic_csv         = step4_acoustic(clips_dir, meaningful_clips, outputs_dir)
     metadata_csv         = step5_metadata(clips_dir, outputs_dir)
     weather_csv          = step6_weather(outputs_dir)
-    features_csv         = step7_feature_engineering(acoustic_csv, birdnet_csv, metadata_csv, weather_csv, outputs_dir)
+    features_csv         = step7_feature_engineering(acoustic_csv, birdnet_csv, metadata_csv, weather_csv, outputs_dir, meaningful_clips)
     step8_hp_model(features_csv, outputs_dir)
 
     log.info("=" * 60)
