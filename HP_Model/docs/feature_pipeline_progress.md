@@ -90,3 +90,32 @@ Ten acoustic features are extracted from every clip using **librosa 0.11.0**. Ea
 
 Join key: `clip_name` (file stem without `.wav` extension). For augmented clips, strip `_aug_N` to look up the parent clip's non-acoustic features from the original dataset CSV.  
 Script: `feature_pipeline/scripts/extract_acoustic_features.py`
+
+---
+
+## Decision — HP Model Feature Set and Threshold (October 8, 2026)
+
+### Human Activity Score dropped
+
+`Human Activity Score` is YAMNet's human-sound confidence. YAMNet was removed from the project for low recall: it flagged 735 clips out of 631,321, against 10,000+ clips with real human activity in the simulation table (see `AED_Model/docs/DIAGNOSIS_LABELS.md`). The inference pipeline never computed it, so the old 30-feature MLP cannot run in deployment.
+
+The HP model will be **retrained on 29 features**, all produced by `inference_pipeline/` so training and runtime values match:
+
+| Group | Count | Features |
+|---|---:|---|
+| Acoustic | 10 | `RMS_Energy`, `Spectral_Contrast`, `Spectral_Flatness`, `Spectral_Bandwidth`, `Spectral_Rolloff_85`, `Onset_Strength`, `MFCC_8`, `MFCC_9`, `MFCC_12`, `MFCC_13` |
+| Sentinel species | 10 | Binary BirdNET flags (see `SENTINEL_SPECIES` in `feature_engineering.py`) |
+| BirdNET | 1 | `confidence` (max confidence in clip) |
+| Engineered | 5 | `hour_sin`, `hour_cos`, `Eerie_Silence`, `Volume_Wind_Ratio`, `Volume_Spike_15s` |
+| Weather | 3 | `Temperature`, `Humidity`, `Windspeed` |
+
+### Threshold — no official value until retraining
+
+Earlier values (0.30 for the 30-feature MLP, 0.55–0.85 for XGBoost runs, ~0.38 in `run_pipeline.py`) are **retired**. They were tuned on the test set, so they and their F1 scores are optimistic, and they belong to models that will not be deployed.
+
+### Rules for retraining
+
+1. **Split by time block or by recorder**, not randomly by clip. Neighbouring 3-second clips from the same event must not land on both sides, and `Volume_Spike_15s` already uses neighbouring clips.
+2. **Hold out three sets:** train / validation / test. Choose the threshold on validation only; report final metrics once on test.
+3. **Pick the threshold from operating needs**, e.g. a minimum recall on human activity while keeping false alerts per recorder per day manageable — not just best F1.
+4. **Save the model and scaler** as `hp_model.pkl` and `hp_scaler.pkl`, together with the feature order and the chosen threshold.

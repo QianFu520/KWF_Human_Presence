@@ -164,12 +164,14 @@ def step8_hp_model(features_csv, outputs_dir):
     """
     Run HP Model (MLP) inference.
 
-    PLACEHOLDER — HP model not finalized yet.
-    Once the trained model (.pkl) is available:
+    PLACEHOLDER — HP model is being retrained on 29 features
+    (Human Activity Score dropped; see HP_Model/docs/feature_pipeline_progress.md).
+    Once the retrained model (.pkl) is available:
         1. Load with: joblib.load("models/hp_model.pkl")
         2. Load scaler with: joblib.load("models/hp_scaler.pkl")
-        3. Select the 30 features, scale, and call model.predict_proba()
-        4. Apply threshold ~0.38 for final binary prediction
+        3. Select the 29 features, scale, and call model.predict_proba()
+        4. Apply the decision threshold — TBD after retraining. It will be chosen
+           on a validation set (not the test set). No official value yet.
     """
     log.info("STEP 8 — HP Model inference [PLACEHOLDER]...")
     log.warning("HP Model not yet available. Skipping inference.")

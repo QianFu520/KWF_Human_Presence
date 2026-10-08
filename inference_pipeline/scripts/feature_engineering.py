@@ -8,7 +8,11 @@ Takes as input:
   - weather.csv               (clip_name, Temperature, Windspeed, Humidity, ...)
 
 Produces:
-  - features.csv              (all 30 features ready for HP model inference)
+  - features.csv              (all 29 features ready for HP model inference)
+
+Note: "Human Activity Score" (YAMNet human-sound confidence) was dropped from the
+HP feature set. YAMNet was removed from the project for low recall
+(see AED_Model/docs/DIAGNOSIS_LABELS.md), so it is not computed here.
 
 Features created here:
   - 10 sentinel species binary flags  (from BirdNET species output)
