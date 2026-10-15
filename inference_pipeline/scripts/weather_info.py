@@ -95,7 +95,9 @@ def get_weather_info(wav_path, lat, lon):
         # filter only the hours that fall within the .wav file's duration
         # for example, if the wav file spans only 6 hours, then it keeps only 4 rows, not all 24 hours
 
-        hourly_timestamps = [start_time + timedelta(hours=i) for i in range(duration_hours)]
+        # one extra hour: clips near the end round up to the next hour in weather_matching
+        # (e.g. 23:40 -> 00:00). It is never later than end_time, so end_date already covers it.
+        hourly_timestamps = [start_time + timedelta(hours=i) for i in range(duration_hours + 1)]
         hour_set = set([ts.replace(minute=0, second=0, microsecond=0) for ts in hourly_timestamps])
         weather_df = weather_df[weather_df["Datetime"].isin(hour_set)]
 
