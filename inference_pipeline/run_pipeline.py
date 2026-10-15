@@ -132,13 +132,19 @@ def step5_metadata(clips_dir, outputs_dir):
     return metadata_csv
 
 
-def step6_weather(outputs_dir):
-    """Fetch live weather data from Open-Meteo API and match to clips."""
+def step6_weather(raw_audio_dir, metadata_csv, outputs_dir):
+    """Fetch hourly weather from the Open-Meteo API for the raw recordings and match it to clips."""
     log.info("STEP 6 — Weather data fetch + matching...")
-    weather_csv = outputs_dir / "weather.csv"
-    get_weather_info_all()
-    weather_match()
-    log.info(f"Weather data saved to: {weather_csv}")
+    weather_hourly_csv = outputs_dir / "weather_hourly.csv"
+    weather_csv        = outputs_dir / "weather.csv"
+    get_weather_info_all(audio_folder=str(raw_audio_dir), output_csv=str(weather_hourly_csv))
+    log.info(f"Hourly weather saved to: {weather_hourly_csv}")
+    weather_match(
+        weather_csv=str(weather_hourly_csv),
+        metadata_csv=str(metadata_csv),
+        output_csv=str(weather_csv),
+    )
+    log.info(f"Per-clip weather saved to: {weather_csv}")
     return weather_csv
 
 
@@ -204,7 +210,7 @@ def main():
     birdnet_csv          = step3_birdnet(clips_dir, meaningful_clips, outputs_dir)
     acoustic_csv         = step4_acoustic(clips_dir, meaningful_clips, outputs_dir)
     metadata_csv         = step5_metadata(clips_dir, outputs_dir)
-    weather_csv          = step6_weather(outputs_dir)
+    weather_csv          = step6_weather(raw_audio_dir, metadata_csv, outputs_dir)
     features_csv         = step7_feature_engineering(acoustic_csv, birdnet_csv, metadata_csv, weather_csv, outputs_dir, meaningful_clips)
     step8_hp_model(features_csv, outputs_dir)
 
