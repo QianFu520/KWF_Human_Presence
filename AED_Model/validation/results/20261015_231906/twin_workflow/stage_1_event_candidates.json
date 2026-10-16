@@ -1,0 +1,1002 @@
+[
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 5.35,
+    "trigger_time_formatted": "00:00:05.350",
+    "clip_start_s": 3.8499999999999996,
+    "clip_end_s": 6.85,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 5.35,
+      "peak_rms": 0.1339566558599472,
+      "peak_flux": 480.5520324707031,
+      "zcr": 0.3343333333333333,
+      "bandwidth_hz": 6646.207053588346,
+      "snr_db": 8.518630981445312
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  },
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 7.25,
+    "trigger_time_formatted": "00:00:07.250",
+    "clip_start_s": 5.75,
+    "clip_end_s": 8.75,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 7.25,
+      "peak_rms": 0.13438911736011505,
+      "peak_flux": 484.19696044921875,
+      "zcr": 0.343,
+      "bandwidth_hz": 6623.816234554122,
+      "snr_db": 8.562466621398926
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  },
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 27.75,
+    "trigger_time_formatted": "00:00:27.750",
+    "clip_start_s": 26.25,
+    "clip_end_s": 29.25,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 27.75,
+      "peak_rms": 0.127017080783844,
+      "peak_flux": 364.1048583984375,
+      "zcr": 0.41091666666666665,
+      "bandwidth_hz": 6940.688033950577,
+      "snr_db": 8.0927734375
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  },
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 40.85,
+    "trigger_time_formatted": "00:00:40.850",
+    "clip_start_s": 39.35,
+    "clip_end_s": 42.35,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 40.85,
+      "peak_rms": 0.26847589015960693,
+      "peak_flux": 741.96337890625,
+      "zcr": 0.18583333333333332,
+      "bandwidth_hz": 1116.6954826674012,
+      "snr_db": 6.262916564941406
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  },
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 66.2,
+    "trigger_time_formatted": "00:01:06.200",
+    "clip_start_s": 64.7,
+    "clip_end_s": 67.7,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 66.2,
+      "peak_rms": 0.1571556180715561,
+      "peak_flux": 586.1351928710938,
+      "zcr": 0.16258333333333333,
+      "bandwidth_hz": 833.6992084180029,
+      "snr_db": 9.652815818786621
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  },
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 80.45,
+    "trigger_time_formatted": "00:01:20.450",
+    "clip_start_s": 78.95,
+    "clip_end_s": 81.95,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 80.45,
+      "peak_rms": 0.4150623679161072,
+      "peak_flux": 940.19873046875,
+      "zcr": 0.024916666666666667,
+      "bandwidth_hz": 2366.5182083075656,
+      "snr_db": 4.626430988311768
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  },
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 105.1,
+    "trigger_time_formatted": "00:01:45.100",
+    "clip_start_s": 103.6,
+    "clip_end_s": 106.6,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 105.1,
+      "peak_rms": 0.1708488017320633,
+      "peak_flux": 460.28094482421875,
+      "zcr": 0.074,
+      "bandwidth_hz": 1964.5639595011264,
+      "snr_db": 7.355041027069092
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  },
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 115.05,
+    "trigger_time_formatted": "00:01:55.050",
+    "clip_start_s": 113.55,
+    "clip_end_s": 116.55,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 115.05,
+      "peak_rms": 0.24625469744205475,
+      "peak_flux": 968.4835205078125,
+      "zcr": 0.07391666666666667,
+      "bandwidth_hz": 2676.1133026858706,
+      "snr_db": 19.197568893432617
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  },
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 116.65,
+    "trigger_time_formatted": "00:01:56.650",
+    "clip_start_s": 115.15,
+    "clip_end_s": 118.15,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 116.65,
+      "peak_rms": 0.23346003890037537,
+      "peak_flux": 1011.5694580078125,
+      "zcr": 0.12333333333333334,
+      "bandwidth_hz": 2840.91467370531,
+      "snr_db": 4.413074970245361
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  },
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 130.1,
+    "trigger_time_formatted": "00:02:10.100",
+    "clip_start_s": 128.6,
+    "clip_end_s": 131.6,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 130.1,
+      "peak_rms": 0.2377934753894806,
+      "peak_flux": 641.1048583984375,
+      "zcr": 0.07933333333333334,
+      "bandwidth_hz": 1416.8841478345541,
+      "snr_db": 6.76046895980835
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  },
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 135.3,
+    "trigger_time_formatted": "00:02:15.300",
+    "clip_start_s": 133.8,
+    "clip_end_s": 136.8,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 135.3,
+      "peak_rms": 0.2585850954055786,
+      "peak_flux": 429.3448181152344,
+      "zcr": 0.003416666666666667,
+      "bandwidth_hz": 2554.166050752997,
+      "snr_db": 6.630701541900635
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  },
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 137.95,
+    "trigger_time_formatted": "00:02:17.950",
+    "clip_start_s": 136.45,
+    "clip_end_s": 139.45,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 137.95,
+      "peak_rms": 0.2749761939048767,
+      "peak_flux": 1247.4625244140625,
+      "zcr": 0.00625,
+      "bandwidth_hz": 2862.4784723684998,
+      "snr_db": 5.513710975646973
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  },
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 140.0,
+    "trigger_time_formatted": "00:02:20.000",
+    "clip_start_s": 138.5,
+    "clip_end_s": 141.5,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 140.0,
+      "peak_rms": 0.26228007674217224,
+      "peak_flux": 941.5003051757812,
+      "zcr": 0.03816666666666667,
+      "bandwidth_hz": 2168.1442879123115,
+      "snr_db": 11.6500244140625
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  },
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 142.85,
+    "trigger_time_formatted": "00:02:22.850",
+    "clip_start_s": 141.35,
+    "clip_end_s": 144.35,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 142.85,
+      "peak_rms": 0.26450851559638977,
+      "peak_flux": 748.1082153320312,
+      "zcr": 0.06283333333333334,
+      "bandwidth_hz": 1496.3468231628613,
+      "snr_db": 4.484514236450195
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  },
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 175.3,
+    "trigger_time_formatted": "00:02:55.300",
+    "clip_start_s": 173.8,
+    "clip_end_s": 176.8,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 175.3,
+      "peak_rms": 0.2070399671792984,
+      "peak_flux": 596.3799438476562,
+      "zcr": 0.08266666666666667,
+      "bandwidth_hz": 3578.8094434866666,
+      "snr_db": 4.026237487792969
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  },
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 190.2,
+    "trigger_time_formatted": "00:03:10.200",
+    "clip_start_s": 188.7,
+    "clip_end_s": 191.7,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 190.2,
+      "peak_rms": 0.1411779373884201,
+      "peak_flux": 409.09393310546875,
+      "zcr": 0.11583333333333333,
+      "bandwidth_hz": 3006.4341672663745,
+      "snr_db": 4.9404706954956055
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  },
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 192.2,
+    "trigger_time_formatted": "00:03:12.200",
+    "clip_start_s": 190.7,
+    "clip_end_s": 193.7,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 192.2,
+      "peak_rms": 0.18321728706359863,
+      "peak_flux": 584.9081420898438,
+      "zcr": 0.09591666666666666,
+      "bandwidth_hz": 3180.610177647655,
+      "snr_db": 5.222324848175049
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  },
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 205.9,
+    "trigger_time_formatted": "00:03:25.900",
+    "clip_start_s": 204.4,
+    "clip_end_s": 207.4,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 205.9,
+      "peak_rms": 0.13759857416152954,
+      "peak_flux": 359.2427978515625,
+      "zcr": 0.104,
+      "bandwidth_hz": 3276.713337557917,
+      "snr_db": 7.940730094909668
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  },
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 207.65,
+    "trigger_time_formatted": "00:03:27.650",
+    "clip_start_s": 206.15,
+    "clip_end_s": 209.15,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 207.65,
+      "peak_rms": 0.14891833066940308,
+      "peak_flux": 449.297119140625,
+      "zcr": 0.13275,
+      "bandwidth_hz": 3179.1937539961555,
+      "snr_db": 7.756718635559082
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  },
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 232.1,
+    "trigger_time_formatted": "00:03:52.100",
+    "clip_start_s": 230.6,
+    "clip_end_s": 233.6,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 232.1,
+      "peak_rms": 0.13822618126869202,
+      "peak_flux": 284.20782470703125,
+      "zcr": 0.06583333333333333,
+      "bandwidth_hz": 4586.218410797863,
+      "snr_db": 5.316854000091553
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  },
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 264.95,
+    "trigger_time_formatted": "00:04:24.950",
+    "clip_start_s": 263.45,
+    "clip_end_s": 266.45,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 264.95,
+      "peak_rms": 0.13491980731487274,
+      "peak_flux": 511.25738525390625,
+      "zcr": 0.00375,
+      "bandwidth_hz": 5360.655720071089,
+      "snr_db": 5.127040863037109
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  },
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 324.95,
+    "trigger_time_formatted": "00:05:24.950",
+    "clip_start_s": 323.45,
+    "clip_end_s": 326.45,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 324.95,
+      "peak_rms": 0.3497134745121002,
+      "peak_flux": 1212.3997802734375,
+      "zcr": 0.026083333333333333,
+      "bandwidth_hz": 4479.281211220101,
+      "snr_db": 18.99618911743164
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  },
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 326.9,
+    "trigger_time_formatted": "00:05:26.900",
+    "clip_start_s": 325.4,
+    "clip_end_s": 328.4,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 326.9,
+      "peak_rms": 0.4090239107608795,
+      "peak_flux": 1035.9737548828125,
+      "zcr": 0.06333333333333334,
+      "bandwidth_hz": 4563.630923234174,
+      "snr_db": 5.290858745574951
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  },
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 337.8,
+    "trigger_time_formatted": "00:05:37.800",
+    "clip_start_s": 336.3,
+    "clip_end_s": 339.3,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 337.8,
+      "peak_rms": 0.5829494595527649,
+      "peak_flux": 1532.2275390625,
+      "zcr": 0.14066666666666666,
+      "bandwidth_hz": 4187.37481031982,
+      "snr_db": 5.217538356781006
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  },
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 346.3,
+    "trigger_time_formatted": "00:05:46.300",
+    "clip_start_s": 344.8,
+    "clip_end_s": 347.8,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 346.3,
+      "peak_rms": 0.18889209628105164,
+      "peak_flux": 609.0798950195312,
+      "zcr": 0.042,
+      "bandwidth_hz": 4205.194998076827,
+      "snr_db": 30.69980239868164
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  },
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 350.0,
+    "trigger_time_formatted": "00:05:50.000",
+    "clip_start_s": 348.5,
+    "clip_end_s": 351.5,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 350.0,
+      "peak_rms": 0.1272377073764801,
+      "peak_flux": 237.07611083984375,
+      "zcr": 0.03975,
+      "bandwidth_hz": 3176.9012995107623,
+      "snr_db": 13.338217735290527
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  },
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 355.05,
+    "trigger_time_formatted": "00:05:55.050",
+    "clip_start_s": 353.55,
+    "clip_end_s": 356.55,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 355.05,
+      "peak_rms": 0.14516492187976837,
+      "peak_flux": 401.3482360839844,
+      "zcr": 0.022916666666666665,
+      "bandwidth_hz": 3214.8310837080967,
+      "snr_db": 10.835212707519531
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  },
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 385.2,
+    "trigger_time_formatted": "00:06:25.200",
+    "clip_start_s": 383.7,
+    "clip_end_s": 386.7,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 385.2,
+      "peak_rms": 0.1556951105594635,
+      "peak_flux": 209.56753540039062,
+      "zcr": 0.06525,
+      "bandwidth_hz": 4009.4545493517116,
+      "snr_db": 6.593437194824219
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  },
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 389.95,
+    "trigger_time_formatted": "00:06:29.950",
+    "clip_start_s": 388.45,
+    "clip_end_s": 391.45,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 389.95,
+      "peak_rms": 0.15279468894004822,
+      "peak_flux": 265.85736083984375,
+      "zcr": 0.0155,
+      "bandwidth_hz": 2685.674115697548,
+      "snr_db": 5.87013053894043
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  },
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 392.3,
+    "trigger_time_formatted": "00:06:32.300",
+    "clip_start_s": 390.8,
+    "clip_end_s": 393.8,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 392.3,
+      "peak_rms": 0.2041921764612198,
+      "peak_flux": 896.9727172851562,
+      "zcr": 0.058666666666666666,
+      "bandwidth_hz": 1904.4860550774567,
+      "snr_db": 4.211843967437744
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  },
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 394.95,
+    "trigger_time_formatted": "00:06:34.950",
+    "clip_start_s": 393.45,
+    "clip_end_s": 396.45,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 394.95,
+      "peak_rms": 0.12390729784965515,
+      "peak_flux": 208.39102172851562,
+      "zcr": 0.03891666666666667,
+      "bandwidth_hz": 6620.764467810745,
+      "snr_db": 5.9146881103515625
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  },
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 397.6,
+    "trigger_time_formatted": "00:06:37.600",
+    "clip_start_s": 396.1,
+    "clip_end_s": 399.1,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 397.6,
+      "peak_rms": 0.17871034145355225,
+      "peak_flux": 255.96560668945312,
+      "zcr": 0.20158333333333334,
+      "bandwidth_hz": 7315.177697620754,
+      "snr_db": 14.452709197998047
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  },
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 400.15,
+    "trigger_time_formatted": "00:06:40.150",
+    "clip_start_s": 398.65,
+    "clip_end_s": 401.65,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 400.15,
+      "peak_rms": 0.39752548933029175,
+      "peak_flux": 962.3994140625,
+      "zcr": 0.08775,
+      "bandwidth_hz": 2715.0578529170593,
+      "snr_db": 4.8573079109191895
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  },
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 405.05,
+    "trigger_time_formatted": "00:06:45.050",
+    "clip_start_s": 403.55,
+    "clip_end_s": 406.55,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 405.05,
+      "peak_rms": 0.20601576566696167,
+      "peak_flux": 342.8787536621094,
+      "zcr": 0.04066666666666666,
+      "bandwidth_hz": 3229.3075386815603,
+      "snr_db": 15.815439224243164
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  },
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 410.05,
+    "trigger_time_formatted": "00:06:50.050",
+    "clip_start_s": 408.55,
+    "clip_end_s": 411.55,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 410.05,
+      "peak_rms": 0.15041635930538177,
+      "peak_flux": 273.09234619140625,
+      "zcr": 0.020916666666666667,
+      "bandwidth_hz": 2989.5909251971693,
+      "snr_db": 6.266927242279053
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  },
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 411.6,
+    "trigger_time_formatted": "00:06:51.600",
+    "clip_start_s": 410.1,
+    "clip_end_s": 413.1,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 411.6,
+      "peak_rms": 0.18981768190860748,
+      "peak_flux": 229.3558807373047,
+      "zcr": 0.0435,
+      "bandwidth_hz": 3610.997310935572,
+      "snr_db": 4.172732353210449
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  },
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 414.95,
+    "trigger_time_formatted": "00:06:54.950",
+    "clip_start_s": 413.45,
+    "clip_end_s": 416.45,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 414.95,
+      "peak_rms": 0.1830010563135147,
+      "peak_flux": 517.0756225585938,
+      "zcr": 0.017916666666666668,
+      "bandwidth_hz": 6526.709574864218,
+      "snr_db": 8.743947982788086
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  },
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 417.75,
+    "trigger_time_formatted": "00:06:57.750",
+    "clip_start_s": 416.25,
+    "clip_end_s": 419.25,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 417.75,
+      "peak_rms": 0.1360904723405838,
+      "peak_flux": 506.053466796875,
+      "zcr": 0.09325,
+      "bandwidth_hz": 5101.113761981296,
+      "snr_db": 21.74311637878418
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  },
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 425.0,
+    "trigger_time_formatted": "00:07:05.000",
+    "clip_start_s": 423.5,
+    "clip_end_s": 426.5,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 425.0,
+      "peak_rms": 0.22585554420948029,
+      "peak_flux": 147.88958740234375,
+      "zcr": 0.022833333333333334,
+      "bandwidth_hz": 3049.838318063387,
+      "snr_db": 11.618398666381836
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  },
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 426.6,
+    "trigger_time_formatted": "00:07:06.600",
+    "clip_start_s": 425.1,
+    "clip_end_s": 428.1,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 426.6,
+      "peak_rms": 0.17569631338119507,
+      "peak_flux": 478.594482421875,
+      "zcr": 0.04033333333333333,
+      "bandwidth_hz": 3012.0934211857684,
+      "snr_db": 5.362398147583008
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  },
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 440.35,
+    "trigger_time_formatted": "00:07:20.350",
+    "clip_start_s": 438.85,
+    "clip_end_s": 441.85,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 440.35,
+      "peak_rms": 0.15282581746578217,
+      "peak_flux": 388.90673828125,
+      "zcr": 0.05925,
+      "bandwidth_hz": 4170.144621441975,
+      "snr_db": 5.072358131408691
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  },
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 442.7,
+    "trigger_time_formatted": "00:07:22.700",
+    "clip_start_s": 441.2,
+    "clip_end_s": 444.2,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 442.7,
+      "peak_rms": 0.1360035389661789,
+      "peak_flux": 200.14036560058594,
+      "zcr": 0.0655,
+      "bandwidth_hz": 4146.193081151693,
+      "snr_db": 5.431695461273193
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  },
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 478.05,
+    "trigger_time_formatted": "00:07:58.050",
+    "clip_start_s": 476.55,
+    "clip_end_s": 479.55,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 478.05,
+      "peak_rms": 0.3493099808692932,
+      "peak_flux": 1951.0343017578125,
+      "zcr": 0.0005833333333333334,
+      "bandwidth_hz": 4023.0471247637943,
+      "snr_db": 7.489651679992676
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  },
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 517.05,
+    "trigger_time_formatted": "00:08:37.050",
+    "clip_start_s": 515.55,
+    "clip_end_s": 518.55,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 517.05,
+      "peak_rms": 0.14663639664649963,
+      "peak_flux": 378.4549865722656,
+      "zcr": 0.09641666666666666,
+      "bandwidth_hz": 3545.55001243186,
+      "snr_db": 5.6458330154418945
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  },
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 522.45,
+    "trigger_time_formatted": "00:08:42.450",
+    "clip_start_s": 520.95,
+    "clip_end_s": 523.95,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 522.45,
+      "peak_rms": 0.1488504260778427,
+      "peak_flux": 372.0988464355469,
+      "zcr": 0.04666666666666667,
+      "bandwidth_hz": 3312.30395326211,
+      "snr_db": 5.814857006072998
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  },
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 532.2,
+    "trigger_time_formatted": "00:08:52.200",
+    "clip_start_s": 530.7,
+    "clip_end_s": 533.7,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 532.2,
+      "peak_rms": 0.16209228336811066,
+      "peak_flux": 438.51800537109375,
+      "zcr": 0.07775,
+      "bandwidth_hz": 3009.977864339202,
+      "snr_db": 4.140345096588135
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  },
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 542.15,
+    "trigger_time_formatted": "00:09:02.150",
+    "clip_start_s": 540.65,
+    "clip_end_s": 543.65,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 542.15,
+      "peak_rms": 0.22834914922714233,
+      "peak_flux": 605.045166015625,
+      "zcr": 0.05508333333333333,
+      "bandwidth_hz": 3655.317770510463,
+      "snr_db": 4.244429588317871
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  },
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 547.25,
+    "trigger_time_formatted": "00:09:07.250",
+    "clip_start_s": 545.75,
+    "clip_end_s": 548.75,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 547.25,
+      "peak_rms": 0.14613662660121918,
+      "peak_flux": 396.5924072265625,
+      "zcr": 0.07783333333333334,
+      "bandwidth_hz": 2543.747126531338,
+      "snr_db": 4.1001787185668945
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  },
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 585.3,
+    "trigger_time_formatted": "00:09:45.300",
+    "clip_start_s": 583.8,
+    "clip_end_s": 586.8,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 585.3,
+      "peak_rms": 0.17503413558006287,
+      "peak_flux": 168.5289306640625,
+      "zcr": 0.06716666666666667,
+      "bandwidth_hz": 2580.5877327373823,
+      "snr_db": 10.481947898864746
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  },
+  {
+    "event_type": "event_candidate",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 630.1,
+    "trigger_time_formatted": "00:10:30.100",
+    "clip_start_s": 628.6,
+    "clip_end_s": 631.6,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 630.1,
+      "peak_rms": 0.09026522189378738,
+      "peak_flux": 327.8157958984375,
+      "zcr": 0.025166666666666667,
+      "bandwidth_hz": 5468.063399458726,
+      "snr_db": 6.7828755378723145
+    },
+    "shaman_ii": {
+      "label": "birdcall_or_mixed_audio_candidate"
+    }
+  }
+]

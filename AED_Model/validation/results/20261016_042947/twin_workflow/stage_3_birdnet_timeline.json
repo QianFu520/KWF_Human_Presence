@@ -1,0 +1,4240 @@
+[
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 1.55,
+    "trigger_time_formatted": "00:00:01.550",
+    "clip_start_s": 0.050000000000000044,
+    "clip_end_s": 3.05,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 1.55,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 45.326500199735165,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 20.1,
+    "trigger_time_formatted": "00:00:20.100",
+    "clip_start_s": 18.6,
+    "clip_end_s": 21.6,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 20.1,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.7092498280107975,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 22.45,
+    "trigger_time_formatted": "00:00:22.450",
+    "clip_start_s": 20.95,
+    "clip_end_s": 23.95,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 22.45,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.169415682554245,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 36.25,
+    "trigger_time_formatted": "00:00:36.250",
+    "clip_start_s": 34.75,
+    "clip_end_s": 37.75,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 36.25,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.101791884750128,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 40.05,
+    "trigger_time_formatted": "00:00:40.050",
+    "clip_start_s": 38.55,
+    "clip_end_s": 41.55,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 40.05,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 3.8683339953422546,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 41.9,
+    "trigger_time_formatted": "00:00:41.900",
+    "clip_start_s": 40.4,
+    "clip_end_s": 43.4,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 41.9,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 3.9156656712293625,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 45.55,
+    "trigger_time_formatted": "00:00:45.550",
+    "clip_start_s": 44.05,
+    "clip_end_s": 47.05,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 45.55,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 3.8483329117298126,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 47.05,
+    "trigger_time_formatted": "00:00:47.050",
+    "clip_start_s": 45.55,
+    "clip_end_s": 48.55,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 47.05,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 3.902374766767025,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 50.5,
+    "trigger_time_formatted": "00:00:50.500",
+    "clip_start_s": 49.0,
+    "clip_end_s": 52.0,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 50.5,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.573499783873558,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 55.0,
+    "trigger_time_formatted": "00:00:55.000",
+    "clip_start_s": 53.5,
+    "clip_end_s": 56.5,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 55.0,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 3.9994576945900917,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 456.3,
+    "trigger_time_formatted": "00:07:36.300",
+    "clip_start_s": 454.8,
+    "clip_end_s": 457.8,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 456.3,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.3961661867797375,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 537.45,
+    "trigger_time_formatted": "00:08:57.450",
+    "clip_start_s": 535.95,
+    "clip_end_s": 538.95,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 537.45,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.144958220422268,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 540.05,
+    "trigger_time_formatted": "00:09:00.050",
+    "clip_start_s": 538.55,
+    "clip_end_s": 541.55,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 540.05,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.348707851022482,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 546.95,
+    "trigger_time_formatted": "00:09:06.950",
+    "clip_start_s": 545.45,
+    "clip_end_s": 548.45,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 546.95,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.724875092506409,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 1516.9,
+    "trigger_time_formatted": "00:25:16.900",
+    "clip_start_s": 1515.4,
+    "clip_end_s": 1518.4,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 1516.9,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.397875163704157,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 1565.4,
+    "trigger_time_formatted": "00:26:05.400",
+    "clip_start_s": 1563.9,
+    "clip_end_s": 1566.9,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 1565.4,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.534374922513962,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 1587.5,
+    "trigger_time_formatted": "00:26:27.500",
+    "clip_start_s": 1586.0,
+    "clip_end_s": 1589.0,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 1587.5,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.229624755680561,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 1589.9,
+    "trigger_time_formatted": "00:26:29.900",
+    "clip_start_s": 1588.4,
+    "clip_end_s": 1591.4,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 1589.9,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.733707755804062,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 1592.1,
+    "trigger_time_formatted": "00:26:32.100",
+    "clip_start_s": 1590.6,
+    "clip_end_s": 1593.6,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 1592.1,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.598167259246111,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 1597.25,
+    "trigger_time_formatted": "00:26:37.250",
+    "clip_start_s": 1595.75,
+    "clip_end_s": 1598.75,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 1597.25,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.546041134744883,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 1600.15,
+    "trigger_time_formatted": "00:26:40.150",
+    "clip_start_s": 1598.65,
+    "clip_end_s": 1601.65,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 1600.15,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.629166796803474,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 1605.4,
+    "trigger_time_formatted": "00:26:45.400",
+    "clip_start_s": 1603.9,
+    "clip_end_s": 1606.9,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 1605.4,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.526124801486731,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 1607.05,
+    "trigger_time_formatted": "00:26:47.050",
+    "clip_start_s": 1605.55,
+    "clip_end_s": 1608.55,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 1607.05,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.488999955356121,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 1655.05,
+    "trigger_time_formatted": "00:27:35.050",
+    "clip_start_s": 1653.55,
+    "clip_end_s": 1656.55,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 1655.05,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.433500114828348,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 1656.55,
+    "trigger_time_formatted": "00:27:36.550",
+    "clip_start_s": 1655.05,
+    "clip_end_s": 1658.05,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 1656.55,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.493417218327522,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 1681.25,
+    "trigger_time_formatted": "00:28:01.250",
+    "clip_start_s": 1679.75,
+    "clip_end_s": 1682.75,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 1681.25,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.654292017221451,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 1691.9,
+    "trigger_time_formatted": "00:28:11.900",
+    "clip_start_s": 1690.4,
+    "clip_end_s": 1693.4,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 1691.9,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.61029214784503,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 1697.45,
+    "trigger_time_formatted": "00:28:17.450",
+    "clip_start_s": 1695.95,
+    "clip_end_s": 1698.95,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 1697.45,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.487958736717701,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 2190.55,
+    "trigger_time_formatted": "00:36:30.550",
+    "clip_start_s": 2189.05,
+    "clip_end_s": 2192.05,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 2190.55,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.207333084195852,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 2199.9,
+    "trigger_time_formatted": "00:36:39.900",
+    "clip_start_s": 2198.4,
+    "clip_end_s": 2201.4,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 2199.9,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.598166793584824,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 2321.65,
+    "trigger_time_formatted": "00:38:41.650",
+    "clip_start_s": 2320.15,
+    "clip_end_s": 2323.15,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 2321.65,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.819083958864212,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 2330.3,
+    "trigger_time_formatted": "00:38:50.300",
+    "clip_start_s": 2328.8,
+    "clip_end_s": 2331.8,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 2330.3,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.59520798176527,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 2335.2,
+    "trigger_time_formatted": "00:38:55.200",
+    "clip_start_s": 2333.7,
+    "clip_end_s": 2336.7,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 2335.2,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.461667034775019,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 2375.25,
+    "trigger_time_formatted": "00:39:35.250",
+    "clip_start_s": 2373.75,
+    "clip_end_s": 2376.75,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 2375.25,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.790415987372398,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 2376.75,
+    "trigger_time_formatted": "00:39:36.750",
+    "clip_start_s": 2375.25,
+    "clip_end_s": 2378.25,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 2376.75,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.653374664485455,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 2461.55,
+    "trigger_time_formatted": "00:41:01.550",
+    "clip_start_s": 2460.05,
+    "clip_end_s": 2463.05,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 2461.55,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.709499888122082,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 2471.35,
+    "trigger_time_formatted": "00:41:11.350",
+    "clip_start_s": 2469.85,
+    "clip_end_s": 2472.85,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 2471.35,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.646750167012215,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 2572.5,
+    "trigger_time_formatted": "00:42:52.500",
+    "clip_start_s": 2571.0,
+    "clip_end_s": 2574.0,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 2572.5,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.434582777321339,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 2656.75,
+    "trigger_time_formatted": "00:44:16.750",
+    "clip_start_s": 2655.25,
+    "clip_end_s": 2658.25,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 2656.75,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.673999734222889,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 2735.85,
+    "trigger_time_formatted": "00:45:35.850",
+    "clip_start_s": 2734.35,
+    "clip_end_s": 2737.35,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 2735.85,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.693333059549332,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 2737.55,
+    "trigger_time_formatted": "00:45:37.550",
+    "clip_start_s": 2736.05,
+    "clip_end_s": 2739.05,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 2737.55,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.903249908238649,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 2842.65,
+    "trigger_time_formatted": "00:47:22.650",
+    "clip_start_s": 2841.15,
+    "clip_end_s": 2844.15,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 2842.65,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.8827920109033585,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 2856.35,
+    "trigger_time_formatted": "00:47:36.350",
+    "clip_start_s": 2854.85,
+    "clip_end_s": 2857.85,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 2856.35,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.988791421055794,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 2871.75,
+    "trigger_time_formatted": "00:47:51.750",
+    "clip_start_s": 2870.25,
+    "clip_end_s": 2873.25,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 2871.75,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.627541173249483,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 2880.2,
+    "trigger_time_formatted": "00:48:00.200",
+    "clip_start_s": 2878.7,
+    "clip_end_s": 2881.7,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 2880.2,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 5.101915914565325,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 2885.0,
+    "trigger_time_formatted": "00:48:05.000",
+    "clip_start_s": 2883.5,
+    "clip_end_s": 2886.5,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 2885.0,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.84437495470047,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 2912.4,
+    "trigger_time_formatted": "00:48:32.400",
+    "clip_start_s": 2910.9,
+    "clip_end_s": 2913.9,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 2912.4,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 5.0154998898506165,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 2956.4,
+    "trigger_time_formatted": "00:49:16.400",
+    "clip_start_s": 2954.9,
+    "clip_end_s": 2957.9,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 2956.4,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 5.001584067940712,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 2975.75,
+    "trigger_time_formatted": "00:49:35.750",
+    "clip_start_s": 2974.25,
+    "clip_end_s": 2977.25,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 2975.75,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.984541796147823,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 2977.25,
+    "trigger_time_formatted": "00:49:37.250",
+    "clip_start_s": 2975.75,
+    "clip_end_s": 2978.75,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 2977.25,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 5.020250100642443,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 3030.8,
+    "trigger_time_formatted": "00:50:30.800",
+    "clip_start_s": 3029.3,
+    "clip_end_s": 3032.3,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 3030.8,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.862499888986349,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 3056.55,
+    "trigger_time_formatted": "00:50:56.550",
+    "clip_start_s": 3055.05,
+    "clip_end_s": 3058.05,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 3056.55,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 5.015291273593903,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 3111.7,
+    "trigger_time_formatted": "00:51:51.700",
+    "clip_start_s": 3110.2,
+    "clip_end_s": 3113.2,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 3111.7,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.856124985963106,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 3157.2,
+    "trigger_time_formatted": "00:52:37.200",
+    "clip_start_s": 3155.7,
+    "clip_end_s": 3158.7,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 3157.2,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.740000236779451,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 3170.55,
+    "trigger_time_formatted": "00:52:50.550",
+    "clip_start_s": 3169.05,
+    "clip_end_s": 3172.05,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 3170.55,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.933416843414307,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 3185.1,
+    "trigger_time_formatted": "00:53:05.100",
+    "clip_start_s": 3183.6,
+    "clip_end_s": 3186.6,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 3185.1,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.93283336982131,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 3280.15,
+    "trigger_time_formatted": "00:54:40.150",
+    "clip_start_s": 3278.65,
+    "clip_end_s": 3281.65,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 3280.15,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.552500322461128,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 3282.55,
+    "trigger_time_formatted": "00:54:42.550",
+    "clip_start_s": 3281.05,
+    "clip_end_s": 3284.05,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 3282.55,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.6685840934515,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 3285.1,
+    "trigger_time_formatted": "00:54:45.100",
+    "clip_start_s": 3283.6,
+    "clip_end_s": 3286.6,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 3285.1,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.641292151063681,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 3290.45,
+    "trigger_time_formatted": "00:54:50.450",
+    "clip_start_s": 3288.95,
+    "clip_end_s": 3291.95,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 3290.45,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.202624782919884,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 3435.5,
+    "trigger_time_formatted": "00:57:15.500",
+    "clip_start_s": 3434.0,
+    "clip_end_s": 3437.0,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 3435.5,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.67945821583271,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 3562.75,
+    "trigger_time_formatted": "00:59:22.750",
+    "clip_start_s": 3561.25,
+    "clip_end_s": 3564.25,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 3562.75,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.68745781108737,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 3605.1,
+    "trigger_time_formatted": "01:00:05.100",
+    "clip_start_s": 3603.6,
+    "clip_end_s": 3606.6,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 3605.1,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.638458136469126,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 3611.6,
+    "trigger_time_formatted": "01:00:11.600",
+    "clip_start_s": 3610.1,
+    "clip_end_s": 3613.1,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 3611.6,
+      "is_birdcall": true,
+      "confidence": 0.9999336004257202,
+      "inference_ms": 4.352500196546316,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 6.639957427978516e-05,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 3617.35,
+    "trigger_time_formatted": "01:00:17.350",
+    "clip_start_s": 3615.85,
+    "clip_end_s": 3618.85,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 3617.35,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.605833441019058,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 3620.8,
+    "trigger_time_formatted": "01:00:20.800",
+    "clip_start_s": 3619.3,
+    "clip_end_s": 3622.3,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 3620.8,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.54462505877018,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 3625.1,
+    "trigger_time_formatted": "01:00:25.100",
+    "clip_start_s": 3623.6,
+    "clip_end_s": 3626.6,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 3625.1,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.496917128562927,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 3751.85,
+    "trigger_time_formatted": "01:02:31.850",
+    "clip_start_s": 3750.35,
+    "clip_end_s": 3753.35,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 3751.85,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.503916949033737,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 3762.9,
+    "trigger_time_formatted": "01:02:42.900",
+    "clip_start_s": 3761.4,
+    "clip_end_s": 3764.4,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 3762.9,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.445333033800125,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 3767.55,
+    "trigger_time_formatted": "01:02:47.550",
+    "clip_start_s": 3766.05,
+    "clip_end_s": 3769.05,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 3767.55,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.605208057910204,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 3796.35,
+    "trigger_time_formatted": "01:03:16.350",
+    "clip_start_s": 3794.85,
+    "clip_end_s": 3797.85,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 3796.35,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.335958044975996,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 3855.15,
+    "trigger_time_formatted": "01:04:15.150",
+    "clip_start_s": 3853.65,
+    "clip_end_s": 3856.65,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 3855.15,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.515375010669231,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 3871.1,
+    "trigger_time_formatted": "01:04:31.100",
+    "clip_start_s": 3869.6,
+    "clip_end_s": 3872.6,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 3871.1,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.749082960188389,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 3922.8,
+    "trigger_time_formatted": "01:05:22.800",
+    "clip_start_s": 3921.3,
+    "clip_end_s": 3924.3,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 3922.8,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.735541995614767,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 3957.3,
+    "trigger_time_formatted": "01:05:57.300",
+    "clip_start_s": 3955.8,
+    "clip_end_s": 3958.8,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 3957.3,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.693582653999329,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 4010.7,
+    "trigger_time_formatted": "01:06:50.700",
+    "clip_start_s": 4009.2,
+    "clip_end_s": 4012.2,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 4010.7,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.625000059604645,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 4114.95,
+    "trigger_time_formatted": "01:08:34.950",
+    "clip_start_s": 4113.45,
+    "clip_end_s": 4116.45,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 4114.95,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.691417329013348,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 4116.85,
+    "trigger_time_formatted": "01:08:36.850",
+    "clip_start_s": 4115.35,
+    "clip_end_s": 4118.35,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 4116.85,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.492041189223528,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 4132.6,
+    "trigger_time_formatted": "01:08:52.600",
+    "clip_start_s": 4131.1,
+    "clip_end_s": 4134.1,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 4132.6,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.452000372111797,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 4250.05,
+    "trigger_time_formatted": "01:10:50.050",
+    "clip_start_s": 4248.55,
+    "clip_end_s": 4251.55,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 4250.05,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.6896249987185,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 4251.7,
+    "trigger_time_formatted": "01:10:51.700",
+    "clip_start_s": 4250.2,
+    "clip_end_s": 4253.2,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 4251.7,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.713666159659624,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 4260.6,
+    "trigger_time_formatted": "01:11:00.600",
+    "clip_start_s": 4259.1,
+    "clip_end_s": 4262.1,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 4260.6,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.535499960184097,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 4272.25,
+    "trigger_time_formatted": "01:11:12.250",
+    "clip_start_s": 4270.75,
+    "clip_end_s": 4273.75,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 4272.25,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.690750036388636,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 4440.35,
+    "trigger_time_formatted": "01:14:00.350",
+    "clip_start_s": 4438.85,
+    "clip_end_s": 4441.85,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 4440.35,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.686959087848663,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 4480.9,
+    "trigger_time_formatted": "01:14:40.900",
+    "clip_start_s": 4479.4,
+    "clip_end_s": 4482.4,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 4480.9,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.555791150778532,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 4531.35,
+    "trigger_time_formatted": "01:15:31.350",
+    "clip_start_s": 4529.85,
+    "clip_end_s": 4532.85,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 4531.35,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.704250022768974,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 4555.3,
+    "trigger_time_formatted": "01:15:55.300",
+    "clip_start_s": 4553.8,
+    "clip_end_s": 4556.8,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 4555.3,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.545958247035742,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 4625.15,
+    "trigger_time_formatted": "01:17:05.150",
+    "clip_start_s": 4623.65,
+    "clip_end_s": 4626.65,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 4625.15,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.489041864871979,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 4731.8,
+    "trigger_time_formatted": "01:18:51.800",
+    "clip_start_s": 4730.3,
+    "clip_end_s": 4733.3,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 4731.8,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.633625037968159,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 4736.45,
+    "trigger_time_formatted": "01:18:56.450",
+    "clip_start_s": 4734.95,
+    "clip_end_s": 4737.95,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 4736.45,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.340500105172396,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 4750.0,
+    "trigger_time_formatted": "01:19:10.000",
+    "clip_start_s": 4748.5,
+    "clip_end_s": 4751.5,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 4750.0,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.779207985848188,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 4800.2,
+    "trigger_time_formatted": "01:20:00.200",
+    "clip_start_s": 4798.7,
+    "clip_end_s": 4801.7,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 4800.2,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.7152079641819,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 4811.55,
+    "trigger_time_formatted": "01:20:11.550",
+    "clip_start_s": 4810.05,
+    "clip_end_s": 4813.05,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 4811.55,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.677667282521725,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 4866.45,
+    "trigger_time_formatted": "01:21:06.450",
+    "clip_start_s": 4864.95,
+    "clip_end_s": 4867.95,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 4866.45,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.485249985009432,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 4886.55,
+    "trigger_time_formatted": "01:21:26.550",
+    "clip_start_s": 4885.05,
+    "clip_end_s": 4888.05,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 4886.55,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.428875166922808,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 5011.4,
+    "trigger_time_formatted": "01:23:31.400",
+    "clip_start_s": 5009.9,
+    "clip_end_s": 5012.9,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 5011.4,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.401917103677988,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 5027.05,
+    "trigger_time_formatted": "01:23:47.050",
+    "clip_start_s": 5025.55,
+    "clip_end_s": 5028.55,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 5027.05,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.765084013342857,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 5030.05,
+    "trigger_time_formatted": "01:23:50.050",
+    "clip_start_s": 5028.55,
+    "clip_end_s": 5031.55,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 5030.05,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.4225831516087055,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 5031.65,
+    "trigger_time_formatted": "01:23:51.650",
+    "clip_start_s": 5030.15,
+    "clip_end_s": 5033.15,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 5031.65,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.3570841662585735,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 5045.2,
+    "trigger_time_formatted": "01:24:05.200",
+    "clip_start_s": 5043.7,
+    "clip_end_s": 5046.7,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 5045.2,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.313500132411718,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 5195.35,
+    "trigger_time_formatted": "01:26:35.350",
+    "clip_start_s": 5193.85,
+    "clip_end_s": 5196.85,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 5195.35,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.499000031501055,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 5255.1,
+    "trigger_time_formatted": "01:27:35.100",
+    "clip_start_s": 5253.6,
+    "clip_end_s": 5256.6,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 5255.1,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.516375251114368,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 5350.2,
+    "trigger_time_formatted": "01:29:10.200",
+    "clip_start_s": 5348.7,
+    "clip_end_s": 5351.7,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 5350.2,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.495415836572647,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 5477.8,
+    "trigger_time_formatted": "01:31:17.800",
+    "clip_start_s": 5476.3,
+    "clip_end_s": 5479.3,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 5477.8,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.70399996265769,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 5521.05,
+    "trigger_time_formatted": "01:32:01.050",
+    "clip_start_s": 5519.55,
+    "clip_end_s": 5522.55,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 5521.05,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.4025843963027,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 5547.75,
+    "trigger_time_formatted": "01:32:27.750",
+    "clip_start_s": 5546.25,
+    "clip_end_s": 5549.25,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 5547.75,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.3618748895823956,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 5556.2,
+    "trigger_time_formatted": "01:32:36.200",
+    "clip_start_s": 5554.7,
+    "clip_end_s": 5557.7,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 5556.2,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.304708912968636,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 5586.35,
+    "trigger_time_formatted": "01:33:06.350",
+    "clip_start_s": 5584.85,
+    "clip_end_s": 5587.85,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 5586.35,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.404833074659109,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 5707.25,
+    "trigger_time_formatted": "01:35:07.250",
+    "clip_start_s": 5705.75,
+    "clip_end_s": 5708.75,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 5707.25,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.646624904125929,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 5712.75,
+    "trigger_time_formatted": "01:35:12.750",
+    "clip_start_s": 5711.25,
+    "clip_end_s": 5714.25,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 5712.75,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.61479090154171,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 5750.05,
+    "trigger_time_formatted": "01:35:50.050",
+    "clip_start_s": 5748.55,
+    "clip_end_s": 5751.55,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 5750.05,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.536208231002092,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 5752.45,
+    "trigger_time_formatted": "01:35:52.450",
+    "clip_start_s": 5750.95,
+    "clip_end_s": 5753.95,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 5752.45,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.2990418151021,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 5790.2,
+    "trigger_time_formatted": "01:36:30.200",
+    "clip_start_s": 5788.7,
+    "clip_end_s": 5791.7,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 5790.2,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.225499927997589,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 5860.45,
+    "trigger_time_formatted": "01:37:40.450",
+    "clip_start_s": 5858.95,
+    "clip_end_s": 5861.95,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 5860.45,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 3.96941602230072,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 5901.8,
+    "trigger_time_formatted": "01:38:21.800",
+    "clip_start_s": 5900.3,
+    "clip_end_s": 5903.3,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 5901.8,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 3.7407497875392437,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 5922.7,
+    "trigger_time_formatted": "01:38:42.700",
+    "clip_start_s": 5921.2,
+    "clip_end_s": 5924.2,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 5922.7,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.275832790881395,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 5942.55,
+    "trigger_time_formatted": "01:39:02.550",
+    "clip_start_s": 5941.05,
+    "clip_end_s": 5944.05,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 5942.55,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.20875009149313,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 5976.45,
+    "trigger_time_formatted": "01:39:36.450",
+    "clip_start_s": 5974.95,
+    "clip_end_s": 5977.95,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 5976.45,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.195708315819502,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 6019.9,
+    "trigger_time_formatted": "01:40:19.900",
+    "clip_start_s": 6018.4,
+    "clip_end_s": 6021.4,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 6019.9,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 3.9139590226113796,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 6027.75,
+    "trigger_time_formatted": "01:40:27.750",
+    "clip_start_s": 6026.25,
+    "clip_end_s": 6029.25,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 6027.75,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 3.867874853312969,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 6077.35,
+    "trigger_time_formatted": "01:41:17.350",
+    "clip_start_s": 6075.85,
+    "clip_end_s": 6078.85,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 6077.35,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 3.944625146687031,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 6082.1,
+    "trigger_time_formatted": "01:41:22.100",
+    "clip_start_s": 6080.6,
+    "clip_end_s": 6083.6,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 6082.1,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.034250043332577,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 6095.6,
+    "trigger_time_formatted": "01:41:35.600",
+    "clip_start_s": 6094.1,
+    "clip_end_s": 6097.1,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 6095.6,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 3.9959577843546867,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 6170.8,
+    "trigger_time_formatted": "01:42:50.800",
+    "clip_start_s": 6169.3,
+    "clip_end_s": 6172.3,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 6170.8,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 3.9683328941464424,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 6176.5,
+    "trigger_time_formatted": "01:42:56.500",
+    "clip_start_s": 6175.0,
+    "clip_end_s": 6178.0,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 6176.5,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.205416887998581,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 6225.3,
+    "trigger_time_formatted": "01:43:45.300",
+    "clip_start_s": 6223.8,
+    "clip_end_s": 6226.8,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 6225.3,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 3.985624760389328,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 6272.0,
+    "trigger_time_formatted": "01:44:32.000",
+    "clip_start_s": 6270.5,
+    "clip_end_s": 6273.5,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 6272.0,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.17862506583333,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 6275.3,
+    "trigger_time_formatted": "01:44:35.300",
+    "clip_start_s": 6273.8,
+    "clip_end_s": 6276.8,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 6275.3,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.500333685427904,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 6285.65,
+    "trigger_time_formatted": "01:44:45.650",
+    "clip_start_s": 6284.15,
+    "clip_end_s": 6287.15,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 6285.65,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.301874898374081,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 6397.75,
+    "trigger_time_formatted": "01:46:37.750",
+    "clip_start_s": 6396.25,
+    "clip_end_s": 6399.25,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 6397.75,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.38808323815465,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 6407.8,
+    "trigger_time_formatted": "01:46:47.800",
+    "clip_start_s": 6406.3,
+    "clip_end_s": 6409.3,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 6407.8,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.057374782860279,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 6435.1,
+    "trigger_time_formatted": "01:47:15.100",
+    "clip_start_s": 6433.6,
+    "clip_end_s": 6436.6,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 6435.1,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.259000066667795,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 6460.9,
+    "trigger_time_formatted": "01:47:40.900",
+    "clip_start_s": 6459.4,
+    "clip_end_s": 6462.4,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 6460.9,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.4199577532708645,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 6516.9,
+    "trigger_time_formatted": "01:48:36.900",
+    "clip_start_s": 6515.4,
+    "clip_end_s": 6518.4,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 6516.9,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.271583165973425,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 6545.7,
+    "trigger_time_formatted": "01:49:05.700",
+    "clip_start_s": 6544.2,
+    "clip_end_s": 6547.2,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 6545.7,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.39862534403801,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 6547.7,
+    "trigger_time_formatted": "01:49:07.700",
+    "clip_start_s": 6546.2,
+    "clip_end_s": 6549.2,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 6547.7,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.423167090862989,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 6561.0,
+    "trigger_time_formatted": "01:49:21.000",
+    "clip_start_s": 6559.5,
+    "clip_end_s": 6562.5,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 6561.0,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.027666989713907,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 6564.95,
+    "trigger_time_formatted": "01:49:24.950",
+    "clip_start_s": 6563.45,
+    "clip_end_s": 6566.45,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 6564.95,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.4682081788778305,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 6807.8,
+    "trigger_time_formatted": "01:53:27.800",
+    "clip_start_s": 6806.3,
+    "clip_end_s": 6809.3,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 6807.8,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.329250194132328,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 6927.4,
+    "trigger_time_formatted": "01:55:27.400",
+    "clip_start_s": 6925.9,
+    "clip_end_s": 6928.9,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 6927.4,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 3.981832880526781,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 7017.7,
+    "trigger_time_formatted": "01:56:57.700",
+    "clip_start_s": 7016.2,
+    "clip_end_s": 7019.2,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 7017.7,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.433457739651203,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 7171.25,
+    "trigger_time_formatted": "01:59:31.250",
+    "clip_start_s": 7169.75,
+    "clip_end_s": 7172.75,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 7171.25,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.295667167752981,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 7331.2,
+    "trigger_time_formatted": "02:02:11.200",
+    "clip_start_s": 7329.7,
+    "clip_end_s": 7332.7,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 7331.2,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 3.5352911800146103,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 7480.7,
+    "trigger_time_formatted": "02:04:40.700",
+    "clip_start_s": 7479.2,
+    "clip_end_s": 7482.2,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 7480.7,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 3.8477089256048203,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 7495.4,
+    "trigger_time_formatted": "02:04:55.400",
+    "clip_start_s": 7493.9,
+    "clip_end_s": 7496.9,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 7495.4,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 3.786667250096798,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 7502.6,
+    "trigger_time_formatted": "02:05:02.600",
+    "clip_start_s": 7501.1,
+    "clip_end_s": 7504.1,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 7502.6,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 3.7988750264048576,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 7522.4,
+    "trigger_time_formatted": "02:05:22.400",
+    "clip_start_s": 7520.9,
+    "clip_end_s": 7523.9,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 7522.4,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.089917056262493,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 7577.15,
+    "trigger_time_formatted": "02:06:17.150",
+    "clip_start_s": 7575.65,
+    "clip_end_s": 7578.65,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 7577.15,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 3.803832922130823,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 7657.4,
+    "trigger_time_formatted": "02:07:37.400",
+    "clip_start_s": 7655.9,
+    "clip_end_s": 7658.9,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 7657.4,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 3.937874920666218,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 7721.45,
+    "trigger_time_formatted": "02:08:41.450",
+    "clip_start_s": 7719.95,
+    "clip_end_s": 7722.95,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 7721.45,
+      "is_birdcall": true,
+      "confidence": 0.9314042925834656,
+      "inference_ms": 4.460041876882315,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.06859570741653442,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 7745.85,
+    "trigger_time_formatted": "02:09:05.850",
+    "clip_start_s": 7744.35,
+    "clip_end_s": 7747.35,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 7745.85,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.218666814267635,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 8192.7,
+    "trigger_time_formatted": "02:16:32.700",
+    "clip_start_s": 8191.200000000001,
+    "clip_end_s": 8194.2,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 8192.7,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 3.9870827458798885,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 8285.25,
+    "trigger_time_formatted": "02:18:05.250",
+    "clip_start_s": 8283.75,
+    "clip_end_s": 8286.75,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 8285.25,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.2847092263400555,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 8290.8,
+    "trigger_time_formatted": "02:18:10.800",
+    "clip_start_s": 8289.3,
+    "clip_end_s": 8292.3,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 8290.8,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.799709189683199,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 8372.0,
+    "trigger_time_formatted": "02:19:32.000",
+    "clip_start_s": 8370.5,
+    "clip_end_s": 8373.5,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 8372.0,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.476208705455065,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 8519.95,
+    "trigger_time_formatted": "02:21:59.950",
+    "clip_start_s": 8518.45,
+    "clip_end_s": 8521.45,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 8519.95,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.340415820479393,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 8566.95,
+    "trigger_time_formatted": "02:22:46.950",
+    "clip_start_s": 8565.45,
+    "clip_end_s": 8568.45,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 8566.95,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.46575041860342,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 8595.8,
+    "trigger_time_formatted": "02:23:15.800",
+    "clip_start_s": 8594.3,
+    "clip_end_s": 8597.3,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 8595.8,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.441041965037584,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 8716.1,
+    "trigger_time_formatted": "02:25:16.100",
+    "clip_start_s": 8714.6,
+    "clip_end_s": 8717.6,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 8716.1,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.191583022475243,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 8765.35,
+    "trigger_time_formatted": "02:26:05.350",
+    "clip_start_s": 8763.85,
+    "clip_end_s": 8766.85,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 8765.35,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.323583096265793,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 8847.65,
+    "trigger_time_formatted": "02:27:27.650",
+    "clip_start_s": 8846.15,
+    "clip_end_s": 8849.15,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 8847.65,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.047291819006205,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 8991.25,
+    "trigger_time_formatted": "02:29:51.250",
+    "clip_start_s": 8989.75,
+    "clip_end_s": 8992.75,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 8991.25,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.055500030517578,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  },
+  {
+    "event_type": "birdnet_skipped",
+    "source_file": "twin_long_input.wav",
+    "trigger_time_s": 9025.2,
+    "trigger_time_formatted": "02:30:25.200",
+    "clip_start_s": 9023.7,
+    "clip_end_s": 9026.7,
+    "shaman_i": {
+      "source_file": "twin_long_input.wav",
+      "trigger_time_s": 9025.2,
+      "is_birdcall": true,
+      "confidence": 1.0,
+      "inference_ms": 4.299416206777096,
+      "label": "meaningful_audio",
+      "model_status": "aed_tinycnn",
+      "raw": {
+        "not_meaningful_prob": 0.0,
+        "threshold": 0.3,
+        "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+        "checkpoint_file": "tinycnn_v3.pth"
+      }
+    },
+    "shaman_ii": {
+      "model_status": "skipped_by_flag"
+    }
+  }
+]

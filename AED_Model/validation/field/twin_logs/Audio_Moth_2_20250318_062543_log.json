@@ -1,0 +1,16 @@
+{
+  "metadata": {
+    "duration_seconds": 41657.0,
+    "node_id": "Audio_Moth_2",
+    "source_audio": "{RAW_AUDIO}/Audio Moth 2/Audio_Moth_2_031825/20250318_062543.WAV",
+    "recording_start": "2025-03-18T06:25:43"
+  },
+  "events": [
+    {
+      "timestamp_seconds": 37476.0,
+      "duration_seconds": 1197.0,
+      "type": "HUMAN_PRESENCE_ON_TRAIL",
+      "event_id": "Human Presence on Trail_Audio_Moth_2_20250318_165019"
+    }
+  ]
+}

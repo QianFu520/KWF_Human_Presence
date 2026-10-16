@@ -1,0 +1,210 @@
+{
+  "run_id": 3,
+  "status": "complete",
+  "threshold": 0.75,
+  "saved_path": "uploads/pending/0f10f87ffad64880822183c47adf038f/node_SHAMAN.WAV",
+  "dashboard": {
+    "run": {
+      "id": 3,
+      "name": "AED field GT Audio_Moth_5_20250317_112812",
+      "date": "2026-10-16",
+      "scenario": "MVP Simulation",
+      "shamani": "ESP32",
+      "shamanii": "Radxa Zero",
+      "duration": "24h",
+      "status": "complete"
+    },
+    "metrics": {
+      "accuracy": 1.0,
+      "fpr": 0.957960027567195,
+      "latency_ms": 24,
+      "detection_count": 1451,
+      "battery_health": 0.0,
+      "congestion": 0,
+      "throughput": 0.0,
+      "conf_threshold": 0.75
+    },
+    "detections_by_type": [
+      {
+        "event_type": "Wildlife",
+        "count": 1451
+      }
+    ],
+    "latency_by_rank": [],
+    "accuracy_confidence_curve": [],
+    "pipeline_stats": {
+      "stage1": {
+        "label": "Stage 1: Audio Filtering",
+        "entered": 7836,
+        "passed": 1509,
+        "failed": 6327,
+        "mean_ms": 17.26,
+        "total_ms": 135242.1,
+        "details": [
+          {
+            "label": "Filtered as background",
+            "count": 6327
+          },
+          {
+            "label": "Trigger candidates",
+            "count": 1509
+          }
+        ]
+      },
+      "stage2": {
+        "label": "Stage 2: AED Event Detection",
+        "entered": 1509,
+        "passed": 1451,
+        "failed": 58,
+        "mean_ms": 23.54,
+        "total_ms": 35525.8,
+        "details": [
+          {
+            "label": "Meaningful audio",
+            "count": 1451
+          },
+          {
+            "label": "Not meaningful",
+            "count": 58
+          }
+        ]
+      },
+      "stage3": {
+        "label": "Stage 3: Feature Extraction",
+        "entered": 1451,
+        "passed": 1451,
+        "failed": 0,
+        "mean_ms": 47.93,
+        "total_ms": 69546.1,
+        "details": [
+          {
+            "label": "Audio features extracted",
+            "count": 1451
+          }
+        ]
+      },
+      "stage4": {
+        "label": "Stage 4: Context Enrichment",
+        "entered": 1451,
+        "passed": 1451,
+        "failed": 0,
+        "mean_ms": 0.05,
+        "total_ms": 71.2,
+        "details": [
+          {
+            "label": "Time/audio context only",
+            "count": 1451
+          }
+        ]
+      },
+      "stage5": {
+        "label": "Stage 5: Human Presence Classification",
+        "entered": 1451,
+        "passed": 0,
+        "failed": 1451,
+        "mean_ms": 0.01,
+        "total_ms": 13.2,
+        "details": [
+          {
+            "label": "Wildlife",
+            "count": 1451
+          }
+        ]
+      }
+    },
+    "processing": {
+      "model_status": "aed_tinycnn",
+      "checkpoint_file": "tinycnn_v3.pth",
+      "model_version": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)",
+      "threshold": 0.75,
+      "device": "cpu",
+      "clips_scored": 1509,
+      "clips_skipped": 0,
+      "mean_confidence": 0.9708621017264562,
+      "confidence_histogram": [
+        {
+          "label": "0-10%",
+          "count": 17
+        },
+        {
+          "label": "10-20%",
+          "count": 6
+        },
+        {
+          "label": "20-30%",
+          "count": 6
+        },
+        {
+          "label": "30-40%",
+          "count": 5
+        },
+        {
+          "label": "40-50%",
+          "count": 6
+        },
+        {
+          "label": "50-60%",
+          "count": 5
+        },
+        {
+          "label": "60-70%",
+          "count": 11
+        },
+        {
+          "label": "70-80%",
+          "count": 5
+        },
+        {
+          "label": "80-90%",
+          "count": 16
+        },
+        {
+          "label": "90-100%",
+          "count": 1432
+        }
+      ],
+      "audio_seconds": 23508.0,
+      "wall_ms": 240398.4229429625,
+      "throughput_cps": 6.27707944805457,
+      "validation": {
+        "val_acc": 0.9984,
+        "not_meaningful_precision": 0.98,
+        "not_meaningful_recall": 1.0,
+        "not_meaningful_f1": 0.99
+      }
+    },
+    "ground_truth": {
+      "available": true,
+      "total_events": 3,
+      "total_detections": 1451,
+      "matched_events": 3,
+      "missed_events": 0,
+      "true_positive_detections": 61,
+      "false_positive_detections": 1390,
+      "recall": 1.0,
+      "precision": 0.04203997243280496,
+      "f1": 0.0806878306878307,
+      "detections_per_event": 27.0,
+      "by_type": [
+        {
+          "label": "Human_Presence_On_Trail",
+          "total": 1,
+          "matched": 1,
+          "recall": 1.0
+        },
+        {
+          "label": "Gunshots",
+          "total": 1,
+          "matched": 1,
+          "recall": 1.0
+        },
+        {
+          "label": "Chainsaw",
+          "total": 1,
+          "matched": 1,
+          "recall": 1.0
+        }
+      ]
+    }
+  }
+}

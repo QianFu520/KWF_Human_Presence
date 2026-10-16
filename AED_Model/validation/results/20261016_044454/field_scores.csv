@@ -1,0 +1,8 @@
+group,expected,clips,clip_correct@0.5,clip_correct@0.7,clip_correct@0.95,events,event_recall@0.5,event_recall@0.7,event_recall@0.95
+BACKGROUND,not_meaningful,586,1.0,0.998,0.998,,,,
+BIRDNET_SPECIES,meaningful,500,1.0,1.0,1.0,,,,
+CHAINSAW,meaningful,198,1.0,1.0,1.0,2.0,1.0,1.0,1.0
+GUNSHOT,meaningful,198,1.0,1.0,1.0,2.0,1.0,1.0,1.0
+HUMAN_PRESENCE_OFF_TRAIL,meaningful,99,0.657,0.737,0.848,1.0,1.0,1.0,1.0
+HUMAN_PRESENCE_ON_TRAIL,meaningful,2248,1.0,1.0,1.0,8.0,1.0,1.0,1.0
+VEHICLE,meaningful,198,1.0,1.0,1.0,2.0,1.0,1.0,1.0

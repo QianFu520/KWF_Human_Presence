@@ -1,0 +1,48 @@
+{
+  "twin_dashboard": {
+    "available": true,
+    "total_events": 1,
+    "total_detections": 536,
+    "matched_events": 1,
+    "missed_events": 0,
+    "true_positive_detections": 15,
+    "false_positive_detections": 521,
+    "recall": 1.0,
+    "precision": 0.027985074626865673,
+    "f1": 0.0544464609800363,
+    "detections_per_event": 15.0,
+    "by_type": [
+      {
+        "label": "Human_Presence_On_Trail",
+        "total": 1,
+        "matched": 1,
+        "recall": 1.0
+      }
+    ]
+  },
+  "background": {
+    "duration_h": 11.571388888888889,
+    "detections": 536,
+    "detections_outside_events": 521,
+    "det_per_min_outside": 0.7726722198877821,
+    "stage1_triggers_outside": 522,
+    "aed_keep_rate_outside": 0.9980842911877394
+  },
+  "events": [
+    {
+      "recording": "Audio_Moth_2_20250318_062543",
+      "event_id": "Human Presence on Trail_Audio_Moth_2_20250318_165019",
+      "type": "HUMAN_PRESENCE_ON_TRAIL",
+      "start_s": 37476.0,
+      "duration_s": 1197.0,
+      "detections": 15,
+      "detected": true,
+      "chance_hit": 0.9999998056187496,
+      "det_per_min": 0.75,
+      "density_ratio": 0.9706573896353167,
+      "stage1_triggers": 15,
+      "aed_kept": 15,
+      "outcome": "detected"
+    }
+  ]
+}

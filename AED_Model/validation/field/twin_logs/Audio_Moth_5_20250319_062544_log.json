@@ -1,0 +1,28 @@
+{
+  "metadata": {
+    "duration_seconds": 36260.859,
+    "node_id": "Audio_Moth_5",
+    "source_audio": "{RAW_AUDIO}/Audio Moth 5/Audio_Moth_5_031925/20250319_062544.WAV",
+    "recording_start": "2025-03-19T06:25:44"
+  },
+  "events": [
+    {
+      "timestamp_seconds": 8283.0,
+      "duration_seconds": 1200.0,
+      "type": "HUMAN_PRESENCE_ON_TRAIL",
+      "event_id": "Human Presence on Trail_Audio_Moth_5_20250319_084347"
+    },
+    {
+      "timestamp_seconds": 35904.0,
+      "duration_seconds": 354.0,
+      "type": "HUMAN_PRESENCE_ON_TRAIL",
+      "event_id": "Human Presence on Trail_Audio_Moth_5_20250319_162408"
+    },
+    {
+      "timestamp_seconds": 8937.0,
+      "duration_seconds": 297.0,
+      "type": "VEHICLE",
+      "event_id": "Vehicle_Audio_Moth_5_20250319_085441"
+    }
+  ]
+}

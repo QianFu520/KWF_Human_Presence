@@ -1,0 +1,90 @@
+{
+  "twin_dashboard": {
+    "available": true,
+    "total_events": 3,
+    "total_detections": 1451,
+    "matched_events": 3,
+    "missed_events": 0,
+    "true_positive_detections": 61,
+    "false_positive_detections": 1390,
+    "recall": 1.0,
+    "precision": 0.04203997243280496,
+    "f1": 0.0806878306878307,
+    "detections_per_event": 27.0,
+    "by_type": [
+      {
+        "label": "Human_Presence_On_Trail",
+        "total": 1,
+        "matched": 1,
+        "recall": 1.0
+      },
+      {
+        "label": "Gunshots",
+        "total": 1,
+        "matched": 1,
+        "recall": 1.0
+      },
+      {
+        "label": "Chainsaw",
+        "total": 1,
+        "matched": 1,
+        "recall": 1.0
+      }
+    ]
+  },
+  "background": {
+    "duration_h": 6.53,
+    "detections": 1451,
+    "detections_outside_events": 1390,
+    "det_per_min_outside": 3.738569123184508,
+    "stage1_triggers_outside": 1444,
+    "aed_keep_rate_outside": 0.9626038781163435
+  },
+  "events": [
+    {
+      "recording": "Audio_Moth_5_20250317_112812",
+      "event_id": "Chainsaw_Audio_Moth_5_20250317_165557",
+      "type": "CHAINSAW",
+      "start_s": 19665.0,
+      "duration_s": 297.0,
+      "detections": 9,
+      "detected": true,
+      "chance_hit": 0.9999999923827134,
+      "det_per_min": 1.8,
+      "density_ratio": 0.48146762589928055,
+      "stage1_triggers": 11,
+      "aed_kept": 9,
+      "outcome": "detected"
+    },
+    {
+      "recording": "Audio_Moth_5_20250317_112812",
+      "event_id": "Gunshot_Audio_Moth_5_20250317_165357",
+      "type": "GUNSHOT",
+      "start_s": 19545.0,
+      "duration_s": 300.0,
+      "detections": 11,
+      "detected": true,
+      "chance_hit": 0.9999999936814373,
+      "det_per_min": 2.1782178217821784,
+      "density_ratio": 0.5826340907472042,
+      "stage1_triggers": 11,
+      "aed_kept": 11,
+      "outcome": "detected"
+    },
+    {
+      "recording": "Audio_Moth_5_20250317_112812",
+      "event_id": "Human Presence on Trail_Audio_Moth_5_20250317_164248",
+      "type": "HUMAN_PRESENCE_ON_TRAIL",
+      "start_s": 18876.0,
+      "duration_s": 1197.0,
+      "detections": 61,
+      "detected": true,
+      "chance_hit": 1.0,
+      "det_per_min": 3.05,
+      "density_ratio": 0.8158201438848921,
+      "stage1_triggers": 65,
+      "aed_kept": 61,
+      "outcome": "detected"
+    }
+  ]
+}

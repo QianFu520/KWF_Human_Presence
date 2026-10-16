@@ -1,0 +1,3 @@
+# Large, regenerable run outputs (audio is already ignored by AED_Model/.gitignore)
+results/**/backend_payload.json
+results/logs/

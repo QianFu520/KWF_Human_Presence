@@ -1,0 +1,84 @@
+{
+  "twin_dashboard": {
+    "available": true,
+    "total_events": 3,
+    "total_detections": 1105,
+    "matched_events": 3,
+    "missed_events": 0,
+    "true_positive_detections": 100,
+    "false_positive_detections": 1005,
+    "recall": 1.0,
+    "precision": 0.09049773755656108,
+    "f1": 0.16597510373443985,
+    "detections_per_event": 39.666666666666664,
+    "by_type": [
+      {
+        "label": "Human_Presence_On_Trail",
+        "total": 2,
+        "matched": 2,
+        "recall": 1.0
+      },
+      {
+        "label": "Vehicle",
+        "total": 1,
+        "matched": 1,
+        "recall": 1.0
+      }
+    ]
+  },
+  "background": {
+    "duration_h": 10.072460833333333,
+    "detections": 1105,
+    "detections_outside_events": 1005,
+    "det_per_min_outside": 1.7377091443183006,
+    "stage1_triggers_outside": 1010,
+    "aed_keep_rate_outside": 0.995049504950495
+  },
+  "events": [
+    {
+      "recording": "Audio_Moth_5_20250319_062544",
+      "event_id": "Human Presence on Trail_Audio_Moth_5_20250319_084347",
+      "type": "HUMAN_PRESENCE_ON_TRAIL",
+      "start_s": 8283.0,
+      "duration_s": 1200.0,
+      "detections": 93,
+      "detected": true,
+      "chance_hit": 0.9999999999999992,
+      "det_per_min": 4.638403990024938,
+      "density_ratio": 2.6692637287378567,
+      "stage1_triggers": 93,
+      "aed_kept": 93,
+      "outcome": "detected"
+    },
+    {
+      "recording": "Audio_Moth_5_20250319_062544",
+      "event_id": "Human Presence on Trail_Audio_Moth_5_20250319_162408",
+      "type": "HUMAN_PRESENCE_ON_TRAIL",
+      "start_s": 35904.0,
+      "duration_s": 354.0,
+      "detections": 7,
+      "detected": true,
+      "chance_hit": 0.9999676652937824,
+      "det_per_min": 1.1764705882352942,
+      "density_ratio": 0.6770238805970149,
+      "stage1_triggers": 7,
+      "aed_kept": 7,
+      "outcome": "detected"
+    },
+    {
+      "recording": "Audio_Moth_5_20250319_062544",
+      "event_id": "Vehicle_Audio_Moth_5_20250319_085441",
+      "type": "VEHICLE",
+      "start_s": 8937.0,
+      "duration_s": 297.0,
+      "detections": 19,
+      "detected": true,
+      "chance_hit": 0.99983149509884,
+      "det_per_min": 3.8,
+      "density_ratio": 2.1867871343283585,
+      "stage1_triggers": 19,
+      "aed_kept": 19,
+      "outcome": "detected"
+    }
+  ]
+}

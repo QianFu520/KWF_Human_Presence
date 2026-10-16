@@ -1,0 +1,1476 @@
+{
+  "node_id": "validation",
+  "audio_path": "<repo>/AED_Model/validation/results/20261016_042947/twin_long_input.wav",
+  "result_type": "human_presence_final_results",
+  "results": [
+    {
+      "node_id": "validation",
+      "time_s": 1.55,
+      "time_formatted": "00:00:01.550",
+      "human_presence_detected": false,
+      "confidence": 0.21631522538134504,
+      "statement": "No human presence detected at time 00:00:01.550."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 20.1,
+      "time_formatted": "00:00:20.100",
+      "human_presence_detected": false,
+      "confidence": 0.2180880563359906,
+      "statement": "No human presence detected at time 00:00:20.100."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 22.45,
+      "time_formatted": "00:00:22.450",
+      "human_presence_detected": false,
+      "confidence": 0.438156854567471,
+      "statement": "No human presence detected at time 00:00:22.450."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 36.25,
+      "time_formatted": "00:00:36.250",
+      "human_presence_detected": false,
+      "confidence": 0.41615653406980796,
+      "statement": "No human presence detected at time 00:00:36.250."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 40.05,
+      "time_formatted": "00:00:40.050",
+      "human_presence_detected": false,
+      "confidence": 0.22410335046649243,
+      "statement": "No human presence detected at time 00:00:40.050."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 41.9,
+      "time_formatted": "00:00:41.900",
+      "human_presence_detected": false,
+      "confidence": 0.28488721452488136,
+      "statement": "No human presence detected at time 00:00:41.900."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 45.55,
+      "time_formatted": "00:00:45.550",
+      "human_presence_detected": false,
+      "confidence": 0.22655322948847378,
+      "statement": "No human presence detected at time 00:00:45.550."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 47.05,
+      "time_formatted": "00:00:47.050",
+      "human_presence_detected": false,
+      "confidence": 0.23816980980141583,
+      "statement": "No human presence detected at time 00:00:47.050."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 50.5,
+      "time_formatted": "00:00:50.500",
+      "human_presence_detected": false,
+      "confidence": 0.22755989638030313,
+      "statement": "No human presence detected at time 00:00:50.500."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 55.0,
+      "time_formatted": "00:00:55.000",
+      "human_presence_detected": false,
+      "confidence": 0.21984867595621602,
+      "statement": "No human presence detected at time 00:00:55.000."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 456.3,
+      "time_formatted": "00:07:36.300",
+      "human_presence_detected": false,
+      "confidence": 0.2656021814909355,
+      "statement": "No human presence detected at time 00:07:36.300."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 537.45,
+      "time_formatted": "00:08:57.450",
+      "human_presence_detected": false,
+      "confidence": 0.4390257936029806,
+      "statement": "No human presence detected at time 00:08:57.450."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 540.05,
+      "time_formatted": "00:09:00.050",
+      "human_presence_detected": false,
+      "confidence": 0.21756611490032204,
+      "statement": "No human presence detected at time 00:09:00.050."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 546.95,
+      "time_formatted": "00:09:06.950",
+      "human_presence_detected": false,
+      "confidence": 0.45068906601973746,
+      "statement": "No human presence detected at time 00:09:06.950."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 1516.9,
+      "time_formatted": "00:25:16.900",
+      "human_presence_detected": false,
+      "confidence": 0.22335729407278535,
+      "statement": "No human presence detected at time 00:25:16.900."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 1565.4,
+      "time_formatted": "00:26:05.400",
+      "human_presence_detected": false,
+      "confidence": 0.22771522129234098,
+      "statement": "No human presence detected at time 00:26:05.400."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 1587.5,
+      "time_formatted": "00:26:27.500",
+      "human_presence_detected": false,
+      "confidence": 0.46892155939883307,
+      "statement": "No human presence detected at time 00:26:27.500."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 1589.9,
+      "time_formatted": "00:26:29.900",
+      "human_presence_detected": false,
+      "confidence": 0.462860432915314,
+      "statement": "No human presence detected at time 00:26:29.900."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 1592.1,
+      "time_formatted": "00:26:32.100",
+      "human_presence_detected": false,
+      "confidence": 0.4609358916405168,
+      "statement": "No human presence detected at time 00:26:32.100."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 1597.25,
+      "time_formatted": "00:26:37.250",
+      "human_presence_detected": false,
+      "confidence": 0.470314263235796,
+      "statement": "No human presence detected at time 00:26:37.250."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 1600.15,
+      "time_formatted": "00:26:40.150",
+      "human_presence_detected": false,
+      "confidence": 0.48387320396767275,
+      "statement": "No human presence detected at time 00:26:40.150."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 1605.4,
+      "time_formatted": "00:26:45.400",
+      "human_presence_detected": false,
+      "confidence": 0.48364843614375064,
+      "statement": "No human presence detected at time 00:26:45.400."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 1607.05,
+      "time_formatted": "00:26:47.050",
+      "human_presence_detected": false,
+      "confidence": 0.47851073148610257,
+      "statement": "No human presence detected at time 00:26:47.050."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 1655.05,
+      "time_formatted": "00:27:35.050",
+      "human_presence_detected": false,
+      "confidence": 0.33746506939384874,
+      "statement": "No human presence detected at time 00:27:35.050."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 1656.55,
+      "time_formatted": "00:27:36.550",
+      "human_presence_detected": false,
+      "confidence": 0.34558246204258897,
+      "statement": "No human presence detected at time 00:27:36.550."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 1681.25,
+      "time_formatted": "00:28:01.250",
+      "human_presence_detected": false,
+      "confidence": 0.2443199961744089,
+      "statement": "No human presence detected at time 00:28:01.250."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 1691.9,
+      "time_formatted": "00:28:11.900",
+      "human_presence_detected": false,
+      "confidence": 0.3477298942259316,
+      "statement": "No human presence detected at time 00:28:11.900."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 1697.45,
+      "time_formatted": "00:28:17.450",
+      "human_presence_detected": false,
+      "confidence": 0.37518138399116074,
+      "statement": "No human presence detected at time 00:28:17.450."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 2190.55,
+      "time_formatted": "00:36:30.550",
+      "human_presence_detected": false,
+      "confidence": 0.4715011654904361,
+      "statement": "No human presence detected at time 00:36:30.550."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 2199.9,
+      "time_formatted": "00:36:39.900",
+      "human_presence_detected": false,
+      "confidence": 0.4579887373805779,
+      "statement": "No human presence detected at time 00:36:39.900."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 2321.65,
+      "time_formatted": "00:38:41.650",
+      "human_presence_detected": false,
+      "confidence": 0.21388588717576942,
+      "statement": "No human presence detected at time 00:38:41.650."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 2330.3,
+      "time_formatted": "00:38:50.300",
+      "human_presence_detected": false,
+      "confidence": 0.34821274747209324,
+      "statement": "No human presence detected at time 00:38:50.300."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 2335.2,
+      "time_formatted": "00:38:55.200",
+      "human_presence_detected": false,
+      "confidence": 0.3489739747827513,
+      "statement": "No human presence detected at time 00:38:55.200."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 2375.25,
+      "time_formatted": "00:39:35.250",
+      "human_presence_detected": false,
+      "confidence": 0.35212803655670744,
+      "statement": "No human presence detected at time 00:39:35.250."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 2376.75,
+      "time_formatted": "00:39:36.750",
+      "human_presence_detected": false,
+      "confidence": 0.2138343983505461,
+      "statement": "No human presence detected at time 00:39:36.750."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 2461.55,
+      "time_formatted": "00:41:01.550",
+      "human_presence_detected": false,
+      "confidence": 0.3433725653253938,
+      "statement": "No human presence detected at time 00:41:01.550."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 2471.35,
+      "time_formatted": "00:41:11.350",
+      "human_presence_detected": false,
+      "confidence": 0.4058993892895687,
+      "statement": "No human presence detected at time 00:41:11.350."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 2572.5,
+      "time_formatted": "00:42:52.500",
+      "human_presence_detected": false,
+      "confidence": 0.21940571550721644,
+      "statement": "No human presence detected at time 00:42:52.500."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 2656.75,
+      "time_formatted": "00:44:16.750",
+      "human_presence_detected": false,
+      "confidence": 0.3967924965323597,
+      "statement": "No human presence detected at time 00:44:16.750."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 2735.85,
+      "time_formatted": "00:45:35.850",
+      "human_presence_detected": false,
+      "confidence": 0.4603359223195675,
+      "statement": "No human presence detected at time 00:45:35.850."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 2737.55,
+      "time_formatted": "00:45:37.550",
+      "human_presence_detected": false,
+      "confidence": 0.4565153769040316,
+      "statement": "No human presence detected at time 00:45:37.550."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 2842.65,
+      "time_formatted": "00:47:22.650",
+      "human_presence_detected": false,
+      "confidence": 0.24190375495340302,
+      "statement": "No human presence detected at time 00:47:22.650."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 2856.35,
+      "time_formatted": "00:47:36.350",
+      "human_presence_detected": false,
+      "confidence": 0.32911187276708104,
+      "statement": "No human presence detected at time 00:47:36.350."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 2871.75,
+      "time_formatted": "00:47:51.750",
+      "human_presence_detected": false,
+      "confidence": 0.34564454357892244,
+      "statement": "No human presence detected at time 00:47:51.750."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 2880.2,
+      "time_formatted": "00:48:00.200",
+      "human_presence_detected": false,
+      "confidence": 0.2541354995147567,
+      "statement": "No human presence detected at time 00:48:00.200."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 2885.0,
+      "time_formatted": "00:48:05.000",
+      "human_presence_detected": false,
+      "confidence": 0.4483085717869447,
+      "statement": "No human presence detected at time 00:48:05.000."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 2912.4,
+      "time_formatted": "00:48:32.400",
+      "human_presence_detected": false,
+      "confidence": 0.22305072897179473,
+      "statement": "No human presence detected at time 00:48:32.400."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 2956.4,
+      "time_formatted": "00:49:16.400",
+      "human_presence_detected": false,
+      "confidence": 0.4203859467601213,
+      "statement": "No human presence detected at time 00:49:16.400."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 2975.75,
+      "time_formatted": "00:49:35.750",
+      "human_presence_detected": false,
+      "confidence": 0.44999713577729533,
+      "statement": "No human presence detected at time 00:49:35.750."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 2977.25,
+      "time_formatted": "00:49:37.250",
+      "human_presence_detected": false,
+      "confidence": 0.44922149553554275,
+      "statement": "No human presence detected at time 00:49:37.250."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 3030.8,
+      "time_formatted": "00:50:30.800",
+      "human_presence_detected": false,
+      "confidence": 0.46063347251304426,
+      "statement": "No human presence detected at time 00:50:30.800."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 3056.55,
+      "time_formatted": "00:50:56.550",
+      "human_presence_detected": false,
+      "confidence": 0.23943758582028501,
+      "statement": "No human presence detected at time 00:50:56.550."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 3111.7,
+      "time_formatted": "00:51:51.700",
+      "human_presence_detected": false,
+      "confidence": 0.43560725672356837,
+      "statement": "No human presence detected at time 00:51:51.700."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 3157.2,
+      "time_formatted": "00:52:37.200",
+      "human_presence_detected": false,
+      "confidence": 0.2387761375668582,
+      "statement": "No human presence detected at time 00:52:37.200."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 3170.55,
+      "time_formatted": "00:52:50.550",
+      "human_presence_detected": false,
+      "confidence": 0.3586173782541591,
+      "statement": "No human presence detected at time 00:52:50.550."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 3185.1,
+      "time_formatted": "00:53:05.100",
+      "human_presence_detected": false,
+      "confidence": 0.2400371063373626,
+      "statement": "No human presence detected at time 00:53:05.100."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 3280.15,
+      "time_formatted": "00:54:40.150",
+      "human_presence_detected": false,
+      "confidence": 0.26689145159588185,
+      "statement": "No human presence detected at time 00:54:40.150."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 3282.55,
+      "time_formatted": "00:54:42.550",
+      "human_presence_detected": false,
+      "confidence": 0.46204076494510254,
+      "statement": "No human presence detected at time 00:54:42.550."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 3285.1,
+      "time_formatted": "00:54:45.100",
+      "human_presence_detected": false,
+      "confidence": 0.4652592040260948,
+      "statement": "No human presence detected at time 00:54:45.100."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 3290.45,
+      "time_formatted": "00:54:50.450",
+      "human_presence_detected": false,
+      "confidence": 0.3523508826295918,
+      "statement": "No human presence detected at time 00:54:50.450."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 3435.5,
+      "time_formatted": "00:57:15.500",
+      "human_presence_detected": false,
+      "confidence": 0.24266675162645088,
+      "statement": "No human presence detected at time 00:57:15.500."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 3562.75,
+      "time_formatted": "00:59:22.750",
+      "human_presence_detected": false,
+      "confidence": 0.24036731619671084,
+      "statement": "No human presence detected at time 00:59:22.750."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 3605.1,
+      "time_formatted": "01:00:05.100",
+      "human_presence_detected": false,
+      "confidence": 0.3398629996114363,
+      "statement": "No human presence detected at time 01:00:05.100."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 3611.6,
+      "time_formatted": "01:00:11.600",
+      "human_presence_detected": false,
+      "confidence": 0.3495252686124292,
+      "statement": "No human presence detected at time 01:00:11.600."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 3617.35,
+      "time_formatted": "01:00:17.350",
+      "human_presence_detected": false,
+      "confidence": 0.3368528088126053,
+      "statement": "No human presence detected at time 01:00:17.350."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 3620.8,
+      "time_formatted": "01:00:20.800",
+      "human_presence_detected": false,
+      "confidence": 0.3502773065644553,
+      "statement": "No human presence detected at time 01:00:20.800."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 3625.1,
+      "time_formatted": "01:00:25.100",
+      "human_presence_detected": false,
+      "confidence": 0.3676329346575648,
+      "statement": "No human presence detected at time 01:00:25.100."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 3751.85,
+      "time_formatted": "01:02:31.850",
+      "human_presence_detected": false,
+      "confidence": 0.4275490730247639,
+      "statement": "No human presence detected at time 01:02:31.850."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 3762.9,
+      "time_formatted": "01:02:42.900",
+      "human_presence_detected": false,
+      "confidence": 0.45438684857581413,
+      "statement": "No human presence detected at time 01:02:42.900."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 3767.55,
+      "time_formatted": "01:02:47.550",
+      "human_presence_detected": false,
+      "confidence": 0.45986501772597843,
+      "statement": "No human presence detected at time 01:02:47.550."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 3796.35,
+      "time_formatted": "01:03:16.350",
+      "human_presence_detected": false,
+      "confidence": 0.46149344072196696,
+      "statement": "No human presence detected at time 01:03:16.350."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 3855.15,
+      "time_formatted": "01:04:15.150",
+      "human_presence_detected": false,
+      "confidence": 0.23543625077907143,
+      "statement": "No human presence detected at time 01:04:15.150."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 3871.1,
+      "time_formatted": "01:04:31.100",
+      "human_presence_detected": false,
+      "confidence": 0.3403814696812238,
+      "statement": "No human presence detected at time 01:04:31.100."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 3922.8,
+      "time_formatted": "01:05:22.800",
+      "human_presence_detected": false,
+      "confidence": 0.23694362779812567,
+      "statement": "No human presence detected at time 01:05:22.800."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 3957.3,
+      "time_formatted": "01:05:57.300",
+      "human_presence_detected": false,
+      "confidence": 0.23897378764137905,
+      "statement": "No human presence detected at time 01:05:57.300."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 4010.7,
+      "time_formatted": "01:06:50.700",
+      "human_presence_detected": false,
+      "confidence": 0.320479413477778,
+      "statement": "No human presence detected at time 01:06:50.700."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 4114.95,
+      "time_formatted": "01:08:34.950",
+      "human_presence_detected": false,
+      "confidence": 0.4492635256964939,
+      "statement": "No human presence detected at time 01:08:34.950."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 4116.85,
+      "time_formatted": "01:08:36.850",
+      "human_presence_detected": false,
+      "confidence": 0.41498980033889715,
+      "statement": "No human presence detected at time 01:08:36.850."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 4132.6,
+      "time_formatted": "01:08:52.600",
+      "human_presence_detected": false,
+      "confidence": 0.32818829071954136,
+      "statement": "No human presence detected at time 01:08:52.600."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 4250.05,
+      "time_formatted": "01:10:50.050",
+      "human_presence_detected": false,
+      "confidence": 0.3325026236294304,
+      "statement": "No human presence detected at time 01:10:50.050."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 4251.7,
+      "time_formatted": "01:10:51.700",
+      "human_presence_detected": false,
+      "confidence": 0.34187085008027396,
+      "statement": "No human presence detected at time 01:10:51.700."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 4260.6,
+      "time_formatted": "01:11:00.600",
+      "human_presence_detected": false,
+      "confidence": 0.457447523792325,
+      "statement": "No human presence detected at time 01:11:00.600."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 4272.25,
+      "time_formatted": "01:11:12.250",
+      "human_presence_detected": false,
+      "confidence": 0.44865782077525523,
+      "statement": "No human presence detected at time 01:11:12.250."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 4440.35,
+      "time_formatted": "01:14:00.350",
+      "human_presence_detected": false,
+      "confidence": 0.46523237603397527,
+      "statement": "No human presence detected at time 01:14:00.350."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 4480.9,
+      "time_formatted": "01:14:40.900",
+      "human_presence_detected": false,
+      "confidence": 0.46246876557247996,
+      "statement": "No human presence detected at time 01:14:40.900."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 4531.35,
+      "time_formatted": "01:15:31.350",
+      "human_presence_detected": false,
+      "confidence": 0.41481791654174877,
+      "statement": "No human presence detected at time 01:15:31.350."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 4555.3,
+      "time_formatted": "01:15:55.300",
+      "human_presence_detected": false,
+      "confidence": 0.3731942801588998,
+      "statement": "No human presence detected at time 01:15:55.300."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 4625.15,
+      "time_formatted": "01:17:05.150",
+      "human_presence_detected": false,
+      "confidence": 0.2399526459468793,
+      "statement": "No human presence detected at time 01:17:05.150."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 4731.8,
+      "time_formatted": "01:18:51.800",
+      "human_presence_detected": false,
+      "confidence": 0.2399206170493818,
+      "statement": "No human presence detected at time 01:18:51.800."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 4736.45,
+      "time_formatted": "01:18:56.450",
+      "human_presence_detected": false,
+      "confidence": 0.3965022728087548,
+      "statement": "No human presence detected at time 01:18:56.450."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 4750.0,
+      "time_formatted": "01:19:10.000",
+      "human_presence_detected": false,
+      "confidence": 0.23755709338817207,
+      "statement": "No human presence detected at time 01:19:10.000."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 4800.2,
+      "time_formatted": "01:20:00.200",
+      "human_presence_detected": false,
+      "confidence": 0.341011092378355,
+      "statement": "No human presence detected at time 01:20:00.200."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 4811.55,
+      "time_formatted": "01:20:11.550",
+      "human_presence_detected": false,
+      "confidence": 0.44219300412824686,
+      "statement": "No human presence detected at time 01:20:11.550."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 4866.45,
+      "time_formatted": "01:21:06.450",
+      "human_presence_detected": false,
+      "confidence": 0.25329443371800975,
+      "statement": "No human presence detected at time 01:21:06.450."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 4886.55,
+      "time_formatted": "01:21:26.550",
+      "human_presence_detected": false,
+      "confidence": 0.39743486929809835,
+      "statement": "No human presence detected at time 01:21:26.550."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 5011.4,
+      "time_formatted": "01:23:31.400",
+      "human_presence_detected": false,
+      "confidence": 0.4119119864060051,
+      "statement": "No human presence detected at time 01:23:31.400."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 5027.05,
+      "time_formatted": "01:23:47.050",
+      "human_presence_detected": false,
+      "confidence": 0.22682244506992114,
+      "statement": "No human presence detected at time 01:23:47.050."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 5030.05,
+      "time_formatted": "01:23:50.050",
+      "human_presence_detected": false,
+      "confidence": 0.3522419782416606,
+      "statement": "No human presence detected at time 01:23:50.050."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 5031.65,
+      "time_formatted": "01:23:51.650",
+      "human_presence_detected": false,
+      "confidence": 0.19040483984034476,
+      "statement": "No human presence detected at time 01:23:51.650."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 5045.2,
+      "time_formatted": "01:24:05.200",
+      "human_presence_detected": false,
+      "confidence": 0.4641071008055312,
+      "statement": "No human presence detected at time 01:24:05.200."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 5195.35,
+      "time_formatted": "01:26:35.350",
+      "human_presence_detected": false,
+      "confidence": 0.45800188117157975,
+      "statement": "No human presence detected at time 01:26:35.350."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 5255.1,
+      "time_formatted": "01:27:35.100",
+      "human_presence_detected": false,
+      "confidence": 0.4581261347526968,
+      "statement": "No human presence detected at time 01:27:35.100."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 5350.2,
+      "time_formatted": "01:29:10.200",
+      "human_presence_detected": false,
+      "confidence": 0.4488345974330243,
+      "statement": "No human presence detected at time 01:29:10.200."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 5477.8,
+      "time_formatted": "01:31:17.800",
+      "human_presence_detected": false,
+      "confidence": 0.47383710341079155,
+      "statement": "No human presence detected at time 01:31:17.800."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 5521.05,
+      "time_formatted": "01:32:01.050",
+      "human_presence_detected": false,
+      "confidence": 0.3630839242013833,
+      "statement": "No human presence detected at time 01:32:01.050."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 5547.75,
+      "time_formatted": "01:32:27.750",
+      "human_presence_detected": false,
+      "confidence": 0.35756000480469285,
+      "statement": "No human presence detected at time 01:32:27.750."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 5556.2,
+      "time_formatted": "01:32:36.200",
+      "human_presence_detected": false,
+      "confidence": 0.2113684391090009,
+      "statement": "No human presence detected at time 01:32:36.200."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 5586.35,
+      "time_formatted": "01:33:06.350",
+      "human_presence_detected": false,
+      "confidence": 0.20793851381807404,
+      "statement": "No human presence detected at time 01:33:06.350."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 5707.25,
+      "time_formatted": "01:35:07.250",
+      "human_presence_detected": false,
+      "confidence": 0.2949439591776673,
+      "statement": "No human presence detected at time 01:35:07.250."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 5712.75,
+      "time_formatted": "01:35:12.750",
+      "human_presence_detected": false,
+      "confidence": 0.4754687965264451,
+      "statement": "No human presence detected at time 01:35:12.750."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 5750.05,
+      "time_formatted": "01:35:50.050",
+      "human_presence_detected": false,
+      "confidence": 0.23500512048407912,
+      "statement": "No human presence detected at time 01:35:50.050."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 5752.45,
+      "time_formatted": "01:35:52.450",
+      "human_presence_detected": false,
+      "confidence": 0.24105904804084183,
+      "statement": "No human presence detected at time 01:35:52.450."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 5790.2,
+      "time_formatted": "01:36:30.200",
+      "human_presence_detected": false,
+      "confidence": 0.45623731225679043,
+      "statement": "No human presence detected at time 01:36:30.200."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 5860.45,
+      "time_formatted": "01:37:40.450",
+      "human_presence_detected": false,
+      "confidence": 0.24283450169587087,
+      "statement": "No human presence detected at time 01:37:40.450."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 5901.8,
+      "time_formatted": "01:38:21.800",
+      "human_presence_detected": false,
+      "confidence": 0.3236377667327462,
+      "statement": "No human presence detected at time 01:38:21.800."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 5922.7,
+      "time_formatted": "01:38:42.700",
+      "human_presence_detected": false,
+      "confidence": 0.23973085282243653,
+      "statement": "No human presence detected at time 01:38:42.700."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 5942.55,
+      "time_formatted": "01:39:02.550",
+      "human_presence_detected": false,
+      "confidence": 0.45908257846146927,
+      "statement": "No human presence detected at time 01:39:02.550."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 5976.45,
+      "time_formatted": "01:39:36.450",
+      "human_presence_detected": false,
+      "confidence": 0.3050439366471757,
+      "statement": "No human presence detected at time 01:39:36.450."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 6019.9,
+      "time_formatted": "01:40:19.900",
+      "human_presence_detected": false,
+      "confidence": 0.47333391245231216,
+      "statement": "No human presence detected at time 01:40:19.900."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 6027.75,
+      "time_formatted": "01:40:27.750",
+      "human_presence_detected": false,
+      "confidence": 0.23961437746001565,
+      "statement": "No human presence detected at time 01:40:27.750."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 6077.35,
+      "time_formatted": "01:41:17.350",
+      "human_presence_detected": false,
+      "confidence": 0.23652310026177087,
+      "statement": "No human presence detected at time 01:41:17.350."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 6082.1,
+      "time_formatted": "01:41:22.100",
+      "human_presence_detected": false,
+      "confidence": 0.33199816862796055,
+      "statement": "No human presence detected at time 01:41:22.100."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 6095.6,
+      "time_formatted": "01:41:35.600",
+      "human_presence_detected": false,
+      "confidence": 0.35680539714377274,
+      "statement": "No human presence detected at time 01:41:35.600."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 6170.8,
+      "time_formatted": "01:42:50.800",
+      "human_presence_detected": false,
+      "confidence": 0.245541834950999,
+      "statement": "No human presence detected at time 01:42:50.800."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 6176.5,
+      "time_formatted": "01:42:56.500",
+      "human_presence_detected": false,
+      "confidence": 0.44970474249621617,
+      "statement": "No human presence detected at time 01:42:56.500."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 6225.3,
+      "time_formatted": "01:43:45.300",
+      "human_presence_detected": false,
+      "confidence": 0.23429317224773769,
+      "statement": "No human presence detected at time 01:43:45.300."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 6272.0,
+      "time_formatted": "01:44:32.000",
+      "human_presence_detected": false,
+      "confidence": 0.4613313390954109,
+      "statement": "No human presence detected at time 01:44:32.000."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 6275.3,
+      "time_formatted": "01:44:35.300",
+      "human_presence_detected": false,
+      "confidence": 0.2934716531052015,
+      "statement": "No human presence detected at time 01:44:35.300."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 6285.65,
+      "time_formatted": "01:44:45.650",
+      "human_presence_detected": false,
+      "confidence": 0.46088805108319997,
+      "statement": "No human presence detected at time 01:44:45.650."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 6397.75,
+      "time_formatted": "01:46:37.750",
+      "human_presence_detected": false,
+      "confidence": 0.23410783807947427,
+      "statement": "No human presence detected at time 01:46:37.750."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 6407.8,
+      "time_formatted": "01:46:47.800",
+      "human_presence_detected": false,
+      "confidence": 0.454922503606233,
+      "statement": "No human presence detected at time 01:46:47.800."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 6435.1,
+      "time_formatted": "01:47:15.100",
+      "human_presence_detected": false,
+      "confidence": 0.31181198666697035,
+      "statement": "No human presence detected at time 01:47:15.100."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 6460.9,
+      "time_formatted": "01:47:40.900",
+      "human_presence_detected": false,
+      "confidence": 0.47150850999261606,
+      "statement": "No human presence detected at time 01:47:40.900."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 6516.9,
+      "time_formatted": "01:48:36.900",
+      "human_presence_detected": false,
+      "confidence": 0.2310720945121453,
+      "statement": "No human presence detected at time 01:48:36.900."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 6545.7,
+      "time_formatted": "01:49:05.700",
+      "human_presence_detected": false,
+      "confidence": 0.2401763603581458,
+      "statement": "No human presence detected at time 01:49:05.700."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 6547.7,
+      "time_formatted": "01:49:07.700",
+      "human_presence_detected": false,
+      "confidence": 0.2362758791279016,
+      "statement": "No human presence detected at time 01:49:07.700."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 6561.0,
+      "time_formatted": "01:49:21.000",
+      "human_presence_detected": false,
+      "confidence": 0.339713206756339,
+      "statement": "No human presence detected at time 01:49:21.000."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 6564.95,
+      "time_formatted": "01:49:24.950",
+      "human_presence_detected": false,
+      "confidence": 0.23637435212712962,
+      "statement": "No human presence detected at time 01:49:24.950."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 6807.8,
+      "time_formatted": "01:53:27.800",
+      "human_presence_detected": false,
+      "confidence": 0.2303438680326063,
+      "statement": "No human presence detected at time 01:53:27.800."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 6927.4,
+      "time_formatted": "01:55:27.400",
+      "human_presence_detected": false,
+      "confidence": 0.23155580569562695,
+      "statement": "No human presence detected at time 01:55:27.400."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 7017.7,
+      "time_formatted": "01:56:57.700",
+      "human_presence_detected": false,
+      "confidence": 0.2220166994659479,
+      "statement": "No human presence detected at time 01:56:57.700."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 7171.25,
+      "time_formatted": "01:59:31.250",
+      "human_presence_detected": false,
+      "confidence": 0.239456258772184,
+      "statement": "No human presence detected at time 01:59:31.250."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 7331.2,
+      "time_formatted": "02:02:11.200",
+      "human_presence_detected": false,
+      "confidence": 0.23221817109849366,
+      "statement": "No human presence detected at time 02:02:11.200."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 7480.7,
+      "time_formatted": "02:04:40.700",
+      "human_presence_detected": false,
+      "confidence": 0.2288294117959855,
+      "statement": "No human presence detected at time 02:04:40.700."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 7495.4,
+      "time_formatted": "02:04:55.400",
+      "human_presence_detected": false,
+      "confidence": 0.44404378936645356,
+      "statement": "No human presence detected at time 02:04:55.400."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 7502.6,
+      "time_formatted": "02:05:02.600",
+      "human_presence_detected": false,
+      "confidence": 0.3464743893786114,
+      "statement": "No human presence detected at time 02:05:02.600."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 7522.4,
+      "time_formatted": "02:05:22.400",
+      "human_presence_detected": false,
+      "confidence": 0.22523709100966238,
+      "statement": "No human presence detected at time 02:05:22.400."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 7577.15,
+      "time_formatted": "02:06:17.150",
+      "human_presence_detected": false,
+      "confidence": 0.34954560197913825,
+      "statement": "No human presence detected at time 02:06:17.150."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 7657.4,
+      "time_formatted": "02:07:37.400",
+      "human_presence_detected": false,
+      "confidence": 0.22079865579199034,
+      "statement": "No human presence detected at time 02:07:37.400."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 7721.45,
+      "time_formatted": "02:08:41.450",
+      "human_presence_detected": false,
+      "confidence": 0.2258310412930684,
+      "statement": "No human presence detected at time 02:08:41.450."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 7745.85,
+      "time_formatted": "02:09:05.850",
+      "human_presence_detected": false,
+      "confidence": 0.4410022996499761,
+      "statement": "No human presence detected at time 02:09:05.850."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 8192.7,
+      "time_formatted": "02:16:32.700",
+      "human_presence_detected": false,
+      "confidence": 0.22306110264844609,
+      "statement": "No human presence detected at time 02:16:32.700."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 8285.25,
+      "time_formatted": "02:18:05.250",
+      "human_presence_detected": false,
+      "confidence": 0.2628705344225671,
+      "statement": "No human presence detected at time 02:18:05.250."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 8290.8,
+      "time_formatted": "02:18:10.800",
+      "human_presence_detected": false,
+      "confidence": 0.22729402721673406,
+      "statement": "No human presence detected at time 02:18:10.800."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 8372.0,
+      "time_formatted": "02:19:32.000",
+      "human_presence_detected": false,
+      "confidence": 0.28436675627877683,
+      "statement": "No human presence detected at time 02:19:32.000."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 8519.95,
+      "time_formatted": "02:21:59.950",
+      "human_presence_detected": false,
+      "confidence": 0.32399446936926357,
+      "statement": "No human presence detected at time 02:21:59.950."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 8566.95,
+      "time_formatted": "02:22:46.950",
+      "human_presence_detected": false,
+      "confidence": 0.22412852329644764,
+      "statement": "No human presence detected at time 02:22:46.950."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 8595.8,
+      "time_formatted": "02:23:15.800",
+      "human_presence_detected": false,
+      "confidence": 0.2280463179659045,
+      "statement": "No human presence detected at time 02:23:15.800."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 8716.1,
+      "time_formatted": "02:25:16.100",
+      "human_presence_detected": false,
+      "confidence": 0.22636748217793898,
+      "statement": "No human presence detected at time 02:25:16.100."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 8765.35,
+      "time_formatted": "02:26:05.350",
+      "human_presence_detected": false,
+      "confidence": 0.2582436745935712,
+      "statement": "No human presence detected at time 02:26:05.350."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 8847.65,
+      "time_formatted": "02:27:27.650",
+      "human_presence_detected": false,
+      "confidence": 0.3968823245162758,
+      "statement": "No human presence detected at time 02:27:27.650."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 8991.25,
+      "time_formatted": "02:29:51.250",
+      "human_presence_detected": false,
+      "confidence": 0.2681502649137728,
+      "statement": "No human presence detected at time 02:29:51.250."
+    },
+    {
+      "node_id": "validation",
+      "time_s": 9025.2,
+      "time_formatted": "02:30:25.200",
+      "human_presence_detected": false,
+      "confidence": 0.21888847663760755,
+      "statement": "No human presence detected at time 02:30:25.200."
+    }
+  ],
+  "statements": [
+    "No human presence detected at time 00:00:01.550.",
+    "No human presence detected at time 00:00:20.100.",
+    "No human presence detected at time 00:00:22.450.",
+    "No human presence detected at time 00:00:36.250.",
+    "No human presence detected at time 00:00:40.050.",
+    "No human presence detected at time 00:00:41.900.",
+    "No human presence detected at time 00:00:45.550.",
+    "No human presence detected at time 00:00:47.050.",
+    "No human presence detected at time 00:00:50.500.",
+    "No human presence detected at time 00:00:55.000.",
+    "No human presence detected at time 00:07:36.300.",
+    "No human presence detected at time 00:08:57.450.",
+    "No human presence detected at time 00:09:00.050.",
+    "No human presence detected at time 00:09:06.950.",
+    "No human presence detected at time 00:25:16.900.",
+    "No human presence detected at time 00:26:05.400.",
+    "No human presence detected at time 00:26:27.500.",
+    "No human presence detected at time 00:26:29.900.",
+    "No human presence detected at time 00:26:32.100.",
+    "No human presence detected at time 00:26:37.250.",
+    "No human presence detected at time 00:26:40.150.",
+    "No human presence detected at time 00:26:45.400.",
+    "No human presence detected at time 00:26:47.050.",
+    "No human presence detected at time 00:27:35.050.",
+    "No human presence detected at time 00:27:36.550.",
+    "No human presence detected at time 00:28:01.250.",
+    "No human presence detected at time 00:28:11.900.",
+    "No human presence detected at time 00:28:17.450.",
+    "No human presence detected at time 00:36:30.550.",
+    "No human presence detected at time 00:36:39.900.",
+    "No human presence detected at time 00:38:41.650.",
+    "No human presence detected at time 00:38:50.300.",
+    "No human presence detected at time 00:38:55.200.",
+    "No human presence detected at time 00:39:35.250.",
+    "No human presence detected at time 00:39:36.750.",
+    "No human presence detected at time 00:41:01.550.",
+    "No human presence detected at time 00:41:11.350.",
+    "No human presence detected at time 00:42:52.500.",
+    "No human presence detected at time 00:44:16.750.",
+    "No human presence detected at time 00:45:35.850.",
+    "No human presence detected at time 00:45:37.550.",
+    "No human presence detected at time 00:47:22.650.",
+    "No human presence detected at time 00:47:36.350.",
+    "No human presence detected at time 00:47:51.750.",
+    "No human presence detected at time 00:48:00.200.",
+    "No human presence detected at time 00:48:05.000.",
+    "No human presence detected at time 00:48:32.400.",
+    "No human presence detected at time 00:49:16.400.",
+    "No human presence detected at time 00:49:35.750.",
+    "No human presence detected at time 00:49:37.250.",
+    "No human presence detected at time 00:50:30.800.",
+    "No human presence detected at time 00:50:56.550.",
+    "No human presence detected at time 00:51:51.700.",
+    "No human presence detected at time 00:52:37.200.",
+    "No human presence detected at time 00:52:50.550.",
+    "No human presence detected at time 00:53:05.100.",
+    "No human presence detected at time 00:54:40.150.",
+    "No human presence detected at time 00:54:42.550.",
+    "No human presence detected at time 00:54:45.100.",
+    "No human presence detected at time 00:54:50.450.",
+    "No human presence detected at time 00:57:15.500.",
+    "No human presence detected at time 00:59:22.750.",
+    "No human presence detected at time 01:00:05.100.",
+    "No human presence detected at time 01:00:11.600.",
+    "No human presence detected at time 01:00:17.350.",
+    "No human presence detected at time 01:00:20.800.",
+    "No human presence detected at time 01:00:25.100.",
+    "No human presence detected at time 01:02:31.850.",
+    "No human presence detected at time 01:02:42.900.",
+    "No human presence detected at time 01:02:47.550.",
+    "No human presence detected at time 01:03:16.350.",
+    "No human presence detected at time 01:04:15.150.",
+    "No human presence detected at time 01:04:31.100.",
+    "No human presence detected at time 01:05:22.800.",
+    "No human presence detected at time 01:05:57.300.",
+    "No human presence detected at time 01:06:50.700.",
+    "No human presence detected at time 01:08:34.950.",
+    "No human presence detected at time 01:08:36.850.",
+    "No human presence detected at time 01:08:52.600.",
+    "No human presence detected at time 01:10:50.050.",
+    "No human presence detected at time 01:10:51.700.",
+    "No human presence detected at time 01:11:00.600.",
+    "No human presence detected at time 01:11:12.250.",
+    "No human presence detected at time 01:14:00.350.",
+    "No human presence detected at time 01:14:40.900.",
+    "No human presence detected at time 01:15:31.350.",
+    "No human presence detected at time 01:15:55.300.",
+    "No human presence detected at time 01:17:05.150.",
+    "No human presence detected at time 01:18:51.800.",
+    "No human presence detected at time 01:18:56.450.",
+    "No human presence detected at time 01:19:10.000.",
+    "No human presence detected at time 01:20:00.200.",
+    "No human presence detected at time 01:20:11.550.",
+    "No human presence detected at time 01:21:06.450.",
+    "No human presence detected at time 01:21:26.550.",
+    "No human presence detected at time 01:23:31.400.",
+    "No human presence detected at time 01:23:47.050.",
+    "No human presence detected at time 01:23:50.050.",
+    "No human presence detected at time 01:23:51.650.",
+    "No human presence detected at time 01:24:05.200.",
+    "No human presence detected at time 01:26:35.350.",
+    "No human presence detected at time 01:27:35.100.",
+    "No human presence detected at time 01:29:10.200.",
+    "No human presence detected at time 01:31:17.800.",
+    "No human presence detected at time 01:32:01.050.",
+    "No human presence detected at time 01:32:27.750.",
+    "No human presence detected at time 01:32:36.200.",
+    "No human presence detected at time 01:33:06.350.",
+    "No human presence detected at time 01:35:07.250.",
+    "No human presence detected at time 01:35:12.750.",
+    "No human presence detected at time 01:35:50.050.",
+    "No human presence detected at time 01:35:52.450.",
+    "No human presence detected at time 01:36:30.200.",
+    "No human presence detected at time 01:37:40.450.",
+    "No human presence detected at time 01:38:21.800.",
+    "No human presence detected at time 01:38:42.700.",
+    "No human presence detected at time 01:39:02.550.",
+    "No human presence detected at time 01:39:36.450.",
+    "No human presence detected at time 01:40:19.900.",
+    "No human presence detected at time 01:40:27.750.",
+    "No human presence detected at time 01:41:17.350.",
+    "No human presence detected at time 01:41:22.100.",
+    "No human presence detected at time 01:41:35.600.",
+    "No human presence detected at time 01:42:50.800.",
+    "No human presence detected at time 01:42:56.500.",
+    "No human presence detected at time 01:43:45.300.",
+    "No human presence detected at time 01:44:32.000.",
+    "No human presence detected at time 01:44:35.300.",
+    "No human presence detected at time 01:44:45.650.",
+    "No human presence detected at time 01:46:37.750.",
+    "No human presence detected at time 01:46:47.800.",
+    "No human presence detected at time 01:47:15.100.",
+    "No human presence detected at time 01:47:40.900.",
+    "No human presence detected at time 01:48:36.900.",
+    "No human presence detected at time 01:49:05.700.",
+    "No human presence detected at time 01:49:07.700.",
+    "No human presence detected at time 01:49:21.000.",
+    "No human presence detected at time 01:49:24.950.",
+    "No human presence detected at time 01:53:27.800.",
+    "No human presence detected at time 01:55:27.400.",
+    "No human presence detected at time 01:56:57.700.",
+    "No human presence detected at time 01:59:31.250.",
+    "No human presence detected at time 02:02:11.200.",
+    "No human presence detected at time 02:04:40.700.",
+    "No human presence detected at time 02:04:55.400.",
+    "No human presence detected at time 02:05:02.600.",
+    "No human presence detected at time 02:05:22.400.",
+    "No human presence detected at time 02:06:17.150.",
+    "No human presence detected at time 02:07:37.400.",
+    "No human presence detected at time 02:08:41.450.",
+    "No human presence detected at time 02:09:05.850.",
+    "No human presence detected at time 02:16:32.700.",
+    "No human presence detected at time 02:18:05.250.",
+    "No human presence detected at time 02:18:10.800.",
+    "No human presence detected at time 02:19:32.000.",
+    "No human presence detected at time 02:21:59.950.",
+    "No human presence detected at time 02:22:46.950.",
+    "No human presence detected at time 02:23:15.800.",
+    "No human presence detected at time 02:25:16.100.",
+    "No human presence detected at time 02:26:05.350.",
+    "No human presence detected at time 02:27:27.650.",
+    "No human presence detected at time 02:29:51.250.",
+    "No human presence detected at time 02:30:25.200."
+  ]
+}

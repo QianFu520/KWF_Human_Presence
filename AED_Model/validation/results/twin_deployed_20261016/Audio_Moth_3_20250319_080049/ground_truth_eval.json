@@ -1,0 +1,90 @@
+{
+  "twin_dashboard": {
+    "available": true,
+    "total_events": 3,
+    "total_detections": 428,
+    "matched_events": 2,
+    "missed_events": 1,
+    "true_positive_detections": 36,
+    "false_positive_detections": 392,
+    "recall": 0.6666666666666666,
+    "precision": 0.08411214953271028,
+    "f1": 0.14937759336099585,
+    "detections_per_event": 24.5,
+    "by_type": [
+      {
+        "label": "Human_Presence_Off_Trail",
+        "total": 1,
+        "matched": 0,
+        "recall": 0.0
+      },
+      {
+        "label": "Human_Presence_On_Trail",
+        "total": 1,
+        "matched": 1,
+        "recall": 1.0
+      },
+      {
+        "label": "Gunshots",
+        "total": 1,
+        "matched": 1,
+        "recall": 1.0
+      }
+    ]
+  },
+  "background": {
+    "duration_h": 9.98638888888889,
+    "detections": 428,
+    "detections_outside_events": 392,
+    "det_per_min_outside": 0.6827087747815738,
+    "stage1_triggers_outside": 413,
+    "aed_keep_rate_outside": 0.9491525423728814
+  },
+  "events": [
+    {
+      "recording": "Audio_Moth_3_20250319_080049",
+      "event_id": "Gunshot_Audio_Moth_3_20250319_170931",
+      "type": "GUNSHOT",
+      "start_s": 32922.0,
+      "duration_s": 297.0,
+      "detections": 13,
+      "detected": true,
+      "chance_hit": 0.9670756862339744,
+      "det_per_min": 2.6,
+      "density_ratio": 3.808358843537415,
+      "stage1_triggers": 13,
+      "aed_kept": 13,
+      "outcome": "detected"
+    },
+    {
+      "recording": "Audio_Moth_3_20250319_080049",
+      "event_id": "Human Presence off Trail_Audio_Moth_3_20250319_080155",
+      "type": "HUMAN_PRESENCE_OFF_TRAIL",
+      "start_s": 66.0,
+      "duration_s": 297.0,
+      "detections": 0,
+      "detected": false,
+      "chance_hit": 0.9670756862339744,
+      "det_per_min": 0.0,
+      "density_ratio": 0.0,
+      "stage1_triggers": 0,
+      "aed_kept": 0,
+      "outcome": "missed: no stage-1 trigger"
+    },
+    {
+      "recording": "Audio_Moth_3_20250319_080049",
+      "event_id": "Human Presence on Trail_Audio_Moth_3_20250319_165843",
+      "type": "HUMAN_PRESENCE_ON_TRAIL",
+      "start_s": 32274.0,
+      "duration_s": 1197.0,
+      "detections": 36,
+      "detected": true,
+      "chance_hit": 0.9999988249213726,
+      "det_per_min": 1.8,
+      "density_ratio": 2.6365561224489795,
+      "stage1_triggers": 36,
+      "aed_kept": 36,
+      "outcome": "detected"
+    }
+  ]
+}

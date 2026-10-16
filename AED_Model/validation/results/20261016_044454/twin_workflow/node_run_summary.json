@@ -1,0 +1,12 @@
+{
+  "node_id": "validation",
+  "run_id": "aed_validation",
+  "input_audio": "<repo>/AED_Model/validation/results/20261016_044454/twin_long_input.wav",
+  "n_stage_1_candidates": 584,
+  "n_stage_2_birdcall_confirmed": 578,
+  "n_birdnet_events": 578,
+  "n_human_presence_events": 578,
+  "tinycnn_model_status": "aed_tinycnn",
+  "birdnet_status": "skipped",
+  "human_presence_status": "proxy_feature_scorer"
+}

@@ -1,0 +1,147 @@
+{
+  "twin_dashboard": {
+    "available": true,
+    "total_events": 6,
+    "total_detections": 921,
+    "matched_events": 6,
+    "missed_events": 0,
+    "true_positive_detections": 88,
+    "false_positive_detections": 833,
+    "recall": 1.0,
+    "precision": 0.09554831704668838,
+    "f1": 0.17443012884043607,
+    "detections_per_event": 21.333333333333332,
+    "by_type": [
+      {
+        "label": "Gunshots",
+        "total": 2,
+        "matched": 2,
+        "recall": 1.0
+      },
+      {
+        "label": "Human_Presence_Off_Trail",
+        "total": 1,
+        "matched": 1,
+        "recall": 1.0
+      },
+      {
+        "label": "Chainsaw",
+        "total": 1,
+        "matched": 1,
+        "recall": 1.0
+      },
+      {
+        "label": "Human_Presence_On_Trail",
+        "total": 1,
+        "matched": 1,
+        "recall": 1.0
+      },
+      {
+        "label": "Vehicle",
+        "total": 1,
+        "matched": 1,
+        "recall": 1.0
+      }
+    ]
+  },
+  "background": {
+    "duration_h": 7.394606111111111,
+    "detections": 921,
+    "detections_outside_events": 833,
+    "det_per_min_outside": 1.9829727785209852,
+    "stage1_triggers_outside": 833,
+    "aed_keep_rate_outside": 1.0
+  },
+  "events": [
+    {
+      "recording": "Audio_Moth_5_20250321_062545",
+      "event_id": "Chainsaw_Audio_Moth_5_20250321_084054",
+      "type": "CHAINSAW",
+      "start_s": 8109.0,
+      "duration_s": 297.0,
+      "detections": 1,
+      "detected": true,
+      "chance_hit": 0.9999505655937103,
+      "det_per_min": 0.2,
+      "density_ratio": 0.10085867146858743,
+      "stage1_triggers": 1,
+      "aed_kept": 1,
+      "outcome": "detected"
+    },
+    {
+      "recording": "Audio_Moth_5_20250321_062545",
+      "event_id": "Gunshot_Audio_Moth_5_20250321_084139",
+      "type": "GUNSHOT",
+      "start_s": 8154.0,
+      "duration_s": 300.0,
+      "detections": 3,
+      "detected": true,
+      "chance_hit": 0.999955231801769,
+      "det_per_min": 0.594059405940594,
+      "density_ratio": 0.2995802122829329,
+      "stage1_triggers": 3,
+      "aed_kept": 3,
+      "outcome": "detected"
+    },
+    {
+      "recording": "Audio_Moth_5_20250321_062545",
+      "event_id": "Gunshot_Audio_Moth_5_20250321_134336",
+      "type": "GUNSHOT",
+      "start_s": 26271.0,
+      "duration_s": 297.0,
+      "detections": 20,
+      "detected": true,
+      "chance_hit": 0.9999505655937103,
+      "det_per_min": 4.0,
+      "density_ratio": 2.0171734293717485,
+      "stage1_triggers": 21,
+      "aed_kept": 20,
+      "outcome": "detected"
+    },
+    {
+      "recording": "Audio_Moth_5_20250321_062545",
+      "event_id": "Human Presence off Trail_Audio_Moth_5_20250321_083957",
+      "type": "HUMAN_PRESENCE_OFF_TRAIL",
+      "start_s": 8052.0,
+      "duration_s": 300.0,
+      "detections": 2,
+      "detected": true,
+      "chance_hit": 0.999955231801769,
+      "det_per_min": 0.39603960396039606,
+      "density_ratio": 0.19972014152195527,
+      "stage1_triggers": 2,
+      "aed_kept": 2,
+      "outcome": "detected"
+    },
+    {
+      "recording": "Audio_Moth_5_20250321_062545",
+      "event_id": "Human Presence on Trail_Audio_Moth_5_20250321_133236",
+      "type": "HUMAN_PRESENCE_ON_TRAIL",
+      "start_s": 25611.0,
+      "duration_s": 1008.0,
+      "detections": 83,
+      "detected": true,
+      "chance_hit": 0.9999999999999969,
+      "det_per_min": 4.925816023738872,
+      "density_ratio": 2.4840563002649128,
+      "stage1_triggers": 84,
+      "aed_kept": 83,
+      "outcome": "detected"
+    },
+    {
+      "recording": "Audio_Moth_5_20250321_062545",
+      "event_id": "Vehicle_Audio_Moth_5_20250321_134645",
+      "type": "VEHICLE",
+      "start_s": 26460.0,
+      "duration_s": 159.0,
+      "detections": 19,
+      "detected": true,
+      "chance_hit": 0.9952709290015064,
+      "det_per_min": 7.037037037037036,
+      "density_ratio": 3.5487310331540014,
+      "stage1_triggers": 20,
+      "aed_kept": 19,
+      "outcome": "detected"
+    }
+  ]
+}

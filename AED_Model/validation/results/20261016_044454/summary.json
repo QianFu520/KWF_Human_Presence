@@ -1,0 +1,256 @@
+{
+  "environment": {
+    "timestamp": "20261016_044454",
+    "python": "3.13.13",
+    "platform": "macOS-26.5-arm64-arm-64bit-Mach-O",
+    "machine": "arm64",
+    "torch": "2.13.0",
+    "librosa": "1.0.0",
+    "numpy": "2.5.4",
+    "soundfile": "0.14.0",
+    "onnxruntime": "1.31.0",
+    "fastapi": "0.139.0",
+    "pandas": "3.0.3"
+  },
+  "model": {
+    "path": "<repo>/AED_Model/outputs/models/tinycnn_v3.pth",
+    "sha256": "913a78a468ff42e2fbd250c3d43ad658de79fd1ed1aa320c56c7ecba57f83cdb",
+    "metadata": {
+      "epoch": 10,
+      "val_loss": 0.0007,
+      "val_acc": 0.9984,
+      "not_meaningful_precision": 0.98,
+      "not_meaningful_recall": 1.0,
+      "not_meaningful_f1": 0.99,
+      "n_train": 101820,
+      "n_val": 28333,
+      "notes": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)"
+    }
+  },
+  "metrics": {
+    "upstream_threshold": {
+      "threshold": 0.5,
+      "n": 4027,
+      "tn_meaningful_kept": 3407,
+      "fp_meaningful_dropped": 34,
+      "fn_background_kept": 0,
+      "tp_background_dropped": 586,
+      "accuracy": 0.9915569903153713,
+      "not_meaningful_precision": 0.9451612903225807,
+      "not_meaningful_recall": 1.0,
+      "meaningful_recall": 0.990119151409474
+    },
+    "twin_effective_threshold": {
+      "threshold": 0.7,
+      "n": 4027,
+      "tn_meaningful_kept": 3415,
+      "fp_meaningful_dropped": 26,
+      "fn_background_kept": 1,
+      "tp_background_dropped": 585,
+      "accuracy": 0.9932952570151478,
+      "not_meaningful_precision": 0.9574468085106383,
+      "not_meaningful_recall": 0.9982935153583617,
+      "meaningful_recall": 0.992444056960186
+    },
+    "sweep": [
+      {
+        "threshold": 0.3,
+        "n": 4027,
+        "tn_meaningful_kept": 3401,
+        "fp_meaningful_dropped": 40,
+        "fn_background_kept": 0,
+        "tp_background_dropped": 586,
+        "accuracy": 0.9900670474298485,
+        "not_meaningful_precision": 0.9361022364217252,
+        "not_meaningful_recall": 1.0,
+        "meaningful_recall": 0.98837547224644
+      },
+      {
+        "threshold": 0.5,
+        "n": 4027,
+        "tn_meaningful_kept": 3407,
+        "fp_meaningful_dropped": 34,
+        "fn_background_kept": 0,
+        "tp_background_dropped": 586,
+        "accuracy": 0.9915569903153713,
+        "not_meaningful_precision": 0.9451612903225807,
+        "not_meaningful_recall": 1.0,
+        "meaningful_recall": 0.990119151409474
+      },
+      {
+        "threshold": 0.7,
+        "n": 4027,
+        "tn_meaningful_kept": 3415,
+        "fp_meaningful_dropped": 26,
+        "fn_background_kept": 1,
+        "tp_background_dropped": 585,
+        "accuracy": 0.9932952570151478,
+        "not_meaningful_precision": 0.9574468085106383,
+        "not_meaningful_recall": 0.9982935153583617,
+        "meaningful_recall": 0.992444056960186
+      },
+      {
+        "threshold": 0.9,
+        "n": 4027,
+        "tn_meaningful_kept": 3423,
+        "fp_meaningful_dropped": 18,
+        "fn_background_kept": 1,
+        "tp_background_dropped": 585,
+        "accuracy": 0.995281847529178,
+        "not_meaningful_precision": 0.9701492537313433,
+        "not_meaningful_recall": 0.9982935153583617,
+        "meaningful_recall": 0.994768962510898
+      },
+      {
+        "threshold": 0.95,
+        "n": 4027,
+        "tn_meaningful_kept": 3426,
+        "fp_meaningful_dropped": 15,
+        "fn_background_kept": 1,
+        "tp_background_dropped": 585,
+        "accuracy": 0.9960268189719395,
+        "not_meaningful_precision": 0.975,
+        "not_meaningful_recall": 0.9982935153583617,
+        "meaningful_recall": 0.995640802092415
+      },
+      {
+        "threshold": 0.99,
+        "n": 4027,
+        "tn_meaningful_kept": 3432,
+        "fp_meaningful_dropped": 9,
+        "fn_background_kept": 1,
+        "tp_background_dropped": 585,
+        "accuracy": 0.9975167618574621,
+        "not_meaningful_precision": 0.9848484848484849,
+        "not_meaningful_recall": 0.9982935153583617,
+        "meaningful_recall": 0.997384481255449
+      }
+    ],
+    "by_group": [
+      {
+        "group": "BACKGROUND",
+        "expected": "not_meaningful",
+        "n": 586,
+        "correct_at_threshold": 586,
+        "median_p": 1.0,
+        "min_p": 0.6384584903717041,
+        "max_p": 1.0
+      },
+      {
+        "group": "BIRDNET_SPECIES",
+        "expected": "meaningful",
+        "n": 500,
+        "correct_at_threshold": 500,
+        "median_p": 0.0,
+        "min_p": 0.0,
+        "max_p": 0.0003720521926879883
+      },
+      {
+        "group": "CHAINSAW",
+        "expected": "meaningful",
+        "n": 198,
+        "correct_at_threshold": 198,
+        "median_p": 0.0,
+        "min_p": 0.0,
+        "max_p": 0.0
+      },
+      {
+        "group": "GUNSHOT",
+        "expected": "meaningful",
+        "n": 198,
+        "correct_at_threshold": 198,
+        "median_p": 0.0,
+        "min_p": 0.0,
+        "max_p": 0.0
+      },
+      {
+        "group": "HUMAN_PRESENCE_OFF_TRAIL",
+        "expected": "meaningful",
+        "n": 99,
+        "correct_at_threshold": 65,
+        "median_p": 0.2108767032623291,
+        "min_p": 0.0,
+        "max_p": 0.9998128414154053
+      },
+      {
+        "group": "HUMAN_PRESENCE_ON_TRAIL",
+        "expected": "meaningful",
+        "n": 2248,
+        "correct_at_threshold": 2248,
+        "median_p": 0.0,
+        "min_p": 0.0,
+        "max_p": 0.0020956993103027344
+      },
+      {
+        "group": "VEHICLE",
+        "expected": "meaningful",
+        "n": 198,
+        "correct_at_threshold": 198,
+        "median_p": 0.0,
+        "min_p": 0.0,
+        "max_p": 4.887580871582031e-06
+      }
+    ],
+    "twin_workflow_by_group": [
+      {
+        "group": "BACKGROUND",
+        "expected": "not_meaningful",
+        "n": 586,
+        "reached_aed": 30,
+        "passed_aed": 24
+      },
+      {
+        "group": "BIRDNET_SPECIES",
+        "expected": "meaningful",
+        "n": 500,
+        "reached_aed": 80,
+        "passed_aed": 80
+      },
+      {
+        "group": "CHAINSAW",
+        "expected": "meaningful",
+        "n": 198,
+        "reached_aed": 8,
+        "passed_aed": 8
+      },
+      {
+        "group": "GUNSHOT",
+        "expected": "meaningful",
+        "n": 198,
+        "reached_aed": 23,
+        "passed_aed": 23
+      },
+      {
+        "group": "HUMAN_PRESENCE_OFF_TRAIL",
+        "expected": "meaningful",
+        "n": 99,
+        "reached_aed": 8,
+        "passed_aed": 8
+      },
+      {
+        "group": "HUMAN_PRESENCE_ON_TRAIL",
+        "expected": "meaningful",
+        "n": 2248,
+        "reached_aed": 274,
+        "passed_aed": 274
+      },
+      {
+        "group": "VEHICLE",
+        "expected": "meaningful",
+        "n": 198,
+        "reached_aed": 53,
+        "passed_aed": 53
+      }
+    ],
+    "twin_workflow": {
+      "clips_in_file": 4027,
+      "stage1_triggers": 584,
+      "stage2_scored": 584,
+      "clips_reaching_aed": 476,
+      "max_abs_diff_vs_reference": 2.8814923780373647e-08,
+      "model_status": [
+        "aed_tinycnn"
+      ]
+    }
+  }
+}

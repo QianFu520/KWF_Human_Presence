@@ -1,0 +1,217 @@
+{
+  "environment": {
+    "timestamp": "20261015_231946",
+    "python": "3.13.13",
+    "platform": "macOS-26.5-arm64-arm-64bit-Mach-O",
+    "machine": "arm64",
+    "torch": "2.13.0",
+    "librosa": "1.0.0",
+    "numpy": "2.5.4",
+    "soundfile": "0.14.0",
+    "onnxruntime": "1.31.0",
+    "fastapi": "0.139.0",
+    "pandas": "3.0.3"
+  },
+  "model": {
+    "path": "<repo>/AED_Model/outputs/models/tinycnn_v3.pth",
+    "sha256": "913a78a468ff42e2fbd250c3d43ad658de79fd1ed1aa320c56c7ecba57f83cdb",
+    "metadata": {
+      "epoch": 10,
+      "val_loss": 0.0007,
+      "val_acc": 0.9984,
+      "not_meaningful_precision": 0.98,
+      "not_meaningful_recall": 1.0,
+      "not_meaningful_f1": 0.99,
+      "n_train": 101820,
+      "n_val": 28333,
+      "notes": "TinyCNN v3 \u2014 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)"
+    }
+  },
+  "metrics": {
+    "upstream_threshold": {
+      "threshold": 0.5,
+      "n": 115,
+      "tn_meaningful_kept": 79,
+      "fp_meaningful_dropped": 3,
+      "fn_background_kept": 20,
+      "tp_background_dropped": 13,
+      "accuracy": 0.8,
+      "not_meaningful_precision": 0.8125,
+      "not_meaningful_recall": 0.3939393939393939,
+      "meaningful_recall": 0.9634146341463414
+    },
+    "twin_effective_threshold": {
+      "threshold": 0.7,
+      "n": 115,
+      "tn_meaningful_kept": 79,
+      "fp_meaningful_dropped": 3,
+      "fn_background_kept": 21,
+      "tp_background_dropped": 12,
+      "accuracy": 0.7913043478260869,
+      "not_meaningful_precision": 0.8,
+      "not_meaningful_recall": 0.36363636363636365,
+      "meaningful_recall": 0.9634146341463414
+    },
+    "sweep": [
+      {
+        "threshold": 0.3,
+        "n": 115,
+        "tn_meaningful_kept": 79,
+        "fp_meaningful_dropped": 3,
+        "fn_background_kept": 19,
+        "tp_background_dropped": 14,
+        "accuracy": 0.808695652173913,
+        "not_meaningful_precision": 0.8235294117647058,
+        "not_meaningful_recall": 0.42424242424242425,
+        "meaningful_recall": 0.9634146341463414
+      },
+      {
+        "threshold": 0.5,
+        "n": 115,
+        "tn_meaningful_kept": 79,
+        "fp_meaningful_dropped": 3,
+        "fn_background_kept": 20,
+        "tp_background_dropped": 13,
+        "accuracy": 0.8,
+        "not_meaningful_precision": 0.8125,
+        "not_meaningful_recall": 0.3939393939393939,
+        "meaningful_recall": 0.9634146341463414
+      },
+      {
+        "threshold": 0.7,
+        "n": 115,
+        "tn_meaningful_kept": 79,
+        "fp_meaningful_dropped": 3,
+        "fn_background_kept": 21,
+        "tp_background_dropped": 12,
+        "accuracy": 0.7913043478260869,
+        "not_meaningful_precision": 0.8,
+        "not_meaningful_recall": 0.36363636363636365,
+        "meaningful_recall": 0.9634146341463414
+      },
+      {
+        "threshold": 0.9,
+        "n": 115,
+        "tn_meaningful_kept": 80,
+        "fp_meaningful_dropped": 2,
+        "fn_background_kept": 22,
+        "tp_background_dropped": 11,
+        "accuracy": 0.7913043478260869,
+        "not_meaningful_precision": 0.8461538461538461,
+        "not_meaningful_recall": 0.3333333333333333,
+        "meaningful_recall": 0.975609756097561
+      },
+      {
+        "threshold": 0.95,
+        "n": 115,
+        "tn_meaningful_kept": 80,
+        "fp_meaningful_dropped": 2,
+        "fn_background_kept": 22,
+        "tp_background_dropped": 11,
+        "accuracy": 0.7913043478260869,
+        "not_meaningful_precision": 0.8461538461538461,
+        "not_meaningful_recall": 0.3333333333333333,
+        "meaningful_recall": 0.975609756097561
+      },
+      {
+        "threshold": 0.99,
+        "n": 115,
+        "tn_meaningful_kept": 81,
+        "fp_meaningful_dropped": 1,
+        "fn_background_kept": 23,
+        "tp_background_dropped": 10,
+        "accuracy": 0.7913043478260869,
+        "not_meaningful_precision": 0.9090909090909091,
+        "not_meaningful_recall": 0.30303030303030304,
+        "meaningful_recall": 0.9878048780487805
+      }
+    ],
+    "by_group": [
+      {
+        "group": "background_rain",
+        "expected": "not_meaningful",
+        "n": 8,
+        "correct_at_threshold": 6,
+        "median_p": 0.850731372833252,
+        "min_p": 0.0,
+        "max_p": 0.9999984502792358
+      },
+      {
+        "group": "background_storm",
+        "expected": "not_meaningful",
+        "n": 8,
+        "correct_at_threshold": 0,
+        "median_p": 0.0,
+        "min_p": 0.0,
+        "max_p": 0.0
+      },
+      {
+        "group": "background_water",
+        "expected": "not_meaningful",
+        "n": 8,
+        "correct_at_threshold": 4,
+        "median_p": 0.499977707862854,
+        "min_p": 0.0,
+        "max_p": 1.0
+      },
+      {
+        "group": "background_wind",
+        "expected": "not_meaningful",
+        "n": 8,
+        "correct_at_threshold": 2,
+        "median_p": 0.0,
+        "min_p": 0.0,
+        "max_p": 0.9999999403953552
+      },
+      {
+        "group": "bird",
+        "expected": "meaningful",
+        "n": 16,
+        "correct_at_threshold": 16,
+        "median_p": 0.0,
+        "min_p": 0.0,
+        "max_p": 0.0
+      },
+      {
+        "group": "human_activity",
+        "expected": "meaningful",
+        "n": 56,
+        "correct_at_threshold": 53,
+        "median_p": 0.0,
+        "min_p": 0.0,
+        "max_p": 0.9999991059303284
+      },
+      {
+        "group": "other_animal",
+        "expected": "meaningful",
+        "n": 8,
+        "correct_at_threshold": 8,
+        "median_p": 0.0,
+        "min_p": 0.0,
+        "max_p": 0.0
+      },
+      {
+        "group": "synthetic",
+        "expected": "meaningful",
+        "n": 2,
+        "correct_at_threshold": 2,
+        "median_p": 0.0797128975391388,
+        "min_p": 0.0,
+        "max_p": 0.1594257950782776
+      },
+      {
+        "group": "synthetic",
+        "expected": "not_meaningful",
+        "n": 1,
+        "correct_at_threshold": 1,
+        "median_p": 0.9999999403953552,
+        "min_p": 0.9999999403953552,
+        "max_p": 0.9999999403953552
+      }
+    ],
+    "ambiguous": {
+      "n": 16,
+      "predicted_not_meaningful": 2
+    }
+  }
+}
