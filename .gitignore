@@ -1,2 +1,6 @@
 # macOS Finder metadata
 .DS_Store
+
+# HP retraining: audio stays on Drive
+*.zip
+*.wav
