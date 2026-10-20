@@ -4,9 +4,8 @@ Configuration for the inference pipeline scripts.
 Adapted from the original KWF pipeline config (KashmirWorld/Bioacoustics,
 pipeline_scripts/config.py), keeping only the values these scripts import.
 
-run_pipeline.py passes its own paths for steps 1 and 5 (--raw_audio / --output).
-The paths below are only used when running a script on its own, and by step 6
-(weather), which still reads them from here.
+run_pipeline.py passes its own paths for steps 1, 5 and 6 (--raw_audio / --output).
+The paths below are only used when running a script on its own.
 """
 
 ## --------------audio_split_rename--------------

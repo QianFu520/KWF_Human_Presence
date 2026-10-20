@@ -10,8 +10,8 @@ from astral.sun import sun
 
 from config import LATITUDE, LONGITUDE, WEATHER_DATA_PATH, AUDIO_MOTH_FOLDER, WEATHER_CODE_LEGEND, TIMEZONE
 
-"""the purpose of this script is to extract hourly weather info for each wav file in each day's folder under Audio Moth 1
-     and save one weather CSV file of each wav file. """
+"""the purpose of this script is to extract hourly weather info for each wav file in each recorder/day folder
+     and save one combined hourly weather CSV (one row per hour). """
 
 
 ## the below function is used to add time of day classification
@@ -77,29 +77,32 @@ def get_weather_info(wav_path, lat, lon):
         data = response.json()
 
         #convert API data to a df
+        # column names match what feature_engineering.py reads
         weather_df = pd.DataFrame({
-            "datetime": data["hourly"]["time"],
-            "temperature": data["hourly"]["temperature_2m"],
-            "windspeed": data["hourly"]["windspeed_10m"],
+            "Datetime": data["hourly"]["time"],
+            "Temperature": data["hourly"]["temperature_2m"],
+            "Windspeed": data["hourly"]["windspeed_10m"],
             "precipitation": data["hourly"]["precipitation"],
-            "humidity": data["hourly"]["relative_humidity_2m"],
+            "Humidity": data["hourly"]["relative_humidity_2m"],
             "weathercode": data["hourly"]["weathercode"]
         })
 
 
-        weather_df["datetime"] = pd.to_datetime(weather_df["datetime"])
+        weather_df["Datetime"] = pd.to_datetime(weather_df["Datetime"])
 
         weather_df["weather_desc"] = weather_df["weathercode"].map(WEATHER_CODE_LEGEND)
 
         # filter only the hours that fall within the .wav file's duration
         # for example, if the wav file spans only 6 hours, then it keeps only 4 rows, not all 24 hours
 
-        hourly_timestamps = [start_time + timedelta(hours=i) for i in range(duration_hours)]
+        # one extra hour: clips near the end round up to the next hour in weather_matching
+        # (e.g. 23:40 -> 00:00). It is never later than end_time, so end_date already covers it.
+        hourly_timestamps = [start_time + timedelta(hours=i) for i in range(duration_hours + 1)]
         hour_set = set([ts.replace(minute=0, second=0, microsecond=0) for ts in hourly_timestamps])
-        weather_df = weather_df[weather_df["datetime"].isin(hour_set)]
+        weather_df = weather_df[weather_df["Datetime"].isin(hour_set)]
 
         ## add time of day features
-        time_features = weather_df["datetime"].apply(
+        time_features = weather_df["Datetime"].apply(
             lambda ts: get_time_of_day(lat, lon, ts.strftime("%Y-%m-%d %H:%M:%S"))
         )
 
@@ -116,26 +119,36 @@ def get_weather_info(wav_path, lat, lon):
 
 ## the below function loop through all the wav file in all 5 days folder 
 # call above function on each of the wav file
-def get_weather_info_all():
-    root_folder = Path(AUDIO_MOTH_FOLDER)
+def get_weather_info_all(audio_folder=AUDIO_MOTH_FOLDER, output_csv=WEATHER_DATA_PATH):
+    root_folder = Path(audio_folder)
     all_weather_dfs = []
 
     for day_folder in sorted(root_folder.iterdir()):
         if not day_folder.is_dir():
             continue
 
-        wav_files = list(day_folder.glob("*.WAV"))
+        # recordings end in lowercase .wav; match any case and skip hidden files (e.g. macOS ._ files)
+        wav_files = sorted(
+            p for p in day_folder.iterdir()
+            if p.is_file() and p.suffix.lower() == ".wav" and not p.name.startswith(".")
+        )
         for wav_file in wav_files:
             print(f"Processing: {wav_file.name}")
             weather_df = get_weather_info(wav_file, LATITUDE, LONGITUDE)
             if weather_df is not None:
                 all_weather_dfs.append(weather_df)
-    if all_weather_dfs:
-        combined_df = pd.concat(all_weather_dfs, ignore_index=True)
-        combined_df.to_csv(WEATHER_DATA_PATH, index=False)
-        print(f"[OK] Combined weather data saved to {WEATHER_DATA_PATH}")
-    else:
-        print("[WARNING] No weather data collected.")
+
+    if not all_weather_dfs:
+        raise RuntimeError(f"No weather data collected from {root_folder}")
+
+    # recorders running at the same time return the same hours; keep one row per hour
+    combined_df = pd.concat(all_weather_dfs, ignore_index=True)
+    combined_df = combined_df.drop_duplicates(subset="Datetime").sort_values("Datetime").reset_index(drop=True)
+
+    Path(output_csv).parent.mkdir(parents=True, exist_ok=True)
+    combined_df.to_csv(output_csv, index=False)
+    print(f"[OK] Combined weather data saved to {output_csv} ({len(combined_df)} hours)")
+    return combined_df
 
 
 if __name__ == "__main__":
