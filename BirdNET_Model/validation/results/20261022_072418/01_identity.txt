@@ -1,0 +1,21 @@
+
+== birdnet_fp16_pruned493 ==
+  [PASS] own label file present: birdnet_fp16_pruned493.labels.txt
+  [PASS] size 18.00 MB (expected about 18.00)
+  [PASS] input 'inputs' shape ['unk__1572', 144000] (last dim must be 144000)
+  [PASS] input type is float32
+  [PASS] output 'scores' shape ['unk__1573', 493] (last dim must be 493)
+  [PASS] output type is float32
+  [PASS] 148 float16 weight tensors (must be > 0 for the FP16 file)
+  [PASS] 493 labels (must be 493)
+  [PASS] not the banned labels.txt
+  [PASS] all labels unique
+  [PASS] every label looks like 'Scientific name_Common name'
+  [PASS] mapping CSV matches label file line by line, indices 0..492
+  [PASS] allow-list: 218/218 species inside label set
+  [PASS] runs on silence: output shape (1, 493), all values finite
+
+== birdnet_fp32_pruned493 ==
+  [FAIL] model file missing: ~\OneDrive\Documents\KWF_Human_Presence\inference_pipeline\models\birdnet_fp32_pruned493.onnx
+
+1 CHECK(S) FAILED

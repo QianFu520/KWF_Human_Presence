@@ -1,0 +1,12 @@
+{
+  "node_id": "SHAMAN",
+  "run_id": "3",
+  "input_audio": "~\\twin\\uploads\\run_3\\node_SHAMAN.WAV",
+  "n_stage_1_candidates": 1820,
+  "n_stage_2_birdcall_confirmed": 1777,
+  "n_birdnet_events": 1777,
+  "n_human_presence_events": 1777,
+  "tinycnn_model_status": "aed_tinycnn",
+  "birdnet_status": "skipped",
+  "human_presence_status": "proxy_feature_scorer"
+}

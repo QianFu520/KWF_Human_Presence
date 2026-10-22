@@ -1,0 +1,5 @@
+# Runs the validation scripts (client side). The service itself is pinned in src/bridge/requirements.txt.
+httpx>=0.27
+numpy==1.26.4
+onnx>=1.22
+onnxruntime==1.27.0
