@@ -1,5 +1,5 @@
 {
-  "utc_time": "2026-10-22T07:24:18+00:00",
+  "utc_time": "2026-10-22T16:07:17+00:00",
   "platform": "Windows-11-10.0.26200-SP0",
   "python": "3.12.5",
   "packages": {
@@ -14,9 +14,9 @@
     "scipy": "1.17.1",
     "psutil": "7.2.2"
   },
-  "git_commit": "4104a1700d5f8f5aaa84462441916b456878c621",
+  "git_commit": "b208532600a21a86c6f16796450b379e106b88e3",
   "git_branch": "birdnet-validation",
-  "git_uncommitted_changes": true,
+  "git_uncommitted_changes": false,
   "criteria": {
     "name": "criteria.json",
     "bytes": 5454,

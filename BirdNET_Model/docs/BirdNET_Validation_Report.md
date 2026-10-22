@@ -6,7 +6,7 @@ and as used inside the Digital Twin.
 | | |
 |---|---|
 | Model under test | `birdnet_fp16_pruned493.onnx` |
-| Results run | `validation/results/20261022_072418/` (interim, see [Open items](#7-open-items)) |
+| Results run | `validation/results/20261022_160717/`, run from commit `b208532` with no uncommitted changes |
 | Criteria status | Proposed, not yet approved by the team lead (`validation/config/criteria.json`) |
 
 ## 1. Summary
@@ -142,11 +142,11 @@ Measured on 709 clips, one thread, Windows 11 CPU.
 
 | Metric | Value |
 |---|---|
-| Throughput | 13.5 windows/s |
-| Inference per window | mean 72.8 ms, p95 212.9 ms |
-| Peak memory | 125 MB |
+| Throughput | 17.1 windows/s |
+| Inference per window | mean 57.5 ms, p95 81.2 ms |
+| Peak memory | 211 MB |
 
-These are one-machine figures, recorded for reference and not pass/fail.
+These are one-machine figures, recorded for reference and not pass/fail. They vary between runs on the same machine.
 
 ## 7. Open items
 
@@ -167,9 +167,6 @@ Decisions needed from the team lead:
 - Trace the 134 human-presence confirmations (V-004) and decide which count is the Twin's result (V-005).
 - Decide whether the Twin should call the API over HTTP or load the ONNX model itself.
 - Confirm that the Drive folder names may appear in the repo (`team Toucanet Data` is another team's data).
-
-Before this report is final:
-- Re-run `validation/scripts/run_validation.py` from committed code. The current results folder was made from uncommitted code (`git_uncommitted_changes: true` in `run_info.json`).
 
 ## 8. Not covered
 
@@ -199,6 +196,6 @@ If the label file hash does not match on Windows, check for CRLF line endings. T
 | `validation/config/criteria.json` | Pass criteria with sources |
 | `validation/config/audio_manifest_am6_709.csv` | Test audio identity |
 | `validation/scripts/` | Staging, run, comparison and Twin check scripts |
-| `validation/results/20261022_072418/` | Raw output, JSON, CSV and `SUMMARY.md` of the run |
+| `validation/results/20261022_160717/` | Raw output, JSON, CSV and `SUMMARY.md` of the run |
 | `validation/digital_twin/` | Patch, baseline and run 4 notes, evidence PDFs, raw run 4 files |
 | `docs/BirdNET_Service_Setup_and_Validation.md` | Earlier setup and test plan (written before the real-model results) |

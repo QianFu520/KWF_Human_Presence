@@ -1,4 +1,4 @@
-# Validation run 20261022_072418 (UTC)
+# Validation run 20261022_160717 (UTC)
 
 Criteria status: PROPOSED. Not yet approved by the team lead. Thresholds were written down before the live run and are taken from numbers already recorded in this repo (Phase 4, verification_data/). Nothing here was tuned to the live result.
 

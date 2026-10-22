@@ -106,7 +106,7 @@ C2 allows 1e-6.
 
 ## Results
 
-Run `<fill in after the first full run>`. See `docs/BirdNET_Validation_Report.md`.
+Run `20261022_160717` (commit `b208532`): all gated criteria pass. See `results/20261022_160717/SUMMARY.md` and `docs/BirdNET_Validation_Report.md`.
 
 ## Known gaps in this validation
 

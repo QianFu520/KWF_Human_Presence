@@ -30,7 +30,7 @@ needs a decision from the team lead before code changes.
 - `src/bridge/README.md` documents the skipping ("Bad files are skipped, logged, counted in `completed`"), but not that the caller cannot see it.
 - `verify_bridge_parity.py` tells the user to look at "failures on the /jobs response". That field does not exist.
 - Earlier test with a stub model: a wrong-length clip returned `done` with 0 windows and no error.
-- Confirmed on the real FP16 model (run `20261022_072418`, `interface_cases.csv`):
+- Confirmed on the real FP16 model (run `20261022_160717`, `interface_cases.csv`):
   - 10 of 10 files that cannot be scored finished as `status: done`, 0 windows scored, empty `error`.
   - 5 real wrong-length clips from `filtered_clips_6` (3 with 143,360 samples, 2 with 147,456; 48 kHz mono 16-bit) and 5 stereo copies of good clips.
   - A mixed job (1 good, 1 wrong length, 1 stereo) returned `completed 3/3` with 1 window scored. The good clip was scored correctly.
