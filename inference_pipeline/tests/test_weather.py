@@ -2,7 +2,8 @@
 Tests for step 6 (weather) and the weather-optional feature engineering in step 7.
 
 Uses small made-up CSVs (10 clips across 2 recorders). No network calls:
-get_weather_info is replaced with a fake that returns fixed hourly rows.
+get_weather_info is replaced with a fake that returns fixed hourly rows, or
+requests.get is replaced with a failing request.
 
 Run with: python -m pytest inference_pipeline/tests -v
 """
@@ -10,6 +11,8 @@ Run with: python -m pytest inference_pipeline/tests -v
 import numpy as np
 import pandas as pd
 import pytest
+import requests
+import soundfile as sf
 
 import weather_info
 from weather_info import get_weather_info_all
@@ -188,3 +191,51 @@ def test_unmatched_clips_are_counted(capsys):
     out = add_weather_data(metadata, weather)
     assert len(out) == 2
     assert "1 of 2 clips got no weather match" in capsys.readouterr().out
+
+
+class _ErrorResponse:
+    """What Open-Meteo sends back for a bad request: HTTP 400 and an error body, no "hourly"."""
+    status_code = 400
+
+    def json(self):
+        return {"error": True, "reason": "Parameter 'start_date' is out of allowed range"}
+
+
+def _raise_connection_error(*args, **kwargs):
+    raise requests.ConnectionError("Failed to resolve archive-api.open-meteo.com")
+
+
+@pytest.mark.parametrize(
+    "fake_get",
+    [_raise_connection_error, lambda *args, **kwargs: _ErrorResponse()],
+    ids=["request_raises", "error_response"],
+)
+def test_failed_open_meteo_request_raises(tmp_path, monkeypatch, fake_get):
+    # real (1-second) recordings, so the real get_weather_info runs up to the API call
+    raw = tmp_path / "raw"
+    for folder, name in [("Audio_Moth_1_032125", "20250321_120000.wav"),
+                         ("Audio_Moth_2_032125", "20250321_130000.wav")]:
+        (raw / folder).mkdir(parents=True)
+        sf.write(raw / folder / name, np.zeros(8000), 8000)
+
+    monkeypatch.setattr(weather_info.requests, "get", fake_get)
+    hourly_csv = tmp_path / "weather_hourly.csv"
+    with pytest.raises(RuntimeError) as excinfo:
+        get_weather_info_all(audio_folder=raw, output_csv=hourly_csv)
+
+    message = str(excinfo.value)
+    assert "Audio_Moth_1_032125/20250321_120000.wav" in message
+    assert "Audio_Moth_2_032125/20250321_130000.wav" in message
+    assert not hourly_csv.exists()
+
+
+def test_one_failed_recording_is_not_skipped(tmp_path, monkeypatch, raw_audio):
+    # Moth 1 gets weather, Moth 2's request fails: stop instead of writing partial weather
+    def fake_get_weather_info(wav_path, lat, lon):
+        return fake_hourly([12, 13, 14]) if wav_path.stem == "20250321_120000" else None
+
+    monkeypatch.setattr(weather_info, "get_weather_info", fake_get_weather_info)
+    with pytest.raises(RuntimeError, match="1 recording") as excinfo:
+        get_weather_info_all(audio_folder=raw_audio, output_csv=tmp_path / "weather_hourly.csv")
+    assert "Audio_Moth_2_032125/20250321_130000.WAV" in str(excinfo.value)
+    assert "Audio_Moth_1_032125" not in str(excinfo.value)

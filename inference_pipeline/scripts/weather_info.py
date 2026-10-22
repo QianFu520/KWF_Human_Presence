@@ -122,6 +122,7 @@ def get_weather_info(wav_path, lat, lon):
 def get_weather_info_all(audio_folder=AUDIO_MOTH_FOLDER, output_csv=WEATHER_DATA_PATH):
     root_folder = Path(audio_folder)
     all_weather_dfs = []
+    failed_files = []
 
     for day_folder in sorted(root_folder.iterdir()):
         if not day_folder.is_dir():
@@ -135,9 +136,17 @@ def get_weather_info_all(audio_folder=AUDIO_MOTH_FOLDER, output_csv=WEATHER_DATA
         for wav_file in wav_files:
             print(f"Processing: {wav_file.name}")
             weather_df = get_weather_info(wav_file, LATITUDE, LONGITUDE)
-            if weather_df is not None:
+            if weather_df is None:
+                failed_files.append(f"{day_folder.name}/{wav_file.name}")
+            else:
                 all_weather_dfs.append(weather_df)
 
+    # a recording without weather would leave its clips with blank weather; stop instead of skipping it
+    if failed_files:
+        raise RuntimeError(
+            f"Could not get weather for {len(failed_files)} recording(s) (see [ERROR] lines above):\n  "
+            + "\n  ".join(failed_files)
+        )
     if not all_weather_dfs:
         raise RuntimeError(f"No weather data collected from {root_folder}")
 
