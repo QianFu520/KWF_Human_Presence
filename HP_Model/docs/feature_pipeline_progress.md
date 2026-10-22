@@ -109,6 +109,45 @@ The HP model will be **retrained on 29 features**, all produced by `inference_pi
 | Engineered | 5 | `hour_sin`, `hour_cos`, `Eerie_Silence`, `Volume_Wind_Ratio`, `Volume_Spike_15s` |
 | Weather | 3 | `Temperature`, `Humidity`, `Windspeed` |
 
+### Feature order (hp_features.py)
+
+`inference_pipeline/scripts/hp_features.py` is the single source of truth for feature names and order. Training and inference must both select columns with `select_features()`, and the saved scaler is checked with `check_scaler_alignment()`. `Volume_Wind_Ratio` is grouped with the weather features because it is computed from `Windspeed`.
+
+**HP_FEATURES_25** (without weather):
+
+1. `RMS_Energy`
+2. `Spectral_Contrast`
+3. `Spectral_Flatness`
+4. `Spectral_Bandwidth`
+5. `Spectral_Rolloff_85`
+6. `Onset_Strength`
+7. `MFCC_8`
+8. `MFCC_9`
+9. `MFCC_12`
+10. `MFCC_13`
+11. `Myiothlypis fulvicauda_Buff-rumped Warbler`
+12. `Habia atrimaxillaris_Black-cheeked Ant-Tanager`
+13. `Thamnophilus bridgesi_Black-hooded Antshrike`
+14. `Tinamus major_Great Tinamou`
+15. `Patagioenas nigrirostris_Short-billed Pigeon`
+16. `Ramphastos ambiguus_Yellow-throated Toucan`
+17. `Cyanoloxia cyanoides_Blue-black Grosbeak`
+18. `Lipaugus unirufus_Rufous Piha`
+19. `Threnetes ruckeri_Band-tailed Barbthroat`
+20. `Ara macao_Scarlet Macaw`
+21. `confidence`
+22. `hour_sin`
+23. `hour_cos`
+24. `Eerie_Silence`
+25. `Volume_Spike_15s`
+
+**HP_FEATURES_29** (with weather): the 25 above, in the same order, followed by:
+
+26. `Temperature`
+27. `Humidity`
+28. `Windspeed`
+29. `Volume_Wind_Ratio`
+
 ### Threshold — no official value until retraining
 
 Earlier values (0.30 for the 30-feature MLP, 0.55–0.85 for XGBoost runs, ~0.38 in `run_pipeline.py`) are **retired**. They were tuned on the test set, so they and their F1 scores are optimistic, and they belong to models that will not be deployed.
