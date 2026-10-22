@@ -182,15 +182,36 @@ def test_1251_clip_matches_1300_weather():
     assert out.loc[0, "Temperature"] == 25.0
 
 
-def test_unmatched_clips_are_counted(capsys):
+def test_unmatched_clips_raise():
+    # 1 clip at 12:51 (matches 13:00) and 7 clips at 20:00 (no weather row)
     metadata = pd.DataFrame({
-        "clip_name": ["a.wav", "b.wav"],
-        "Timestamp": ["20250321_125100", "20250321_200000"],
+        "clip_name": ["a.wav"] + [f"b{i}.wav" for i in range(7)],
+        "Timestamp": ["20250321_125100"] + ["20250321_200000"] * 7,
     })
-    weather = pd.DataFrame({"Datetime": ["2025-03-21 13:00:00"], "Temperature": [25.0]})
-    out = add_weather_data(metadata, weather)
-    assert len(out) == 2
-    assert "1 of 2 clips got no weather match" in capsys.readouterr().out
+    weather = pd.DataFrame({
+        "Datetime": ["2025-03-21 13:00:00"],
+        "Temperature": [25.0],
+        "Windspeed": [3.0],
+        "Humidity": [70.0],
+    })
+    with pytest.raises(ValueError, match="7 of 8 clips") as excinfo:
+        add_weather_data(metadata, weather)
+    message = str(excinfo.value)
+    assert "b4.wav" in message and "b5.wav" not in message  # at most 5 examples
+    assert "a.wav" not in message
+
+
+def test_blank_api_value_raises():
+    # the hour matches, but Open-Meteo returned no humidity for it
+    metadata = pd.DataFrame({"clip_name": ["a.wav"], "Timestamp": ["20250321_125100"]})
+    weather = pd.DataFrame({
+        "Datetime": ["2025-03-21 13:00:00"],
+        "Temperature": [25.0],
+        "Windspeed": [3.0],
+        "Humidity": [np.nan],
+    })
+    with pytest.raises(ValueError, match="1 of 1 clips"):
+        add_weather_data(metadata, weather)
 
 
 class _ErrorResponse:
