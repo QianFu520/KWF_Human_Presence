@@ -89,7 +89,7 @@ Ten acoustic features are extracted from every clip using **librosa 0.11.0**. Ea
 | `feature_pipeline/features/test_acoustic_features.csv` | 2,183 | 11 (clip_name + 10 features) |
 
 Join key: `clip_name` (file stem without `.wav` extension). For augmented clips, strip `_aug_N` to look up the parent clip's non-acoustic features from the original dataset CSV.  
-Script: `feature_pipeline/scripts/extract_acoustic_features.py`
+Script: `inference_pipeline/scripts/extract_acoustic_features.py`
 
 ---
 
@@ -106,8 +106,47 @@ The HP model will be **retrained on 29 features**, all produced by `inference_pi
 | Acoustic | 10 | `RMS_Energy`, `Spectral_Contrast`, `Spectral_Flatness`, `Spectral_Bandwidth`, `Spectral_Rolloff_85`, `Onset_Strength`, `MFCC_8`, `MFCC_9`, `MFCC_12`, `MFCC_13` |
 | Sentinel species | 10 | Binary BirdNET flags (see `SENTINEL_SPECIES` in `feature_engineering.py`) |
 | BirdNET | 1 | `confidence` (max confidence in clip) |
-| Engineered | 5 | `hour_sin`, `hour_cos`, `Eerie_Silence`, `Volume_Wind_Ratio`, `Volume_Spike_15s` |
-| Weather | 3 | `Temperature`, `Humidity`, `Windspeed` |
+| Engineered | 4 | `hour_sin`, `hour_cos`, `Eerie_Silence`, `Volume_Spike_15s` |
+| Weather | 4 | `Temperature`, `Humidity`, `Windspeed`, `Volume_Wind_Ratio` |
+
+### Feature order (hp_features.py)
+
+`inference_pipeline/scripts/hp_features.py` is the single source of truth for feature names and order. Training and inference must both select columns with `select_features()`, and the saved scaler is checked with `check_scaler_alignment()`. `Volume_Wind_Ratio` is grouped with the weather features because it is computed from `Windspeed`.
+
+**HP_FEATURES_25** (without weather):
+
+1. `RMS_Energy`
+2. `Spectral_Contrast`
+3. `Spectral_Flatness`
+4. `Spectral_Bandwidth`
+5. `Spectral_Rolloff_85`
+6. `Onset_Strength`
+7. `MFCC_8`
+8. `MFCC_9`
+9. `MFCC_12`
+10. `MFCC_13`
+11. `Myiothlypis fulvicauda_Buff-rumped Warbler`
+12. `Habia atrimaxillaris_Black-cheeked Ant-Tanager`
+13. `Thamnophilus bridgesi_Black-hooded Antshrike`
+14. `Tinamus major_Great Tinamou`
+15. `Patagioenas nigrirostris_Short-billed Pigeon`
+16. `Ramphastos ambiguus_Yellow-throated Toucan`
+17. `Cyanoloxia cyanoides_Blue-black Grosbeak`
+18. `Lipaugus unirufus_Rufous Piha`
+19. `Threnetes ruckeri_Band-tailed Barbthroat`
+20. `Ara macao_Scarlet Macaw`
+21. `confidence`
+22. `hour_sin`
+23. `hour_cos`
+24. `Eerie_Silence`
+25. `Volume_Spike_15s`
+
+**HP_FEATURES_29** (with weather): the 25 above, in the same order, followed by:
+
+26. `Temperature`
+27. `Humidity`
+28. `Windspeed`
+29. `Volume_Wind_Ratio`
 
 ### Threshold — no official value until retraining
 
