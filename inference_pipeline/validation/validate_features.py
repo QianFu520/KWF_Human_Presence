@@ -17,19 +17,25 @@ Checks:
        reference uses old notebook column names, a rename map is built from its
        header and printed, and the script stops until it is rerun with
        --accept_column_map. This happens before the slow steps run.
+       The reference clips this run should produce are those from the recorder and
+       date in each raw folder name (Audio_Moth_6_032025 -> Audio_Moth_6 on 2025-03-20).
     3. For each feature in hp_features.ACOUSTIC: median and max relative difference
        |pipeline - reference| / |reference|; under 1e-3 counts as a match. A reference
        Spectral_Rolloff_85 above 11025 Hz (Nyquist at the pipeline's 22050 Hz) is
        flagged: the reference was computed at a higher sample rate.
     4. Which hours each recorder covers, from the metadata.
 
+Raw folders must be named <recorder>_MMDDYY, as in the Drive (e.g. Audio_Moth_6_032025).
+
 Writes <output>/clips/, <output>/outputs/acoustic_features.csv and metadata.csv (the
-same layout as run_pipeline.py) and <output>/validation_report.md.
-The report names the recorder folders and the reference file but contains no local paths.
+same layout as run_pipeline.py), <output>/validation_report.md and <output>/summary.json
+(the same results, machine-readable, for combine_reports.py).
+The report and summary name the recorder folders and the reference file but contain no local paths.
 The reference CSV and the outputs are data: keep them outside the repo.
 """
 
 import argparse
+import json
 import re
 import subprocess
 import sys
@@ -57,6 +63,7 @@ OLD_CUT_LENGTHS  = {143360, 147456}       # clip lengths from the old millisecon
 ROLLOFF_LIMIT_HZ = ACOUSTIC_SR / 2        # 11025 Hz: highest rolloff possible at 22050 Hz
 CLIP_NAME_ALIASES = {"clipname", "clip", "clipid", "filename", "file"}
 CLIP_NAME_RE     = re.compile(r"^(?P<recorder>.+)_(?P<ts>\d{8}_\d{6})$")
+FOLDER_RE        = re.compile(r"^(?P<recorder>.+)_(?P<mmddyy>\d{6})$")
 
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
@@ -86,6 +93,46 @@ def build_column_map(columns):
 
 def strip_wav(names):
     return names.astype(str).str.replace(r"\.wav$", "", regex=True, case=False)
+
+
+def raw_folder_days(raw_audio):
+    """
+    (folder, recorder, date) for each recorder/day folder, e.g. Audio_Moth_6_032025 ->
+    ("Audio_Moth_6_032025", "Audio_Moth_6", 2025-03-20). The recorder part is what
+    audio_split_rename puts in the clip names.
+    """
+    days = []
+    for folder in sorted(p.name for p in Path(raw_audio).iterdir() if p.is_dir()):
+        m = FOLDER_RE.match(folder)
+        try:
+            day = datetime.strptime(m["mmddyy"], "%m%d%y").date() if m else None
+        except ValueError:
+            day = None
+        if day is None:
+            raise SystemExit(f"Raw folder {folder!r} is not named <recorder>_MMDDYY (e.g. Audio_Moth_6_032025).")
+        days.append((folder, m["recorder"], day))
+    if not days:
+        raise SystemExit(f"No recorder/day folders in {raw_audio}.")
+    return days
+
+
+def expected_reference_clips(reference_names, folder_days):
+    """
+    Reference clips from the recorders and dates in the raw folder names. A folder's recordings
+    run into the next morning, but that day's reference clips come from the next folder.
+    """
+    wanted = {(recorder, day) for _, recorder, day in folder_days}
+    expected = []
+    for name in reference_names:
+        m = CLIP_NAME_RE.match(name)
+        if m and (m["recorder"], datetime.strptime(m["ts"][:8], "%Y%m%d").date()) in wanted:
+            expected.append(name)
+    return expected
+
+
+def _num(x):
+    """JSON has no NaN; write null instead."""
+    return None if np.isnan(x) else x
 
 
 def _inside_repo(path):
@@ -143,8 +190,8 @@ def check_clip_lengths(clips_dir):
     return clips, bad
 
 
-def compare_features(merged):
-    rows = []
+def feature_stats(merged):
+    stats = []
     for feat in ACOUSTIC:
         pipe = merged[f"{feat}_pipeline"].to_numpy(dtype=float)
         ref = merged[f"{feat}_reference"].to_numpy(dtype=float)
@@ -158,16 +205,21 @@ def compare_features(merged):
         else:
             median = worst = pct = float("nan")
             worst_clip = ""
-        rows.append({
-            "Feature": feat,
-            "Median rel. diff": f"{median:.2e}",
-            "Max rel. diff": f"{worst:.2e}",
-            "Clips < 1e-3": f"{pct:.1f}%",
-            "NaN": n_nan,
-            "Worst clip": worst_clip,
-            "Result": "match" if n_nan == 0 and worst < MATCH_TOL else "DIFFERS",
-        })
-    return pd.DataFrame(rows)
+        stats.append({"feature": feat, "median": median, "max": worst, "pct": pct, "nan": n_nan,
+                      "worst_clip": worst_clip, "match": n_nan == 0 and worst < MATCH_TOL})
+    return stats
+
+
+def compare_features(stats):
+    return pd.DataFrame([{
+        "Feature": s["feature"],
+        "Median rel. diff": f"{s['median']:.2e}",
+        "Max rel. diff": f"{s['max']:.2e}",
+        "Clips < 1e-3": f"{s['pct']:.1f}%",
+        "NaN": s["nan"],
+        "Worst clip": s["worst_clip"],
+        "Result": "match" if s["match"] else "DIFFERS",
+    } for s in stats])
 
 
 def recorder_coverage(metadata, matched_names):
@@ -231,6 +283,9 @@ def main():
         if _inside_repo(path):
             print(f"[WARNING] {flag} is inside the repo ({path}). Do not commit data.")
 
+    # Folder names give the recorder and date; check them before the slow steps
+    folder_days = raw_folder_days(raw_audio)
+
     # Reference header first, so any rename map is confirmed before the slow steps
     reference = pd.read_csv(reference_csv)
     column_map = build_column_map(reference.columns)
@@ -274,9 +329,13 @@ def main():
     merged = pipeline.merge(reference, on="clip_name", suffixes=("_pipeline", "_reference"))
     matched = set(merged["clip_name"])
     unmatched_ref = sorted(set(reference["clip_name"]) - matched)
+    expected = set(expected_reference_clips(reference["clip_name"], folder_days))
+    recorders = sorted({recorder for _, recorder, _ in folder_days})
+    dates = sorted({day.isoformat() for _, _, day in folder_days})
 
     # 3. Feature comparison
-    comparison = compare_features(merged) if len(merged) else None
+    stats = feature_stats(merged) if len(merged) else []
+    comparison = compare_features(stats) if stats else None
     rolloff_max = float(reference["Spectral_Rolloff_85"].max())
     rolloff_flag = rolloff_max > ROLLOFF_LIMIT_HZ
 
@@ -287,12 +346,13 @@ def main():
 
     # ── Report ────────────────────────────────────────────────────────────────
     # No local paths: placeholders for directories, plus the recorder folder and reference file names
-    raw_folders = sorted(p.name for p in raw_audio.iterdir() if p.is_dir())
+    raw_folders = [folder for folder, _, _ in folder_days]
+    generated, commit = f"{datetime.now():%Y-%m-%d %H:%M}", _git_commit()
     lines = [
         "# Runtime feature validation",
         "",
-        f"- Generated: {datetime.now():%Y-%m-%d %H:%M}, repo commit `{_git_commit()}`",
-        f"- Raw audio: `<raw_audio>` ({', '.join(raw_folders) or 'no recorder folders'})",
+        f"- Generated: {generated}, repo commit `{commit}`",
+        f"- Raw audio: `<raw_audio>` ({', '.join(raw_folders)})",
         f"- Reference: `<reference_csv>` ({reference_csv.name}, {len(reference):,} clips"
         + (f", {n_ref_dupes} duplicate clip_name rows dropped" if n_ref_dupes else "") + ")",
         "- Pipeline outputs: `<output>/outputs`",
@@ -347,15 +407,42 @@ def main():
     report_path = output_dir / "validation_report.md"
     report_path.write_text("\n".join(lines), encoding="utf-8")
 
+    # ── summary.json (for combine_reports.py; no local paths) ─────────────────
+    summary = {
+        "raw_folders": raw_folders,
+        "recorders": recorders,
+        "dates": dates,
+        "generated": generated,
+        "repo_commit": commit,
+        "reference_file": reference_csv.name,
+        "reference_clips_total": len(reference),
+        "clips_produced": len(clips),
+        "clips_wrong_length_or_rate": len(bad_clips),
+        "reference_clips_expected": len(expected),
+        "reference_clips_matched": len(expected & matched),
+        "clips_compared": len(merged),
+        "match_tolerance": MATCH_TOL,
+        "features": {
+            s["feature"]: {"median_rel_diff": _num(s["median"]), "max_rel_diff": _num(s["max"]),
+                           "nan": s["nan"], "match": s["match"]}
+            for s in stats
+        },
+    }
+    summary_path = output_dir / "summary.json"
+    summary_path.write_text(json.dumps(summary, indent=2), encoding="utf-8")
+
     # ── Console summary ───────────────────────────────────────────────────────
     print("\n" + "=" * 60)
     print(f"Clips with wrong length/sample rate: {len(bad_clips):,} of {len(clips):,}")
     print(f"Matched to reference: {len(merged):,} of {len(reference):,} reference clips")
+    print(f"Reference clips for {', '.join(recorders)} on {', '.join(dates)}: "
+          f"matched {len(expected & matched):,} of {len(expected):,}")
     if comparison is not None:
         print(comparison[["Feature", "Median rel. diff", "Max rel. diff", "Result"]].to_string(index=False))
     if rolloff_flag:
         print(f"FLAG: reference Spectral_Rolloff_85 max {rolloff_max:,.0f} Hz > {ROLLOFF_LIMIT_HZ:,.0f} Hz")
     print(f"Report: {report_path}")
+    print(f"Summary: {summary_path}")
 
 
 if __name__ == "__main__":
