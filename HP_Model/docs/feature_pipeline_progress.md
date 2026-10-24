@@ -89,7 +89,7 @@ Ten acoustic features are extracted from every clip using **librosa 0.11.0**. Ea
 | `feature_pipeline/features/test_acoustic_features.csv` | 2,183 | 11 (clip_name + 10 features) |
 
 Join key: `clip_name` (file stem without `.wav` extension). For augmented clips, strip `_aug_N` to look up the parent clip's non-acoustic features from the original dataset CSV.  
-Script: `feature_pipeline/scripts/extract_acoustic_features.py`
+Script: `inference_pipeline/scripts/extract_acoustic_features.py`
 
 ---
 
@@ -106,8 +106,8 @@ The HP model will be **retrained on 29 features**, all produced by `inference_pi
 | Acoustic | 10 | `RMS_Energy`, `Spectral_Contrast`, `Spectral_Flatness`, `Spectral_Bandwidth`, `Spectral_Rolloff_85`, `Onset_Strength`, `MFCC_8`, `MFCC_9`, `MFCC_12`, `MFCC_13` |
 | Sentinel species | 10 | Binary BirdNET flags (see `SENTINEL_SPECIES` in `feature_engineering.py`) |
 | BirdNET | 1 | `confidence` (max confidence in clip) |
-| Engineered | 5 | `hour_sin`, `hour_cos`, `Eerie_Silence`, `Volume_Wind_Ratio`, `Volume_Spike_15s` |
-| Weather | 3 | `Temperature`, `Humidity`, `Windspeed` |
+| Engineered | 4 | `hour_sin`, `hour_cos`, `Eerie_Silence`, `Volume_Spike_15s` |
+| Weather | 4 | `Temperature`, `Humidity`, `Windspeed`, `Volume_Wind_Ratio` |
 
 ### Feature order (hp_features.py)
 
