@@ -14,7 +14,7 @@ and as used inside the Digital Twin.
 - **Verdict:** every gated criterion passes. The API reproduces the original BirdNET v2.4 on all 709 test clips.
 - **Fidelity:** top-1 species matches on 709 of 709 clips. Confidence is within 0.05 on 709 of 709 and within 0.01 on 689 of 709. Largest difference: 0.029.
 - **Digital Twin:** with the compressed model switched on, checks T1 to T5 pass on a 6.9 h recording (1,777 events, no interface, label or hand-off errors).
-- **Issues:** five recorded in `validation/ISSUES.md` (V-001 to V-005). None changes the scores of files that are read. Three concern how the Twin behaves once BirdNET is on and need decisions from the team lead.
+- **Issues:** seven recorded in `validation/ISSUES.md` (V-001 to V-007). None changes the scores of files that are read. Four (V-002 to V-005) concern how the Twin behaves once BirdNET is on and need decisions from the team lead.
 
 ## 2. Scope
 
@@ -42,15 +42,18 @@ The ground truth is the output of the original BirdNET v2.4 (`birdnet` package v
 
 No model hash is documented in the repo. The hash above was recorded in this validation.
 
+Allow-list behaviour differs between components. The API marks species outside the allow-list (`in_allow_list: false`) and still returns them. The pipeline script `inference_pipeline/scripts/run_birdnet.py` drops them by default (`--no_allow_list` keeps them). The team lead plans to standardize this.
+
 ## 4. Test data
 
 | | |
 |---|---|
-| Clips | 709 from `Audio Moth Data / Segmented Foldered / Audio Moth 6` (Google Drive) |
+| Clips | 709 from `{AUDIO_DIR}/Audio Moth 6`, where `{AUDIO_DIR}` is `Audio Moth Data / Segmented Foldered` on the team Drive |
 | Format | 3 s, 48 kHz, mono, 144,000 samples (288,044 bytes) |
 | Identity | `validation/config/audio_manifest_am6_709.csv` lists name, size and SHA-256 for each clip |
 | Reference | `ref_top1` and `ref_conf` columns of `verification_data/phase4_detail_Audio_Moth_6.csv` |
-| Wrong-length clips | 5 real clips from `team Toucanet Data / filtered_clips_6` (143,360 and 147,456 samples) |
+
+| Wrong-length clips | 5 real clips from `{DRIVE_DATA_DIR}/filtered_clips_6`, another team's older cut (143,360 and 147,456 samples) |
 | Digital Twin input | `node_SHAMAN.WAV`, 2,399,338,821 bytes, SHA-256 `D564289D5925AF1744F0AE41B5721AA8CC1BE309969047F239AFC596CB1E98F8`, 6.9 h |
 
 ## 5. Pass criteria
@@ -159,6 +162,8 @@ Issues (details, evidence and suggested fixes in `validation/ISSUES.md`):
 | V-003 | Twin threshold (0.5) differs from the validated threshold (0.25) | Medium | Open, not fixed |
 | V-004 | Human-presence confirmations rose from 0 to 134 with BirdNET on | High | Open, cause not traced |
 | V-005 | Dashboard detections fell from 1,777 to 218 with BirdNET on | Medium | Open, not fixed |
+| V-006 | The API takes file paths only, no upload | Medium | Open, decision needed before integration |
+| V-007 | Jobs are kept in memory only | Low | Open, not fixed |
 
 Decisions needed from the team lead:
 - Approve the pass criteria in `validation/config/criteria.json`, and decide whether C5 should be gated.
@@ -166,7 +171,6 @@ Decisions needed from the team lead:
 - Choose the Twin threshold (V-003) and whether to apply the allow-list (V-002).
 - Trace the 134 human-presence confirmations (V-004) and decide which count is the Twin's result (V-005).
 - Decide whether the Twin should call the API over HTTP or load the ONNX model itself.
-- Confirm that the Drive folder names may appear in the repo (`team Toucanet Data` is another team's data).
 
 ## 8. Not covered
 

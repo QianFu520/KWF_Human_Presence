@@ -10,6 +10,8 @@ needs a decision from the team lead before code changes.
 | V-003 | Twin threshold (0.5) differs from the validated threshold (0.25) | Medium | Open, not fixed (decision: record only) |
 | V-004 | Human-presence confirmations rose from 0 to 134 when BirdNET was switched on | High | Open, cause not traced |
 | V-005 | Dashboard detection count changed from 1,777 to 218 when BirdNET was switched on | Medium | Open, not fixed (decision: record only) |
+| V-006 | The API takes file paths only, no upload | Medium | Open, decision needed before integration |
+| V-007 | Jobs are kept in memory only | Low | Open, not fixed (decision: record only) |
 
 ---
 
@@ -32,7 +34,7 @@ needs a decision from the team lead before code changes.
 - Earlier test with a stub model: a wrong-length clip returned `done` with 0 windows and no error.
 - Confirmed on the real FP16 model (run `20261022_160717`, `interface_cases.csv`):
   - 10 of 10 files that cannot be scored finished as `status: done`, 0 windows scored, empty `error`.
-  - 5 real wrong-length clips from `filtered_clips_6` (3 with 143,360 samples, 2 with 147,456; 48 kHz mono 16-bit) and 5 stereo copies of good clips.
+  - 5 real wrong-length clips from `{DRIVE_DATA_DIR}/filtered_clips_6` (3 with 143,360 samples, 2 with 147,456; 48 kHz mono 16-bit) and 5 stereo copies of good clips.
   - A mixed job (1 good, 1 wrong length, 1 stereo) returned `completed 3/3` with 1 window scored. The good clip was scored correctly.
 
 **Impact**
@@ -147,3 +149,41 @@ needs a decision from the team lead before code changes.
 **Decision needed from the team lead**
 - Should `bird_candidate` events be counted as detections?
 - Which count should be treated as the Twin's result?
+
+---
+
+## V-006: The API takes file paths only, no upload
+
+**Where:** `src/bridge/app/schemas.py` (`paths` in the job request), `src/bridge/app/jobs.py`
+
+**What happens**
+- `POST /jobs` takes `paths`: absolute paths to WAV files or folders on the API's own disk.
+- There is no way to send audio bytes in the request.
+- The Digital Twin patch works around this by writing each clip to a temporary WAV and sending its path. That only works when the Twin and the API share a filesystem.
+
+**Impact**
+- A caller on another machine or in another container cannot use the API.
+- The AED API takes uploaded files, so the two components differ in how they are called.
+
+**Suggested fix (not applied)**
+- Add an upload endpoint (multipart WAV) next to the path input. Keep paths for benchmarking.
+
+**Decision needed from the team lead**
+- Path-only or upload for integration? Needed before the integration work.
+
+---
+
+## V-007: Jobs are kept in memory only
+
+**Where:** `src/bridge/app/jobs.py` (job store held in a dictionary in the running process)
+
+**What happens**
+- Job status and results live in the service's memory.
+- They do not survive a restart of the service.
+
+**Impact**
+- A restart loses all job results, so a caller must read a result before the service stops.
+- Low for benchmarking and the validation runs. It matters for a long-running deployment.
+
+**Decision needed from the team lead**
+- Is in-memory enough for the integration, or should results be stored?

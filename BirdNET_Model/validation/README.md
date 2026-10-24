@@ -52,16 +52,23 @@ validation/
 Audio is not in this repo. It lives in the team Google Drive, so you need
 access to it first (ask the data owners).
 
+Placeholders used below:
+- `{AUDIO_DIR}`: the team Drive folder `Audio Moth Data / Segmented Foldered`, or your own copy
+  of it (the same `AUDIO_DIR` as in `AED_Model/config.py`).
+- `{DRIVE_DATA_DIR}`: the team Drive data folder that holds `filtered_clips_6` (ask the data
+  owner for the path). Not the same as `{AUDIO_DIR}`.
+
 **Correct clips (used for every pass/fail test)**
-- Drive: `Audio Moth Data / Segmented Foldered / Audio Moth 6`
+- Drive: `{AUDIO_DIR}/Audio Moth 6`
 - The 709 clips are the ones named in `verification_data/phase4_detail_Audio_Moth_6.csv`.
 - Each is a 3 s, 48 kHz mono clip of exactly 144,000 samples (288,044 bytes).
 - `config/audio_manifest_am6_709.csv` lists every clip with its size and SHA-256,
   so you can confirm you have the same 709 files.
 
 **Wrong-length clips (extra, real-world example)**
-- Drive: `Audio Moth Data / team Toucanet Data / filtered_clips_1` to `filtered_clips_6`
-- These come from the older cut and are not 144,000 samples.
+- Source: `{DRIVE_DATA_DIR}/filtered_clips_6`, another team's clips on the team Drive.
+- They are valid for that team's use, but they are not 144,000 samples, so they are
+  the wrong length for this validation.
 - Download any few and point the interface test at them. The test reads each
   header and records the real length, so the case is checked, not assumed.
 
@@ -70,7 +77,7 @@ access to it first (ask the data owners).
    Desktop), or copy it into a Colab session with the Drive mount.
 2. Stage only the clips you need and check them against the manifest:
    ```
-   python validation/scripts/stage_clips.py --source "<path>/Audio Moth 6" \
+   python validation/scripts/stage_clips.py --source "{AUDIO_DIR}/Audio Moth 6" \
        --csv verification_data/phase4_detail_Audio_Moth_6.csv \
        --manifest validation/config/audio_manifest_am6_709.csv --out <path>/am6_709
    ```
@@ -100,7 +107,7 @@ C2 allows 1e-6.
        --wrong-length-dir <path>/wrong_length
    ```
    `wrong_length` holds a few real wrong-length WAVs, downloaded from
-   `filtered_clips_6` (see Test data). Without it the wrong-length case is skipped.
+   `{DRIVE_DATA_DIR}/filtered_clips_6` (see Test data). Without it the wrong-length case is skipped.
 5. Read `validation/results/<time>/SUMMARY.md`. Exit code 0 means every gated
    criterion passed.
 
