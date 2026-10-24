@@ -25,6 +25,7 @@ Checks:
 
 Writes <output>/clips/, <output>/outputs/acoustic_features.csv and metadata.csv (the
 same layout as run_pipeline.py) and <output>/validation_report.md.
+The report names the recorder folders and the reference file but contains no local paths.
 The reference CSV and the outputs are data: keep them outside the repo.
 """
 
@@ -285,14 +286,16 @@ def main():
     grid_suspects = unmatched_inside_audio(unmatched_ref, meta)
 
     # ── Report ────────────────────────────────────────────────────────────────
+    # No local paths: placeholders for directories, plus the recorder folder and reference file names
+    raw_folders = sorted(p.name for p in raw_audio.iterdir() if p.is_dir())
     lines = [
         "# Runtime feature validation",
         "",
         f"- Generated: {datetime.now():%Y-%m-%d %H:%M}, repo commit `{_git_commit()}`",
-        f"- Raw audio: `{raw_audio}`",
-        f"- Reference: `{reference_csv}` ({len(reference):,} clips"
+        f"- Raw audio: `<raw_audio>` ({', '.join(raw_folders) or 'no recorder folders'})",
+        f"- Reference: `<reference_csv>` ({reference_csv.name}, {len(reference):,} clips"
         + (f", {n_ref_dupes} duplicate clip_name rows dropped" if n_ref_dupes else "") + ")",
-        f"- Pipeline outputs: `{outputs_dir}`",
+        "- Pipeline outputs: `<output>/outputs`",
         "",
         "## 1. Clip lengths",
         "",

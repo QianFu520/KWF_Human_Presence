@@ -1,9 +1,9 @@
 # Runtime feature validation
 
 - Generated: 2026-10-22 16:42, repo commit `c90fc80`
-- Raw audio: `C:\Users\patri\kwf_val\raw`
-- Reference: `C:\Users\patri\Downloads\test_acoustic_features.csv` (2,183 clips)
-- Pipeline outputs: `C:\Users\patri\kwf_val\report\outputs`
+- Raw audio: `<raw_audio>` (Audio_Moth_4_032025, both recordings from the "Audio Moth Data" Drive folder)
+- Reference: `<reference_csv>` (test_acoustic_features.csv from the shared Drive folder, 2,183 clips)
+- Pipeline outputs: `<output>/outputs`
 
 ## 1. Clip lengths
 
