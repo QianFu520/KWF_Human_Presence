@@ -1,0 +1,25 @@
+Interface and preprocessing | fp16_pruned493 | 709 good clips
+
+INTERFACE (what the API does with input it should not score)
+  wrong_length_real Audio_Moth_6_20250321_131347.wav      frames=143360 ch=1 -> skipped_silently  (caller can see it: False)
+  wrong_length_real Audio_Moth_6_20250321_131538.wav      frames=143360 ch=1 -> skipped_silently  (caller can see it: False)
+  wrong_length_real Audio_Moth_6_20250321_131608.wav      frames=147456 ch=1 -> skipped_silently  (caller can see it: False)
+  wrong_length_real Audio_Moth_6_20250321_131611.wav      frames=143360 ch=1 -> skipped_silently  (caller can see it: False)
+  wrong_length_real Audio_Moth_6_20250321_131902.wav      frames=147456 ch=1 -> skipped_silently  (caller can see it: False)
+  stereo_made       stereo_Audio_Moth_6_20250321_062605.  frames=144000 ch=2 -> skipped_silently  (caller can see it: False)
+  stereo_made       stereo_Audio_Moth_6_20250321_071002.  frames=144000 ch=2 -> skipped_silently  (caller can see it: False)
+  stereo_made       stereo_Audio_Moth_6_20250321_080326.  frames=144000 ch=2 -> skipped_silently  (caller can see it: False)
+  stereo_made       stereo_Audio_Moth_6_20250321_094544.  frames=144000 ch=2 -> skipped_silently  (caller can see it: False)
+  stereo_made       stereo_Audio_Moth_6_20250321_130853.  frames=144000 ch=2 -> skipped_silently  (caller can see it: False)
+  mixed job (good + wrong length + stereo): status=done completed=3/3 windows_scored=1 good_clip_scored=True
+
+PREPROCESSING (Twin transforms vs unchanged clips; reported, not pass/fail)
+  peak_norm   top-1 changed 0/709  det-set changed 0  conf shift mean 0.0002 p95 0.0004 max 0.0012  within 0.01: 100.0%  within 0.05: 100.0%
+  twin_chain  top-1 changed 0/709  det-set changed 0  conf shift mean 0.0003 p95 0.0009 max 0.0068  within 0.01: 100.0%  within 0.05: 100.0%
+  gain applied by peak normalization: min 1.00  median 6.99  max 25.66
+
+Criteria
+  C8: 10/10 bad files not scored -> PASS
+  C9: 0/10 rejections visible to the caller -> FAIL (known issue V-001, not gated)
+
+OVERALL: PASS

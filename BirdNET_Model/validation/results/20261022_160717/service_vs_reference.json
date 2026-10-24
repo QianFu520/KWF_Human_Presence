@@ -1,0 +1,73 @@
+{
+  "variant": "fp16_pruned493",
+  "metrics": {
+    "n_clips": 709,
+    "top1_agree_n": 709,
+    "conf_within_0.01_n": 689,
+    "conf_within_0.05_n": 709,
+    "ref_species_not_returned_n": 0,
+    "max_abs_dev": 0.0293973880970001,
+    "max_abs_dev_clip": "Audio_Moth_6_20250321_094620.wav",
+    "det_set_vs_recorded_fp16_n": 709,
+    "top1_agree_pct": 100.0,
+    "conf_within_0.01_pct": 97.17912552891396,
+    "conf_within_0.05_pct": 100.0,
+    "det_set_vs_recorded_fp16_pct": 100.0
+  },
+  "criteria": [
+    {
+      "id": "C3",
+      "metric": "top1_agree_pct",
+      "op": ">=",
+      "threshold": 99.8,
+      "value": 100.0,
+      "gate": true,
+      "pass": true
+    },
+    {
+      "id": "C4",
+      "metric": "conf_within_0.05_pct",
+      "op": ">=",
+      "threshold": 99.9,
+      "value": 100.0,
+      "gate": true,
+      "pass": true
+    },
+    {
+      "id": "C5",
+      "metric": "conf_within_0.01_pct",
+      "op": ">=",
+      "threshold": 98.6,
+      "value": 97.17912552891396,
+      "gate": false,
+      "pass": false
+    },
+    {
+      "id": "C6",
+      "metric": "det_set_vs_recorded_fp16_pct",
+      "op": ">=",
+      "threshold": 100.0,
+      "value": 100.0,
+      "gate": true,
+      "pass": true
+    }
+  ],
+  "service_metrics": {
+    "variant": "fp16_pruned493",
+    "clips": 709,
+    "windows": 709,
+    "wall_seconds": 41.395,
+    "windows_per_second": 17.13,
+    "inference_ms_mean": 57.481,
+    "inference_ms_p50": 57.987,
+    "inference_ms_p95": 81.23,
+    "inference_ms_max": 231.11,
+    "preprocess_ms_mean": 0.692,
+    "process_cpu_seconds": 38.703,
+    "peak_rss_mb": 211.0,
+    "model_file_mb": 18.0,
+    "intra_op_num_threads": 1,
+    "inter_op_num_threads": 1
+  },
+  "detection_threshold": 0.25
+}

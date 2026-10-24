@@ -1,0 +1,13 @@
+# Never commit audio, models or large archives.
+*.wav
+*.flac
+*.zip
+*.onnx
+*.tar
+*.tar.gz
+__pycache__/
+*.pyc
+.venv/
+
+# Twin run 4: large raw file kept local; regenerate from the Twin output folder
+digital_twin/run4_raw/stage_3_birdnet_timeline.json

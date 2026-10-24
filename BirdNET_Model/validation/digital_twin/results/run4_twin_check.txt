@@ -1,0 +1,27 @@
+Twin run 4 | birdnet_status=enabled | candidates 1820 | confirmed bird calls 1777 | BirdNET events 1777
+
+  T1: PASS  1777 calls, 1777 events, call numbers contiguous, trigger times match
+  T2: PASS  613/613 returned labels are in the label file
+  T3: PASS  1777/1777 Twin results equal the best logged detection at or above 0.5 (max confidence difference 0)
+  T4: PASS  confidence range 0.1000 to 0.9987
+  T5: PASS  50 saved clips re-scored; same detections: 50/50; max confidence difference 0.00e+00
+
+events with a species (>= 0.5): 84/1777
+events without a species: 1693 (of these, 88 had a best detection between 0.25 and 0.5)
+calls with no detection at all (>= 0.1): 1329
+distinct species among confirmed: 11
+    56  Myiothlypis fulvicauda_Buff-rumped Warbler
+     9  Myiornis atricapillus_Black-capped Pygmy-Tyrant
+     4  Phaethornis striigularis_Stripe-throated Hermit
+     4  Chlorestes eliciae_Blue-throated Goldentail
+     3  Threnetes ruckeri_Band-tailed Barbthroat
+     2  Ara macao_Scarlet Macaw
+     2  Steatornis caripensis_Oilbird
+     1  Habia atrimaxillaris_Black-cheeked Ant-Tanager
+     1  Hylopezus perspicillatus_Streak-chested Antpitta
+     1  Klais guimeti_Violet-headed Hummingbird
+     1  Ceratopipra mentalis_Red-capped Manakin
+confirmed confidence min/median/max: 0.503 / 0.730 / 0.999
+API inference time per call, mean: 78.4 ms
+
+OVERALL: PASS

@@ -1,0 +1,163 @@
+diff --git a/backend/app/audio_workflow/birdnet_api_confirm.py b/backend/app/audio_workflow/birdnet_api_confirm.py
+new file mode 100644
+index 0000000..247695e
+--- /dev/null
++++ b/backend/app/audio_workflow/birdnet_api_confirm.py
+@@ -0,0 +1,126 @@
++"""VALIDATION PATCH (local, throwaway, not for commit).
++
++Replaces the birdnetlib BirdNET step with the compressed FP16 BirdNET served by
++the FastAPI service in the BirdNET_Model repo (src/bridge). Same interface as
++BirdNETConfirm.confirm(), so nothing downstream changes.
++
++What stays the same as the original BirdNETConfirm:
++  - the 3 s clip arrives already peak-normalized by the Twin
++  - it is written to a temporary 16-bit WAV with soundfile (default subtype)
++  - the best detection at or above min_confidence is returned, with the common name
++  - no species filter is applied (allow-list membership is only recorded)
++
++What differs (noted for the validation report):
++  - the model is the pruned 493-species FP16 model, not the full 6,522-species model
++  - the API reports "Scientific_Common" labels; the common name is split out here
++  - the API floor is 0.1, so min_confidence below 0.1 behaves as 0.1
++
++Environment variables:
++  BIRDNET_API_URL         default http://127.0.0.1:8001
++  BIRDNET_PATCH_LOG       JSONL file; one line per call with every detection returned
++  BIRDNET_PATCH_SAVE_DIR  folder; the first BIRDNET_PATCH_SAVE_N temp clips are copied here
++  BIRDNET_PATCH_SAVE_N    default 50
++A call that the API cannot score raises RuntimeError. It is never turned into
++"no species", because that would hide the API's silent-skip behaviour (V-001).
++"""
++from __future__ import annotations
++
++import json
++import os
++import shutil
++import tempfile
++import time
++import urllib.request
++from typing import Any, Dict, Optional
++
++import soundfile as sf
++
++from .audio_event_common import SpeciesResult
++
++VARIANT = "fp16_pruned493"
++POLL_S = 0.02
++TIMEOUT_S = 60.0
++
++
++class ApiBirdNETConfirm:
++    def __init__(self, min_confidence: float = 0.5) -> None:
++        self.min_confidence = float(min_confidence)
++        self.base_url = os.environ.get("BIRDNET_API_URL", "http://127.0.0.1:8001").rstrip("/")
++        self.log_path = os.environ.get("BIRDNET_PATCH_LOG")
++        self.save_dir = os.environ.get("BIRDNET_PATCH_SAVE_DIR")
++        self.save_n = int(os.environ.get("BIRDNET_PATCH_SAVE_N", "50"))
++        self.calls = 0
++        if self.save_dir:
++            os.makedirs(self.save_dir, exist_ok=True)
++        health = self._get("/health")
++        if not health.get("ready") or VARIANT not in health.get("variants_loaded", []):
++            raise RuntimeError(f"BirdNET API at {self.base_url} is not ready with {VARIANT}: {health}")
++
++    # -- tiny HTTP helpers (stdlib only, so the Twin needs no new package) ----
++    def _get(self, path: str) -> Dict[str, Any]:
++        with urllib.request.urlopen(self.base_url + path, timeout=30) as r:
++            return json.loads(r.read())
++
++    def _post(self, path: str, body: Dict[str, Any]) -> Dict[str, Any]:
++        req = urllib.request.Request(self.base_url + path, data=json.dumps(body).encode(),
++                                     headers={"Content-Type": "application/json"}, method="POST")
++        with urllib.request.urlopen(req, timeout=30) as r:
++            return json.loads(r.read())
++
++    def _score(self, wav_path: str) -> Dict[str, Any]:
++        job = self._post("/jobs", {"paths": [wav_path], "variant": VARIANT, "min_confidence": 0.0,
++                                   "apply_allow_list": True, "collect_detections": True})
++        t0 = time.perf_counter()
++        while True:
++            st = self._get(f"/jobs/{job['job_id']}")
++            if st["status"] in ("done", "error", "cancelled"):
++                return st
++            if time.perf_counter() - t0 > TIMEOUT_S:
++                raise RuntimeError(f"BirdNET API job {job['job_id']} did not finish in {TIMEOUT_S}s")
++            time.sleep(POLL_S)
++
++    # -- same signature and return type as BirdNETConfirm.confirm -------------
++    def confirm(self, clip, sr: int, source_file: str, trigger_time_s: float) -> SpeciesResult:
++        t0 = time.perf_counter()
++        with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as tmp:
++            tmp_path = tmp.name
++        try:
++            sf.write(tmp_path, clip, sr)               # 16-bit PCM, as the original does
++            st = self._score(tmp_path)
++            windows = (st.get("metrics") or {}).get("windows", 0)
++            if st["status"] != "done" or windows != 1:
++                raise RuntimeError(
++                    f"BirdNET API did not score the clip ({source_file} @ {trigger_time_s:.1f}s): "
++                    f"status={st['status']} windows={windows} error={st.get('error')}")
++            dets = [{"label": d["species"], "confidence": float(d["confidence"]),
++                     "in_allow_list": bool(d.get("in_allow_list", True))}
++                    for d in (st.get("detections") or [])]
++            self._record(source_file, trigger_time_s, tmp_path, dets, st)
++            kept = [d for d in dets if d["confidence"] >= self.min_confidence]
++            dt_ms = (time.perf_counter() - t0) * 1000.0
++            if not kept:
++                return SpeciesResult(source_file=source_file, trigger_time_s=trigger_time_s,
++                                     species=None, confidence=0.0, inference_ms=dt_ms, raw=None)
++            best = max(kept, key=lambda d: d["confidence"])
++            sci, _, common = best["label"].partition("_")
++            raw = {"scientific_name": sci, "common_name": common or sci, "label": best["label"],
++                   "confidence": best["confidence"], "in_allow_list": best["in_allow_list"]}
++            return SpeciesResult(source_file=source_file, trigger_time_s=trigger_time_s,
++                                 species=raw["common_name"], confidence=best["confidence"],
++                                 inference_ms=dt_ms, raw=raw)
++        finally:
++            try:
++                os.remove(tmp_path)
++            except Exception:
++                pass
++
++    def _record(self, source_file, trigger_time_s, tmp_path, dets, st) -> None:
++        self.calls += 1
++        if self.save_dir and self.calls <= self.save_n:
++            shutil.copyfile(tmp_path, os.path.join(self.save_dir, f"{self.calls:05d}_{trigger_time_s:.1f}.wav"))
++        if self.log_path:
++            with open(self.log_path, "a", encoding="utf-8") as f:
++                f.write(json.dumps({"call": self.calls, "source_file": source_file,
++                                    "trigger_time_s": trigger_time_s,
++                                    "inference_ms": (st.get("metrics") or {}).get("inference_ms_mean"),
++                                    "detections": dets}) + "\n")
+diff --git a/backend/app/audio_workflow/node_audio_workflow.py b/backend/app/audio_workflow/node_audio_workflow.py
+index 5cc964a..17e362a 100644
+--- a/backend/app/audio_workflow/node_audio_workflow.py
++++ b/backend/app/audio_workflow/node_audio_workflow.py
+@@ -513,7 +513,12 @@ def run_node_audio_workflow(
+     else:
+         stage2 = TinyCNNBirdcallGate(weights_path=tinycnn_weights, threshold=tinycnn_threshold)
+     human_presence = HumanPresenceAdapter(threshold=human_presence_threshold)
+-    birdnet = None if skip_birdnet else BirdNETConfirm(min_confidence=birdnet_threshold)
++    if skip_birdnet:
++        birdnet = None
++    else:
++        # VALIDATION PATCH (local only): compressed BirdNET through the FastAPI service
++        from .birdnet_api_confirm import ApiBirdNETConfirm
++        birdnet = ApiBirdNETConfirm(min_confidence=birdnet_threshold)
+ 
+     triggers = stream_prefilter_file(input_audio, stage1, block_seconds=block_seconds, overlap_seconds=clip_s)
+     event_candidates: List[TimelineEvent] = []
+diff --git a/backend/app/routes/runs.py b/backend/app/routes/runs.py
+index 8aac669..32298cf 100644
+--- a/backend/app/routes/runs.py
++++ b/backend/app/routes/runs.py
+@@ -227,7 +227,7 @@ def _process_audio_background(run_id: int, node_audio_map: Dict[str, str], confi
+             birdnet_threshold=float(config.get("birdnet_threshold", 0.5)),
+             human_presence_threshold=float(config.get("human_presence_threshold", 0.5)),
+             sr=int(config.get("target_sample_rate") or config.get("sr") or 48000),
+-            skip_birdnet=bool(True),
++            skip_birdnet=False,  # VALIDATION PATCH (local only)
+             block_seconds=float(config.get("block_seconds") or 60.0),
+             clip_s=float(config.get("clip_s") or 3.0),
+         )
