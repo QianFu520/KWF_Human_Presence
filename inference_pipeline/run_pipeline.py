@@ -5,6 +5,7 @@ Master script that runs all steps in order.
 
 Usage:
     python run_pipeline.py --raw_audio /path/to/raw_audio --output /path/to/output
+    python run_pipeline.py --raw_audio /path/to/raw_audio --output /path/to/output --no_weather
 
 Pipeline steps:
     1. Split raw audio into 3-second clips
@@ -12,8 +13,9 @@ Pipeline steps:
     3. Compressed BirdNET — species + confidence on meaningful clips only
     4. Acoustic feature extraction
     5. Metadata extraction
-    6. Weather data fetch + matching
+    6. Weather data fetch + matching (skipped with --no_weather; needs internet)
     7. Feature engineering (sentinel species encoding + Patrick's features)
+       — 29 features with weather, 25 with --no_weather
     8. HP Model inference  [PLACEHOLDER — model not finalized yet]
     9. Output results
 
@@ -22,7 +24,7 @@ Dependencies:
     - onnxruntime   (Compressed BirdNET)
     - librosa       (acoustic features)
     - scikit-learn  (HP Model)
-    - requests      (Open-Meteo weather API)
+    - requests      (Open-Meteo weather API; not used with --no_weather)
 """
 
 import argparse
@@ -132,25 +134,37 @@ def step5_metadata(clips_dir, outputs_dir):
     return metadata_csv
 
 
-def step6_weather(outputs_dir):
-    """Fetch live weather data from Open-Meteo API and match to clips."""
+def step6_weather(raw_audio_dir, metadata_csv, outputs_dir):
+    """Fetch hourly weather from the Open-Meteo API for the raw recordings and match it to clips."""
     log.info("STEP 6 — Weather data fetch + matching...")
-    weather_csv = outputs_dir / "weather.csv"
-    get_weather_info_all()
-    weather_match()
-    log.info(f"Weather data saved to: {weather_csv}")
+    weather_hourly_csv = outputs_dir / "weather_hourly.csv"
+    weather_csv        = outputs_dir / "weather.csv"
+    get_weather_info_all(audio_folder=str(raw_audio_dir), output_csv=str(weather_hourly_csv))
+    log.info(f"Hourly weather saved to: {weather_hourly_csv}")
+    weather_match(
+        weather_csv=str(weather_hourly_csv),
+        metadata_csv=str(metadata_csv),
+        output_csv=str(weather_csv),
+    )
+    log.info(f"Per-clip weather saved to: {weather_csv}")
     return weather_csv
 
 
 def step7_feature_engineering(acoustic_csv, birdnet_csv, metadata_csv, weather_csv, outputs_dir, meaningful_clips):
-    """Encode sentinel species and engineer Patrick's cross-signal features, then keep meaningful clips only."""
-    log.info("STEP 7 — Feature engineering (sentinel species + Patrick's features)...")
+    """
+    Encode sentinel species and engineer Patrick's cross-signal features, then keep meaningful clips only.
+    weather_csv=None (--no_weather) leaves out the weather columns and Volume_Wind_Ratio.
+    """
+    if weather_csv is None:
+        log.info("STEP 7 — Feature engineering (sentinel species + Patrick's features, no weather)...")
+    else:
+        log.info("STEP 7 — Feature engineering (sentinel species + Patrick's features)...")
     features_csv = outputs_dir / "features.csv"
     run_feature_engineering(
         acoustic_csv=str(acoustic_csv),
         birdnet_csv=str(birdnet_csv),
         metadata_csv=str(metadata_csv),
-        weather_csv=str(weather_csv),
+        weather_csv=None if weather_csv is None else str(weather_csv),
         output_csv=str(features_csv),
         keep_clips=meaningful_clips,
     )
@@ -183,6 +197,7 @@ def main():
     parser = argparse.ArgumentParser(description="KWF Human Presence Inference Pipeline")
     parser.add_argument("--raw_audio", required=True, help="Folder containing raw AudioMoth recordings")
     parser.add_argument("--output",    required=True, help="Output folder for all intermediate and final results")
+    parser.add_argument("--no_weather", action="store_true", help="Skip step 6 (no internet needed) and build features without weather")
     args = parser.parse_args()
 
     raw_audio_dir = Path(args.raw_audio)
@@ -197,6 +212,7 @@ def main():
     log.info("KWF Human Presence Inference Pipeline — Starting")
     log.info(f"Raw audio : {raw_audio_dir}")
     log.info(f"Output    : {output_dir}")
+    log.info(f"Weather   : {'off (--no_weather)' if args.no_weather else 'on'}")
     log.info("=" * 60)
 
     step1_split(raw_audio_dir, clips_dir)
@@ -204,7 +220,11 @@ def main():
     birdnet_csv          = step3_birdnet(clips_dir, meaningful_clips, outputs_dir)
     acoustic_csv         = step4_acoustic(clips_dir, meaningful_clips, outputs_dir)
     metadata_csv         = step5_metadata(clips_dir, outputs_dir)
-    weather_csv          = step6_weather(outputs_dir)
+    if args.no_weather:
+        log.info("STEP 6 — Skipped (--no_weather)")
+        weather_csv = None
+    else:
+        weather_csv = step6_weather(raw_audio_dir, metadata_csv, outputs_dir)
     features_csv         = step7_feature_engineering(acoustic_csv, birdnet_csv, metadata_csv, weather_csv, outputs_dir, meaningful_clips)
     step8_hp_model(features_csv, outputs_dir)
 
