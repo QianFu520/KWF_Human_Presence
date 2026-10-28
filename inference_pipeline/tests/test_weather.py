@@ -183,10 +183,10 @@ def test_1251_clip_matches_1300_weather():
 
 
 def test_unmatched_clips_raise():
-    # 1 clip at 12:51 (matches 13:00) and 7 clips at 20:00 (no weather row)
+    # a.wav at 12:51 matches the 13:00 row; b.wav at 20:00 has no weather row
     metadata = pd.DataFrame({
-        "clip_name": ["a.wav"] + [f"b{i}.wav" for i in range(7)],
-        "Timestamp": ["20250321_125100"] + ["20250321_200000"] * 7,
+        "clip_name": ["a.wav", "b.wav"],
+        "Timestamp": ["20250321_125100", "20250321_200000"],
     })
     weather = pd.DataFrame({
         "Datetime": ["2025-03-21 13:00:00"],
@@ -194,29 +194,46 @@ def test_unmatched_clips_raise():
         "Windspeed": [3.0],
         "Humidity": [70.0],
     })
-    with pytest.raises(ValueError, match="7 of 8 clips") as excinfo:
+    with pytest.raises(ValueError, match="1 of 2 clips have blank") as excinfo:
         add_weather_data(metadata, weather)
-    message = str(excinfo.value)
-    assert "b4.wav" in message and "b5.wav" not in message  # at most 5 examples
-    assert "a.wav" not in message
+    assert "b.wav" in str(excinfo.value) and "a.wav" not in str(excinfo.value)
 
 
-def test_blank_api_value_raises():
-    # the hour matches, but Open-Meteo returned no humidity for it
-    metadata = pd.DataFrame({"clip_name": ["a.wav"], "Timestamp": ["20250321_125100"]})
+def test_blank_weather_error_names_at_most_5_clips():
+    metadata = pd.DataFrame({
+        "clip_name": [f"b{i}.wav" for i in range(7)],
+        "Timestamp": ["20250321_200000"] * 7,
+    })
     weather = pd.DataFrame({
         "Datetime": ["2025-03-21 13:00:00"],
         "Temperature": [25.0],
         "Windspeed": [3.0],
-        "Humidity": [np.nan],
+        "Humidity": [70.0],
     })
-    with pytest.raises(ValueError, match="1 of 1 clips"):
+    with pytest.raises(ValueError, match="7 of 7 clips") as excinfo:
+        add_weather_data(metadata, weather)
+    assert "b4.wav" in str(excinfo.value) and "b5.wav" not in str(excinfo.value)
+
+
+def test_blank_api_values_raise():
+    # the hour matches, but Open-Meteo returned no temperature for it
+    metadata = pd.DataFrame({"clip_name": ["a.wav"], "Timestamp": ["20250321_125100"]})
+    weather = pd.DataFrame({
+        "Datetime": ["2025-03-21 13:00:00"],
+        "Temperature": [None],
+        "Windspeed": [3.0],
+        "Humidity": [70.0],
+    })
+    with pytest.raises(ValueError, match="1 of 1 clips have blank"):
         add_weather_data(metadata, weather)
 
 
 class _ErrorResponse:
     """What Open-Meteo sends back for a bad request: HTTP 400 and an error body, no "hourly"."""
     status_code = 400
+
+    def raise_for_status(self):
+        raise requests.HTTPError(f"{self.status_code} Client Error: Bad Request")
 
     def json(self):
         return {"error": True, "reason": "Parameter 'start_date' is out of allowed range"}
@@ -226,10 +243,14 @@ def _raise_connection_error(*args, **kwargs):
     raise requests.ConnectionError("Failed to resolve archive-api.open-meteo.com")
 
 
+def _raise_timeout(*args, **kwargs):
+    raise requests.Timeout("Read timed out. (read timeout=60)")
+
+
 @pytest.mark.parametrize(
     "fake_get",
-    [_raise_connection_error, lambda *args, **kwargs: _ErrorResponse()],
-    ids=["request_raises", "error_response"],
+    [_raise_connection_error, _raise_timeout, lambda *args, **kwargs: _ErrorResponse()],
+    ids=["request_raises", "timeout", "error_response"],
 )
 def test_failed_open_meteo_request_raises(tmp_path, monkeypatch, fake_get):
     # real (1-second) recordings, so the real get_weather_info runs up to the API call
@@ -239,18 +260,27 @@ def test_failed_open_meteo_request_raises(tmp_path, monkeypatch, fake_get):
         (raw / folder).mkdir(parents=True)
         sf.write(raw / folder / name, np.zeros(8000), 8000)
 
-    monkeypatch.setattr(weather_info.requests, "get", fake_get)
+    calls = []
+
+    def recording_get(*args, **kwargs):
+        calls.append(kwargs)
+        return fake_get(*args, **kwargs)
+
+    monkeypatch.setattr(weather_info.requests, "get", recording_get)
     hourly_csv = tmp_path / "weather_hourly.csv"
-    with pytest.raises(RuntimeError) as excinfo:
+    with pytest.raises(RuntimeError, match="2 recording") as excinfo:
         get_weather_info_all(audio_folder=raw, output_csv=hourly_csv)
 
     message = str(excinfo.value)
     assert "Audio_Moth_1_032125/20250321_120000.wav" in message
     assert "Audio_Moth_2_032125/20250321_130000.wav" in message
+    assert "--no_weather" in message
     assert not hourly_csv.exists()
+    # without a timeout a stalled request would hang the run instead of failing
+    assert len(calls) == 2 and all(call.get("timeout") for call in calls)
 
 
-def test_one_failed_recording_is_not_skipped(tmp_path, monkeypatch, raw_audio):
+def test_one_failed_recording_raises(tmp_path, monkeypatch, raw_audio):
     # Moth 1 gets weather, Moth 2's request fails: stop instead of writing partial weather
     def fake_get_weather_info(wav_path, lat, lon):
         return fake_hourly([12, 13, 14]) if wav_path.stem == "20250321_120000" else None

@@ -73,7 +73,8 @@ def get_weather_info(wav_path, lat, lon):
             "timezone": TIMEZONE
         }
 
-        response = requests.get(url, params=params)
+        response = requests.get(url, params=params, timeout=60)
+        response.raise_for_status()
         data = response.json()
 
         #convert API data to a df
@@ -122,7 +123,7 @@ def get_weather_info(wav_path, lat, lon):
 def get_weather_info_all(audio_folder=AUDIO_MOTH_FOLDER, output_csv=WEATHER_DATA_PATH):
     root_folder = Path(audio_folder)
     all_weather_dfs = []
-    failed_files = []
+    failed = []
 
     for day_folder in sorted(root_folder.iterdir()):
         if not day_folder.is_dir():
@@ -137,15 +138,16 @@ def get_weather_info_all(audio_folder=AUDIO_MOTH_FOLDER, output_csv=WEATHER_DATA
             print(f"Processing: {wav_file.name}")
             weather_df = get_weather_info(wav_file, LATITUDE, LONGITUDE)
             if weather_df is None:
-                failed_files.append(f"{day_folder.name}/{wav_file.name}")
+                failed.append(f"{day_folder.name}/{wav_file.name}")
             else:
                 all_weather_dfs.append(weather_df)
 
     # a recording without weather would leave its clips with blank weather; stop instead of skipping it
-    if failed_files:
+    if failed:
         raise RuntimeError(
-            f"Could not get weather for {len(failed_files)} recording(s) (see [ERROR] lines above):\n  "
-            + "\n  ".join(failed_files)
+            f"Could not get weather for {len(failed)} recording(s) (see [ERROR] lines above). "
+            "Stopped so no clip gets blank weather; use --no_weather to run without weather. "
+            "Failed recordings:\n  " + "\n  ".join(failed)
         )
     if not all_weather_dfs:
         raise RuntimeError(f"No weather data collected from {root_folder}")
