@@ -14,7 +14,8 @@ Clip names: Audio_Moth_N_YYYYMMDD_HHMMSS.wav (local Costa Rica time, clip start)
 Outputs (in --out):
   coverage_segments.csv  recorder, segment, first_clip_local, end_local, hours, n_clips
   trim_exclusions.csv    recorder, start_local, end_local, reason
-                         (a clip is excluded if start_local <= clip start < end_local)
+                         (a clip is excluded if start_local <= clip start < end_local;
+                         intervals may overlap)
   trim_config.json       settings used
 
 Usage (PowerShell):
@@ -78,7 +79,7 @@ def main():
     ap.add_argument("--clips-root", required=True, type=Path, help="folder with one subfolder of clips per recorder")
     ap.add_argument("--out", required=True, type=Path, help="output folder")
     ap.add_argument("--trim-minutes", type=float, default=30, help="minutes excluded at each segment edge")
-    ap.add_argument("--gap-minutes", type=float, default=10, help="gaps longer than this split a segment")
+    ap.add_argument("--gap-minutes", type=float, default=1, help="gaps longer than this split a segment")
     args = ap.parse_args()
 
     args.out.mkdir(parents=True, exist_ok=True)
@@ -97,7 +98,9 @@ def main():
         "applies_to": "negatives only; positives and audio untouched",
     }, indent=2))
 
-    # ---- summary: how many clips each recorder loses from the negative pool
+    # ---- summary: how many clips each recorder loses from the negative pool.
+    # Intervals can overlap (short segments between close gaps), so flag each
+    # clip once rather than summing per-interval counts.
     clips["excluded"] = False
     for e in excl.itertuples():
         m = (clips.recorder == e.recorder) & (clips.ts >= e.start_local) & (clips.ts < e.end_local)
