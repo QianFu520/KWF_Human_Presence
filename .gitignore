@@ -5,6 +5,9 @@
 *.zip
 *.wav
 
+# Logs (run_pipeline.py writes inference_pipeline/pipeline.log)
+*.log
+
 # Python caches
 __pycache__/
 .pytest_cache/
