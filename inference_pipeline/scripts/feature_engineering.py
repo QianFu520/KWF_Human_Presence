@@ -6,9 +6,10 @@ Takes as input:
   - birdnet_output.csv        (clip_name, species list, confidence list)
   - metadata.csv              (clip_name, Recorder, Timestamp, ...)
   - weather.csv               (clip_name, Temperature, Windspeed, Humidity, ...)
+                              optional: pass weather_csv=None to run without weather
 
 Produces:
-  - features.csv              (all 29 features ready for HP model inference)
+  - features.csv              (29 features with weather, 25 without, ready for HP model inference)
 
 Note: "Human Activity Score" (YAMNet human-sound confidence) was dropped from the
 HP feature set. YAMNet was removed from the project for low recall
@@ -18,8 +19,11 @@ Features created here:
   - 10 sentinel species binary flags  (from BirdNET species output)
   - Eerie_Silence                     (1 if no sentinel species detected)
   - hour_sin, hour_cos               (cyclical time from Timestamp)
-  - Volume_Wind_Ratio                 (RMS / Windspeed)
+  - Volume_Wind_Ratio                 (RMS / Windspeed; weather only)
   - Volume_Spike_15s                  (sudden RMS jump vs. mean RMS of the previous 15 s)
+
+Without weather, Temperature, Windspeed, Humidity and Volume_Wind_Ratio are left out
+(the 25-feature version in HP_Model/docs/feature_pipeline_progress.md).
 
 acoustic_features.csv must cover all clips, not only AED-meaningful ones, so
 Volume_Spike_15s sees each clip's real neighbours. Pass keep_clips to drop the
@@ -83,8 +87,9 @@ def parse_confidence(val):
         return 0.0
 
 
-def engineer_patrick_features(df):
-    """Create Patrick's 5 cross-signal engineered features."""
+def engineer_patrick_features(df, with_weather=True):
+    """Create Patrick's 5 cross-signal engineered features (4 when with_weather=False,
+    since Volume_Wind_Ratio needs Windspeed)."""
     # Cyclical time encoding
     df['Datetime'] = pd.to_datetime(df['Timestamp'], format='%Y%m%d_%H%M%S', errors='coerce')
     df['hour_sin'] = np.sin(df['Datetime'].dt.hour * (2 * np.pi / 24))
@@ -94,7 +99,8 @@ def engineer_patrick_features(df):
     df['Eerie_Silence'] = (df[SENTINEL_SPECIES].sum(axis=1) == 0).astype(int)
 
     # Volume to Wind Ratio
-    df['Volume_Wind_Ratio'] = df['RMS_Energy'] / (df['Windspeed'] + 1e-5)
+    if with_weather:
+        df['Volume_Wind_Ratio'] = df['RMS_Energy'] / (df['Windspeed'] + 1e-5)
 
     # Volume Spike: RMS jump vs. mean RMS of the same recorder's clips in the
     # previous 15 seconds (current clip excluded). The window is by timestamp, not
@@ -125,20 +131,28 @@ def run_feature_engineering(
     output_csv,
     keep_clips=None,
 ):
+    with_weather = weather_csv is not None
+
     print("Loading inputs...")
     acoustic = pd.read_csv(acoustic_csv)
     birdnet   = pd.read_csv(birdnet_csv)
     metadata  = pd.read_csv(metadata_csv)
-    weather   = pd.read_csv(weather_csv)
+    frames = [acoustic, birdnet, metadata]
+    if with_weather:
+        weather = pd.read_csv(weather_csv)
+        frames.append(weather)
+    else:
+        print("No weather CSV given; skipping weather features.")
 
     # Normalize clip_name (strip .wav if present)
-    for frame in [acoustic, birdnet, metadata, weather]:
+    for frame in frames:
         frame['clip_name'] = frame['clip_name'].str.replace('.wav', '', regex=False)
 
     print("Merging inputs...")
     df = acoustic.merge(birdnet,  on='clip_name', how='left')
     df = df.merge(metadata[['clip_name', 'Recorder', 'Timestamp']], on='clip_name', how='left')
-    df = df.merge(weather[['clip_name', 'Temperature', 'Windspeed', 'Humidity']], on='clip_name', how='left')
+    if with_weather:
+        df = df.merge(weather[['clip_name', 'Temperature', 'Windspeed', 'Humidity']], on='clip_name', how='left')
 
     print("Encoding sentinel species...")
     df = encode_sentinel_species(df)
@@ -147,7 +161,7 @@ def run_feature_engineering(
     df['confidence'] = df['confidence'].apply(parse_confidence)
 
     print("Engineering Patrick's features...")
-    df = engineer_patrick_features(df)
+    df = engineer_patrick_features(df, with_weather=with_weather)
 
     if keep_clips is not None:
         keep = {str(c).replace('.wav', '') for c in keep_clips}

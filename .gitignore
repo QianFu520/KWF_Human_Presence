@@ -4,3 +4,7 @@
 # HP retraining: audio stays on Drive
 *.zip
 *.wav
+
+# Python caches
+__pycache__/
+.pytest_cache/
