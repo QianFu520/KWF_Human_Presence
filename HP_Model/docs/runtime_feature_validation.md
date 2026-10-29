@@ -25,9 +25,9 @@ Runs: Audio_Moth_4 on 2026-10-22 with commit `c90fc80` (details below; its summa
 
 ## Limitations
 
-- **6 of the 19 recorder-days in the reference.** The reference has 2,183 clips from 19 recorder-days (17–21 March 2025). These runs cover 944 of them; the other 1,239 come from 13 recorder-days that were not run.
+- **One day per recorder.** Each recorder was tested on one day, so 6 of the 19 recorder-days in the reference. The reference has 2,183 clips from 19 recorder-days (17–21 March 2025); these runs cover 944 of them, and the other 1,239 come from 13 recorder-days that were not run.
 - **Daytime clips only.** The reference clips for the days tested start between 07:26 and 17:57, and for the 20 March recorders only between 15:56 and 17:57. The other 169,942 clips, including all night-time audio, were checked for length and sample rate, but their feature values were not compared.
-- **Acoustic features only.** The reference has just the 10 acoustic features, so metadata, weather, BirdNET and sentinel values were not checked.
+- **Acoustic features only.** Only the 10 acoustic features were compared. AED, BirdNET (including the sentinel columns), weather and the metadata columns are not covered by this check; the reference has no values for them.
 - **One environment.** All runs used Windows 11, Python 3.13.14, librosa 1.0.0, numpy 2.3.5, scipy 1.17.0 and soundfile 0.14.0. Other versions were not tested.
 
 ## Reproducing
