@@ -9,8 +9,9 @@ build_training_set.py: labelled train/val/test table for one label window.
   * AED-rejected clips are KEPT; not_meaningful_prob / predicted_label are carried
     along so results can also be reported on AED-passed clips only.
 
-Output: <out>/training_set_<window>.csv with id columns, label, split, sim_type,
-AED columns and the 25 no-weather features (FEATURES_25, in the order of
+Output: <out>/training_set_<window>.csv (or training_set_<window>_weather.csv with
+--with-weather, holding all 29 features) with id columns, label, split, sim_type,
+AED columns and the HP features (lists from hp_features.py, in the order of
 HP_Model/docs/feature_pipeline_progress.md).
 
 Usage (PowerShell):
@@ -39,14 +40,18 @@ def main():
     ap.add_argument("--split-dir", required=True, type=Path)
     ap.add_argument("--window", default="w10", choices=["w10", "per_type", "tight"])
     ap.add_argument("--out", required=True, type=Path)
+    ap.add_argument("--with-weather", action="store_true",
+                    help="read features_all_weather.csv and keep all 29 features (25/27 are subsets)")
     args = ap.parse_args()
     args.out.mkdir(parents=True, exist_ok=True)
 
-    cols = ["clip_name", "Recorder", "Timestamp", "not_meaningful_prob", "predicted_label", *FEATURES_25]
-    df = pd.concat(pd.read_csv(args.pipeline_out / f"Audio_Moth_{n}" / "outputs" / "features_all.csv", usecols=cols)
+    features = list(HP_FEATURES_29) if args.with_weather else FEATURES_25
+    src = "features_all_weather.csv" if args.with_weather else "features_all.csv"
+    cols = ["clip_name", "Recorder", "Timestamp", "not_meaningful_prob", "predicted_label", *features]
+    df = pd.concat(pd.read_csv(args.pipeline_out / f"Audio_Moth_{n}" / "outputs" / src, usecols=cols)
                    for n in range(1, 7))
     df["ts"] = pd.to_datetime(df.Timestamp.astype(str), format="%Y%m%d_%H%M%S")
-    assert len(FEATURES_25) == 25 and df.clip_name.is_unique
+    assert df.clip_name.is_unique and not df[features].isna().any().any()
 
     # positives
     ev = pd.read_csv(args.split_dir / "events.csv")
@@ -77,8 +82,8 @@ def main():
     out = df.drop(columns="ts").merge(lab, left_on="clip_name", right_index=True, how="inner")
     front = ["clip_name", "Recorder", "Timestamp", "split", "label", "sim_type", "event_id",
              "not_meaningful_prob", "predicted_label"]
-    out = out[front + FEATURES_25].sort_values(["Recorder", "Timestamp"])
-    path = args.out / f"training_set_{args.window}.csv"
+    out = out[front + features].sort_values(["Recorder", "Timestamp"])
+    path = args.out / f"training_set_{args.window}{'_weather' if args.with_weather else ''}.csv"
     out.to_csv(path, index=False)
 
     t = out.groupby("split").agg(clips=("label", "size"), positives=("label", "sum"))
