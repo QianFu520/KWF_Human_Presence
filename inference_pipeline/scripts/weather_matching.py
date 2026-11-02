@@ -15,11 +15,17 @@ def add_weather_data(df_metadata, df_weather):
     df_weather['Datetime'] = pd.to_datetime(df_weather['Datetime'])
 
     # Merge metadata and weather so all weather is applied to specific times
-    df_merged = df_metadata.merge(df_weather, on='Datetime', how='left', indicator=True)
+    df_merged = df_metadata.merge(df_weather, on='Datetime', how='left')
 
-    n_missing = (df_merged['_merge'] == 'left_only').sum()
-    if n_missing:
-        print(f"[WARNING] {n_missing} of {len(df_merged)} clips got no weather match.")
+    # Blank weather means no matching hour, or the API returned no value for that hour.
+    # Stop here rather than pass blank features to the HP model.
+    missing = df_merged[['Temperature', 'Windspeed', 'Humidity']].isna().any(axis=1)
+    if missing.any():
+        examples = df_merged.loc[missing, 'clip_name'].head(5).tolist()
+        raise ValueError(
+            f"{missing.sum()} of {len(df_merged)} clips have blank Temperature, Windspeed or "
+            f"Humidity after matching weather, e.g. {examples}"
+        )
 
     # Return just the clip names, and relevant weather data
     cols = df_weather.columns.tolist()
