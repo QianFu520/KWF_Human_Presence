@@ -7,10 +7,34 @@ the deployed Digital Twin with ground-truth logs. Everything is on the
 `aed-validation` branch except bulk run outputs, which are on Drive:
 [AED validation results](https://drive.google.com/drive/folders/1zgaQq6ZMgiorRA2y9es7NyehX__0ooFi).
 
+### Deployment model: `tinycnn_v3.pth`
+
+Recommendation for the integration phase: deploy the PyTorch checkpoint
+`outputs/models/tinycnn_v3.pth` (SHA-256 `913a78a4…`), not the ONNX export.
+
+- **It is what every consumer loads today.** The FastAPI service, the batch
+  pipeline (`run_pipeline.py`) and the Digital Twin's vendored copy all load
+  the `.pth`. Every validation result, including the live-HTTP API run on
+  4,027 held-out clips, went through it.
+- **The ONNX export is an equivalent copy, not a deployment path.** It matches
+  the `.pth` (B5: max difference 0 on random inputs; E3: ≤ 7.8e-7 on field
+  clips), but no code serves it. Deploying it means changing the API to load it
+  with `onnxruntime` and rerunning sections D and E.
+- **When to switch to ONNX:** if AED must run without PyTorch (edge devices, the
+  twin's Windows installer). `onnxruntime` is already a pipeline dependency for
+  the compressed BirdNET model, and the export has the sigmoid built in. Note it
+  is two files, `tinycnn_v3.onnx` plus `tinycnn_v3.onnx.data` (external
+  weights), which must ship together.
+
 ### Changes after review (2026-11-01)
 
 - `config.AUDIO_DIR` reads the `AED_AUDIO_DIR` environment variable (default
   `data/raw_audio/`) instead of a hard-coded path.
+  Reproducibility check (2026-11-01): a fresh clone of `aed-validation`, one
+  `export AED_AUDIO_DIR=...` and one `validate_aed.py` command on a 44-clip slice
+  of the held-out manifest (6 per group plus the 2 C5 clips) gave `22 pass,
+  0 fail, 1 known exception`. Report on Drive under
+  `reproducibility_fresh_clone_20261101/`.
 - Threshold standardised: every path labels `not_meaningful` when
   `not_meaningful_prob >= 0.5` (the API used `>`).
 - C5 is reported as **KNOWN** (an explained exception) rather than FAIL, while
