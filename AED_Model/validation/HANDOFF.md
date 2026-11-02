@@ -204,10 +204,6 @@ exist; anything else returns `{"detail":"Not Found"}`.
 
 ### Notebook inputs (only matter for rerunning the notebooks)
 
-Qian shared the hand-tagged audit files and the clip catalog on 2026-11-01
-(Drive folders `data/` and `outputs/`, copied into `AED_Model/`). They are
-local, not in the branch.
-
 Now available:
 
 | Input | Used by | Notes |
@@ -216,15 +212,9 @@ Now available:
 | `outputs/birdnet_audit/birdnet_audit.csv`, `outputs/lowscore_audit/lowscore_audit.csv` | `02`, `03` | Hand-tagged |
 | `outputs/inference_audit/` (+ `_v2`, `_v2_am12`, `_v3`) | `06`, diagnosis | Hand-tagged, 20–80 rows each |
 | `data/fp_review/` (high, mid, low) | diagnosis | Hand-tagged; `.gitignore` says these are meant to be committed |
-
-Still missing:
-
-| Input | Used by | Notes |
-|---|---|---|
 | `outputs/inference_v1.csv` (and v2/v3) | `06_inference_labeling` | Full model predictions, not the audits above. Drive has `all_inference_v3.csv` (no `audio_path`) |
 | `outputs/spectrograms/*.npy` | `05_train` | Regenerable from the clips (~136k files over Drive) |
 | Team Jacama `full_predictions.csv` | `01_labeling` | Not needed: its `model_confidence` is already merged into labels_progress |
-| Hard-coded paths | `04_background_harvest` (`/Users/qian/KWF/raw_recordings/...`), `01_labeling`, ONNX notebook (`/Volumes/TOSHIBA EXT/...`) | Not a file: the notebooks need editing to use `AUDIO_DIR`. Raw WAVs are on Drive under `Audio Moth N/` |
 
 Retraining from labels_progress.csv as it stands trains on v4's data; drop the
 `model_inference_v3` rows to reproduce v3.
