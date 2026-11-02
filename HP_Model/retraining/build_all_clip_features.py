@@ -33,6 +33,7 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--pipeline_out", required=True, type=Path, help="the --output folder given to run_pipeline.py")
     ap.add_argument("--no_weather", action="store_true", help="build the no-weather feature set")
+    ap.add_argument("--output_name", default="features_all.csv", help="output file name inside outputs/")
     args = ap.parse_args()
 
     out = args.pipeline_out / "outputs"
@@ -40,7 +41,7 @@ def main():
     if weather_csv is not None and not weather_csv.exists():
         sys.exit(f"{weather_csv} not found; pass --no_weather or run the pipeline with weather.")
 
-    features_all = out / "features_all.csv"
+    features_all = out / args.output_name
     df = run_feature_engineering(
         acoustic_csv=str(out / "acoustic_features.csv"),
         birdnet_csv=str(out / "birdnet_output.csv"),
