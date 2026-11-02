@@ -3,12 +3,13 @@ tune_val.py: regularisation search on VALIDATION ONLY for several feature sets.
 Test is never loaded.
 
 Feature sets (same rows, split and labels; training_set_<window>_weather.csv):
+  23      HP_FEATURES_25 without hour_sin / hour_cos (no hour, no weather)
   25      HP_FEATURES_25
-  27      HP_FEATURES_25 without hour_sin / hour_cos
+  27      HP_FEATURES_29 without hour_sin / hour_cos (Qian's approved 27: weather, no hour)
   29      HP_FEATURES_29
   25rel   diagnostic: 25, with RMS_Energy and Volume_Spike_15s divided by the
           recorder's median RMS_Energy over its TRAIN clips (not a pipeline change)
-  27rel   diagnostic: 27 with the same relative loudness
+  23rel   diagnostic: 23 with the same relative loudness
 
 Caution: most positives are at 16:00-17:59 and event buffers remove nearly all
 negatives at those hours, so hour features (and weather, which tracks the hour)
@@ -54,12 +55,14 @@ sys.path.insert(0, str(REPO / "inference_pipeline" / "scripts"))
 from hp_features import HP_FEATURES_25, HP_FEATURES_29  # noqa: E402
 
 CLIP_S = 3
+HOUR = ("hour_sin", "hour_cos")
 FEATURE_SETS = {
+    "23": [f for f in HP_FEATURES_25 if f not in HOUR],  # no hour, no weather
     "25": list(HP_FEATURES_25),
-    "27": [f for f in HP_FEATURES_25 if f not in ("hour_sin", "hour_cos")],
+    "27": [f for f in HP_FEATURES_29 if f not in HOUR],  # Qian's approved 27: weather, no hour
     "29": list(HP_FEATURES_29),
     "25rel": list(HP_FEATURES_25),  # same names; two columns rescaled per recorder
-    "27rel": [f for f in HP_FEATURES_25 if f not in ("hour_sin", "hour_cos")],
+    "23rel": [f for f in HP_FEATURES_25 if f not in HOUR],
 }
 # Spans small and large models: the 25-feature set prefers few, shallow trees (hour
 # shortcut), while 27/29 do better with more capacity.

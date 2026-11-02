@@ -4,8 +4,9 @@ check_bundles.py: reload each HP model bundle and verify the format.
 Checks (Patrick's proposed format + the extra keys):
   * keys present; model has predict_proba and classes_ == [0, 1]
   * scaler is a StandardScaler with feature_names_in_ == features (same order)
-  * feature_set in {"25", "27", "29"} and len(features) matches it; features match
-    hp_features.py (27 = HP_FEATURES_25 without hour_sin/hour_cos)
+  * feature_set in {"23", "25", "27", "29"}, len(features) == int(feature_set), and
+    features match hp_features.py (23 = HP_FEATURES_25 without hour_sin/hour_cos;
+    27 = HP_FEATURES_29 without hour_sin/hour_cos, Qian's approved definition)
   * threshold is a float in (0, 1); version == "hp-<feature_set>-YYYYMMDD[b|c...]"
     and matches the file name; created == "YYYY-MM-DD" and matches the version date
   * trained_on is a non-empty string; sklearn_version == installed scikit-learn
@@ -33,8 +34,11 @@ REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO / "inference_pipeline" / "scripts"))
 from hp_features import HP_FEATURES_25, HP_FEATURES_29  # noqa: E402
 
-EXPECTED = {"25": list(HP_FEATURES_25), "29": list(HP_FEATURES_29),
-            "27": [f for f in HP_FEATURES_25 if f not in ("hour_sin", "hour_cos")]}
+HOUR = ("hour_sin", "hour_cos")
+EXPECTED = {"23": [f for f in HP_FEATURES_25 if f not in HOUR],  # no hour, no weather
+            "25": list(HP_FEATURES_25),
+            "27": [f for f in HP_FEATURES_29 if f not in HOUR],  # Qian's approved 27: weather, no hour
+            "29": list(HP_FEATURES_29)}
 KEYS = ["model", "scaler", "features", "feature_set", "threshold", "version", "trained_on", "created",
         "sklearn_version", "val_metrics", "threshold_rule", "git_commit"]
 
@@ -62,7 +66,9 @@ def check(path: Path, sample: pd.DataFrame | None) -> list[str]:
         errs.append(f"features differ from hp_features for set {fs}")
     if not (isinstance(b["threshold"], float) and 0 < b["threshold"] < 1):
         errs.append(f"threshold {b['threshold']!r}")
-    mv = re.fullmatch(r"hp-(25|27|29)-(\d{8})([b-z]?)", str(b["version"]))
+    if fs in EXPECTED and len(feats) != int(fs):
+        errs.append(f"feature_set {fs} but {len(feats)} features")
+    mv = re.fullmatch(r"hp-(23|25|27|29)-(\d{8})([b-z]?)", str(b["version"]))
     if not mv or mv.group(1) != fs:
         errs.append(f"version {b['version']!r}")
     if path.stem != b["version"]:

@@ -4,10 +4,14 @@ on validation (most recall with <= --episode-budget false-alert episodes per
 recorder per day), score test ONCE, and save deployment bundles.
 
 Feature sets (see tune_val.py):
-  27     candidate (no hour features, no weather)
-  27rel  diagnostic only (27 with recorder-relative loudness), no bundle
+  23     candidate (no hour features, no weather)
+  23rel  diagnostic only (23 with recorder-relative loudness), no bundle
   25     reference: relies on time-of-day shortcuts (schedule-inflated upper bound)
+  27     reference: no hour features, but weather identifies the session
   29     reference: relies on time-of-day and weather/session shortcuts
+--sets limits the run to some sets, so a set added later is scored on test once
+without re-scoring the others. The 23/23rel/25/29 results (Nov 1) were produced
+when 23 was still labelled "27"; the model and numbers are unchanged.
 
 Results (in --out): results.json, test_summary.csv, test_by_event_type.csv,
 val_summary.csv, test_scores_<set>.csv. Bundles (in --bundles, outside the repo):
@@ -43,17 +47,19 @@ from tune_val import CLIP_S, FEATURE_SETS, add_relative_loudness, episodes_per_d
 
 # Locked Nov 1 2026 from tune_val.py (best validation PR-AUC per set). Do not change.
 LOCKED = {
-    "27": {"max_depth": None, "min_samples_leaf": 500, "l2_regularization": 0.0, "max_iter": 200},
-    "27rel": {"max_depth": None, "min_samples_leaf": 20, "l2_regularization": 10.0, "max_iter": 200},
+    "23": {"max_depth": None, "min_samples_leaf": 500, "l2_regularization": 0.0, "max_iter": 200},
+    "23rel": {"max_depth": None, "min_samples_leaf": 20, "l2_regularization": 10.0, "max_iter": 200},
     "25": {"max_depth": 6, "min_samples_leaf": 5000, "l2_regularization": 10.0, "max_iter": 50},
     "29": {"max_depth": 6, "min_samples_leaf": 5000, "l2_regularization": 0.0, "max_iter": 200},
 }
-ROLE = {"27": "candidate", "27rel": "diagnostic", "25": "reference", "29": "reference"}
-BUNDLED = ["27", "25", "29"]
+ROLE = {"23": "candidate", "23rel": "diagnostic", "25": "reference", "27": "reference", "29": "reference"}
+BUNDLED = ["23", "25", "27", "29"]
+USES_WEATHER = {"27", "29"}
 TRAINED_ON = ("pipeline_out features_all{weather}.csv: 616,381 clips, AM1-AM6, 2025-03-17..21; "
               "split: event groups + 20-min shared negative blocks, 1-min guard, seed 42 (fit on train only); "
               "label window: w10 (+/-10 min)")
 SHORTCUT_NOTE = {"25": " | REFERENCE ONLY: relies on time-of-day shortcuts (staging schedule)",
+                 "27": " | REFERENCE ONLY: relies on weather/session shortcuts (weather identifies day and hour)",
                  "29": " | REFERENCE ONLY: relies on time-of-day and weather/session shortcuts"}
 
 
@@ -120,7 +126,9 @@ def main():
     ap.add_argument("--episode-max", type=float, default=300)
     ap.add_argument("--seed", type=int, default=42)
     ap.add_argument("--dry-run", action="store_true", help="use validation as a stand-in for test; no bundles")
+    ap.add_argument("--sets", nargs="*", default=list(LOCKED), help="feature sets to run (default: all locked)")
     args = ap.parse_args()
+    assert all(s in LOCKED for s in args.sets), f"unlocked set in {args.sets}; lock its config first"
     args.out.mkdir(parents=True, exist_ok=True)
     assert args.episode_budget in (2, 5, 10), "threshold_table only computes budgets 2/5/10"
 
@@ -131,8 +139,8 @@ def main():
     commit, today = git_commit(), dt.date.today()
 
     results, test_rows, type_rows, val_rows = {}, [], [], []
-    for name, cfg in LOCKED.items():
-        feats = FEATURE_SETS[name]
+    for name in args.sets:
+        cfg, feats = LOCKED[name], FEATURE_SETS[name]
         d = add_relative_loudness(df) if name.endswith("rel") else df
         tr = d[d.split == "train"]
         va = d[d.split == "val"].reset_index(drop=True)
@@ -172,7 +180,8 @@ def main():
             bundle = {
                 "model": model, "scaler": scaler, "features": list(feats), "feature_set": name,
                 "threshold": thr, "version": version,
-                "trained_on": TRAINED_ON.format(weather="_weather" if name == "29" else "") + SHORTCUT_NOTE.get(name, ""),
+                "trained_on": TRAINED_ON.format(weather="_weather" if name in USES_WEATHER else "")
+                + SHORTCUT_NOTE.get(name, ""),
                 "created": f"{today:%Y-%m-%d}",
                 "sklearn_version": sklearn.__version__,
                 "val_metrics": {"precision": v["precision"], "recall": v["recall"],
