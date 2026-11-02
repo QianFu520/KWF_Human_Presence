@@ -26,6 +26,24 @@ Recommendation for the integration phase: deploy the PyTorch checkpoint
   is two files, `tinycnn_v3.onnx` plus `tinycnn_v3.onnx.data` (external
   weights), which must ship together.
 
+### Threshold sweep 0.5–0.99 (Weeks 4–5)
+
+`threshold_sweep.py` on the 4,027 held-out clips (scores from
+`results/20261016_044454`, no rescoring); report in
+`results/threshold_sweep_20261101.md`.
+
+- **Only 1 of 15 staged events changes with the threshold:** the quiet
+  off-trail walk (Audio_Moth_3, 19 March 08:01). Its clips kept rise from
+  65.7% at 0.5 to 81.8% at 0.9, 84.8% at 0.95 and 90.9% at 0.99. Every other
+  event, and all 500 BirdNET clips, are kept 100% at every cutoff.
+- **Background cost:** 1 of 586 background clips (score 0.64) is kept from 0.7
+  upward; the other 585 score ≥ 0.99.
+- Totals: meaningful kept 3,407 / 3,441 at 0.5, 3,423 at 0.9, 3,426 at 0.95.
+- Caveats: the background labels come from two acoustic rules (spectral
+  flatness, energy), so they are the clearest background cases; the cost of a
+  higher cutoff on harder background is not measured here. The benefit rests on
+  one event.
+
 ### Changes after review (2026-11-01)
 
 - `config.AUDIO_DIR` reads the `AED_AUDIO_DIR` environment variable (default

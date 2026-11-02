@@ -9,6 +9,7 @@ modify the model.
 | `validate_aed.py`             | Runs every check and writes the report                                                                                    |
 | `build_field_manifest.py`     | Picks a labelled sample of KWF AudioMoth clips from the Drive folder                                                      |
 | `score_field.py`              | Scores a field run per event type and threshold                                                                           |
+| `threshold_sweep.py`         | Clips kept / dropped per group and per staged event at cutoffs 0.5–0.99, from an existing run's scores                     |
 | `make_twin_logs.py`           | Picks raw recordings for the Digital Twin and writes their ground-truth logs                                              |
 | `score_twin_run.py`           | Runs the Digital Twin on those recordings and scores recall per event type against the logs                               |
 | `submit_twin_runs.py`         | Uploads each recording with its log to a running Digital Twin and saves the dashboard's ground-truth result               |
