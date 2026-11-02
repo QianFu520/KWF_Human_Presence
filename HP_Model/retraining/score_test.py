@@ -51,6 +51,8 @@ LOCKED = {
     "23rel": {"max_depth": None, "min_samples_leaf": 20, "l2_regularization": 10.0, "max_iter": 200},
     "25": {"max_depth": 6, "min_samples_leaf": 5000, "l2_regularization": 10.0, "max_iter": 50},
     "29": {"max_depth": 6, "min_samples_leaf": 5000, "l2_regularization": 0.0, "max_iter": 200},
+    # Locked Nov 1 2026 (tune_val.py --sets 27, same grid).
+    "27": {"max_depth": 4, "min_samples_leaf": 500, "l2_regularization": 10.0, "max_iter": 200},
 }
 ROLE = {"23": "candidate", "23rel": "diagnostic", "25": "reference", "27": "reference", "29": "reference"}
 BUNDLED = ["23", "25", "27", "29"]
