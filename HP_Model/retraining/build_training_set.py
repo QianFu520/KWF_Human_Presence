@@ -27,12 +27,9 @@ import pandas as pd
 
 REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO / "inference_pipeline" / "scripts"))
-from feature_engineering import SENTINEL_SPECIES  # noqa: E402
+from hp_features import HP_FEATURES_25, HP_FEATURES_29  # noqa: E402
 
-ACOUSTIC = ["RMS_Energy", "Spectral_Contrast", "Spectral_Flatness", "Spectral_Bandwidth",
-            "Spectral_Rolloff_85", "Onset_Strength", "MFCC_8", "MFCC_9", "MFCC_12", "MFCC_13"]
-FEATURES_25 = ACOUSTIC + SENTINEL_SPECIES + ["confidence", "hour_sin", "hour_cos", "Eerie_Silence",
-                                             "Volume_Spike_15s"]
+FEATURES_25 = list(HP_FEATURES_25)
 NAMES = ["train", "val", "test"]
 
 
