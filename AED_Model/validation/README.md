@@ -7,7 +7,6 @@ modify the model.
 | File                            | Purpose                                                                                                                   |
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
 | `validate_aed.py`             | Runs every check and writes the report                                                                                    |
-| `make_sample_set.py`          | Builds the sample audio set and its labelled `manifest.csv`                                                             |
 | `build_field_manifest.py`     | Picks a labelled sample of KWF AudioMoth clips from the Drive folder                                                      |
 | `score_field.py`              | Scores a field run per event type and threshold                                                                           |
 | `make_twin_logs.py`           | Picks raw recordings for the Digital Twin and writes their ground-truth logs                                              |
@@ -62,6 +61,13 @@ All paths label a clip `not_meaningful` when `not_meaningful_prob >= threshold`
 
 ## Run it
 
+All validation runs on KWF AudioMoth field clips. The audio is not in the
+repository: it stays on Google Drive (or any local copy) and is found through
+`AED_AUDIO_DIR`. Labels come from `AED_Model/config.py`:
+`LABELS_PROGRESS_PATH` (`outputs/labels_progress.csv`) and `EVENT_TABLE_PATH`
+(`data/event_table.csv`), both local and git-ignored. Only clips listed in the
+manifest are read, so only those stream down from Drive.
+
 From `AED_Model/`:
 
 ```bash
@@ -69,67 +75,56 @@ From `AED_Model/`:
 python -m venv .venv-validation && source .venv-validation/bin/activate
 pip install -r validation/requirements-validation.txt
 
-# 2. Sample audio (downloads 128 ESC-50 clips, about 40 MB; --no_esc50 for synthetic only)
-python validation/make_sample_set.py --out validation/sample_audio
+# 2. Where the clips are: your copy of "Audio Moth Data/Segmented Foldered"
+#    (without it, data/raw_audio/ is used). With Google Drive for desktop:
+export AED_AUDIO_DIR="$HOME/Library/CloudStorage/GoogleDrive-<your account>/My Drive/Audio Moth Data/Segmented Foldered"
 
 # 3. Digital Twin backend (only for sections B6-B7, C5-C6, E4, G4, H)
 git clone --depth 1 https://github.com/KashmirWorld/digital_twin_mvp ../../digital_twin_mvp
 
-# 4. Validate
-python validation/validate_aed.py \
-    --aed_root . \
-    --manifest validation/sample_audio/manifest.csv \
-    --twin_backend ../../digital_twin_mvp/backend \
-    --out validation/results
+# 4. Validate on the 4,027 held-out clips (v3's validation split, never trained on).
+#    The manifest is committed and stores {AUDIO_DIR} placeholders, so it works as is.
+python validation/validate_aed.py --aed_root . \
+    --manifest validation/field/manifest_heldout.csv \
+    --twin_backend ../../digital_twin_mvp/backend --out validation/results
 ```
 
 To test a running server instead of the in-process app, start
 `uvicorn api.main:app --port 8000` in `AED_Model/` and add
 `--api_url http://localhost:8000`.
 
-## Using real field audio (KWF AudioMoth)
+The first read of each clip from Drive is slow; mark the folders *Make available
+offline* first, or expect a long first run.
 
-Paths and label files come from `AED_Model/config.py`:
-`LABELS_PROGRESS_PATH` (outputs/labels_progress.csv), `EVENT_TABLE_PATH`
-(data/event_table.csv) and `AUDIO_DIR`. Set `AUDIO_DIR` with the
-`AED_AUDIO_DIR` environment variable, pointing at your copy of
-`Audio Moth Data/Segmented Foldered`; without it, `data/raw_audio/` is used.
-With Google Drive for desktop:
-
-```bash
-export AED_AUDIO_DIR="$HOME/Library/CloudStorage/GoogleDrive-<your account>/My Drive/Audio Moth Data/Segmented Foldered"
-```
-
-Only clips listed in the manifest are read, so only those stream down from Drive.
+## More field runs
 
 From `AED_Model/`:
 
 ```bash
-# 1. Pick a labelled sample (default: 2 events per type, 500 BirdNET, 500 background).
-#    --check_files stats every clip on Drive and can stall for an hour; validate_aed.py
-#    reports unreadable clips anyway, so it is optional.
-python validation/build_field_manifest.py
-
-# 1b. Report metrics on clips v3 never trained on. Every labelled KWF clip was in v3's
-#     training or validation split, so the default manifest is mostly training data.
-#     --heldout reproduces the split (v3_split.py, checked against the checkpoint's
-#     n_train/n_val) and keeps only validation clips; this takes every held-out event.
+# 1. Rebuild the held-out manifest (needs outputs/labels_progress.csv and data/event_table.csv).
+#    --heldout reproduces v3's train/validation split (v3_split.py, checked against the
+#    checkpoint's n_train/n_val) and keeps only validation clips.
 python validation/build_field_manifest.py --heldout --events_per_type 0 --max_clips_per_event 0 \
     --n_background 0 --out validation/field/manifest_heldout.csv
 
-# 2. Every check on KWF clips, including the Digital Twin parity checks (C5, E4, G4, H1)
+# 1b. A smaller sample (2 events per type, 500 BirdNET, 500 background). Every labelled
+#     KWF clip was in v3's training or validation split, so this one is mostly training data.
+#     --check_files stats every clip on Drive and can stall for an hour; it is optional.
+python validation/build_field_manifest.py
+
+# 2. Every check, including the Digital Twin parity checks (C5, E4, G4, H1)
 python validation/validate_aed.py --aed_root . \
-    --manifest validation/field/manifest.csv \
+    --manifest validation/field/manifest_heldout.csv \
     --twin_backend ../../digital_twin_mvp/backend --out validation/results
 
 # 3. The API checks again against a running server (uvicorn api.main:app --port 8000)
 python validation/validate_aed.py --aed_root . \
-    --manifest validation/field/manifest.csv \
+    --manifest validation/field/manifest_heldout.csv \
     --api_url http://localhost:8000 --skip_workflow --out validation/results
 
 # 4. Score per event type and threshold; writes field_scores.md in the run folder
 python validation/score_field.py --run validation/results/<stamp> \
-    --manifest validation/field/manifest.csv
+    --manifest validation/field/manifest_heldout.csv
 
 # 5. Digital Twin (task 5): pick raw recordings and write their ground-truth logs
 python validation/make_twin_logs.py
@@ -191,13 +186,3 @@ clip_name,path,expected_label,group,source,event_id,recorder
 
 `expected_label` is `meaningful`, `not_meaningful`, or blank / `ambiguous`
 (scored but left out of metrics). `group` drives the per-group tables.
-
-## About the sample audio
-
-- `sample_audio/esc50/`: 128 real recordings from
-  [ESC-50](https://github.com/karolpiczak/ESC-50) (CC BY-NC 3.0), 8 per class
-  from 16 classes. Each was resampled to 48 kHz and cut to its loudest 3 s, so
-  it matches the pipeline's clip contract (144,000 samples).
-- `sample_audio/synthetic/`: 10 generated files for contract and edge cases.
-- ESC-50 is not AudioMoth field audio. Results on it show the service behaves
-  sensibly on real sound; they are not a measure of field accuracy.

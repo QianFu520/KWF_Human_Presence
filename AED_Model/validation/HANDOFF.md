@@ -26,7 +26,9 @@ the deployed Digital Twin with ground-truth logs. Everything is on the
 - The FastAPI service (`api/main.py`) runs locally. `/` now redirects to `/docs`.
 - `config.AUDIO_DIR` and every `audio_path` in `outputs/labels_progress.csv`
   point at the Google Drive clip folder.
-- **All audio-based checks now run on KWF AudioMoth clips; ESC-50 is retired.**
+- **All audio-based checks run on KWF AudioMoth clips.** Before field audio was
+  available, early code checks used public ESC-50 clips; that sample set and its
+  script were removed from the branch (reports are on Drive).
   The headline set is 4,027 clips TinyCNN v3 never trained on (its reproduced
   validation split), covering all five staged event types.
 - The deployed twin (Docker) was run on 5 field recordings, one run per recording
@@ -91,7 +93,7 @@ training data and is kept only as a check; do not quote its metrics.
 | `results/20261016_045042` | 4,027 held-out KWF clips | Live server `uvicorn --port 8011` (`--api_url`, `--skip_workflow`) | PASS: 19 pass, 0 fail, 2 warn |
 | `results/20261016_042947` | 1,818 KWF clips (default manifest, mostly training data) | In-process + twin | 23 pass, 1 fail (C5, 3 clips; KNOWN under the current harness), 2 warn |
 | `results/twin_deployed_20261016` | 5 raw field recordings, 46 h | Deployed twin (Docker), dashboard | Dashboard = independent re-score, exactly |
-| `results/20261015_231906`, `20261015_231946` | ESC-50 sample set (retired) | Mac in-process / live server | PASS; kept for the record |
+| `20261015_231906`, `20261015_231946` (Drive only) | ESC-50 sample set (removed) | Mac in-process / live server | PASS; kept on Drive for the record |
 
 Commands (from `AED_Model/`):
 
@@ -359,7 +361,7 @@ Findings:
 | `validation/paths.py` | New: `{AUDIO_DIR}` / `{RAW_AUDIO}` placeholders |
 | `validation/score_twin_run.py` | New: twin field scoring with chance baseline |
 | `validation/submit_twin_runs.py` | New: runs recordings through the deployed twin |
-| `validation/make_twin_logs.py`, `ground_truth.py`, `score_field.py`, `make_sample_set.py` | Logs with placeholder paths; the rest as before |
+| `validation/make_twin_logs.py`, `ground_truth.py`, `score_field.py` | Logs with placeholder paths; the rest as before |
 | `validation/README.md`, `HANDOFF.md` | Docs |
 | `validation/field/` | Manifests and ground-truth logs |
 | `validation/results/` | Summary reports only (`report.md`, `field_scores.md`) |

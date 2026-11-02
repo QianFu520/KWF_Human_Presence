@@ -25,8 +25,7 @@ Nothing here retrains or modifies the model.
 Usage (from AED_Model/):
     python validation/validate_aed.py \
         --aed_root . \
-        --clips validation/sample_audio \
-        --manifest validation/sample_audio/manifest.csv \
+        --manifest validation/field/manifest_heldout.csv \
         [--twin_backend /path/to/digital_twin_mvp/backend] \
         [--api_url http://localhost:8000]      # live server instead of in-process
         [--out validation/results]
