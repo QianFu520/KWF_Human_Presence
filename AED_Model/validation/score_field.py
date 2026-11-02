@@ -7,7 +7,7 @@ field_scores.csv with:
   - clip-level results per group at thresholds 0.5 / 0.7 / 0.95
   - event-level recall per event type (event hit = at least one clip kept)
 
-Decision rule matches the API: label = not_meaningful if p > threshold.
+Decision rule matches the API and CLI: label = not_meaningful if p >= threshold.
 The Digital Twin gate (confidence = 1 - p >= 0.3) equals threshold 0.7.
 
 Usage:
@@ -48,7 +48,7 @@ def main():
     if {"p_api", "p_cli"} <= set(df.columns) and df.p_api.notna().any():
         both = df.dropna(subset=["p_api", "p_cli"])
         diff = (both.p_api - both.p_cli).abs()
-        lab_diff = ((both.p_api > 0.5) != (both.p_cli > 0.5)).sum()
+        lab_diff = ((both.p_api >= 0.5) != (both.p_cli >= 0.5)).sum()
         lines += ["## API vs model", f"- clips compared: {len(both)}",
                   f"- max |p_api - p_model|: {diff.max():.2e} (API rounds to 4 decimals)",
                   f"- label disagreements at 0.5: {lab_diff}\n"]
@@ -58,13 +58,13 @@ def main():
     for (g, exp), d in ok.groupby(["group", "expected_label"]):
         r = {"group": g, "expected": exp, "clips": len(d)}
         for t in THRESHOLDS:
-            correct = (d.p > t) if exp == "not_meaningful" else (d.p <= t)
+            correct = (d.p >= t) if exp == "not_meaningful" else (d.p < t)
             r[f"clip_correct@{t}"] = round(correct.mean(), 3)
         ev = d[d.event_id != ""]
         if len(ev):
             r["events"] = ev.event_id.nunique()
             for t in THRESHOLDS:
-                hit = ev.groupby("event_id").p.apply(lambda s: (s <= t).any())
+                hit = ev.groupby("event_id").p.apply(lambda s: (s < t).any())
                 r[f"event_recall@{t}"] = round(hit.mean(), 3)
         rows.append(r)
     tab = pd.DataFrame(rows)
@@ -74,7 +74,7 @@ def main():
               "event_recall = share of events with at least one clip kept as meaningful.\n",
               md(tab), "",
               "## Misses at 0.5 (meaningful clips scored not_meaningful), lowest-confidence first\n",
-              ok[(ok.expected_label == "meaningful") & (ok.p > 0.5)]
+              ok[(ok.expected_label == "meaningful") & (ok.p >= 0.5)]
                 .sort_values("p", ascending=False)[["clip_name", "group", "p"]].head(20).pipe(md)]
     with open(os.path.join(a.run, "field_scores.md"), "w") as f:
         f.write("\n".join(lines) + "\n")

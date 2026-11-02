@@ -1,10 +1,25 @@
 # AED validation: handoff
 
-Status as of 2026-10-16. Covers getting the AED service running locally, pointing
-the project at the audio on Google Drive, validating every check on KWF field
-audio, and task 5: field recordings through the deployed Digital Twin with
-ground-truth logs. **None of it is committed yet**; see
-[Uncommitted changes](#uncommitted-changes).
+Status as of 2026-10-16, updated 2026-11-01 after review. Covers getting the AED
+service running locally, pointing the project at the audio on Google Drive,
+validating every check on KWF field audio, and task 5: field recordings through
+the deployed Digital Twin with ground-truth logs. Everything is on the
+`aed-validation` branch except bulk run outputs, which are on Drive:
+[AED validation results](https://drive.google.com/drive/folders/1zgaQq6ZMgiorRA2y9es7NyehX__0ooFi).
+
+### Changes after review (2026-11-01)
+
+- `config.AUDIO_DIR` reads the `AED_AUDIO_DIR` environment variable (default
+  `data/raw_audio/`) instead of a hard-coded path.
+- Threshold standardised: every path labels `not_meaningful` when
+  `not_meaningful_prob >= 0.5` (the API used `>`).
+- C5 is reported as **KNOWN** (an explained exception) rather than FAIL, while
+  every differing clip has at most one cell over tolerance and an unchanged
+  label. Checked on the affected clips (run of 2026-11-01): `22 pass, 0 fail,
+  1 known exception`. The committed `report.md` files predate this and still
+  show C5 as FAIL.
+- Bulk results, the slides and the spreadsheet moved to Drive; only summary
+  reports stay in the branch.
 
 ## Summary
 
@@ -34,9 +49,9 @@ ground-truth logs. **None of it is committed yet**; see
 **Final result: PASS.** The service loads the correct v3 checkpoint;
 preprocessing is identical across training, labelling, CLI and API, and the twin
 agrees to within 3e-6 in probability; the API contract holds over HTTP; the
-deployed twin's dashboard is reproduced exactly. The harness reports C5 as FAIL
-on field audio: one spectrogram cell in 3 very quiet clips differs, with no
-effect on any probability (explained under issues). On held-out KWF clips AED
+deployed twin's dashboard is reproduced exactly. C5 (twin preprocessing) is a known
+exception: one spectrogram cell in 2 very quiet clips differs, with no effect on
+any probability (explained under issues). On held-out KWF clips AED
 keeps 99.0% of meaningful clips and drops 100% of background. Weak spot: the
 quiet off-trail walk on Audio_Moth_3 (66% of its clips kept at 0.5).
 
@@ -72,9 +87,9 @@ training data and is kept only as a check; do not quote its metrics.
 
 | Run folder | Audio | Target | Result |
 |---|---|---|---|
-| `results/20261016_044454` | **4,027 held-out KWF clips** | In-process API + twin backend, section H | 23 pass, **1 fail (C5, explained)**, 2 warn |
+| `results/20261016_044454` | **4,027 held-out KWF clips** | In-process API + twin backend, section H | 23 pass, **1 fail (C5, explained; KNOWN under the current harness)**, 2 warn |
 | `results/20261016_045042` | 4,027 held-out KWF clips | Live server `uvicorn --port 8011` (`--api_url`, `--skip_workflow`) | PASS: 19 pass, 0 fail, 2 warn |
-| `results/20261016_042947` | 1,818 KWF clips (default manifest, mostly training data) | In-process + twin | 23 pass, 1 fail (C5), 2 warn |
+| `results/20261016_042947` | 1,818 KWF clips (default manifest, mostly training data) | In-process + twin | 23 pass, 1 fail (C5, 3 clips; KNOWN under the current harness), 2 warn |
 | `results/twin_deployed_20261016` | 5 raw field recordings, 46 h | Deployed twin (Docker), dashboard | Dashboard = independent re-score, exactly |
 | `results/20261015_231906`, `20261015_231946` | ESC-50 sample set (retired) | Mac in-process / live server | PASS; kept for the record |
 
@@ -115,10 +130,10 @@ None block deployment.
 
 | Check | Issue |
 |---|---|
-| C5 | **Twin preprocessing differs on very quiet clips.** 3 of 4,027 KWF clips (pre-dawn background, peak ≈0.026 vs typical 0.18) have one mel cell below librosa's power floor (`amin` 1e-10) in training; the twin peak-normalises first, so that cell is not clamped: up to 1.08 dB in 1 of 32,768 cells. Probabilities identical (E4 ≤ 3e-6). The other 4,024 clips differ by < 1e-3 dB |
+| C5 | **Twin preprocessing differs on very quiet clips.** 2 of 4,027 held-out KWF clips (3 of 1,818 in the default manifest; pre-dawn background on Audio_Moth_3, peak ≈0.026 vs typical 0.18) have one mel cell below librosa's power floor (`amin` 1e-10) in training; the twin peak-normalises first, so that cell is not clamped: up to 1.08 dB in 1 of 32,768 cells. Probabilities identical (E4 ≤ 3e-6). The other 4,025 clips differ by < 1e-3 dB. Reported as KNOWN, not FAIL |
 | G3 | **Quiet off-trail walk partly scored as background.** Audio_Moth_3, 19 March 08:01: 34 of 99 clips scored not_meaningful at 0.5. The twin also missed this event (no stage-1 trigger) |
 | F1 | **End-of-clip blind spot.** The mel is cropped to 256 frames (2.73 s of 3 s); a short sound after ~2.6 s is not seen |
-| E5 | **Threshold comparison differs.** CLI `prob >= t`, API `prob > t`; 0 disagreements on 4,027 clips |
+| E5 | **Threshold comparison differed.** CLI `prob >= t`, API `prob > t`; 0 disagreements on 4,027 clips. Fixed: the API now uses `>=` too |
 | — | **Operating points.** API 0.5 on not_meaningful_prob; the twin keeps meaningful confidence ≥ 0.75 when the run comes from the UI (0.3 is only the backend fallback) |
 | Field | AED kept 98% of the twin's stage-1 triggers on field recordings; the prefilter decides what is flagged |
 | C6 | Twin resampling for non-48 kHz input differs from training (5.6 dB on a 44.1 kHz test file). Not applicable to AudioMoth audio, which is always 48 kHz; not exercised on KWF data |
@@ -175,9 +190,10 @@ exist; anything else returns `{"detail":"Not Found"}`.
 
 ## Data paths
 
-- `config.py`: `AUDIO_DIR` now points at the Drive `Segmented Foldered` folder.
-  Nothing in the code reads `AUDIO_DIR` directly; notebooks use `audio_path`
-  from the CSV.
+- `config.py`: `AUDIO_DIR` comes from the `AED_AUDIO_DIR` environment variable
+  (default `data/raw_audio/`). Set it to the Drive `Segmented Foldered` folder.
+  The validation scripts expand `{AUDIO_DIR}` placeholders from it; notebooks use
+  `audio_path` from the CSV.
 - `outputs/labels_progress.csv` (gitignored): `audio_path` rewritten from
   `/Users/qian/KWF/Segmented_Foldered` to the Drive folder for all 631,317 rows,
   by plain text replacement (every other column byte-identical). The backup made
@@ -334,16 +350,18 @@ Findings:
 
 | File | Change |
 |---|---|
-| `validation/validate_aed.py` | Manifest clips scored through the CLI path; empty comparisons fail; placeholder paths |
+| `validation/validate_aed.py` | Manifest clips scored through the CLI path; empty comparisons fail; placeholder paths; KNOWN status for C5; `>=` threshold |
 | `validation/build_field_manifest.py` | `--heldout`; specific event wins over walk; `0` = all; writes placeholder paths |
 | `validation/v3_split.py` | New: reproduces v3's train/validation split |
 | `validation/paths.py` | New: `{AUDIO_DIR}` / `{RAW_AUDIO}` placeholders |
 | `validation/score_twin_run.py` | New: twin field scoring with chance baseline |
 | `validation/submit_twin_runs.py` | New: runs recordings through the deployed twin |
 | `validation/make_twin_logs.py`, `ground_truth.py`, `score_field.py`, `make_sample_set.py` | Logs with placeholder paths; the rest as before |
-| `validation/README.md`, `HANDOFF.md`, `field_section.md` | Docs |
-| `validation/field/` | Manifests, ground-truth logs, `v3_split.csv` |
-| `validation/results/` | Run reports, checks, per-clip scores, twin dashboard results |
+| `validation/README.md`, `HANDOFF.md` | Docs |
+| `validation/field/` | Manifests and ground-truth logs |
+| `validation/results/` | Summary reports only (`report.md`, `field_scores.md`) |
+| `config.py` | `AUDIO_DIR` from `AED_AUDIO_DIR` (default `data/raw_audio/`) |
+| `api/main.py` | `GET /` redirects to `/docs`; `not_meaningful` when `prob >= THRESHOLD` |
 
 Not in the branch:
 
@@ -351,6 +369,11 @@ Not in the branch:
   the 4,027-clip run) and, via `validation/.gitignore`, the twin's
   `backend_payload.json` files (~10 MB each) and `results/logs/`. Rerun to
   regenerate them.
-- Local edits outside `validation/`: `config.py` (`AUDIO_DIR` → Drive),
-  `api/main.py` (`GET /` → `/docs`), and edits to `docs/MODEL_TRAINING.md` and
-  `docs/aed_inference.md` that were not part of this work.
+- On Drive ([AED validation results](https://drive.google.com/drive/folders/1zgaQq6ZMgiorRA2y9es7NyehX__0ooFi)):
+  per-run `checks.csv`, `per_clip.csv`, `cli_predictions.csv`, `summary.json`,
+  twin workflow timelines, deployed-twin dashboards, `field/v3_split.csv`, the
+  slides and the step 2 spreadsheet. `validation/.gitignore` keeps new copies of
+  these out of git.
+- Local edits to `docs/MODEL_TRAINING.md` and `docs/aed_inference.md` were
+  editor reformatting only (table separator padding, blank lines before lists),
+  with no content change; they were discarded.

@@ -14,7 +14,23 @@ modify the model.
 | `score_twin_run.py`           | Runs the Digital Twin on those recordings and scores recall per event type against the logs                               |
 | `submit_twin_runs.py`         | Uploads each recording with its log to a running Digital Twin and saves the dashboard's ground-truth result               |
 | `requirements-validation.txt` | Pinned environment the record was produced in                                                                             |
-| `results/<timestamp>/`        | One folder per run: `report.md`, `checks.csv`, `per_clip.csv`, `summary.json`, plus Digital Twin workflow outputs |
+| `results/<timestamp>/`        | One folder per run. Only `report.md` (and `field_scores.md`) are committed; see [Full results](#full-results) |
+
+## Full results
+
+The repository keeps the scripts and the summary reports (`results/*/report.md`,
+`field_scores.md`). Everything else from the recorded runs is on Google Drive:
+[AED validation results](https://drive.google.com/drive/folders/1zgaQq6ZMgiorRA2y9es7NyehX__0ooFi). It holds, in the same folder layout:
+
+- per-run `checks.csv`, `per_clip.csv`, `cli_predictions.csv`, `summary.json`;
+- the Digital Twin workflow timelines (`twin_workflow/`) and the deployed-twin
+  dashboard results (`twin_deployed_20261016/`);
+- `field/v3_split.csv` (regenerate with `v3_split.py`);
+- the presentation (`AED_Validation_Results.pptx`) and the step 2 evidence
+  spreadsheet (`AED_step2_artifact_and_preprocessing.xlsx`).
+
+New runs write the full set locally; `validation/.gitignore` keeps all but the
+summary reports out of git.
 
 ## What it checks
 
@@ -29,8 +45,20 @@ modify the model.
 | G Metrics                | Confusion matrix, threshold sweep and per-group results against `manifest.csv` labels                                                                                                             |
 | H Digital Twin workflow  | Runs the twin's own `run_node_audio_workflow` on a long file built from the clips, re-scores every AED event independently, and reports which clips reached AED                                   |
 
-A check is PASS, FAIL, WARN (works, but something to raise) or INFO. The run
-exits 1 if anything FAILs.
+A check is PASS, FAIL, KNOWN (an explained difference within stated bounds),
+WARN (works, but something to raise) or INFO. The run exits 1 if anything FAILs.
+
+Known exceptions are listed at the top of `report.md`. There is one:
+
+- **C5, Digital Twin preprocessing.** The twin peak-normalises audio before
+  computing the mel spectrogram. On near-silent clips that moves one cell across
+  `power_to_db`'s absolute floor (`amin`), so it differs from training by up to
+  ~1 dB in that cell. C5 reports KNOWN only while every differing clip has at
+  most one cell over tolerance and the twin's label equals the CLI's; anything
+  else is still a FAIL.
+
+All paths label a clip `not_meaningful` when `not_meaningful_prob >= threshold`
+(default 0.5).
 
 ## Run it
 
@@ -63,9 +91,16 @@ To test a running server instead of the in-process app, start
 
 Paths and label files come from `AED_Model/config.py`:
 `LABELS_PROGRESS_PATH` (outputs/labels_progress.csv), `EVENT_TABLE_PATH`
-(data/event_table.csv) and `AUDIO_DIR` (the streamed Google Drive folder
-`Audio Moth Data/Segmented Foldered`). Only clips listed in the manifest are
-read, so only those stream down from Drive.
+(data/event_table.csv) and `AUDIO_DIR`. Set `AUDIO_DIR` with the
+`AED_AUDIO_DIR` environment variable, pointing at your copy of
+`Audio Moth Data/Segmented Foldered`; without it, `data/raw_audio/` is used.
+With Google Drive for desktop:
+
+```bash
+export AED_AUDIO_DIR="$HOME/Library/CloudStorage/GoogleDrive-<your account>/My Drive/Audio Moth Data/Segmented Foldered"
+```
+
+Only clips listed in the manifest are read, so only those stream down from Drive.
 
 From `AED_Model/`:
 
