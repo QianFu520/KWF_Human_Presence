@@ -248,6 +248,23 @@ and threshold, identical predictions) and the old file removed; its `trained_on`
 relabel. Patrick's draft format lists feature sets "25" and "29"; "23" and "27" still need to
 be allowed.
 
+### Diagnostics (Nov 1, validation only)
+
+These checks used the 23-feature set, the same split and the same grid, with tuning on val.
+Test was not scored and no bundles were saved. Results are in `models\diagnostics_nov1\`.
+
+- **Tight label window: no gain.** A 23-feature model trained on tight labels (±5 min for
+  presence, 0 to +2 min for other events) did not beat the w10 candidate, even when both were
+  scored on tight val labels: within-hour PR-AUC **0.645 vs 0.657** (PR-AUC 0.376 vs 0.394).
+  Recall at ≤ 5 false-alert episodes per recorder per day was essentially equal (0.235 vs 0.231).
+- **`not_meaningful_prob` (AED) as a feature: no gain.** It ranked **last of 24** features by
+  permutation importance (−0.005). Val PR-AUC moved 0.423 → 0.430 and within-hour 0.714 → 0.704,
+  both within the noise of picking the best of 96 configs.
+- **BirdNET has no non-bird classes.** Pruning BirdNET v2.4 from 6,522 classes to 493 bird
+  classes removed its non-bird classes (human vocal, human non-vocal, engine, siren and similar),
+  so the model can't output them. The 218-species allow-list is a subset of the 493 birds, and
+  `birdnet_output.csv` holds only those 218 allow-listed birds (all six recorders checked).
+
 ## 4. Open issues
 
 1. **Threshold transfer.** Val → test false alerts rise for most models (set for ≤ 5 episodes
@@ -266,7 +283,14 @@ be allowed.
 5. **Recommendations:**
    - (a) In future field sessions, **record quiet control periods at the staging hours**
      (16:00–18:00 and the morning slots), so negatives exist at the same times as events.
-   - (b) **Ask Qian for recorder coordinates.** Recorders too far away to hear an event could
-     then supply negatives simultaneous with it. That is the only way, with this data, to
-     separate detection from time of day and session.
-6. Not done yet: other label windows (per_type, tight), leave-one-day-out CV, an MLP comparison.
+   - (b) **Recorder coordinates needed.** Recorders too far away to hear an event could then
+     supply negatives simultaneous with it. That is the only way, with this data, to separate
+     detection from time of day and session.
+   - (c) **Consider keeping BirdNET's non-bird classes** (human vocal, human non-vocal, engine,
+     siren and similar) in the pruned export as candidate HP features, coordinated with Rashi.
+     This may be a small change if the keep-set is still a config input. The unpruned model
+     isn't in the repo, though, so it needs a re-export from the full BirdNET v2.4 model.
+   - (d) **Confirm how event times in `simulations.csv` were logged**, since tighter label
+     windows didn't help.
+6. Label windows and models: tight was tested on val (no gain, see Diagnostics). Still to do:
+   per_type, leave-one-day-out CV, an MLP comparison.
