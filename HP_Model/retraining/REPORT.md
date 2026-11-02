@@ -15,7 +15,12 @@ was recorded:
 
 Most staged events happened at 16:00–18:00, and the training data has almost no quiet audio
 from those hours or sessions. **The case for 23 rests on deployment, not on test scores** (see
-§3). Recommendation: no weather.
+§3). Recommendation: no weather for now.
+
+**23 is the candidate for integration testing, not a field-ready model.** It gives Patrick a
+real model to run in the pipeline. Its detection is still weak:
+- recall 0.28 at about 10 false-alert episodes per recorder per day on test
+- near-zero recall on vehicle (0.02) and off-trail presence (0.002)
 
 ---
 
@@ -193,17 +198,19 @@ shortcut, not detection.
 
 ### Weather conclusion
 
-There is **no evidence that weather helps detection beyond identifying the session**:
-- **Where the gain comes from:** 27's gains come from wind speed, temperature and humidity, not
-  from acoustic features.
-- **It doesn't carry over:** 27's val within-hour score of 0.99 drops to 0.68 on test, where
-  sessions differ from training.
-- **This data can't separate the two:** 27 does beat 23 on test within-hour (0.68 vs 0.45), but
-  no negative shares a day and hour with a positive, so that gap can't be told apart from
-  session identification.
+**No weather for now.** 27 scores better than 23 on test (within-hour 0.68 vs 0.45), but this
+data can't separate a real benefit from session identification:
+- **No shared sessions:** no negative shares a day and hour with a positive, so anything that
+  identifies the session separates the classes.
+- **Where the gain comes from:** 27's top features are wind speed, temperature and humidity, not
+  acoustic features.
+- **It only partly carries over:** 27's val within-hour score of 0.99 drops to 0.68 on test,
+  where sessions differ from training.
 
-**Recommend no weather** (25-family features): no internet needed in the field, and no clean
-evidence that anything is lost.
+Staying with the 25-family features (no hour features in the candidate) also means no internet
+is needed in the field. **Re-test weather once clean simultaneous negatives exist** (quiet
+control recordings at the staging hours, or recorders too far away to hear an event; see Open
+issues).
 
 ### AM3 (quiet recorder) and the relative-loudness diagnostic
 
