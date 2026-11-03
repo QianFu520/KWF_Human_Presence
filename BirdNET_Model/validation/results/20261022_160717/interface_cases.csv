@@ -1,0 +1,11 @@
+case,file,frames,samplerate,channels,subtype,multiple_of_144000,status,completed,windows_scored,outcome,caller_can_see_problem,error
+wrong_length_real,Audio_Moth_6_20250321_131347.wav,143360,48000,1,PCM_16,False,done,1,0,skipped_silently,False,
+wrong_length_real,Audio_Moth_6_20250321_131538.wav,143360,48000,1,PCM_16,False,done,1,0,skipped_silently,False,
+wrong_length_real,Audio_Moth_6_20250321_131608.wav,147456,48000,1,PCM_16,False,done,1,0,skipped_silently,False,
+wrong_length_real,Audio_Moth_6_20250321_131611.wav,143360,48000,1,PCM_16,False,done,1,0,skipped_silently,False,
+wrong_length_real,Audio_Moth_6_20250321_131902.wav,147456,48000,1,PCM_16,False,done,1,0,skipped_silently,False,
+stereo_made,stereo_Audio_Moth_6_20250321_062605.wav,144000,48000,2,PCM_16,True,done,1,0,skipped_silently,False,
+stereo_made,stereo_Audio_Moth_6_20250321_071002.wav,144000,48000,2,PCM_16,True,done,1,0,skipped_silently,False,
+stereo_made,stereo_Audio_Moth_6_20250321_080326.wav,144000,48000,2,PCM_16,True,done,1,0,skipped_silently,False,
+stereo_made,stereo_Audio_Moth_6_20250321_094544.wav,144000,48000,2,PCM_16,True,done,1,0,skipped_silently,False,
+stereo_made,stereo_Audio_Moth_6_20250321_130853.wav,144000,48000,2,PCM_16,True,done,1,0,skipped_silently,False,
