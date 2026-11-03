@@ -1,0 +1,14 @@
+# Environment the AED validation record was produced in.
+# Model pins match AED_Model/requirements.txt; service pins match api/requirements.txt minimums.
+torch==2.2.2
+librosa==0.11.0
+numpy==1.26.4
+soundfile==0.13.1
+pandas==2.3.3
+tqdm==4.67.1
+scipy
+fastapi>=0.111
+uvicorn[standard]>=0.29
+python-multipart>=0.0.9
+httpx
+onnxruntime

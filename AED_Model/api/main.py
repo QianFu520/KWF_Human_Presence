@@ -6,7 +6,7 @@ Usage:
 
 Environment variables:
     MODEL_PATH  Path to .pth checkpoint (default: outputs/models/tinycnn_v3.pth)
-    THRESHOLD   not_meaningful_prob cutoff (default: 0.5)
+    THRESHOLD   not_meaningful_prob cutoff (default: 0.5); not_meaningful if prob >= THRESHOLD
 """
 
 import io
@@ -18,6 +18,7 @@ import librosa
 import numpy as np
 import torch
 from fastapi import FastAPI, File, HTTPException, UploadFile
+from fastapi.responses import RedirectResponse
 from pydantic import BaseModel
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -90,9 +91,14 @@ async def predict(file: UploadFile = File(...)):
         prob = torch.sigmoid(_model(x).squeeze(1)).item()
 
     not_meaningful_prob = round(1.0 - prob, 4)
-    label = "not_meaningful" if not_meaningful_prob > THRESHOLD else "meaningful"
+    label = "not_meaningful" if not_meaningful_prob >= THRESHOLD else "meaningful"
 
     return PredictResponse(label=label, not_meaningful_prob=not_meaningful_prob)
+
+
+@app.get("/", include_in_schema=False)
+def root():
+    return RedirectResponse(url="/docs")
 
 
 @app.get("/health")

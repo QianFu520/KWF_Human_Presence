@@ -1,0 +1,14 @@
+# Large, regenerable run outputs (audio is already ignored by AED_Model/.gitignore)
+results/**/backend_payload.json
+results/logs/
+
+# Bulk run outputs, the slides and the spreadsheet live on Google Drive (see README,
+# "Full results"). Only the summary reports are committed.
+results/**
+!results/**/
+!results/**/report.md
+!results/**/field_scores.md
+!results/threshold_sweep_*.md
+field/v3_split.csv
+*.pptx
+*.xlsx
