@@ -6,15 +6,15 @@ and as used inside the Digital Twin.
 | | |
 |---|---|
 | Model under test | `birdnet_fp16_pruned493.onnx` |
-| Results run | `validation/results/20261022_160717/`, run from commit `b208532` with no uncommitted changes |
-| Criteria status | Proposed, not yet approved by the team lead (`validation/config/criteria.json`) |
+| Results run | `validation/results/20261106_162306/`, run from commit `219bc94` with no uncommitted changes (after the V-001 fix) |
+| Criteria status | Approved by the team lead (`validation/config/criteria.json`) |
 
 ## 1. Summary
 
 - **Verdict:** every gated criterion passes. The API reproduces the original BirdNET v2.4 on all 709 test clips.
 - **Fidelity:** top-1 species matches on 709 of 709 clips. Confidence is within 0.05 on 709 of 709 and within 0.01 on 689 of 709. Largest difference: 0.029.
 - **Digital Twin:** with the compressed model switched on, checks T1 to T5 pass on a 6.9 h recording (1,777 events, no interface, label or hand-off errors).
-- **Issues:** seven recorded in `validation/ISSUES.md` (V-001 to V-007). None changes the scores of files that are read. Four (V-002 to V-005) concern how the Twin behaves once BirdNET is on and need decisions from the team lead.
+- **Issues:** seven recorded in `validation/ISSUES.md` (V-001 to V-007). None changes the scores of files that are read. Three are resolved: V-001 is fixed and verified in this run, V-004 has a traced cause (the Twin's placeholder human-presence formula, not BirdNET), and V-006 is closed by decision. Four are open: V-002, V-003 and V-005 sit with the Twin owner, and V-007 is record only.
 
 ## 2. Scope
 
@@ -70,7 +70,7 @@ Thresholds come from numbers already recorded in this repo (Phase 4, 51,720 clip
 | C5 | Confidence within 0.01 of the original | >= 98.6% | No |
 | C6 | Detection set at 0.25 equals the recorded FP16 set | 100% | Yes |
 | C8 | Wrong-length and stereo files are never scored | 10 of 10 | Yes |
-| C9 | The caller is told when a file is rejected | 10 of 10 | No (V-001) |
+| C9 | The caller is told when a file is rejected, and a partly failed job lists the skipped files | 10 of 10, plus the mixed job | No |
 
 C5 is reported but not gated. The recorded Phase 4 value for this recorder alone is 97.18%, already below the 98.6% population figure.
 
@@ -99,11 +99,11 @@ The 20 clips outside 0.01 are all within 0.03. This is FP16 rounding and matches
 
 | Case | Result |
 |---|---|
-| 5 real wrong-length clips | Not scored (0 windows). Job ends `done` with no error. |
-| 5 stereo files made from good clips | Not scored (0 windows). Job ends `done` with no error. |
-| Mixed job (1 good, 1 wrong length, 1 stereo) | `done`, 3 of 3 completed, 1 window scored. The good clip is scored correctly. |
+| 5 real wrong-length clips | Not scored (0 windows). Job ends `error`, and the error names the file. |
+| 5 stereo files made from good clips | Not scored (0 windows). Job ends `error`, and the error names the file. |
+| Mixed job (1 good, 1 wrong length, 1 stereo) | `done`, 3 of 3 completed, 1 window scored, `skipped` = 2 with both files in `failures`. The good clip is scored correctly. |
 
-C8 passes: bad files are never scored. C9 fails: the caller cannot see the rejection (V-001).
+C8 passes: bad files are never scored. C9 passes: every rejection is visible to the caller (V-001 fixed). In the previous run, before the fix, all 10 bad files ended as `done` with no error, so C9 failed. The scores in 6.1 and 6.2 are identical in both runs.
 
 Effect of the Twin's preprocessing on the 709 clips, compared with unchanged clips:
 
@@ -143,13 +143,13 @@ Model identity in run 4 is proven by hash: the file loaded by the API is the val
 
 Measured on 709 clips, one thread, Windows 11 CPU.
 
-| Metric | Value |
-|---|---|
-| Throughput | 17.1 windows/s |
-| Inference per window | mean 57.5 ms, p95 81.2 ms |
-| Peak memory | 211 MB |
+| Metric | This run (`20261106_162306`) | Earlier run (`20261022_160717`) |
+|---|---|---|
+| Throughput | 4.95 windows/s | 17.1 windows/s |
+| Inference per window | mean 199.6 ms, p95 219.3 ms | mean 57.5 ms, p95 81.2 ms |
+| Peak memory | 212 MB | 211 MB |
 
-These are one-machine figures, recorded for reference and not pass/fail. They vary between runs on the same machine.
+These are one-machine figures, recorded for reference and not pass/fail. The two runs used the same model, code path and machine, and speed differed by about 3.5 times. The cause was not investigated (machine load and power state were not recorded), so treat the speed figures as indicative only. Peak memory was stable.
 
 ## 7. Open items
 
@@ -157,20 +157,26 @@ Issues (details, evidence and suggested fixes in `validation/ISSUES.md`):
 
 | ID | Issue | Severity | Status |
 |---|---|---|---|
-| V-001 | Skipped files are not reported in the job result | Medium | Open, not fixed |
-| V-002 | Species allow-list not applied in the Digital Twin | Medium | Open, not fixed |
-| V-003 | Twin threshold (0.5) differs from the validated threshold (0.25) | Medium | Open, not fixed |
-| V-004 | Human-presence confirmations rose from 0 to 134 with BirdNET on | High | Open, cause not traced |
-| V-005 | Dashboard detections fell from 1,777 to 218 with BirdNET on | Medium | Open, not fixed |
-| V-006 | The API takes file paths only, no upload | Medium | Open, decision needed before integration |
-| V-007 | Jobs are kept in memory only | Low | Open, not fixed |
+| V-001 | Skipped files are not reported in the job result | Medium | Fixed, verified in run `20261106_162306` |
+| V-002 | Species allow-list not applied in the Digital Twin | Medium | Open, with the Twin owner |
+| V-003 | Twin threshold (0.5) differs from the validated threshold (0.25) | Medium | Decided: 0.25 on our side. Twin owner to change 0.5 |
+| V-004 | Human-presence confirmations rose from 0 to 134 with BirdNET on | High | Cause found: the Twin's placeholder formula, not BirdNET |
+| V-005 | Dashboard detections fell from 1,777 to 218 with BirdNET on | Medium | Open, with the Twin owner |
+| V-006 | The API takes file paths only, no upload | Medium | Closed: file paths for all services |
+| V-007 | Jobs are kept in memory only | Low | Open, record only |
 
-Decisions needed from the team lead:
-- Approve the pass criteria in `validation/config/criteria.json`, and decide whether C5 should be gated.
-- Fix V-001 and choose the job status for partly failed jobs.
-- Choose the Twin threshold (V-003) and whether to apply the allow-list (V-002).
-- Trace the 134 human-presence confirmations (V-004) and decide which count is the Twin's result (V-005).
-- Decide whether the Twin should call the API over HTTP or load the ONNX model itself.
+Decisions made by the team lead:
+- Pass criteria approved. C5 stays reported, not gated.
+- V-001: a job ends `done` if at least one file was scored and `error` if none was. Adding response fields is acceptable.
+- V-003: 0.25 everywhere on our side. The Twin's 0.5 is raised with its owner, together with V-002 and V-005.
+- V-002: recommended for the Twin is to drop detections with `in_allow_list: false`, as `inference_pipeline/scripts/run_birdnet.py` does.
+- V-006: file paths, not uploads, for all services.
+
+Still open:
+- Twin threshold, allow-list and dashboard count (V-002, V-003, V-005): with the Twin owner.
+- Whether the Twin calls the API over HTTP or loads the ONNX model itself: decided in the integration work (Weeks 6 to 8).
+- Shared API contract (`/health`, `/predict`, `/jobs`) for AED, BirdNET and human presence: Patrick is drafting it. BirdNET has no `/predict` endpoint today.
+- The pruned model dropped the non-bird classes (human vocal, human non-vocal, engine, siren). A full-model test is under way and a re-export may be requested. The validation scripts do not depend on the model file.
 
 ## 8. Not covered
 
@@ -196,10 +202,11 @@ If the label file hash does not match on Windows, check for CRLF line endings. T
 | Path | Content |
 |---|---|
 | `validation/README.md` | How to run the validation |
-| `validation/ISSUES.md` | Issues V-001 to V-005 |
+| `validation/ISSUES.md` | Issues V-001 to V-007, open and resolved |
 | `validation/config/criteria.json` | Pass criteria with sources |
 | `validation/config/audio_manifest_am6_709.csv` | Test audio identity |
 | `validation/scripts/` | Staging, run, comparison and Twin check scripts |
-| `validation/results/20261022_160717/` | Raw output, JSON, CSV and `SUMMARY.md` of the run |
+| `validation/results/20261106_162306/` | Raw output, JSON, CSV and `SUMMARY.md` of the run after the V-001 fix |
+| `validation/results/20261022_160717/` | The earlier run, before the V-001 fix |
 | `validation/digital_twin/` | Patch, baseline and run 4 notes, evidence PDFs, raw run 4 files |
 | `docs/BirdNET_Service_Setup_and_Validation.md` | Earlier setup and test plan (written before the real-model results) |

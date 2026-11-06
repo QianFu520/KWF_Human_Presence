@@ -112,7 +112,7 @@ C2 allows 1e-6.
 
 ## Results
 
-Run `20261022_160717` (commit `b208532`): all gated criteria pass. See `results/20261022_160717/SUMMARY.md` and `docs/BirdNET_Validation_Report.md`.
+Run `20261106_162306` (commit `219bc94`, after the V-001 fix): all gated criteria pass, and C9 passes. See `results/20261106_162306/SUMMARY.md` and `docs/BirdNET_Validation_Report.md`. The earlier run `20261022_160717` (commit `b208532`) is kept for comparison: C9 failed there because skipped files were not reported.
 
 ## Known gaps in this validation
 

@@ -1,0 +1,40 @@
+Loaded 709 clip names from phase4_detail_Audio_Moth_6.csv
+All 709 clips found under ~\bn_checks\am6_709
+
+/health: onnxruntime 1.27.0 | providers ['AzureExecutionProvider', 'CPUExecutionProvider'] | variants loaded: ['fp16_pruned493']
+
+==========================================================================================
+VARIANT: fp16_pruned493  (CSV column prefix: fp16_)
+==========================================================================================
+  /models: fp16_pruned493 — 493 classes, 18.0 MB
+
+  intra_op_num_threads: 1
+  inter_op_num_threads: 1
+
+  Clips compared:                 709
+  Target species missing entirely: 0
+
+  Max  |csv - bridge|:  0.000e+00
+  Mean |csv - bridge|:  0.000e+00
+  P99  |csv - bridge|:  0.000e+00
+
+  10 largest differences:
+    clip                                  species                                               csv      bridge     |delta|
+    Audio_Moth_6_20250321_062605.wav      Threnetes ruckeri_Band-tailed Barbthroat         0.372909    0.372909   0.000e+00
+    Audio_Moth_6_20250321_062614.wav      Myiothlypis fulvicauda_Buff-rumped Warbler       0.996711    0.996711   0.000e+00
+    Audio_Moth_6_20250321_062617.wav      Myiothlypis fulvicauda_Buff-rumped Warbler       0.994945    0.994945   0.000e+00
+    Audio_Moth_6_20250321_062623.wav      Myiothlypis fulvicauda_Buff-rumped Warbler       0.997467    0.997467   0.000e+00
+    Audio_Moth_6_20250321_062626.wav      Myiothlypis fulvicauda_Buff-rumped Warbler       0.993808    0.993808   0.000e+00
+    Audio_Moth_6_20250321_062629.wav      Arremon aurantiirostris_Orange-billed Sparr      0.629554    0.629554   0.000e+00
+    Audio_Moth_6_20250321_062638.wav      Myiothlypis fulvicauda_Buff-rumped Warbler       0.310403    0.310403   0.000e+00
+    Audio_Moth_6_20250321_062641.wav      Habia atrimaxillaris_Black-cheeked Ant-Tana      0.983709    0.983709   0.000e+00
+    Audio_Moth_6_20250321_062644.wav      Habia atrimaxillaris_Black-cheeked Ant-Tana      0.830994    0.830994   0.000e+00
+    Audio_Moth_6_20250321_062647.wav      Myiothlypis fulvicauda_Buff-rumped Warbler       0.658971    0.658971   0.000e+00
+
+  Clips where bridge top-1 species != CSV species: 0
+
+  PASS (max <= 1e-06, zero missing): True
+
+==========================================================================================
+OVERALL: PASS
+==========================================================================================

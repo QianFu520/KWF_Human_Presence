@@ -1,0 +1,266 @@
+{
+  "variant": "fp16_pruned493",
+  "interface": [
+    {
+      "case": "wrong_length_real",
+      "file": "Audio_Moth_6_20250321_131347.wav",
+      "frames": 143360,
+      "samplerate": 48000,
+      "channels": 1,
+      "subtype": "PCM_16",
+      "multiple_of_144000": false,
+      "status": "error",
+      "completed": 1,
+      "windows_scored": 0,
+      "skipped": 1,
+      "failures": [
+        "Audio_Moth_6_20250321_131347.wav: Audio_Moth_6_20250321_131347.wav: 143360 samples is shorter than one 144000-sample window."
+      ],
+      "outcome": "job_error",
+      "caller_can_see_problem": true,
+      "error": "No file could be scored: 1 of 1 skipped. First: Audio_Moth_6_20250321_131347.wav: Audio_Moth_6_20250321_131347.wav: 143360 samples is shorter than one 144000-sample window."
+    },
+    {
+      "case": "wrong_length_real",
+      "file": "Audio_Moth_6_20250321_131538.wav",
+      "frames": 143360,
+      "samplerate": 48000,
+      "channels": 1,
+      "subtype": "PCM_16",
+      "multiple_of_144000": false,
+      "status": "error",
+      "completed": 1,
+      "windows_scored": 0,
+      "skipped": 1,
+      "failures": [
+        "Audio_Moth_6_20250321_131538.wav: Audio_Moth_6_20250321_131538.wav: 143360 samples is shorter than one 144000-sample window."
+      ],
+      "outcome": "job_error",
+      "caller_can_see_problem": true,
+      "error": "No file could be scored: 1 of 1 skipped. First: Audio_Moth_6_20250321_131538.wav: Audio_Moth_6_20250321_131538.wav: 143360 samples is shorter than one 144000-sample window."
+    },
+    {
+      "case": "wrong_length_real",
+      "file": "Audio_Moth_6_20250321_131608.wav",
+      "frames": 147456,
+      "samplerate": 48000,
+      "channels": 1,
+      "subtype": "PCM_16",
+      "multiple_of_144000": false,
+      "status": "error",
+      "completed": 1,
+      "windows_scored": 0,
+      "skipped": 1,
+      "failures": [
+        "Audio_Moth_6_20250321_131608.wav: Audio_Moth_6_20250321_131608.wav: 147456 samples is not a multiple of 144000. This is the signature of the old millisecond-rounding split. Re-run the fixed split script, or pass strict=false to drop the remainder."
+      ],
+      "outcome": "job_error",
+      "caller_can_see_problem": true,
+      "error": "No file could be scored: 1 of 1 skipped. First: Audio_Moth_6_20250321_131608.wav: Audio_Moth_6_20250321_131608.wav: 147456 samples is not a multiple of 144000. This is the signature of the old millisecond-rounding split. Re-run the fixed split script, or pass strict=false to drop the remainder."
+    },
+    {
+      "case": "wrong_length_real",
+      "file": "Audio_Moth_6_20250321_131611.wav",
+      "frames": 143360,
+      "samplerate": 48000,
+      "channels": 1,
+      "subtype": "PCM_16",
+      "multiple_of_144000": false,
+      "status": "error",
+      "completed": 1,
+      "windows_scored": 0,
+      "skipped": 1,
+      "failures": [
+        "Audio_Moth_6_20250321_131611.wav: Audio_Moth_6_20250321_131611.wav: 143360 samples is shorter than one 144000-sample window."
+      ],
+      "outcome": "job_error",
+      "caller_can_see_problem": true,
+      "error": "No file could be scored: 1 of 1 skipped. First: Audio_Moth_6_20250321_131611.wav: Audio_Moth_6_20250321_131611.wav: 143360 samples is shorter than one 144000-sample window."
+    },
+    {
+      "case": "wrong_length_real",
+      "file": "Audio_Moth_6_20250321_131902.wav",
+      "frames": 147456,
+      "samplerate": 48000,
+      "channels": 1,
+      "subtype": "PCM_16",
+      "multiple_of_144000": false,
+      "status": "error",
+      "completed": 1,
+      "windows_scored": 0,
+      "skipped": 1,
+      "failures": [
+        "Audio_Moth_6_20250321_131902.wav: Audio_Moth_6_20250321_131902.wav: 147456 samples is not a multiple of 144000. This is the signature of the old millisecond-rounding split. Re-run the fixed split script, or pass strict=false to drop the remainder."
+      ],
+      "outcome": "job_error",
+      "caller_can_see_problem": true,
+      "error": "No file could be scored: 1 of 1 skipped. First: Audio_Moth_6_20250321_131902.wav: Audio_Moth_6_20250321_131902.wav: 147456 samples is not a multiple of 144000. This is the signature of the old millisecond-rounding split. Re-run the fixed split script, or pass strict=false to drop the remainder."
+    },
+    {
+      "case": "stereo_made",
+      "file": "stereo_Audio_Moth_6_20250321_062605.wav",
+      "frames": 144000,
+      "samplerate": 48000,
+      "channels": 2,
+      "subtype": "PCM_16",
+      "multiple_of_144000": true,
+      "status": "error",
+      "completed": 1,
+      "windows_scored": 0,
+      "skipped": 1,
+      "failures": [
+        "stereo_Audio_Moth_6_20250321_062605.wav: stereo_Audio_Moth_6_20250321_062605.wav: 2 channels. birdnet requires mono audio; the reference pipeline never downmixes."
+      ],
+      "outcome": "job_error",
+      "caller_can_see_problem": true,
+      "error": "No file could be scored: 1 of 1 skipped. First: stereo_Audio_Moth_6_20250321_062605.wav: stereo_Audio_Moth_6_20250321_062605.wav: 2 channels. birdnet requires mono audio; the reference pipeline never downmixes."
+    },
+    {
+      "case": "stereo_made",
+      "file": "stereo_Audio_Moth_6_20250321_071002.wav",
+      "frames": 144000,
+      "samplerate": 48000,
+      "channels": 2,
+      "subtype": "PCM_16",
+      "multiple_of_144000": true,
+      "status": "error",
+      "completed": 1,
+      "windows_scored": 0,
+      "skipped": 1,
+      "failures": [
+        "stereo_Audio_Moth_6_20250321_071002.wav: stereo_Audio_Moth_6_20250321_071002.wav: 2 channels. birdnet requires mono audio; the reference pipeline never downmixes."
+      ],
+      "outcome": "job_error",
+      "caller_can_see_problem": true,
+      "error": "No file could be scored: 1 of 1 skipped. First: stereo_Audio_Moth_6_20250321_071002.wav: stereo_Audio_Moth_6_20250321_071002.wav: 2 channels. birdnet requires mono audio; the reference pipeline never downmixes."
+    },
+    {
+      "case": "stereo_made",
+      "file": "stereo_Audio_Moth_6_20250321_080326.wav",
+      "frames": 144000,
+      "samplerate": 48000,
+      "channels": 2,
+      "subtype": "PCM_16",
+      "multiple_of_144000": true,
+      "status": "error",
+      "completed": 1,
+      "windows_scored": 0,
+      "skipped": 1,
+      "failures": [
+        "stereo_Audio_Moth_6_20250321_080326.wav: stereo_Audio_Moth_6_20250321_080326.wav: 2 channels. birdnet requires mono audio; the reference pipeline never downmixes."
+      ],
+      "outcome": "job_error",
+      "caller_can_see_problem": true,
+      "error": "No file could be scored: 1 of 1 skipped. First: stereo_Audio_Moth_6_20250321_080326.wav: stereo_Audio_Moth_6_20250321_080326.wav: 2 channels. birdnet requires mono audio; the reference pipeline never downmixes."
+    },
+    {
+      "case": "stereo_made",
+      "file": "stereo_Audio_Moth_6_20250321_094544.wav",
+      "frames": 144000,
+      "samplerate": 48000,
+      "channels": 2,
+      "subtype": "PCM_16",
+      "multiple_of_144000": true,
+      "status": "error",
+      "completed": 1,
+      "windows_scored": 0,
+      "skipped": 1,
+      "failures": [
+        "stereo_Audio_Moth_6_20250321_094544.wav: stereo_Audio_Moth_6_20250321_094544.wav: 2 channels. birdnet requires mono audio; the reference pipeline never downmixes."
+      ],
+      "outcome": "job_error",
+      "caller_can_see_problem": true,
+      "error": "No file could be scored: 1 of 1 skipped. First: stereo_Audio_Moth_6_20250321_094544.wav: stereo_Audio_Moth_6_20250321_094544.wav: 2 channels. birdnet requires mono audio; the reference pipeline never downmixes."
+    },
+    {
+      "case": "stereo_made",
+      "file": "stereo_Audio_Moth_6_20250321_130853.wav",
+      "frames": 144000,
+      "samplerate": 48000,
+      "channels": 2,
+      "subtype": "PCM_16",
+      "multiple_of_144000": true,
+      "status": "error",
+      "completed": 1,
+      "windows_scored": 0,
+      "skipped": 1,
+      "failures": [
+        "stereo_Audio_Moth_6_20250321_130853.wav: stereo_Audio_Moth_6_20250321_130853.wav: 2 channels. birdnet requires mono audio; the reference pipeline never downmixes."
+      ],
+      "outcome": "job_error",
+      "caller_can_see_problem": true,
+      "error": "No file could be scored: 1 of 1 skipped. First: stereo_Audio_Moth_6_20250321_130853.wav: stereo_Audio_Moth_6_20250321_130853.wav: 2 channels. birdnet requires mono audio; the reference pipeline never downmixes."
+    }
+  ],
+  "mixed_job": {
+    "files": [
+      "Audio_Moth_6_20250321_062605.wav",
+      "Audio_Moth_6_20250321_131347.wav",
+      "stereo_Audio_Moth_6_20250321_062605.wav"
+    ],
+    "status": "done",
+    "completed": 3,
+    "total": 3,
+    "windows_scored": 1,
+    "good_clip_scored": true,
+    "skipped": 2,
+    "failures": [
+      "Audio_Moth_6_20250321_131347.wav: Audio_Moth_6_20250321_131347.wav: 143360 samples is shorter than one 144000-sample window.",
+      "stereo_Audio_Moth_6_20250321_062605.wav: stereo_Audio_Moth_6_20250321_062605.wav: 2 channels. birdnet requires mono audio; the reference pipeline never downmixes."
+    ],
+    "error": ""
+  },
+  "preprocessing": [
+    {
+      "case": "peak_norm",
+      "n_clips": 709,
+      "top1_changed": 0,
+      "top1_changed_pct": 0.0,
+      "det_set_changed": 0,
+      "base_species_not_returned": 0,
+      "conf_shift_mean": 0.00016043552726885497,
+      "conf_shift_p95": 0.0004444718360900879,
+      "conf_shift_max": 0.0011829137802124023,
+      "within_0.01_pct": 100.0,
+      "within_0.05_pct": 100.0,
+      "gain_min": 1.0000305085088657,
+      "gain_median": 6.986779895644342,
+      "gain_max": 25.660134370937485
+    },
+    {
+      "case": "twin_chain",
+      "n_clips": 709,
+      "top1_changed": 0,
+      "top1_changed_pct": 0.0,
+      "det_set_changed": 0,
+      "base_species_not_returned": 0,
+      "conf_shift_mean": 0.0003093774463293078,
+      "conf_shift_p95": 0.0008984804153442383,
+      "conf_shift_max": 0.0067597925662994385,
+      "within_0.01_pct": 100.0,
+      "within_0.05_pct": 100.0,
+      "gain_min": 1.0000305085088657,
+      "gain_median": 6.986779895644342,
+      "gain_max": 25.660134370937485
+    }
+  ],
+  "gain_for_peak_norm": {
+    "min": 1.0000305085088657,
+    "median": 6.986779895644342,
+    "max": 25.660134370937485
+  },
+  "criteria": [
+    {
+      "id": "C8",
+      "gate": true,
+      "pass": true,
+      "detail": "10/10 bad files not scored"
+    },
+    {
+      "id": "C9",
+      "gate": false,
+      "pass": true,
+      "detail": "10/10 rejections visible to the caller; mixed job: status=done skipped=2"
+    }
+  ]
+}
