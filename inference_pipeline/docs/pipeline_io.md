@@ -105,14 +105,11 @@ Checked on: one 87-minute recording from Audio Moth 5 (1,747 clips), using `run_
 
 Not available yet. The step only prints a message and skips.
 
-## Clip names: proposal
+## Clip names
 
-Today the clip name looks different between steps:
+Agreed format (approved by Qian): `Audio_Moth_N_YYYYMMDD_HHMMSS.wav`, for example `Audio_Moth_5_20250319_163237.wav`.
 
-| With `.wav` | Without `.wav` |
-|---|---|
-| Steps 2, 3, 5, 6 | Step 4 |
+- The date and time are the clip's start time, in local Costa Rica time (UTC-6).
+- Every step should use this name, with `.wav`, and treat `.wav` and `.WAV` the same.
 
-Step 7 fixes this by removing `.wav` from every table before joining, so nothing breaks today. But the difference is easy to forget.
-
-**Proposal:** use the name with `.wav` everywhere (for example `Audio_Moth_5_20250319_163237.wav`). Four steps already do this, so only Step 4 would change, and Step 7 can keep its safety check.
+Current state: Steps 2, 3, 5 and 6 already use the name with `.wav`. Step 4 writes it without `.wav` and is still to be changed. Step 7 removes `.wav` from every table before joining, so nothing breaks in the meantime.
