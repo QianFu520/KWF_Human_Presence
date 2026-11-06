@@ -278,8 +278,9 @@ Test was not scored and no bundles were saved. Results are in `models\diagnostic
    not the session (day) shortcut, and rests on 2–3 hours. Leave-one-day-out CV **wouldn't remove
    the confound** for 4 of 5 days (Mar 17–20 all have 16:00–18:00 events; Mar 21 has none), so
    it's a later check, not the fix.
-4. **Feature-set names in the bundle format.** Patrick's loader needs to accept "23" and "27".
-   Add a 23 list (and the approved 27) to `hp_features.py` so training and inference share them.
+4. **Feature-set names in the bundle format.** `HP_FEATURES_23` and `HP_FEATURES_27` were added
+   to `hp_features.py` in this PR, so training and inference share them. After it merges, Patrick
+   adds loader support for "23" and "27", tests and the bundle doc.
 5. **Recommendations:**
    - (a) In future field sessions, **record quiet control periods at the staging hours**
      (16:00–18:00 and the morning slots), so negatives exist at the same times as events.
@@ -294,3 +295,13 @@ Test was not scored and no bundles were saved. Results are in `models\diagnostic
      windows didn't help.
 6. Label windows and models: tight was tested on val (no gain, see Diagnostics). Still to do:
    per_type, leave-one-day-out CV, an MLP comparison.
+
+## Decisions (Qian, Nov 5)
+
+- **23 approved for integration testing** (not field-ready).
+- **Hour features dropped** from the HP feature set.
+- **No weather for now.**
+- **AED marks clips instead of dropping them** before the HP model.
+- **23rel not adopted.**
+- **±10 min labels kept** until the field team confirms how event timestamps were logged.
+- **BirdNET non-bird test approved** (see recommendation 5c).
