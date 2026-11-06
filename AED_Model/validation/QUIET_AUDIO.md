@@ -1,7 +1,9 @@
 # Why AED scores quiet audio as background
 
-Status: 2026-11-05, first pass. Still to add: Ben's AM1 setup clips, Coleman's
-AM3 numbers, and listening to the dropped off-trail clips (see [Open](#open)).
+Status: 2026-11-05. Includes Coleman's AM3 results and Ben's AM1 setup clips
+from their branches. Still open: acoustic analysis of the AM1 clips (Drive
+would not serve them) and listening to the dropped off-trail clips (see
+[Open](#open)).
 
 ## Finding
 
@@ -60,7 +62,30 @@ from Drive):
   mel median (flatter, less contrast), −0.38 for loudest-frame contrast. The
   clips that tip over are the ones where nothing stands out of the noise.
 
-### 3. The quiet recorder is AM3
+### 3. Independent results from the team
+
+**Coleman, HP retraining** (`hp-retraining`, `HP_Model/retraining/REPORT.md`,
+"AM3 (quiet recorder)"): on the full re-cut data, AM3 is 18–20 dB quieter than
+the other recorders at every hour (median RMS −49.6 dBFS vs −28.7 to −31.7),
+with flatter spectra, and **AED rejects 25% of AM3's clips against 0.5–1.3%
+on the other recorders**. AM3's gain setting cannot be read (no CONFIG.TXT,
+re-cut clips have no header). He also found AED's score adds nothing as an HP
+feature (ranked last of 24).
+
+**Ben, pipeline step 2** (`step1-4-testing-notebooks`,
+`inference_pipeline/testing/notebooks/02_tinycnn_filter.ipynb`): on 1,200 AM1
+clips AED flagged 12 as not_meaningful, all in the first 16 minutes after AM1
+started recording on 17 March (09:31–09:47, the setup period), with scores
+0.56–1.00. In a manual listen, **9 of the 12 had clear footsteps or human
+voices**. These are people close to the recorder, so this is not only a
+distance effect: brief, broadband sounds such as footsteps on leaf litter can
+also look flat to the model.
+
+Both agree with the mechanism above: AM3's level and flatness match the
+off-trail walk, and the AM1 setup clips are real human sound scored as
+background.
+
+### 4. The quiet recorder is AM3 (held-out sample)
 
 Held-out meaningful clips, sampled up to 60 per recorder:
 
@@ -72,7 +97,8 @@ Held-out meaningful clips, sampled up to 60 per recorder:
 | Audio_Moth_5 | 56 | −31.0 | 0.06 | 0% |
 
 AM3 records about 15 dB lower than the others with a much flatter spectrum,
-consistent with Coleman's 25% rejection there. Whether that is the device's
+consistent with Coleman's 25% rejection there (his figure covers all of AM3's
+clips; this table is a 32-clip held-out sample). Whether that is the device's
 gain setting, its placement, or a microphone fault is not known; AM1 and AM6
 have no held-out clips here.
 
@@ -100,7 +126,10 @@ have no held-out clips here.
 
 ## Open
 
-- Ben's AM1 setup clips (real footsteps and voices rated as background): run
+- Ben's 12 AM1 setup clips (`Audio_Moth_1_20250317_` + 093130, 093639, 093824,
+  094151, 094203, 094630, 094657, 094736, 094739, 094742, 094745, 094751): only
+  1 of 12 could be read from Drive on 2026-11-05. Once Drive serves them, copy
+  them to a folder and run
   `python validation/quiet_audio_probe.py --out <dir> --extra am1_setup=<folder>`.
-- Coleman's AM3 numbers: compare with the per-recorder table.
+  Ask Ben which 9 had footsteps or voices, to compare those with the other 3.
 - Listen to the dropped off-trail clips.
