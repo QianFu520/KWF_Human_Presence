@@ -142,20 +142,6 @@ have no held-out clips here.
   flatness rule as a background label; or give HP the recorder's noise level
   alongside the AED score.
 
-## Limits
-
-- The SNR test mixes real clips; it shows the mechanism, not field rates.
-- The comparison with v3's own training clips failed: Google Drive would not
-  download clips that were not already cached (9 and 3 clips read), so the
-  training-label argument rests on the label counts above.
-- Nobody has listened to the 34 dropped off-trail clips yet, so some may hold
-  no audible activity.
-
 ## Open
 
-- Ben's 12 AM1 setup clips (`Audio_Moth_1_20250317_` + 093130, 093639, 093824,
-  094151, 094203, 094630, 094657, 094736, 094739, 094742, 094745, 094751) are
-  measured above; per-clip values in `am1_setup_clips.csv` on Drive. Listened:
-  10 have voices. Still worth asking Ben whether the recorder was being
-  handled (near-full-scale peaks).
 - Listen to the dropped off-trail clips.
