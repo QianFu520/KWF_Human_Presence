@@ -216,8 +216,10 @@ issues).
 
 - AM3 is about **18–20 dB quieter** than the other recorders at every hour (median RMS
   −49.6 dBFS vs −28.7 to −31.7), with flatter spectra. AED rejects 25% of its clips, against
-  0.5–1.3% elsewhere. Its gain setting can't be read locally: the re-cut clips have no header,
-  and the AM1 Drive zips have no CONFIG.TXT.
+  0.5–1.3% elsewhere. The raw AM3 header (AudioMoth 243B1F026484A1F9) says **medium gain**, the
+  same as AM1, so gain doesn't explain the 18–20 dB offset. The likely causes, still unconfirmed,
+  are the mic (covered, damaged or placement) or the unit's sensitivity. AM1 is a different unit
+  (AudioMoth 24F5F20264F324B8, same in all 8 raw AM1 files).
 - AM3's on-trail and gunshot events are in **val** (416 positive clips); its off-trail event is
   in train (222). It has no test positives.
 - With hour features, AM3 looks perfect on val (PR-AUC 0.99), but only because its val positives
