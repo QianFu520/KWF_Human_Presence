@@ -32,12 +32,11 @@ from sklearn.preprocessing import StandardScaler
 
 REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO / "inference_pipeline" / "scripts"))
-from hp_features import HP_FEATURES_25, HP_FEATURES_29  # noqa: E402
+from hp_features import HP_FEATURES_23, HP_FEATURES_25, HP_FEATURES_27, HP_FEATURES_29  # noqa: E402
 
-HOUR = ("hour_sin", "hour_cos")
-EXPECTED = {"23": [f for f in HP_FEATURES_25 if f not in HOUR],  # no hour, no weather
+EXPECTED = {"23": list(HP_FEATURES_23),  # no hour, no weather
             "25": list(HP_FEATURES_25),
-            "27": [f for f in HP_FEATURES_29 if f not in HOUR],  # Qian's approved 27: weather, no hour
+            "27": list(HP_FEATURES_27),  # Qian's approved 27: weather, no hour
             "29": list(HP_FEATURES_29)}
 KEYS = ["model", "scaler", "features", "feature_set", "threshold", "version", "trained_on", "created",
         "sklearn_version", "val_metrics", "threshold_rule", "git_commit"]

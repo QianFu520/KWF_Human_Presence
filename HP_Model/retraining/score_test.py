@@ -3,7 +3,7 @@ score_test.py: final run. Retrain the LOCKED configs on train, choose each thres
 on validation (most recall with <= --episode-budget false-alert episodes per
 recorder per day), score test ONCE, and save deployment bundles.
 
-Feature sets (see tune_val.py):
+Feature sets (tune_val.FEATURE_SETS, built from the hp_features.py lists):
   23     candidate (no hour features, no weather)
   23rel  diagnostic only (23 with recorder-relative loudness), no bundle
   25     reference: relies on time-of-day shortcuts (schedule-inflated upper bound)
