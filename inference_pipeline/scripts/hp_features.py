@@ -8,6 +8,8 @@ columns written by extract_acoustic_features.py and feature_engineering.py.
   HP_FEATURES_25  without weather
   HP_FEATURES_29  with weather (adds Temperature, Humidity, Windspeed and
                   Volume_Wind_Ratio, which is computed from Windspeed)
+  HP_FEATURES_23  HP_FEATURES_25 without hour_sin / hour_cos (no hour, no weather)
+  HP_FEATURES_27  HP_FEATURES_29 without hour_sin / hour_cos (weather, no hour)
 
 See the "Decision" section of HP_Model/docs/feature_pipeline_progress.md.
 """
@@ -40,6 +42,13 @@ HP_FEATURES_29 = HP_FEATURES_25 + WEATHER
 
 assert len(HP_FEATURES_25) == 25, f"HP_FEATURES_25 has {len(HP_FEATURES_25)} features, expected 25"
 assert len(HP_FEATURES_29) == 29, f"HP_FEATURES_29 has {len(HP_FEATURES_29)} features, expected 29"
+
+# Without the hour features (same order as the lists above).
+HP_FEATURES_23 = [name for name in HP_FEATURES_25 if name not in ("hour_sin", "hour_cos")]
+HP_FEATURES_27 = [name for name in HP_FEATURES_29 if name not in ("hour_sin", "hour_cos")]
+
+assert len(HP_FEATURES_23) == 23, f"HP_FEATURES_23 has {len(HP_FEATURES_23)} features, expected 23"
+assert len(HP_FEATURES_27) == 27, f"HP_FEATURES_27 has {len(HP_FEATURES_27)} features, expected 27"
 
 
 def select_features(df, feature_list):
