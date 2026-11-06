@@ -5,8 +5,7 @@ species) as served by `src/bridge`. Goal: show, reproducibly, that the
 compressed component behaves like the original BirdNET v2.4 and that the
 service around it adds no error.
 
-**Status:** pass criteria are PROPOSED and wait for team lead approval
-(`config/criteria.json`). Results below are not final until then.
+**Status:** pass criteria approved by the team lead (`config/criteria.json`).
 
 ## What is validated, and against what
 
@@ -15,7 +14,7 @@ service around it adds no error.
 | Is this the right model and label file? | sizes, shapes, dtypes, label count and order checks | `scripts/check_model_pairing.py` |
 | Does the service return what the recorded Phase 4 FP16 run returned? | `verification_data/phase4_detail_Audio_Moth_6.csv` | `src/bridge/verify_bridge_parity.py` |
 | Does the service agree with the original BirdNET? | `ref_top1`, `ref_conf` and recorded FP16 detection sets in the same CSV | `validation/scripts/service_vs_reference.py` |
-| Does it work inside the Digital Twin? | local, throwaway patch | `validation/digital_twin/` (not done yet) |
+| Does it work inside the Digital Twin? | local, throwaway patch | `validation/digital_twin/` |
 
 FP32 is out of scope; the compressed model under test is FP16.
 
@@ -26,7 +25,7 @@ Interface and preprocessing checks: wrong-length and stereo input (is it
 scored, and does the caller see the rejection), and the effect of the Twin's
 peak normalization and 16-bit write on the model's output.
 
-Not covered yet: recorders other than Audio_Moth_6 and the Digital Twin run.
+Not covered yet: recorders other than Audio_Moth_6.
 
 ## Layout
 
@@ -119,7 +118,6 @@ Run `20261022_160717` (commit `b208532`): all gated criteria pass. See `results/
 
 Problems found in the service are listed in `ISSUES.md`.
 
-- Pass criteria are not yet approved.
 - C5 (confidence within 0.01) is reported, not gated, because the recorded
   Phase 4 value for this recorder is already below the population figure.
 - The service and the recorded Phase 4 run share preprocessing code, so

@@ -84,6 +84,8 @@ class Job:
             started_at=self.started_at,
             finished_at=self.finished_at,
             error=self.error,
+            skipped=len(self.failures),
+            failures=list(self.failures),
             metrics=self.metrics,
             detections=self.detections if self.request.collect_detections else [],
         )
@@ -187,10 +189,22 @@ class JobManager:
                 model=model, clips=job.total, windows=windows, wall=wall, cpu=cpu,
                 inf_ms=inf_ms, pre_ms=pre_ms, peak_rss=peak_rss,
             )
-            job.status = JobStatus.done
             job.finished_at = time.time()
-            job.publish("done", {"job_id": job.job_id,
-                                 "metrics": job.metrics.model_dump()})
+            if windows == 0:
+                # Nothing was scored. Report it as an error so the caller cannot
+                # mistake "every file rejected" for "no species detected".
+                job.error = (f"No file could be scored: {len(job.failures)} of "
+                             f"{job.total} skipped.")
+                if job.failures:
+                    job.error += f" First: {job.failures[0]}"
+                job.status = JobStatus.error
+                job.publish("error", {"job_id": job.job_id, "message": job.error})
+            else:
+                # At least one file was scored. Skipped files, if any, are listed
+                # in `failures` and counted in `skipped` on the job state.
+                job.status = JobStatus.done
+                job.publish("done", {"job_id": job.job_id,
+                                     "metrics": job.metrics.model_dump()})
             if job.failures:
                 log.warning("job %s: %d files skipped", job.job_id, len(job.failures))
 
