@@ -193,9 +193,9 @@ Manifests and ground-truth logs store audio paths as placeholders, expanded by
 - `{RAW_AUDIO}/Audio Moth N/Audio_Moth_N_MMDDYY/<file>.WAV`: raw recordings
   (the folder above `AUDIO_DIR`)
 
-**Set `AUDIO_DIR` in `AED_Model/config.py` to your own copy of
-`Audio Moth Data/Segmented Foldered` before running anything**; the committed
-`config.py` still points at `/Users/qian/KWF/Segmented_Foldered`. The run
+**Set the `AED_AUDIO_DIR` environment variable to your own copy of
+`Audio Moth Data/Segmented Foldered` before running anything**; without it,
+`config.AUDIO_DIR` falls back to `data/raw_audio/`. The run
 reports use the same placeholders, plus `<repo>` and `<digital_twin_mvp>` for
 local checkouts.
 
@@ -238,11 +238,10 @@ exist; anything else returns `{"detail":"Not Found"}`.
   (default `data/raw_audio/`). Set it to the Drive `Segmented Foldered` folder.
   The validation scripts expand `{AUDIO_DIR}` placeholders from it; notebooks use
   `audio_path` from the CSV.
-- `outputs/labels_progress.csv` (gitignored): `audio_path` rewritten from
-  `/Users/qian/KWF/Segmented_Foldered` to the Drive folder for all 631,317 rows,
-  by plain text replacement (every other column byte-identical). The backup made
-  at the time has since been removed; reverse the replacement if the old paths
-  are ever needed.
+- `outputs/labels_progress.csv` (gitignored): Qian's original file, with
+  `audio_path` under `/Users/qian/KWF/Segmented_Foldered`. The validation
+  scripts only use the part after `Segmented Foldered/` and join it to
+  `AUDIO_DIR`, so the file works unchanged on any machine.
 - Label state in that file: 118,940 meaningful, 16,845 not_meaningful (including
   5,632 `model_inference_v3`), 495,532 unknown.
 
@@ -386,10 +385,8 @@ Findings:
   count per type; needs a small change to take every recording).
 - For cleaner per-type recall, stage events that do not overlap, or add a
   quiet control window per recording.
-- Look at the quiet off-trail walk (Audio_Moth_3, 19 March 08:01): partly
-  scored as background by AED and missed by the twin's prefilter.
-- Recover the hand-tagged audit CSVs from Qian if the labelling history needs
-  to be reproducible.
+- Quiet audio: see [QUIET_AUDIO.md](QUIET_AUDIO.md). AED scores low-SNR sound
+  (the quiet off-trail walk, the quiet AM3 recorder) as background.
 - Stop the twin when done: `cd ~/digital_twin_mvp && docker compose down`. Its
   uploads (~15 GB) are under `backend/uploads/`.
 
