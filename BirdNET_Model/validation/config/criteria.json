@@ -1,0 +1,98 @@
+{
+  "version": 1,
+  "status": "PROPOSED. Not yet approved by the team lead. Thresholds were written down before the live run and are taken from numbers already recorded in this repo (Phase 4, verification_data/). Nothing here was tuned to the live result.",
+  "scope": "Compressed BirdNET FP16 (pruned to 493 species), served by src/bridge, scored on the 709 Audio_Moth_6 clips in verification_data/phase4_detail_Audio_Moth_6.csv. FP32 is out of scope.",
+  "ground_truth": "The original BirdNET v2.4 output (birdnet package v0.1.7), recorded as ref_top1 / ref_conf. Not human labels. This validates that compression preserved the original model's behaviour.",
+  "criteria": [
+    {
+      "id": "C0",
+      "layer": "artifact_identity",
+      "gate": true,
+      "description": "The loaded FP16 model file has the documented size and the label file has the documented content hash. Label hash is taken after converting line endings to LF, because Windows checkouts store the file with CRLF.",
+      "check": "run_info.json compared with the expected values below",
+      "expected": {
+        "fp16_model_bytes": 18878769,
+        "fp16_labels_sha256_lf_prefix": "72b910ab9eae575b"
+      },
+      "source": "docs/phase4_dual_model_notes.md (label SHA-256 72b910ab9eae575b...), models/README.md and docs (model size 18,878,769 bytes). No model SHA-256 is documented anywhere in the repo, so the model hash is recorded but not checked."
+    },
+    {
+      "id": "C1",
+      "layer": "identity",
+      "gate": true,
+      "description": "FP16 model and its label file are the right pair: size, shapes, dtypes, 493 unique labels, allow-list inside label set, model runs and returns 493 finite values.",
+      "check": "scripts/check_model_pairing.py, FP16 section only: zero [FAIL] lines (the script also checks FP32; that part is saved but not judged)",
+      "source": "scripts/check_model_pairing.py (limits are inside the script)"
+    },
+    {
+      "id": "C2",
+      "layer": "service_vs_recorded_fp16",
+      "gate": true,
+      "description": "The service reproduces the recorded Phase 4 FP16 top-1 species and confidence on every clip, with zero missing.",
+      "check": "src/bridge/verify_bridge_parity.py exits 0 (max |csv - service| <= 1e-6)",
+      "source": "PASS_TOL in src/bridge/verify_bridge_parity.py"
+    },
+    {
+      "id": "C3",
+      "layer": "service_vs_reference",
+      "gate": true,
+      "metric": "top1_agree_pct",
+      "op": ">=",
+      "value": 99.8,
+      "description": "Service top-1 species (allow-list) equals the original model's top-1.",
+      "source": "Phase 4, 51,720 clips: FP16 99.872% top-1 (docs/phase4_dual_model_findings.md). On 709 clips this allows at most 1 miss."
+    },
+    {
+      "id": "C4",
+      "layer": "service_vs_reference",
+      "gate": true,
+      "metric": "conf_within_0.05_pct",
+      "op": ">=",
+      "value": 99.9,
+      "description": "Service confidence for the reference species is within 0.05 of the original model's confidence.",
+      "source": "Phase 4, 51,720 clips: FP16 within 0.05 on 99.901%. On 709 clips this allows no misses."
+    },
+    {
+      "id": "C5",
+      "layer": "service_vs_reference",
+      "gate": false,
+      "metric": "conf_within_0.01_pct",
+      "op": ">=",
+      "value": 98.6,
+      "description": "Service confidence within 0.01 of the original model's. REPORTED, NOT GATED, see note.",
+      "source": "Phase 4, 51,720 clips: FP16 within 0.01 on 98.67%.",
+      "note": "The recorded Phase 4 value for Audio_Moth_6 alone is 97.18% (20 of 709 clips are 0.01 to 0.03 off), already below the 98.6% population figure. This is FP16 rounding on a single-date recorder, not a service defect, but it means the population threshold cannot be used as a pass/fail test on this subset. Needs a decision from the team lead: gate on a larger multi-recorder sample, or keep as reported."
+    },
+    {
+      "id": "C6",
+      "layer": "service_vs_reference",
+      "gate": true,
+      "metric": "det_set_vs_recorded_fp16_pct",
+      "op": ">=",
+      "value": 100.0,
+      "description": "Detection set at 0.25 (allow-list species) equals the recorded FP16 detection set on every clip.",
+      "source": "Reproducibility of the recorded Phase 4 FP16 run."
+    },
+    {
+      "id": "C8",
+      "layer": "interface",
+      "gate": true,
+      "description": "Files the API must not score (wrong length, stereo) are never scored.",
+      "check": "scripts/interface_and_preprocessing.py: every such file ends with 0 windows scored",
+      "source": "src/bridge/README.md: 'Wrong-length clips are rejected, not padded'; src/bridge/app/audio.py (stereo is rejected, never downmixed)."
+    },
+    {
+      "id": "C9",
+      "layer": "interface",
+      "gate": false,
+      "known_issue": "V-001",
+      "description": "The caller is told when a file was rejected (job error or a failures field).",
+      "check": "scripts/interface_and_preprocessing.py: caller_can_see_problem is true for every rejected file",
+      "source": "Expected to FAIL today. See ISSUES.md V-001. Reported, not gated, because the lead has not yet decided on a fix."
+    }
+  ],
+  "recorded_not_gated": [
+    "Cost: latency, windows/s and peak memory are recorded in each results folder (service metrics) and not pass/fail.",
+    "Preprocessing effects (peak normalization, 16-bit write): reported as numbers in interface_and_preprocessing.json. The repo has no baseline to judge them against."
+  ]
+}

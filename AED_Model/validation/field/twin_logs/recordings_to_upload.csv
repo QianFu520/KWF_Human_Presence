@@ -1,0 +1,6 @@
+recording,recorder,start,hours,size_gb,n_events,types,log
+{RAW_AUDIO}/Audio Moth 5/Audio_Moth_5_031725/20250317_112812.WAV,Audio_Moth_5,2025-03-17 11:28:12,6.53,2.26,3,"CHAINSAW, GUNSHOT, HUMAN_PRESENCE_ON_TRAIL",validation/field/twin_logs/Audio_Moth_5_20250317_112812_log.json
+{RAW_AUDIO}/Audio Moth 5/Audio_Moth_5_032125/20250321_062545.WAV,Audio_Moth_5,2025-03-21 06:25:45,7.39,2.56,6,"CHAINSAW, GUNSHOT, HUMAN_PRESENCE_OFF_TRAIL, HUMAN_PRESENCE_ON_TRAIL, VEHICLE",validation/field/twin_logs/Audio_Moth_5_20250321_062545_log.json
+{RAW_AUDIO}/Audio Moth 3/Audio_Moth_3_031925/20250319_080049.WAV,Audio_Moth_3,2025-03-19 08:00:49,9.99,3.45,3,"GUNSHOT, HUMAN_PRESENCE_OFF_TRAIL, HUMAN_PRESENCE_ON_TRAIL",validation/field/twin_logs/Audio_Moth_3_20250319_080049_log.json
+{RAW_AUDIO}/Audio Moth 2/Audio_Moth_2_031825/20250318_062543.WAV,Audio_Moth_2,2025-03-18 06:25:43,11.57,4.0,1,HUMAN_PRESENCE_ON_TRAIL,validation/field/twin_logs/Audio_Moth_2_20250318_062543_log.json
+{RAW_AUDIO}/Audio Moth 5/Audio_Moth_5_031925/20250319_062544.WAV,Audio_Moth_5,2025-03-19 06:25:44,10.07,3.48,3,"HUMAN_PRESENCE_ON_TRAIL, VEHICLE",validation/field/twin_logs/Audio_Moth_5_20250319_062544_log.json

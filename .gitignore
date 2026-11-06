@@ -4,3 +4,7 @@
 # Python caches
 __pycache__/
 .pytest_cache/
+
+# Local test environments
+.venv-test/
+.venv/

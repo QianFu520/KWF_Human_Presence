@@ -1,0 +1,222 @@
+{
+  "variant": "fp16_pruned493",
+  "interface": [
+    {
+      "case": "wrong_length_real",
+      "file": "Audio_Moth_6_20250321_131347.wav",
+      "frames": 143360,
+      "samplerate": 48000,
+      "channels": 1,
+      "subtype": "PCM_16",
+      "multiple_of_144000": false,
+      "status": "done",
+      "completed": 1,
+      "windows_scored": 0,
+      "outcome": "skipped_silently",
+      "caller_can_see_problem": false,
+      "error": ""
+    },
+    {
+      "case": "wrong_length_real",
+      "file": "Audio_Moth_6_20250321_131538.wav",
+      "frames": 143360,
+      "samplerate": 48000,
+      "channels": 1,
+      "subtype": "PCM_16",
+      "multiple_of_144000": false,
+      "status": "done",
+      "completed": 1,
+      "windows_scored": 0,
+      "outcome": "skipped_silently",
+      "caller_can_see_problem": false,
+      "error": ""
+    },
+    {
+      "case": "wrong_length_real",
+      "file": "Audio_Moth_6_20250321_131608.wav",
+      "frames": 147456,
+      "samplerate": 48000,
+      "channels": 1,
+      "subtype": "PCM_16",
+      "multiple_of_144000": false,
+      "status": "done",
+      "completed": 1,
+      "windows_scored": 0,
+      "outcome": "skipped_silently",
+      "caller_can_see_problem": false,
+      "error": ""
+    },
+    {
+      "case": "wrong_length_real",
+      "file": "Audio_Moth_6_20250321_131611.wav",
+      "frames": 143360,
+      "samplerate": 48000,
+      "channels": 1,
+      "subtype": "PCM_16",
+      "multiple_of_144000": false,
+      "status": "done",
+      "completed": 1,
+      "windows_scored": 0,
+      "outcome": "skipped_silently",
+      "caller_can_see_problem": false,
+      "error": ""
+    },
+    {
+      "case": "wrong_length_real",
+      "file": "Audio_Moth_6_20250321_131902.wav",
+      "frames": 147456,
+      "samplerate": 48000,
+      "channels": 1,
+      "subtype": "PCM_16",
+      "multiple_of_144000": false,
+      "status": "done",
+      "completed": 1,
+      "windows_scored": 0,
+      "outcome": "skipped_silently",
+      "caller_can_see_problem": false,
+      "error": ""
+    },
+    {
+      "case": "stereo_made",
+      "file": "stereo_Audio_Moth_6_20250321_062605.wav",
+      "frames": 144000,
+      "samplerate": 48000,
+      "channels": 2,
+      "subtype": "PCM_16",
+      "multiple_of_144000": true,
+      "status": "done",
+      "completed": 1,
+      "windows_scored": 0,
+      "outcome": "skipped_silently",
+      "caller_can_see_problem": false,
+      "error": ""
+    },
+    {
+      "case": "stereo_made",
+      "file": "stereo_Audio_Moth_6_20250321_071002.wav",
+      "frames": 144000,
+      "samplerate": 48000,
+      "channels": 2,
+      "subtype": "PCM_16",
+      "multiple_of_144000": true,
+      "status": "done",
+      "completed": 1,
+      "windows_scored": 0,
+      "outcome": "skipped_silently",
+      "caller_can_see_problem": false,
+      "error": ""
+    },
+    {
+      "case": "stereo_made",
+      "file": "stereo_Audio_Moth_6_20250321_080326.wav",
+      "frames": 144000,
+      "samplerate": 48000,
+      "channels": 2,
+      "subtype": "PCM_16",
+      "multiple_of_144000": true,
+      "status": "done",
+      "completed": 1,
+      "windows_scored": 0,
+      "outcome": "skipped_silently",
+      "caller_can_see_problem": false,
+      "error": ""
+    },
+    {
+      "case": "stereo_made",
+      "file": "stereo_Audio_Moth_6_20250321_094544.wav",
+      "frames": 144000,
+      "samplerate": 48000,
+      "channels": 2,
+      "subtype": "PCM_16",
+      "multiple_of_144000": true,
+      "status": "done",
+      "completed": 1,
+      "windows_scored": 0,
+      "outcome": "skipped_silently",
+      "caller_can_see_problem": false,
+      "error": ""
+    },
+    {
+      "case": "stereo_made",
+      "file": "stereo_Audio_Moth_6_20250321_130853.wav",
+      "frames": 144000,
+      "samplerate": 48000,
+      "channels": 2,
+      "subtype": "PCM_16",
+      "multiple_of_144000": true,
+      "status": "done",
+      "completed": 1,
+      "windows_scored": 0,
+      "outcome": "skipped_silently",
+      "caller_can_see_problem": false,
+      "error": ""
+    }
+  ],
+  "mixed_job": {
+    "files": [
+      "Audio_Moth_6_20250321_062605.wav",
+      "Audio_Moth_6_20250321_131347.wav",
+      "stereo_Audio_Moth_6_20250321_062605.wav"
+    ],
+    "status": "done",
+    "completed": 3,
+    "total": 3,
+    "windows_scored": 1,
+    "good_clip_scored": true,
+    "error": ""
+  },
+  "preprocessing": [
+    {
+      "case": "peak_norm",
+      "n_clips": 709,
+      "top1_changed": 0,
+      "top1_changed_pct": 0.0,
+      "det_set_changed": 0,
+      "base_species_not_returned": 0,
+      "conf_shift_mean": 0.00016043552726885497,
+      "conf_shift_p95": 0.0004444718360900879,
+      "conf_shift_max": 0.0011829137802124023,
+      "within_0.01_pct": 100.0,
+      "within_0.05_pct": 100.0,
+      "gain_min": 1.0000305085088657,
+      "gain_median": 6.986779895644342,
+      "gain_max": 25.660134370937485
+    },
+    {
+      "case": "twin_chain",
+      "n_clips": 709,
+      "top1_changed": 0,
+      "top1_changed_pct": 0.0,
+      "det_set_changed": 0,
+      "base_species_not_returned": 0,
+      "conf_shift_mean": 0.0003093774463293078,
+      "conf_shift_p95": 0.0008984804153442383,
+      "conf_shift_max": 0.0067597925662994385,
+      "within_0.01_pct": 100.0,
+      "within_0.05_pct": 100.0,
+      "gain_min": 1.0000305085088657,
+      "gain_median": 6.986779895644342,
+      "gain_max": 25.660134370937485
+    }
+  ],
+  "gain_for_peak_norm": {
+    "min": 1.0000305085088657,
+    "median": 6.986779895644342,
+    "max": 25.660134370937485
+  },
+  "criteria": [
+    {
+      "id": "C8",
+      "gate": true,
+      "pass": true,
+      "detail": "10/10 bad files not scored"
+    },
+    {
+      "id": "C9",
+      "gate": false,
+      "pass": false,
+      "known_issue": "V-001",
+      "detail": "0/10 rejections visible to the caller"
+    }
+  ]
+}

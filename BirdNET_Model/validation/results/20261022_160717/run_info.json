@@ -1,0 +1,91 @@
+{
+  "utc_time": "2026-10-22T16:07:17+00:00",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.5",
+  "packages": {
+    "numpy": "1.26.4",
+    "onnx": "1.23.2",
+    "onnxruntime": "1.27.0",
+    "httpx": "0.28.1",
+    "fastapi": "0.143.2",
+    "uvicorn": "0.54.0",
+    "pydantic": "2.14.1",
+    "soundfile": "0.14.0",
+    "scipy": "1.17.1",
+    "psutil": "7.2.2"
+  },
+  "git_commit": "b208532600a21a86c6f16796450b379e106b88e3",
+  "git_branch": "birdnet-validation",
+  "git_uncommitted_changes": false,
+  "criteria": {
+    "name": "criteria.json",
+    "bytes": 5454,
+    "sha256": "3c285bc87c17d89f5445ac04c99e77f45732faed1c92909f724438e2460a64f6",
+    "sha256_lf": "3c285bc87c17d89f5445ac04c99e77f45732faed1c92909f724438e2460a64f6"
+  },
+  "reference_files": {
+    "phase4_detail_Audio_Moth_6.csv": {
+      "name": "phase4_detail_Audio_Moth_6.csv",
+      "bytes": 409164,
+      "sha256": "7d5788cea107ee38ad49072ccdf07e5766169c9b6c9028cdf548c79a3dc7c70f",
+      "sha256_lf": "5eb38d570f2bb51ed48b0d01fdd1480198966dfb1215a5f6c267769b14f02d90"
+    },
+    "birdnet_species_108k_fp16_verification.csv": {
+      "name": "birdnet_species_108k_fp16_verification.csv",
+      "bytes": 24199354,
+      "sha256": "2256ac936efde4542ccb2fa9162fd04881ed2ee1b1507a7ae536b4a43f96a536",
+      "sha256_lf": "298078769e474bc600a68c94902d920c59c5464bd5a4a3e29db7a3a3dedd0be1"
+    }
+  },
+  "service_files": {
+    "fp16_pruned493": {
+      "model": {
+        "name": "birdnet_fp16_pruned493.onnx",
+        "bytes": 18878769,
+        "sha256": "c6a5dcbbd2f23a5886b0abe640d37e16993359746383ede139be9c735db714d8"
+      },
+      "labels": {
+        "name": "birdnet_fp16_pruned493.labels.txt",
+        "bytes": 19381,
+        "sha256": "b61bb9b6731a85898c4ac2cd542d2d647f229954c598c828290a285620b228e2",
+        "sha256_lf": "72b910ab9eae575b45ec73f59e0e583d64930cc07a619c2ec3868f6a07fd1011"
+      },
+      "allow_list": {
+        "name": "geomodel_allowlist_218.txt",
+        "bytes": 8989,
+        "sha256": "a002235cd1d4762a245dc88f1e9ce0e9d79a992facea8c550417bac091a4e52f",
+        "sha256_lf": "f637df6c67fdd3cf22c459f137be15605ad01127084f0f5c272a89a0621fa4dc"
+      }
+    }
+  },
+  "service_health": {
+    "ready": true,
+    "variants_loaded": [
+      "fp16_pruned493"
+    ],
+    "onnxruntime_version": "1.27.0",
+    "providers": [
+      "AzureExecutionProvider",
+      "CPUExecutionProvider"
+    ]
+  },
+  "service_models": [
+    {
+      "variant": "fp16_pruned493",
+      "model_path": "~\\OneDrive\\Documents\\KWF_Human_Presence\\inference_pipeline\\models\\birdnet_fp16_pruned493.onnx",
+      "labels_path": "~\\OneDrive\\Documents\\KWF_Human_Presence\\inference_pipeline\\models\\birdnet_fp16_pruned493.labels.txt",
+      "num_classes": 493,
+      "file_mb": 18.0,
+      "loaded": true,
+      "allow_list_size": 218
+    }
+  ],
+  "audio": {
+    "clips": 709,
+    "total_bytes": 204223196,
+    "distinct_sizes": [
+      288044
+    ],
+    "manifest_sha256": "83ab0253d5713e4788da417dec2556f1c432274be53ec2018db2276a99f52266"
+  }
+}

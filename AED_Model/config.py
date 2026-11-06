@@ -14,8 +14,12 @@ DATA_DIR = os.path.join(PROJECT_ROOT, "data")
 EVENT_TABLE_PATH = os.path.join(DATA_DIR, "event_table.csv")
 CLIP_CATALOG_PATH = os.path.join(DATA_DIR, "clip_catalog.csv")
 
-# Raw audio lives outside the repo (too large to store with the project)
-AUDIO_DIR = "/Users/qian/KWF/Segmented_Foldered"
+# Raw audio lives outside the repo (too large to store with the project).
+# Point AED_AUDIO_DIR at your copy of "Audio Moth Data/Segmented Foldered", e.g. the
+# Google Drive for desktop mount:
+#   export AED_AUDIO_DIR="$HOME/Library/CloudStorage/GoogleDrive-<you>/My Drive/Audio Moth Data/Segmented Foldered"
+# Without it, audio is expected in data/raw_audio/ (git-ignored).
+AUDIO_DIR = os.path.expanduser(os.environ.get("AED_AUDIO_DIR", os.path.join(DATA_DIR, "raw_audio")))
 
 # Outputs directory (regenerable artifacts, git-ignored)
 OUTPUTS_DIR = os.path.join(PROJECT_ROOT, "outputs")

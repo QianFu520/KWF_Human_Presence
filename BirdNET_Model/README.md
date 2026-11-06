@@ -44,6 +44,7 @@ score for a window the reference pipeline never evaluated.
 | Regenerate the export from scratch | `src/export/`, then `src/pruning/` |
 | Prune to a different species list | `src/pruning/prune_birdnet_head.py` |
 | Serve the model over HTTP, or benchmark it | `src/bridge/` |
+| See how the compressed model was validated (API and Digital Twin) | `docs/BirdNET_Validation_Report.md`, `validation/` |
 | Know what was measured vs. inherited | `docs/phase4_dual_model_notes.md` |
 
 ---

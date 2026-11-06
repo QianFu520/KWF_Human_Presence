@@ -1,0 +1,90 @@
+# AED validation report — 20261016_042947
+
+**Result: FAIL** — 23 pass, 1 fail, 2 warn, 15 info.
+
+Command: `validation/validate_aed.py --aed_root . --manifest validation/field/manifest.csv --twin_backend ../../digital_twin_mvp/backend --out validation/results`
+
+Environment: Python 3.13.13, torch 2.13.0, librosa 1.0.0, numpy 2.5.4, macOS-26.5-arm64-arm-64bit-Mach-O
+
+| ID | Check | Status | Detail |
+| --- | --- | --- | --- |
+| A1 | Library versions | INFO | python 3.13.13, machine arm64, torch 2.13.0, librosa 1.0.0, numpy 2.5.4, soundfile 0.14.0, onnxruntime 1.31.0, fastapi 0.139.0, pandas 3.0.3 |
+| A2 | Matches AED_Model/requirements.txt pins | WARN | differs: {'torch': '2.13.0', 'librosa': '1.0.0', 'numpy': '2.5.4'} (pins {'torch': '2.2.2', 'librosa': '0.11.0', 'numpy': '1.26.4'}) |
+| B1 | Checkpoint SHA-256 | PASS | tinycnn_v3.pth 913a78a468ff42e2… |
+| B2 | Checkpoint metadata says v3 | PASS | notes='TinyCNN v3 — 11213 not_meaningful clips (acoustic scan + model_inference_v1 + model_inference_v2)', val_acc=0.9984, nm_precision=0.98, nm_recall=1.0, n_train=101820, n_val=28333 |
+| B3 | Strict load into TinyCNN + parameter count | PASS | 547,937 parameters, strict load ok (<All keys matched successfully>) |
+| B4 | Consumers point at v3 | PASS | API default MODEL_PATH='outputs/models/tinycnn_v3.pth'; run_pipeline.py refs=['tinycnn_v3.pth'] |
+| B5 | ONNX export = same model | PASS | in mel_spectrogram['batch_size', 1, 128, 256] -> out not_meaningful_prob['batch_size']; max /pt-onnx/ on 32 random inputs = 0.00e+00 |
+| B6 | Digital Twin bundles the same checkpoint | PASS | Digital Twin bundled checkpoint 913a78a468ff42e2… identical to upstream |
+| B7 | Digital Twin checkpoint resolution | PASS | resolve_checkpoint_path() -> <digital_twin_mvp>/backend/app/services/aed/models/tinycnn_v3.pth |
+| C1 | Mel contract (128x256, float32, finite, peak 0 dB) | PASS | 1818 readable clips; violations: none; unreadable: none |
+| C1b | Loudest moment falls in the cropped tail (last 0.27 s) | INFO | 175/1818 clips: ['Audio_Moth_2_20250319_171649.wav', 'Audio_Moth_2_20250319_171701.wav', 'Audio_Moth_2_20250319_171707.wav', 'Audio_Moth_2_20250319_171849.wav', 'Audio_Moth_2_20250319_171855.wav', 'Audio_Moth_2_20250319_171858.wav', 'Audio_Moth_2_20250319_171910.wav', 'Audio_Moth_2_20250319_171913.wav', 'Audio_Moth_2_20250319_171916.wav', 'Audio_Moth_5_20250321_084112.wav', 'Audio_Moth_5_20250321_084136.wav', 'Audio_Moth_5_20250321_084300.wav', 'Audio_Moth_5_20250321_084403.wav', 'Audio_Moth_5_20250321_084451.wav', 'Audio_Moth_5_20250321_084457.wav', 'Audio_Moth_5_20250321_084506.wav', 'Audio_Moth_5_20250321_084533.wav', 'Audio_Moth_5_20250320_173859.wav', 'Audio_Moth_5_20250320_173920.wav', 'Audio_Moth_5_20250320_173926.wav', 'Audio_Moth_5_20250320_174053.wav', 'Audio_Moth_5_20250320_174132.wav', 'Audio_Moth_5_20250320_174141.wav', 'Audio_Moth_5_20250320_174238.wav', 'Audio_Moth_6_20250321_132111.wav', 'Audio_Moth_6_20250321_132150.wav', 'Audio_Moth_6_20250321_132159.wav', 'Audio_Moth_3_20250319_080204.wav', 'Audio_Moth_3_20250319_080222.wav', 'Audio_Moth_3_20250319_080404.wav', 'Audio_Moth_3_20250319_080458.wav', 'Audio_Moth_3_20250319_080501.wav', 'Audio_Moth_3_20250319_080522.wav', 'Audio_Moth_3_20250319_080534.wav', 'Audio_Moth_3_20250319_080537.wav', 'Audio_Moth_3_20250319_080546.wav', 'Audio_Moth_5_20250321_084051.wav', 'Audio_Moth_6_20250318_155819.wav', 'Audio_Moth_6_20250318_155507.wav', 'Audio_Moth_6_20250318_155746.wav', 'Audio_Moth_6_20250318_155516.wav', 'Audio_Moth_6_20250318_155601.wav', 'Audio_Moth_6_20250318_161046.wav', 'Audio_Moth_6_20250318_160643.wav', 'Audio_Moth_6_20250318_155722.wav', 'Audio_Moth_1_20250319_172612.wav', 'Audio_Moth_1_20250319_172500.wav', 'Audio_Moth_1_20250319_172330.wav', 'Audio_Moth_1_20250319_171448.wav', 'Audio_Moth_1_20250319_172236.wav', 'Audio_Moth_1_20250319_173351.wav', 'Audio_Moth_1_20250319_171736.wav', 'Audio_Moth_1_20250319_171942.wav', 'Audio_Moth_1_20250319_172654.wav', 'Audio_Moth_1_20250319_172706.wav', 'Audio_Moth_1_20250319_172806.wav', 'Audio_Moth_1_20250319_172827.wav', 'Audio_Moth_1_20250319_172845.wav', 'Audio_Moth_1_20250319_172848.wav', 'Audio_Moth_1_20250319_172957.wav', 'Audio_Moth_6_20250321_085411.wav', 'Audio_Moth_6_20250321_085417.wav', 'Audio_Moth_6_20250321_085453.wav', 'Audio_Moth_6_20250321_085456.wav', 'Audio_Moth_6_20250321_085541.wav', 'Audio_Moth_6_20250321_085547.wav', 'Audio_Moth_6_20250321_085632.wav', 'Audio_Moth_6_20250321_085641.wav', 'Audio_Moth_6_20250321_085714.wav', 'Audio_Moth_6_20250321_085717.wav', 'Audio_Moth_6_20250321_085802.wav', 'Audio_Moth_2_20250319_023438.wav', 'Audio_Moth_1_20250319_071303.wav', 'Audio_Moth_6_20250319_214641.wav', 'Audio_Moth_6_20250319_173456.wav', 'Audio_Moth_4_20250321_114221.wav', 'Audio_Moth_5_20250318_210315.wav', 'Audio_Moth_2_20250318_103607.wav', 'Audio_Moth_1_20250319_234924.wav', 'Audio_Moth_1_20250321_043400.wav', 'Audio_Moth_1_20250319_201324.wav', 'Audio_Moth_2_20250317_113754.wav', 'Audio_Moth_2_20250321_062329.wav', 'Audio_Moth_2_20250317_163427.wav', 'Audio_Moth_1_20250317_100448.wav', 'Audio_Moth_2_20250318_232720.wav', 'Audio_Moth_3_20250321_002347.wav', 'Audio_Moth_5_20250319_133032.wav', 'Audio_Moth_1_20250318_181112.wav', 'Audio_Moth_1_20250320_023457.wav', 'Audio_Moth_1_20250318_085224.wav', 'Audio_Moth_1_20250321_024642.wav', 'Audio_Moth_1_20250319_233524.wav', 'Audio_Moth_4_20250320_233557.wav', 'Audio_Moth_1_20250319_220730.wav', 'Audio_Moth_5_20250319_204923.wav', 'Audio_Moth_6_20250319_212359.wav', 'Audio_Moth_2_20250317_222056.wav', 'Audio_Moth_2_20250318_062002.wav', 'Audio_Moth_1_20250318_235306.wav', 'Audio_Moth_5_20250320_054447.wav', 'Audio_Moth_2_20250319_022808.wav', 'Audio_Moth_1_20250318_160454.wav', 'Audio_Moth_1_20250320_125106.wav', 'Audio_Moth_4_20250319_201337.wav', 'Audio_Moth_5_20250318_072931.wav', 'Audio_Moth_1_20250321_013800.wav', 'Audio_Moth_5_20250319_204320.wav', 'Audio_Moth_5_20250318_035635.wav', 'Audio_Moth_6_20250317_204032.wav', 'Audio_Moth_1_20250321_015430.wav', 'Audio_Moth_1_20250320_014700.wav', 'Audio_Moth_4_20250320_140140.wav', 'Audio_Moth_6_20250320_143714.wav', 'Audio_Moth_2_20250318_214526.wav', 'Audio_Moth_5_20250319_213217.wav', 'Audio_Moth_1_20250321_031606.wav', 'Audio_Moth_6_20250319_080834.wav', 'Audio_Moth_3_20250320_040117.wav', 'Audio_Moth_3_20250320_045414.wav', 'Audio_Moth_1_20250317_172548.wav', 'Audio_Moth_3_20250320_032211.wav', 'Audio_Moth_3_20250320_035332.wav', 'Audio_Moth_3_20250320_033738.wav', 'Audio_Moth_1_20250317_171512.wav', 'Audio_Moth_3_20250320_043211.wav', 'Audio_Moth_3_20250320_050602.wav', 'Audio_Moth_3_20250320_050756.wav', 'Audio_Moth_3_20250320_045514.wav', 'Audio_Moth_1_20250317_171615.wav', 'Audio_Moth_3_20250320_034217.wav', 'Audio_Moth_1_20250317_173139.wav', 'Audio_Moth_1_20250317_164742.wav', 'Audio_Moth_3_20250320_035802.wav', 'Audio_Moth_1_20250317_171627.wav', 'Audio_Moth_1_20250317_170215.wav', 'Audio_Moth_3_20250320_033808.wav', 'Audio_Moth_3_20250320_044847.wav', 'Audio_Moth_1_20250317_170309.wav', 'Audio_Moth_3_20250320_033623.wav', 'Audio_Moth_3_20250320_032550.wav', 'Audio_Moth_3_20250320_042629.wav', 'Audio_Moth_3_20250320_035126.wav', 'Audio_Moth_1_20250317_173033.wav', 'Audio_Moth_1_20250317_170733.wav', 'Audio_Moth_3_20250320_044711.wav', 'Audio_Moth_1_20250317_170921.wav', 'Audio_Moth_1_20250317_171430.wav', 'Audio_Moth_3_20250320_045638.wav', 'Audio_Moth_3_20250320_043323.wav', 'Audio_Moth_3_20250320_040644.wav', 'Audio_Moth_1_20250317_171221.wav', 'Audio_Moth_1_20250317_164609.wav', 'Audio_Moth_1_20250317_173354.wav', 'Audio_Moth_3_20250320_042250.wav', 'Audio_Moth_1_20250317_172009.wav', 'Audio_Moth_1_20250317_164148.wav', 'Audio_Moth_3_20250320_035738.wav', 'Audio_Moth_3_20250320_033747.wav', 'Audio_Moth_1_20250317_170321.wav', 'Audio_Moth_3_20250320_034059.wav', 'Audio_Moth_3_20250320_050650.wav', 'Audio_Moth_3_20250320_040444.wav', 'Audio_Moth_1_20250317_170618.wav', 'Audio_Moth_3_20250320_033602.wav', 'Audio_Moth_1_20250317_170709.wav', 'Audio_Moth_1_20250317_170842.wav', 'Audio_Moth_3_20250320_050332.wav', 'Audio_Moth_1_20250317_172542.wav', 'Audio_Moth_3_20250320_034814.wav', 'Audio_Moth_3_20250320_034323.wav', 'Audio_Moth_3_20250320_044147.wav', 'Audio_Moth_3_20250320_032947.wav', 'Audio_Moth_1_20250317_171151.wav', 'Audio_Moth_3_20250320_050459.wav'] |
+| C2 | Labelling notebook (06) = training (05) | PASS | bit-identical over 1818 clips |
+| C3 | CLI preprocess_clip = training | PASS | bit-identical over 1818 clips |
+| C4 | FastAPI compute_mel = training | PASS | bit-identical over 1818 clips |
+| C5 | Digital Twin clip loader + clip_to_mel = training (48 kHz input) | FAIL | max diff 1.08e+00 dB over 1818 clips (twin peak-normalises audio; dB is relative to clip max) |
+| D0 | Target | INFO | in-process (FastAPI TestClient, same app object uvicorn serves) |
+| D1 | GET /health | PASS | 200 {'status': 'ok'} |
+| D2 | OpenAPI schema | PASS | paths=['/health', '/predict']; request multipart/form-data with 'file'; response fields=['label', 'not_meaningful_prob'] |
+| D3 | POST /predict on every readable clip | PASS | 1818 requests, 200 + valid schema + label consistent with threshold 0.5; problems: none |
+| D4 | Error handling | PASS | non-.wav filename -> 400; corrupt .wav -> 422; empty .wav -> 422; no file field -> 422; upper-case .WAV -> 200 |
+| D5 | Determinism | PASS | 5 identical requests -> 1 distinct response(s) |
+| D6 | Latency per request (this machine) | INFO | p50 5.5 ms, p95 6.6 ms, max 429.9 ms over 1818 requests |
+| E1 | CLI scored every readable clip | PASS | 1818 rows in CLI CSV for 1818 readable clips |
+| E2 | API vs CLI probability | PASS | max /diff/ 4.97e-05 over 1818 clips (API rounds to 4 dp; tol 0.0001) |
+| E3 | ONNX vs CLI probability | PASS | max /diff/ 7.75e-07 over 1818 clips |
+| E4 | Digital Twin gate vs CLI probability | PASS | max /diff/ 2.86e-06 over 1818 clips |
+| E5 | CLI vs API labels at the same threshold | PASS | 0 disagreements [] (CLI uses >=, API uses >) |
+| F1 | End-of-clip blind spot (0.2 s 5 kHz burst in noise, by onset) | WARN | 0.5s→0.000; 1.5s→0.000; 2.5s→0.003; 2.6s→0.066; 2.7s→1.000; 2.8s→1.000; noise alone→1.000. Frames kept cover 2.731 s of 3.0 s |
+| F2 | Gain invariance | PASS | amp 0.001→1.0000; amp 0.05→1.0000; amp 0.5→1.0000 |
+| F3 | Zero-padding changes the decision | INFO | 3 s noise → 1.000; first 1 s of same noise, zero-padded → 0.000 |
+| F4 | Digital silence | INFO | 0.724 |
+| G1 | Confusion at threshold 0.5 (1818 labelled clips) | INFO | meaningful kept 1283, meaningful dropped 35, background kept 0, background dropped 500; accuracy 0.981, meaningful recall 0.973, not_meaningful precision 0.935, recall 1.000 |
+| G3 | group BACKGROUND | INFO | 500/500 as expected (not_meaningful); median p 1.000 |
+| G3 | group BIRDNET_SPECIES | INFO | 500/500 as expected (meaningful); median p 0.000 |
+| G3 | group CHAINSAW | INFO | 198/198 as expected (meaningful); median p 0.000 |
+| G3 | group GUNSHOT | INFO | 128/128 as expected (meaningful); median p 0.000 |
+| G3 | group HUMAN_PRESENCE_OFF_TRAIL | INFO | 84/118 as expected (meaningful); median p 0.133 |
+| G3 | group HUMAN_PRESENCE_ON_TRAIL | INFO | 200/200 as expected (meaningful); median p 0.000 |
+| G3 | group VEHICLE | INFO | 173/174 as expected (meaningful); median p 0.000 |
+| G4 | Same clips through the Digital Twin gate (confidence >= 0.3) | INFO | meaningful kept 1291/1318, background dropped 500/500 |
+| H1 | run_node_audio_workflow on a long file | PASS | 1818 clips in a 9090 s file; stage 1 raised 172 triggers; AED scored 172 (model_status ['aed_tinycnn']); 156/1818 source clips reached AED; max /twin - independent re-score/ 1.79e-07 |
+
+## Threshold sweep (labelled clips, CLI scores)
+
+| threshold | meaningful kept | meaningful dropped | background dropped | background kept | accuracy |
+| --- | --- | --- | --- | --- | --- |
+| 0.3 | 1277 | 41 | 500 | 0 | 0.977 |
+| 0.5 | 1283 | 35 | 500 | 0 | 0.981 |
+| 0.7 | 1291 | 27 | 500 | 0 | 0.985 |
+| 0.9 | 1299 | 19 | 499 | 1 | 0.989 |
+| 0.95 | 1303 | 15 | 499 | 1 | 0.991 |
+| 0.99 | 1309 | 9 | 497 | 3 | 0.993 |
+
+## Digital Twin workflow: which clips reached AED
+
+Stage 1 (the twin's bird-like prefilter) runs before AED; clips it does not trigger on are never scored.
+
+| group | expected | clips | reached AED (stage 1 triggered) | passed AED gate |
+| --- | --- | --- | --- | --- |
+| BACKGROUND | not_meaningful | 500 | 33 | 25 |
+| BIRDNET_SPECIES | meaningful | 500 | 57 | 57 |
+| CHAINSAW | meaningful | 198 | 11 | 11 |
+| GUNSHOT | meaningful | 128 | 7 | 7 |
+| HUMAN_PRESENCE_OFF_TRAIL | meaningful | 118 | 6 | 6 |
+| HUMAN_PRESENCE_ON_TRAIL | meaningful | 200 | 23 | 23 |
+| VEHICLE | meaningful | 174 | 19 | 19 |
+
+## By group
+
+| group | expected | n | as expected | median p | min p | max p |
+| --- | --- | --- | --- | --- | --- | --- |
+| BACKGROUND | not_meaningful | 500 | 500 | 1.000 | 0.856 | 1.000 |
+| BIRDNET_SPECIES | meaningful | 500 | 500 | 0.000 | 0.000 | 0.230 |
+| CHAINSAW | meaningful | 198 | 198 | 0.000 | 0.000 | 0.000 |
+| GUNSHOT | meaningful | 128 | 128 | 0.000 | 0.000 | 0.000 |
+| HUMAN_PRESENCE_OFF_TRAIL | meaningful | 118 | 84 | 0.133 | 0.000 | 1.000 |
+| HUMAN_PRESENCE_ON_TRAIL | meaningful | 200 | 200 | 0.000 | 0.000 | 0.032 |
+| VEHICLE | meaningful | 174 | 173 | 0.000 | 0.000 | 0.927 |
+
+Files: `checks.csv` (all checks), `per_clip.csv` (every clip, every path), `summary.json` (environment, model metadata, metrics), `cli_predictions.csv`.

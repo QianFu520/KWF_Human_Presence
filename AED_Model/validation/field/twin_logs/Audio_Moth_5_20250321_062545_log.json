@@ -1,0 +1,46 @@
+{
+  "metadata": {
+    "duration_seconds": 26620.582,
+    "node_id": "Audio_Moth_5",
+    "source_audio": "{RAW_AUDIO}/Audio Moth 5/Audio_Moth_5_032125/20250321_062545.WAV",
+    "recording_start": "2025-03-21T06:25:45"
+  },
+  "events": [
+    {
+      "timestamp_seconds": 8109.0,
+      "duration_seconds": 297.0,
+      "type": "CHAINSAW",
+      "event_id": "Chainsaw_Audio_Moth_5_20250321_084054"
+    },
+    {
+      "timestamp_seconds": 8154.0,
+      "duration_seconds": 300.0,
+      "type": "GUNSHOT",
+      "event_id": "Gunshot_Audio_Moth_5_20250321_084139"
+    },
+    {
+      "timestamp_seconds": 26271.0,
+      "duration_seconds": 297.0,
+      "type": "GUNSHOT",
+      "event_id": "Gunshot_Audio_Moth_5_20250321_134336"
+    },
+    {
+      "timestamp_seconds": 8052.0,
+      "duration_seconds": 300.0,
+      "type": "HUMAN_PRESENCE_OFF_TRAIL",
+      "event_id": "Human Presence off Trail_Audio_Moth_5_20250321_083957"
+    },
+    {
+      "timestamp_seconds": 25611.0,
+      "duration_seconds": 1008.0,
+      "type": "HUMAN_PRESENCE_ON_TRAIL",
+      "event_id": "Human Presence on Trail_Audio_Moth_5_20250321_133236"
+    },
+    {
+      "timestamp_seconds": 26460.0,
+      "duration_seconds": 159.0,
+      "type": "VEHICLE",
+      "event_id": "Vehicle_Audio_Moth_5_20250321_134645"
+    }
+  ]
+}
