@@ -29,7 +29,7 @@ Recommendation for the integration phase: deploy the PyTorch checkpoint
 ### Threshold sweep 0.5–0.99 (Weeks 4–5)
 
 `threshold_sweep.py` on the 4,027 held-out clips (scores from
-`results/20261016_044454`, no rescoring); report in
+`results/20261016_044454`, now on Drive; no rescoring); report in
 `results/threshold_sweep_20261101.md`.
 
 - **Only 1 of 15 staged events changes with the threshold:** the quiet
@@ -58,8 +58,9 @@ Recommendation for the integration phase: deploy the PyTorch checkpoint
 - C5 is reported as **KNOWN** (an explained exception) rather than FAIL, while
   every differing clip has at most one cell over tolerance and an unchanged
   label. Checked on the affected clips (run of 2026-11-01): `22 pass, 0 fail,
-  1 known exception`. The committed `report.md` files predate this and still
-  show C5 as FAIL.
+  1 known exception`. Full held-out rerun on 2026-11-05
+  (`results/20261105_225125`): `23 pass, 0 fail, 1 known exception`; the older
+  reports that showed C5 as FAIL were moved to Drive.
 - Bulk results, the slides and the spreadsheet moved to Drive; only summary
   reports stay in the branch.
 
@@ -101,7 +102,8 @@ quiet off-trail walk on Audio_Moth_3 (66% of its clips kept at 0.5).
 
 ### Field-clip metrics (held out from training)
 
-`results/20261016_044454` + `score_field.py`. 4,027 clips from v3's validation
+`results/20261105_225125` + `score_field.py` (same scores as the first run,
+`20261016_044454`). 4,027 clips from v3's validation
 split (`v3_split.py` reproduces it; the counts match the checkpoint exactly).
 
 | Group | Clips | Events | Correct @0.5 | @0.7 | @0.95 |
@@ -124,16 +126,17 @@ AED does not drop event audio, not that it recognises the human activity. v3 was
 also chosen over v4 on this split, so it is held out from training, not from
 model selection.
 
-The default 1,818-clip field manifest (`results/20261016_042947`) is 77%
+The default 1,818-clip field manifest (`20261016_042947`, on Drive) is 77%
 training data and is kept only as a check; do not quote its metrics.
 
 ### Validation runs
 
 | Run folder | Audio | Target | Result |
 |---|---|---|---|
-| `results/20261016_044454` | **4,027 held-out KWF clips** | In-process API + twin backend, section H | 23 pass, **1 fail (C5, explained; KNOWN under the current harness)**, 2 warn |
+| `results/20261105_225125` | **4,027 held-out KWF clips (headline)** | In-process API + twin backend, section H | **PASS: 23 pass, 0 fail, 1 known exception (C5)**, 2 warn |
+| `20261016_044454` (Drive only) | 4,027 held-out KWF clips, first run | Same | Same scores; C5 shown as FAIL (before the KNOWN status) |
 | `results/20261016_045042` | 4,027 held-out KWF clips | Live server `uvicorn --port 8011` (`--api_url`, `--skip_workflow`) | PASS: 19 pass, 0 fail, 2 warn |
-| `results/20261016_042947` | 1,818 KWF clips (default manifest, mostly training data) | In-process + twin | 23 pass, 1 fail (C5, 3 clips; KNOWN under the current harness), 2 warn |
+| `20261016_042947` (Drive only) | 1,818 KWF clips (default manifest, mostly training data) | In-process + twin | Superseded by the held-out runs; C5 shown as FAIL (3 clips) |
 | `results/twin_deployed_20261016` | 5 raw field recordings, 46 h | Deployed twin (Docker), dashboard | Dashboard = independent re-score, exactly |
 | `20261015_231906`, `20261015_231946` (Drive only) | ESC-50 sample set (removed) | Mac in-process / live server | PASS; kept on Drive for the record |
 
