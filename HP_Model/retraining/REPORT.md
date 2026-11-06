@@ -265,6 +265,28 @@ Test was not scored and no bundles were saved. Results are in `models\diagnostic
   so the model can't output them. The 218-species allow-list is a subset of the 493 birds, and
   `birdnet_output.csv` holds only those 218 allow-listed birds (all six recorders checked).
 
+### Diagnostics: BirdNET non-bird classes (Nov 5, train and val only)
+
+The full, unpruned BirdNET v2.4 (6,522 classes, FP32) scored every train and val clip. On the
+bird classes it agrees with the pipeline's pruned model (top-1 match on 20 of 20 clips). The 11
+non-bird classes are Human vocal, Human non-vocal, Human whistle, Engine, Siren, Dog, Noise, Gun,
+Power tools, Fireworks and Environmental. Test was not scored and no bundles were saved. Results
+are in `models\birdnet_nonbird\`. **Not useful on these recordings:**
+
+- **The classes rarely fire.** Each class scores ≥ 0.25 on fewer than 0.3% of event clips (at
+  most 0.17%). Any class does so on 37 of 9,557 event clips (0.39%), and on 3 of 396,471 quiet
+  clips. When they fire they are precise: Human vocal 13 event clips, 0 quiet; Power tools 16
+  event clips, 0 quiet. **Gun** scores ≥ 0.25 on only 2 event clips, and just 1 of them is a
+  gunshot clip, out of 2,946.
+- **Weak separation.** On a sample of 2,000 event clips and 2,000 quiet clips matched on hour of
+  day, per-class PR-AUC is **0.51–0.58** (chance is 0.50) and ROC-AUC is 0.49–0.55. Typical scores
+  are below 0.001, so this comes from tiny shifts, not detections.
+- **As features: no reliable gain.** Adding the 11 scores to the 23 features moved val within-hour
+  PR-AUC **0.714 → 0.719–0.731** (re-tuned vs locked config). Recall at ≤ 5 false-alert episodes
+  per recorder per day was 0.225–0.250, compared with 0.232. The gain comes from hours 13–14,
+  which have few events; hour 17 is unchanged. This is a single split, within the noise of
+  picking the best of 96 configs.
+
 ## 4. Open issues
 
 1. **Threshold transfer.** Val → test false alerts rise for most models (set for ≤ 5 episodes
@@ -287,10 +309,9 @@ Test was not scored and no bundles were saved. Results are in `models\diagnostic
    - (b) **Recorder coordinates needed.** Recorders too far away to hear an event could then
      supply negatives simultaneous with it. That is the only way, with this data, to separate
      detection from time of day and session.
-   - (c) **Consider keeping BirdNET's non-bird classes** (human vocal, human non-vocal, engine,
-     siren and similar) in the pruned export as candidate HP features, coordinated with Rashi.
-     This may be a small change if the keep-set is still a config input. The unpruned model
-     isn't in the repo, though, so it needs a re-export from the full BirdNET v2.4 model.
+   - (c) **BirdNET's non-bird classes** (human vocal, human non-vocal, engine, siren and similar)
+     as candidate HP features: **tested Nov 5: not useful on these recordings; no re-export
+     recommended** (see Diagnostics).
    - (d) **Confirm how event times in `simulations.csv` were logged**, since tighter label
      windows didn't help.
 6. Label windows and models: tight was tested on val (no gain, see Diagnostics). Still to do:
@@ -304,4 +325,4 @@ Test was not scored and no bundles were saved. Results are in `models\diagnostic
 - **AED marks clips instead of dropping them** before the HP model.
 - **23rel not adopted.**
 - **±10 min labels kept** until the field team confirms how event timestamps were logged.
-- **BirdNET non-bird test approved** (see recommendation 5c).
+- **BirdNET non-bird test approved** (done Nov 5: not useful; see Diagnostics and recommendation 5c).
