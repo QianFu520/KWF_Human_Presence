@@ -1,8 +1,8 @@
 # Why AED scores quiet audio as background
 
 Status: 2026-11-05. Includes Coleman's AM3 results and Ben's 12 AM1 setup
-clips (measured). Still open: listening to the dropped off-trail clips and
-which AM1 clips hold people (see [Open](#open)).
+clips (measured and listened to). Still open: listening to the dropped
+off-trail clips (see [Open](#open)).
 
 ## Finding
 
@@ -102,6 +102,13 @@ walk, far from the 0.06 of the on-trail walks that AED keeps). Near-full-scale
 peaks also suggest the recorder was being handled. So AED rejects them for
 their spectral shape, not their level.
 
+Cheryl listened to all 12 (2026-11-05): **10 have people's voices** (093130
+very faint; 093639 through 094742), and 094745 and 094751 do not. AED
+rejected all 10 voice clips (scores 0.56–1.00; the faint one, 093130, is the
+least confident at 0.56). The two clips without voices are the flattest of the
+12 (0.47 and 0.46, against a median of 0.38 for the voice clips), which fits
+the same mechanism: voices make a clip less flat, but not enough to pass.
+
 Coleman's AM3 result fits the low-SNR route; Ben's AM1 clips fit the
 broadband-transient route. Both end at a flat spectrum.
 
@@ -148,7 +155,7 @@ have no held-out clips here.
 
 - Ben's 12 AM1 setup clips (`Audio_Moth_1_20250317_` + 093130, 093639, 093824,
   094151, 094203, 094630, 094657, 094736, 094739, 094742, 094745, 094751) are
-  measured above; per-clip values in `am1_setup_clips.csv` on Drive. Ask Ben
-  which 9 had footsteps or voices, to compare those with the other 3, and
-  whether the recorder was being handled.
+  measured above; per-clip values in `am1_setup_clips.csv` on Drive. Listened:
+  10 have voices. Still worth asking Ben whether the recorder was being
+  handled (near-full-scale peaks).
 - Listen to the dropped off-trail clips.
