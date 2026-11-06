@@ -1,7 +1,8 @@
 # Why AED scores quiet audio as background
 
-Status: 2026-11-05. Includes Coleman's AM3 results and Ben's 12 AM1 setup
-clips (measured and listened to). Still open: listening to the dropped
+Status: 2026-11-06. Includes Coleman Bryant's full-dataset AED results
+(all 616,381 clips, six recorders) and Ben's 12 AM1 setup clips (measured and
+listened to). Still open: listening to the dropped
 off-trail clips (see [Open](#open)).
 
 ## Finding
@@ -11,7 +12,9 @@ to each clip's own maximum, so turning a clip down changes nothing. What it
 reacts to is **how far the sound stands above the clip's noise floor**. When a
 real sound is faint relative to the background, the normalised spectrogram is
 dominated by broadband noise; it looks flat, and flat is what AED learned to
-call background. Quiet recorders and distant activity therefore get rejected.
+call background. Quiet recorders and distant activity therefore get rejected:
+on the full dataset AED marks 25% of the quiet AM3 recorder's clips as
+background, against 0.5–1.3% on the other five (Coleman, section 3).
 
 The AM1 setup clips show a second route to the same result: loud, close,
 broadband sounds (footsteps, handling) also give a flat spectrum and are
@@ -67,15 +70,33 @@ from Drive):
   mel median (flatter, less contrast), −0.38 for loudest-frame contrast. The
   clips that tip over are the ones where nothing stands out of the noise.
 
-### 3. Independent results from the team
+### 3. AM3 on the full dataset (Coleman Bryant)
 
-**Coleman, HP retraining** (`hp-retraining`, `HP_Model/retraining/REPORT.md`,
-"AM3 (quiet recorder)"): on the full re-cut data, AM3 is 18–20 dB quieter than
-the other recorders at every hour (median RMS −49.6 dBFS vs −28.7 to −31.7),
-with flatter spectra, and **AED rejects 25% of AM3's clips against 0.5–1.3%
-on the other recorders**. AM3's gain setting cannot be read (no CONFIG.TXT,
-re-cut clips have no header). He also found AED's score adds nothing as an HP
-feature (ranked last of 24).
+Coleman ran AED (v3, threshold 0.5) on all **616,381 clips from the six
+recorders** for the HP retraining and shared the results on 2026-11-06 (also
+in `hp-retraining`, `HP_Model/retraining/REPORT.md`, "AM3 (quiet recorder)"):
+
+- **AED marks 3.2% of all clips not meaningful: 0.5–1.3% on five recorders,
+  25% on AM3.**
+- AM3 is **18–20 dB quieter** than the other recorders at every hour (median
+  RMS −49.6 dBFS vs −28.7 to −31.7), with flatter spectra; probably its gain
+  setting or microphone. The gain cannot be read (no CONFIG.TXT; re-cut clips
+  have no header).
+- AM3's rejections cluster in its quietest periods: **74–99% before dawn
+  (03:00–04:00)** and 52–81% from 08:00 to 11:00. Rejected AM3 clips are about
+  **7 dB quieter** than accepted ones.
+- Real events: AED rejects about 1–2.5% of event clips overall, depending on
+  the label window. **Every rejected off-trail presence clip comes from AM3**,
+  where AED drops about half (48%) of the clips around its off-trail event:
+  the same walk as section 2 (34 of 99 held-out clips there; the label
+  windows differ).
+- AED's score added nothing as an HP feature (ranked last of 24).
+
+Level and flatness: across AM3's day, the rejected clips are quieter (7 dB),
+because quiet periods are mostly noise floor. Within the off-trail walk
+(section 2), dropped and kept clips have the same level and differ in
+flatness. Both fit the finding: AED never sees level directly, and quietness
+matters because it flattens the normalised spectrum.
 
 **Ben, pipeline step 2** (`step1-4-testing-notebooks`,
 `inference_pipeline/testing/notebooks/02_tinycnn_filter.ipynb`): on 1,200 AM1
@@ -109,12 +130,13 @@ least confident at 0.56). The two clips without voices are the flattest of the
 12 (0.47 and 0.46, against a median of 0.38 for the voice clips), which fits
 the same mechanism: voices make a clip less flat, but not enough to pass.
 
-Coleman's AM3 result fits the low-SNR route; Ben's AM1 clips fit the
+Coleman's AM3 results fit the low-SNR route; Ben's AM1 clips fit the
 broadband-transient route. Both end at a flat spectrum.
 
-### 4. The quiet recorder is AM3 (held-out sample)
+### 4. Per-recorder check on a held-out sample
 
-Held-out meaningful clips, sampled up to 60 per recorder:
+A small sample, consistent with Coleman's full-dataset numbers in section 3
+(which are the headline). Held-out meaningful clips, up to 60 per recorder:
 
 | Recorder | Clips | Median level (dBFS) | Median flatness | Meaningful dropped |
 |---|---|---|---|---|
@@ -123,11 +145,9 @@ Held-out meaningful clips, sampled up to 60 per recorder:
 | Audio_Moth_4 | 59 | −30.2 | 0.03 | 0% |
 | Audio_Moth_5 | 56 | −31.0 | 0.06 | 0% |
 
-AM3 records about 15 dB lower than the others with a much flatter spectrum,
-consistent with Coleman's 25% rejection there (his figure covers all of AM3's
-clips; this table is a 32-clip held-out sample). Whether that is the device's
-gain setting, its placement, or a microphone fault is not known; AM1 and AM6
-have no held-out clips here.
+The sample shows AM3 about 15 dB lower and much flatter. Its 6% rejection
+(2 of 32 clips) is too small a sample to estimate the rate; use Coleman's 25%.
+AM1 and AM6 have no held-out clips here.
 
 ## What it means
 
@@ -135,8 +155,8 @@ have no held-out clips here.
   "how much the clip stands out of its own noise floor", not "no human here".
   Low-SNR human activity (distant, quiet, or on a low-gain recorder) gets a
   background-like score.
-- Per-recorder levels differ by ~15 dB, so a single cutoff treats recorders
-  differently. Recorder gain/level is worth checking in the field metadata.
+- Per-recorder levels differ by up to 18–20 dB, so a single cutoff treats
+  recorders differently (25% rejected on AM3, ≤ 1.3% elsewhere). Recorder gain/level is worth checking in the field metadata.
 - Options if this matters for HP (none needed for the current pipeline):
   add quiet human clips to AED's `meaningful` training data; stop using the
   flatness rule as a background label; or give HP the recorder's noise level
