@@ -51,7 +51,7 @@ from metadata_extraction     import extract_metadata
 from weather_info            import get_weather_info_all
 from weather_matching        import weather_match
 from feature_engineering     import run_feature_engineering
-from hp_inference            import BundleError, check_weather_mode, load_bundle, predict_csv
+from hp_inference            import BundleError, check_weather_mode, load_bundle, predict_csv, warn_if_reference
 
 import pandas as pd
 
@@ -185,6 +185,7 @@ def step8_hp_model(features_csv, outputs_dir, bundle):
     Score every clip in features.csv with the HP bundle (loaded and checked by
     hp_inference.load_bundle in main) and write predictions.csv: clip_name,
     probability, label, plus the AED columns. Skipped when no bundle is given.
+    Warns when the bundle's role is "reference" (not for deployment).
     Feature names and order come only from the bundle and scripts/hp_features.py.
     """
     if bundle is None:
@@ -194,6 +195,7 @@ def step8_hp_model(features_csv, outputs_dir, bundle):
         return None
 
     log.info(f"STEP 8 — HP Model inference ({bundle['version']})...")
+    warn_if_reference(bundle)
     predictions_csv = outputs_dir / "predictions.csv"
     predictions = predict_csv(bundle, features_csv, predictions_csv)
     log.info(f"Clips flagged: {int(predictions['label'].sum()):,} / {len(predictions):,} "
@@ -234,7 +236,10 @@ def main():
     log.info(f"Raw audio : {raw_audio_dir}")
     log.info(f"Output    : {output_dir}")
     log.info(f"Weather   : {'off (--no_weather)' if args.no_weather else 'on'}")
-    log.info(f"HP bundle : {bundle['version'] if bundle else 'none (step 8 skipped)'}")
+    if bundle:
+        log.info(f"HP bundle : {bundle['version']} (role {bundle.get('role') or 'not set'})")
+    else:
+        log.info("HP bundle : none (step 8 skipped)")
     log.info("=" * 60)
 
     step1_split(raw_audio_dir, clips_dir)

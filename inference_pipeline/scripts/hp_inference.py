@@ -115,6 +115,17 @@ def check_weather_mode(bundle, no_weather):
         )
 
 
+def warn_if_reference(bundle):
+    """Log a warning and return True if the bundle is a reference model, which is not for deployment."""
+    if bundle.get("role") != "reference":
+        return False
+    log.warning(
+        f"HP bundle {bundle['version']} has role 'reference': reference bundles rely on time or "
+        "weather shortcuts and are not for deployment. Use these predictions for comparison only."
+    )
+    return True
+
+
 def with_wav(names):
     """Clip names with .wav, the naming rule for CSVs and APIs; adds it where missing."""
     names = pd.Series(names, dtype=str)

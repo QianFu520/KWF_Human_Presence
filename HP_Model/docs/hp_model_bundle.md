@@ -29,7 +29,7 @@ One file written with `joblib.dump`, containing a dict.
 
 | Key | Type | Meaning |
 |---|---|---|
-| `role` | str | `"candidate"` or `"reference"`. The loader warns, but still loads, if it is missing |
+| `role` | str | `"candidate"` (meant for deployment) or `"reference"` (for comparison only). The loader warns, but still loads, if it is missing, so older bundles keep working |
 | `sklearn_version` | str | scikit-learn version used for training. The loader warns if it differs from the installed one |
 | `val_metrics` | dict | Validation metrics at the threshold: `precision`, `recall`, `fa_episodes_per_rec_day` |
 | `threshold_rule` | str | How the threshold was chosen |
@@ -46,7 +46,8 @@ One file written with `joblib.dump`, containing a dict.
 
 ## Current bundles
 
-- **`hp-23-20261101` is the integration candidate** (Qian, Nov 5): 23 features, no hour and no weather. It is for integration testing only and is **not field-ready**.
+- **`hp-23-20261101` is the integration candidate** (Qian, Nov 5; `role` `"candidate"`): 23 features, no hour and no weather. It is for integration testing only and is **not field-ready**.
+- **`hp-25`, `hp-27` and `hp-29-20261101` are reference bundles** (`role` `"reference"`). They rely on time or weather shortcuts, so they are for comparison only, not for deployment. Step 8 logs a warning when one is used.
 - **The threshold comes from the bundle.** Nothing in the pipeline hard-codes it, and it may be re-tuned during integration.
 - **Bundles live in the team Drive folder, never in git.** Point the pipeline at a local copy: `--bundle <bundle_path>`.
 
@@ -72,9 +73,5 @@ It logs the version, feature set, threshold and role, and warns (without failing
 
 `predict(bundle, df)` selects `features` with `select_features`, scales them, takes `predict_proba(...)[:, 1]` as the probability and sets `label = 1` when probability ≥ `threshold`. It returns one row per clip: `clip_name` (with `.wav`, added if missing), `probability` and `label`, plus `not_meaningful_prob` and `predicted_label` from AED when the input has them.
 
-- **Pipeline step 8:** `run_pipeline.py --bundle <bundle_path>` loads and checks the bundle before step 1 and writes `outputs/predictions.csv`. A 23- or 25-feature bundle needs `--no_weather`; a 27- or 29-feature bundle needs weather. Otherwise the run stops at once with a message saying which to use. Without `--bundle`, step 8 logs a warning and is skipped.
+- **Pipeline step 8:** `run_pipeline.py --bundle <bundle_path>` loads and checks the bundle before step 1 and writes `outputs/predictions.csv`. A 23- or 25-feature bundle needs `--no_weather`; a 27- or 29-feature bundle needs weather. Otherwise the run stops at once with a message saying which to use. A `"reference"` bundle still runs, but step 8 logs a warning that it is not for deployment. Without `--bundle`, step 8 logs a warning and is skipped.
 - **HP service (planned):** loads the bundle once at startup from the `HP_BUNDLE` environment variable, with the same checks, and reports `version`, `feature_set`, `threshold` and `role` in `/health`.
-
-## Still open
-
-- **`role`:** Coleman may add `role` (`"candidate"` / `"reference"`) to the bundles. Until then the loader warns that it is missing.

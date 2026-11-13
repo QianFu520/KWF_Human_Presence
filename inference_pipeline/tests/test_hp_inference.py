@@ -26,6 +26,7 @@ sys.argv = sys.argv[:1]  # run_pipeline parses arguments only in main(), but kee
 import run_pipeline  # noqa: E402
 
 FEATURE_SETS = ["23", "25", "27", "29"]
+ROLES = {"23": "candidate", "25": "reference", "27": "reference", "29": "reference"}  # as in Coleman's bundles
 N_ROWS = 40
 
 
@@ -54,7 +55,7 @@ def make_bundle(feature_set="25", features=None, scaler_features=None, labels=(0
         "val_metrics": {"precision": 0.5, "recall": 0.5, "fa_episodes_per_rec_day": 1.0},
         "threshold_rule": "test",
         "git_commit": "0000000",
-        "role": "candidate",
+        "role": ROLES[feature_set] if feature_set in ROLES else "candidate",
     }
     bundle.update(overrides)
     return bundle
@@ -73,6 +74,15 @@ def test_each_feature_set_loads(tmp_path, caplog, feature_set):
     assert bundle["feature_set"] == feature_set
     assert len(bundle["features"]) == int(feature_set)
     assert f"hp-{feature_set}-20261101 loaded" in caplog.text
+    assert f"role {ROLES[feature_set]}" in caplog.text
+    assert not [r for r in caplog.records if r.levelno >= logging.WARNING]  # loading a reference bundle is fine
+
+
+def test_candidate_role_loads_without_warning(tmp_path, caplog):
+    path = save(tmp_path, make_bundle("23", role="candidate"))
+    with caplog.at_level(logging.INFO, logger="hp_inference"):
+        bundle = load_bundle(path)
+    assert bundle["role"] == "candidate"
     assert "role candidate" in caplog.text
     assert not [r for r in caplog.records if r.levelno >= logging.WARNING]
 
@@ -164,14 +174,16 @@ def step7_features(feature_set, names, with_aed=True):
     return df
 
 
-def test_step8_writes_predictions_csv(tmp_path):
-    bundle = make_bundle("23")
+def test_step8_writes_predictions_csv(tmp_path, caplog):
+    bundle = make_bundle("23")  # role candidate
     names = [f"Audio_Moth_1_20250321_1251{s:02d}" for s in range(0, 18, 3)]
     features = step7_features("23", names)
     features_csv = tmp_path / "features.csv"
     features.to_csv(features_csv, index=False)
 
-    predictions_csv = run_pipeline.step8_hp_model(features_csv, tmp_path, bundle)
+    with caplog.at_level(logging.INFO):
+        predictions_csv = run_pipeline.step8_hp_model(features_csv, tmp_path, bundle)
+    assert not [r for r in caplog.records if r.levelno >= logging.WARNING]
 
     assert predictions_csv == tmp_path / "predictions.csv"
     written = pd.read_csv(predictions_csv)
@@ -180,6 +192,22 @@ def test_step8_writes_predictions_csv(tmp_path):
     assert written["probability"].between(0, 1).all()
     assert (written["label"] == (written["probability"] >= bundle["threshold"]).astype(int)).all()
     pd.testing.assert_series_equal(written["predicted_label"], features["predicted_label"])
+
+
+@pytest.mark.parametrize("feature_set", ["25", "27", "29"])
+def test_step8_warns_for_reference_bundle(tmp_path, caplog, feature_set):
+    bundle = make_bundle(feature_set)  # role reference
+    features_csv = tmp_path / "features.csv"
+    step7_features(feature_set, ["Audio_Moth_1_20250321_125100"]).to_csv(features_csv, index=False)
+
+    with caplog.at_level(logging.INFO):
+        predictions_csv = run_pipeline.step8_hp_model(features_csv, tmp_path, bundle)
+
+    warnings = [r.getMessage() for r in caplog.records if r.levelno == logging.WARNING]
+    assert len(warnings) == 1
+    assert f"hp-{feature_set}-20261101 has role 'reference'" in warnings[0]
+    assert "not for deployment" in warnings[0]
+    assert predictions_csv.exists()  # still predicts; the warning doesn't stop the run
 
 
 def test_step8_skips_without_bundle(tmp_path, caplog):
