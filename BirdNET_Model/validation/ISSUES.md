@@ -153,8 +153,9 @@ report and slides stay valid.
 
 **Cause**
 - `HumanPresenceAdapter` is a placeholder scorer ("proxy_feature_scorer"), not the trained human-presence model. It uses BirdNET output as input.
-- It sets `Eerie_Silence` = 1 when an event has no sentinel species and the recent sentinel rate (last 100 events) is above 0.05. A set flag adds 0.65 to the score.
-- With BirdNET off no event has a species, so the rate stays at 0 and this rule never fires. With BirdNET on, sentinel species raise the rate, and later events without a sentinel species get flagged.
+- It sets `Eerie_Silence` = 1 when an event has no sentinel species and either of two conditions holds: the recent sentinel rate (last 100 events) is above 0.05, or the audio is quiet (RMS energy below the larger of 0.005 and 65% of the mean of the last 5 events). A set flag adds 0.65 to the score.
+- The sentinel-rate part never fires with BirdNET off, because no event has a species. The quiet-audio part does not depend on BirdNET and fires either way: the 226 flags in run 3 come from it, and none of those events was confirmed.
+- With BirdNET on, sentinel species raise the rate, and later events without a sentinel species get flagged by the sentinel-rate part. That is what produces the 134 confirmations.
 
 **Evidence (Twin output `run_3` and `run_4`, `stage_4_human_presence_timeline.json`, 1,777 events each)**
 
@@ -165,6 +166,9 @@ report and slides stay valid.
 | Events confirmed as human presence | 0 | 134 |
 
 - All 134 confirmed events have `Eerie_Silence` = 1. None has a sentinel species itself.
+- Which part set the flag (recomputed from the recorded features, matching the recorded flag on all 1,777 events in both runs):
+  - Run 3: 226 flags, all from the quiet-audio part. 0 confirmed.
+  - Run 4: 531 flags: 312 from the sentinel-rate part only, 171 from the quiet-audio part only, 48 from both. All 134 confirmed events come from the sentinel-rate part only.
 - Recomputing the score with `Eerie_Silence` forced to 0 confirms 0 of 134. The recomputation matches the recorded decision on all 1,777 events in both runs.
 - The Twin output files are not copied into this repo (`stage_4` is 5.4 MB).
 
