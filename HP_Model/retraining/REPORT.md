@@ -232,9 +232,12 @@ issues).
 
 ### Bundles
 
-Saved outside the repo in `C:\BirdNET ONNX\hp_audit\bundles\`, in Patrick's proposed format
-(joblib dict) plus extra keys. scikit-learn 1.8.0, joblib 1.5.3. All four pass
-`check_bundles.py`, which also requires `len(features) == int(feature_set)`.
+Kept outside the repo, in the shared Drive folder **Team Jacana-ML engineer → HP_model_bundles**
+(since Nov 5), in Patrick's proposed format (joblib dict) plus extra keys. Since Nov 13 each
+bundle also carries a `role` key: "candidate" for hp-23, "reference" for hp-25, hp-27 and
+hp-29 (added with `add_bundle_role.py`; nothing else changed, and predictions are identical).
+scikit-learn 1.8.0, joblib 1.5.3. All four pass `check_bundles.py`, which also requires
+`len(features) == int(feature_set)`, a valid role, and exactly one candidate (hp-23).
 
 | File | feature_set | Features | Threshold | Role | git_commit |
 |---|---|---:|---:|---|---|
