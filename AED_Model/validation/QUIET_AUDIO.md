@@ -79,9 +79,11 @@ in `hp-retraining`, `HP_Model/retraining/REPORT.md`, "AM3 (quiet recorder)"):
 - **AED marks 3.2% of all clips not meaningful: 0.5–1.3% on five recorders,
   25% on AM3.**
 - AM3 is **18–20 dB quieter** than the other recorders at every hour (median
-  RMS −49.6 dBFS vs −28.7 to −31.7), with flatter spectra; probably its gain
-  setting or microphone. The gain cannot be read (no CONFIG.TXT; re-cut clips
-  have no header).
+  RMS −49.6 dBFS vs −28.7 to −31.7), with flatter spectra. Gain does not
+  explain it: Coleman read the raw AM3 header (AudioMoth 243B1F026484A1F9),
+  which says medium gain, the same as AM1. A microphone problem (covered,
+  damaged or placement) or the unit's sensitivity is more likely; not yet
+  confirmed.
 - AM3's rejections cluster in its quietest periods: **74–99% before dawn
   (03:00–04:00)** and 52–81% from 08:00 to 11:00. Rejected AM3 clips are about
   **7 dB quieter** than accepted ones.
@@ -153,10 +155,11 @@ AM1 and AM6 have no held-out clips here.
 
 - Since nothing is dropped any more, the score still reaches HP. Read it as
   "how much the clip stands out of its own noise floor", not "no human here".
-  Low-SNR human activity (distant, quiet, or on a low-gain recorder) gets a
+  Low-SNR human activity (distant, quiet, or on a quiet recorder) gets a
   background-like score.
 - Per-recorder levels differ by up to 18–20 dB, so a single cutoff treats
-  recorders differently (25% rejected on AM3, ≤ 1.3% elsewhere). Recorder gain/level is worth checking in the field metadata.
+  recorders differently (25% rejected on AM3, ≤ 1.3% elsewhere). Gain is the same on AM3 and AM1 (medium), so AM3's
+  microphone and unit are worth checking in the field.
 - Options if this matters for HP (none needed for the current pipeline):
   add quiet human clips to AED's `meaningful` training data; stop using the
   flatness rule as a background label; or give HP the recorder's noise level
