@@ -6,6 +6,7 @@ Master script that runs all steps in order.
 Usage:
     python run_pipeline.py --raw_audio /path/to/raw_audio --output /path/to/output
     python run_pipeline.py --raw_audio /path/to/raw_audio --output /path/to/output --no_weather
+    python run_pipeline.py --raw_audio /path/to/raw_audio --output /path/to/output --no_weather --bundle /path/to/hp-23-YYYYMMDD.joblib
 
 Pipeline steps:
     1. Split raw audio into 3-second clips
@@ -17,7 +18,8 @@ Pipeline steps:
     7. Feature engineering (sentinel species encoding + Patrick's features)
        — 29 features with weather, 25 with --no_weather. Every clip is kept and
        marked with AED's not_meaningful_prob and predicted_label.
-    8. HP Model inference  [PLACEHOLDER — model not finalized yet]
+    8. HP Model inference with --bundle (outputs/predictions.csv); skipped without it.
+       A 27/29-feature bundle needs weather, a 23/25-feature bundle needs --no_weather.
     9. Output results
 
 Dependencies:
@@ -49,6 +51,7 @@ from metadata_extraction     import extract_metadata
 from weather_info            import get_weather_info_all
 from weather_matching        import weather_match
 from feature_engineering     import run_feature_engineering
+from hp_inference            import BundleError, check_weather_mode, load_bundle, predict_csv, warn_if_reference
 
 import pandas as pd
 
@@ -177,29 +180,28 @@ def step7_feature_engineering(acoustic_csv, birdnet_csv, metadata_csv, weather_c
     return features_csv
 
 
-def step8_hp_model(features_csv, outputs_dir):
+def step8_hp_model(features_csv, outputs_dir, bundle):
     """
-    Run HP Model (MLP) inference.
+    Score every clip in features.csv with the HP bundle (loaded and checked by
+    hp_inference.load_bundle in main) and write predictions.csv: clip_name,
+    probability, label, plus the AED columns. Skipped when no bundle is given.
+    Warns when the bundle's role is "reference" (not for deployment).
+    Feature names and order come only from the bundle and scripts/hp_features.py.
+    """
+    if bundle is None:
+        log.info("STEP 8 — HP Model inference: skipped")
+        log.warning("No --bundle given; no HP predictions. Pass --bundle <path to .joblib> to run step 8.")
+        log.info(f"Feature set ready at: {features_csv}")
+        return None
 
-    PLACEHOLDER — HP model is being retrained in two versions: 29 features
-    (with weather) and 25 features (without weather). Human Activity Score is
-    dropped; see HP_Model/docs/feature_pipeline_progress.md.
-    Feature names and order are defined only in scripts/hp_features.py
-    (HP_FEATURES_29 / HP_FEATURES_25). Do not list features here.
-    Once the retrained model (.pkl) is available:
-        1. Load with: joblib.load("models/hp_model.pkl")
-        2. Load scaler with: joblib.load("models/hp_scaler.pkl")
-        3. Select features with hp_features.select_features(df, HP_FEATURES_29
-           or HP_FEATURES_25), check the scaler with
-           hp_features.check_scaler_alignment(), scale, and call
-           model.predict_proba()
-        4. Apply the decision threshold — TBD after retraining. It will be chosen
-           on a validation set (not the test set). No official value yet.
-    """
-    log.info("STEP 8 — HP Model inference [PLACEHOLDER]...")
-    log.warning("HP Model not yet available. Skipping inference.")
-    log.info(f"Feature set ready at: {features_csv}")
-    log.info("Once the model is finalized, add the inference logic here.")
+    log.info(f"STEP 8 — HP Model inference ({bundle['version']})...")
+    warn_if_reference(bundle)
+    predictions_csv = outputs_dir / "predictions.csv"
+    predictions = predict_csv(bundle, features_csv, predictions_csv)
+    log.info(f"Clips flagged: {int(predictions['label'].sum()):,} / {len(predictions):,} "
+             f"(threshold {bundle['threshold']:.4f})")
+    log.info(f"Predictions saved to: {predictions_csv}")
+    return predictions_csv
 
 
 # ── Main ─────────────────────────────────────────────────────────────────────
@@ -209,7 +211,17 @@ def main():
     parser.add_argument("--raw_audio", required=True, help="Folder containing raw AudioMoth recordings")
     parser.add_argument("--output",    required=True, help="Output folder for all intermediate and final results")
     parser.add_argument("--no_weather", action="store_true", help="Skip step 6 (no internet needed) and build features without weather")
+    parser.add_argument("--bundle", help="HP model bundle (.joblib) for step 8; without it, step 8 is skipped")
     args = parser.parse_args()
+
+    # Load and check the bundle before step 1, so a wrong bundle fails in seconds, not after steps 1-7.
+    bundle = None
+    if args.bundle:
+        try:
+            bundle = load_bundle(args.bundle)
+            check_weather_mode(bundle, args.no_weather)
+        except (BundleError, OSError) as exc:
+            parser.error(f"--bundle: {exc}")
 
     raw_audio_dir = Path(args.raw_audio)
     output_dir    = Path(args.output)
@@ -224,6 +236,10 @@ def main():
     log.info(f"Raw audio : {raw_audio_dir}")
     log.info(f"Output    : {output_dir}")
     log.info(f"Weather   : {'off (--no_weather)' if args.no_weather else 'on'}")
+    if bundle:
+        log.info(f"HP bundle : {bundle['version']} (role {bundle.get('role') or 'not set'})")
+    else:
+        log.info("HP bundle : none (step 8 skipped)")
     log.info("=" * 60)
 
     step1_split(raw_audio_dir, clips_dir)
@@ -237,7 +253,7 @@ def main():
     else:
         weather_csv = step6_weather(raw_audio_dir, metadata_csv, outputs_dir)
     features_csv         = step7_feature_engineering(acoustic_csv, birdnet_csv, metadata_csv, weather_csv, outputs_dir, aed_csv)
-    step8_hp_model(features_csv, outputs_dir)
+    step8_hp_model(features_csv, outputs_dir, bundle)
 
     log.info("=" * 60)
     log.info("Pipeline complete.")
