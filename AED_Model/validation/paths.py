@@ -7,7 +7,8 @@ Drive mount, and every script expands it from AED_Model/config.py:
   {AUDIO_DIR}  config.AUDIO_DIR                    .../Audio Moth Data/Segmented Foldered (3 s clips)
   {RAW_AUDIO}  the folder above config.AUDIO_DIR   .../Audio Moth Data (raw recordings)
 
-Set AUDIO_DIR in config.py to your own copy and the same files work unchanged.
+Set the AED_AUDIO_DIR environment variable (read by config.py) to your own copy
+and the same files work unchanged.
 """
 import os
 import sys

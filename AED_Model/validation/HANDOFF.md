@@ -29,7 +29,7 @@ Recommendation for the integration phase: deploy the PyTorch checkpoint
 ### Threshold sweep 0.5–0.99 (Weeks 4–5)
 
 `threshold_sweep.py` on the 4,027 held-out clips (scores from
-`results/20261016_044454`, no rescoring); report in
+`results/20261016_044454`, now on Drive; no rescoring); report in
 `results/threshold_sweep_20261101.md`.
 
 - **Only 1 of 15 staged events changes with the threshold:** the quiet
@@ -58,8 +58,9 @@ Recommendation for the integration phase: deploy the PyTorch checkpoint
 - C5 is reported as **KNOWN** (an explained exception) rather than FAIL, while
   every differing clip has at most one cell over tolerance and an unchanged
   label. Checked on the affected clips (run of 2026-11-01): `22 pass, 0 fail,
-  1 known exception`. The committed `report.md` files predate this and still
-  show C5 as FAIL.
+  1 known exception`. Full held-out rerun on 2026-11-05
+  (`results/20261105_225125`): `23 pass, 0 fail, 1 known exception`; the older
+  reports that showed C5 as FAIL were moved to Drive.
 - Bulk results, the slides and the spreadsheet moved to Drive; only summary
   reports stay in the branch.
 
@@ -101,7 +102,8 @@ quiet off-trail walk on Audio_Moth_3 (66% of its clips kept at 0.5).
 
 ### Field-clip metrics (held out from training)
 
-`results/20261016_044454` + `score_field.py`. 4,027 clips from v3's validation
+`results/20261105_225125` + `score_field.py` (same scores as the first run,
+`20261016_044454`). 4,027 clips from v3's validation
 split (`v3_split.py` reproduces it; the counts match the checkpoint exactly).
 
 | Group | Clips | Events | Correct @0.5 | @0.7 | @0.95 |
@@ -124,16 +126,17 @@ AED does not drop event audio, not that it recognises the human activity. v3 was
 also chosen over v4 on this split, so it is held out from training, not from
 model selection.
 
-The default 1,818-clip field manifest (`results/20261016_042947`) is 77%
+The default 1,818-clip field manifest (`20261016_042947`, on Drive) is 77%
 training data and is kept only as a check; do not quote its metrics.
 
 ### Validation runs
 
 | Run folder | Audio | Target | Result |
 |---|---|---|---|
-| `results/20261016_044454` | **4,027 held-out KWF clips** | In-process API + twin backend, section H | 23 pass, **1 fail (C5, explained; KNOWN under the current harness)**, 2 warn |
+| `results/20261105_225125` | **4,027 held-out KWF clips (headline)** | In-process API + twin backend, section H | **PASS: 23 pass, 0 fail, 1 known exception (C5)**, 2 warn |
+| `20261016_044454` (Drive only) | 4,027 held-out KWF clips, first run | Same | Same scores; C5 shown as FAIL (before the KNOWN status) |
 | `results/20261016_045042` | 4,027 held-out KWF clips | Live server `uvicorn --port 8011` (`--api_url`, `--skip_workflow`) | PASS: 19 pass, 0 fail, 2 warn |
-| `results/20261016_042947` | 1,818 KWF clips (default manifest, mostly training data) | In-process + twin | 23 pass, 1 fail (C5, 3 clips; KNOWN under the current harness), 2 warn |
+| `20261016_042947` (Drive only) | 1,818 KWF clips (default manifest, mostly training data) | In-process + twin | Superseded by the held-out runs; C5 shown as FAIL (3 clips) |
 | `results/twin_deployed_20261016` | 5 raw field recordings, 46 h | Deployed twin (Docker), dashboard | Dashboard = independent re-score, exactly |
 | `20261015_231906`, `20261015_231946` (Drive only) | ESC-50 sample set (removed) | Mac in-process / live server | PASS; kept on Drive for the record |
 
@@ -193,9 +196,9 @@ Manifests and ground-truth logs store audio paths as placeholders, expanded by
 - `{RAW_AUDIO}/Audio Moth N/Audio_Moth_N_MMDDYY/<file>.WAV`: raw recordings
   (the folder above `AUDIO_DIR`)
 
-**Set `AUDIO_DIR` in `AED_Model/config.py` to your own copy of
-`Audio Moth Data/Segmented Foldered` before running anything**; the committed
-`config.py` still points at `/Users/qian/KWF/Segmented_Foldered`. The run
+**Set the `AED_AUDIO_DIR` environment variable to your own copy of
+`Audio Moth Data/Segmented Foldered` before running anything**; without it,
+`config.AUDIO_DIR` falls back to `data/raw_audio/`. The run
 reports use the same placeholders, plus `<repo>` and `<digital_twin_mvp>` for
 local checkouts.
 
@@ -238,11 +241,10 @@ exist; anything else returns `{"detail":"Not Found"}`.
   (default `data/raw_audio/`). Set it to the Drive `Segmented Foldered` folder.
   The validation scripts expand `{AUDIO_DIR}` placeholders from it; notebooks use
   `audio_path` from the CSV.
-- `outputs/labels_progress.csv` (gitignored): `audio_path` rewritten from
-  `/Users/qian/KWF/Segmented_Foldered` to the Drive folder for all 631,317 rows,
-  by plain text replacement (every other column byte-identical). The backup made
-  at the time has since been removed; reverse the replacement if the old paths
-  are ever needed.
+- `outputs/labels_progress.csv` (gitignored): Qian's original file, with
+  `audio_path` under `/Users/qian/KWF/Segmented_Foldered`. The validation
+  scripts only use the part after `Segmented Foldered/` and join it to
+  `AUDIO_DIR`, so the file works unchanged on any machine.
 - Label state in that file: 118,940 meaningful, 16,845 not_meaningful (including
   5,632 `model_inference_v3`), 495,532 unknown.
 
@@ -386,10 +388,8 @@ Findings:
   count per type; needs a small change to take every recording).
 - For cleaner per-type recall, stage events that do not overlap, or add a
   quiet control window per recording.
-- Look at the quiet off-trail walk (Audio_Moth_3, 19 March 08:01): partly
-  scored as background by AED and missed by the twin's prefilter.
-- Recover the hand-tagged audit CSVs from Qian if the labelling history needs
-  to be reproducible.
+- Quiet audio: see [QUIET_AUDIO.md](QUIET_AUDIO.md). AED scores low-SNR sound
+  (the quiet off-trail walk, the quiet AM3 recorder) as background.
 - Stop the twin when done: `cd ~/digital_twin_mvp && docker compose down`. Its
   uploads (~15 GB) are under `backend/uploads/`.
 
