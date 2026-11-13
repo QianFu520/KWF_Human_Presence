@@ -232,9 +232,12 @@ issues).
 
 ### Bundles
 
-Saved outside the repo in `C:\BirdNET ONNX\hp_audit\bundles\`, in Patrick's proposed format
-(joblib dict) plus extra keys. scikit-learn 1.8.0, joblib 1.5.3. All four pass
-`check_bundles.py`, which also requires `len(features) == int(feature_set)`.
+Kept outside the repo, in the shared Drive folder **Team Jacana-ML engineer → HP_model_bundles**
+(since Nov 5), in Patrick's proposed format (joblib dict) plus extra keys. Since Nov 13 each
+bundle also carries a `role` key: "candidate" for hp-23, "reference" for hp-25, hp-27 and
+hp-29 (added with `add_bundle_role.py`; nothing else changed, and predictions are identical).
+scikit-learn 1.8.0, joblib 1.5.3. All four pass `check_bundles.py`, which also requires
+`len(features) == int(feature_set)`, a valid role, and exactly one candidate (hp-23).
 
 | File | feature_set | Features | Threshold | Role | git_commit |
 |---|---|---:|---:|---|---|
@@ -288,6 +291,21 @@ are in `models\birdnet_nonbird\`. **Not useful on these recordings:**
   per recorder per day was 0.225–0.250, compared with 0.232. The gain comes from hours 13–14,
   which have few events; hour 17 is unchanged. This is a single split, within the noise of
   picking the best of 96 configs.
+
+### Diagnostics: Eerie_Silence (Nov 13, no retraining; test not scored)
+
+`Eerie_Silence` is 1 when none of the 10 sentinel species is detected in a clip. Results are in
+`models\eerie_silence\`.
+
+- **Almost always 1.** 95.5% of all 616,381 clips (per recorder 91.7–98.5%). AM5 is at 95.9%,
+  matching Ben's 96% on one AM5 recording; AM5's three raw recordings give 92.2–96.2%.
+- **Almost no difference between event and quiet clips:** 95.1% vs 96.0% in train and 95.9% vs
+  95.7% in val.
+- **The model barely uses it.** In hp-23 on val it ranks **13 of 23** by permutation importance.
+  Shuffling it lowers PR-AUC by 0.0001 and within-hour PR-AUC by **0.0002**.
+- **Conclusion:** at the 3 s clip level it carries almost no information. It stays in the
+  feature set for now, so the feature contract with Patrick doesn't change. A version over a
+  longer window (minutes) could be tested later.
 
 ## 4. Open issues
 
