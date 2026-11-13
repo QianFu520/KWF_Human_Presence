@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "status": "PROPOSED. Not yet approved by the team lead. Thresholds were written down before the live run and are taken from numbers already recorded in this repo (Phase 4, verification_data/). Nothing here was tuned to the live result.",
+  "status": "APPROVED by the team lead. Thresholds were written down before the live run and are taken from numbers already recorded in this repo (Phase 4, verification_data/). Nothing here was tuned to the live result.",
   "scope": "Compressed BirdNET FP16 (pruned to 493 species), served by src/bridge, scored on the 709 Audio_Moth_6 clips in verification_data/phase4_detail_Audio_Moth_6.csv. FP32 is out of scope.",
   "ground_truth": "The original BirdNET v2.4 output (birdnet package v0.1.7), recorded as ref_top1 / ref_conf. Not human labels. This validates that compression preserved the original model's behaviour.",
   "criteria": [
@@ -61,7 +61,7 @@
       "value": 98.6,
       "description": "Service confidence within 0.01 of the original model's. REPORTED, NOT GATED, see note.",
       "source": "Phase 4, 51,720 clips: FP16 within 0.01 on 98.67%.",
-      "note": "The recorded Phase 4 value for Audio_Moth_6 alone is 97.18% (20 of 709 clips are 0.01 to 0.03 off), already below the 98.6% population figure. This is FP16 rounding on a single-date recorder, not a service defect, but it means the population threshold cannot be used as a pass/fail test on this subset. Needs a decision from the team lead: gate on a larger multi-recorder sample, or keep as reported."
+      "note": "The recorded Phase 4 value for Audio_Moth_6 alone is 97.18% (20 of 709 clips are 0.01 to 0.03 off), already below the 98.6% population figure. This is FP16 rounding on a single-date recorder, not a service defect, but it means the population threshold cannot be used as a pass/fail test on this subset. Team lead decision: keep as reported, not gated."
     },
     {
       "id": "C6",
@@ -85,10 +85,9 @@
       "id": "C9",
       "layer": "interface",
       "gate": false,
-      "known_issue": "V-001",
-      "description": "The caller is told when a file was rejected (job error or a failures field).",
-      "check": "scripts/interface_and_preprocessing.py: caller_can_see_problem is true for every rejected file",
-      "source": "Expected to FAIL today. See ISSUES.md V-001. Reported, not gated, because the lead has not yet decided on a fix."
+      "description": "The caller is told when a file was rejected: a job with no scorable file ends as error, and a job with some skipped files ends done with `skipped` and `failures` set.",
+      "check": "scripts/interface_and_preprocessing.py: caller_can_see_problem is true for every single-file rejection, and the mixed job (1 good, 2 rejected) ends done with skipped = 2 and 2 entries in failures",
+      "source": "Reported, not gated. Expected to pass since the V-001 fix: the job state lists skipped files in `failures`, and a job in which no file is scored ends as `error`."
     }
   ],
   "recorded_not_gated": [
