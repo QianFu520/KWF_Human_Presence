@@ -9,13 +9,14 @@ Usage:
 
 Pipeline steps:
     1. Split raw audio into 3-second clips
-    2. Tiny CNN — filter meaningful clips
-    3. Compressed BirdNET — species + confidence on meaningful clips only
+    2. Tiny CNN (AED) — score every clip meaningful / not_meaningful
+    3. Compressed BirdNET — species + confidence on every clip
     4. Acoustic feature extraction
     5. Metadata extraction
     6. Weather data fetch + matching (skipped with --no_weather; needs internet)
     7. Feature engineering (sentinel species encoding + Patrick's features)
-       — 29 features with weather, 25 with --no_weather
+       — 29 features with weather, 25 with --no_weather. Every clip is kept and
+       marked with AED's not_meaningful_prob and predicted_label.
     8. HP Model inference  [PLACEHOLDER — model not finalized yet]
     9. Output results
 
@@ -75,8 +76,8 @@ def step1_split(raw_audio_dir, clips_dir):
 
 
 def step2_filter(clips_dir, outputs_dir):
-    """Run Tiny CNN to separate meaningful from non-meaningful clips."""
-    log.info("STEP 2 — Tiny CNN: filtering meaningful clips...")
+    """Run Tiny CNN (AED) on every clip. Nothing is dropped; step 7 marks each clip with the result."""
+    log.info("STEP 2 — Tiny CNN (AED): scoring every clip...")
     cnn_csv = outputs_dir / "tinycnn_predictions.csv"
     score_folder(
         folder_path=str(clips_dir),
@@ -84,7 +85,8 @@ def step2_filter(clips_dir, outputs_dir):
         output_csv=str(cnn_csv),
     )
 
-    # Return only meaningful clip names
+    # Return the meaningful clip names (steps 3 and 4 take them but don't filter on
+    # them) and the AED CSV, which step 7 joins onto every clip.
     df = pd.read_csv(cnn_csv)
     meaningful = df[df["predicted_label"] == "meaningful"]["clip_name"].tolist()
     log.info(f"Meaningful clips: {len(meaningful):,} / {len(df):,} total")
@@ -94,13 +96,12 @@ def step2_filter(clips_dir, outputs_dir):
 def step3_birdnet(clips_dir, meaningful_clips, outputs_dir):
     """
     Run compressed BirdNET (birdnet_fp16_pruned493.onnx via onnxruntime)
-    on meaningful clips only, filtered to the regional allow-list.
+    on every clip, filtered to the regional allow-list.
     """
     log.info("STEP 3 — Compressed BirdNET: species + confidence...")
     birdnet_csv = outputs_dir / "birdnet_output.csv"
 
-    # Filter folder to meaningful clips only before running BirdNET
-    # process_all_clips() will be updated to accept a clip list directly
+    # Runs on every clip; meaningful_clips is not used.
     process_all_clips(
         clips_folder=str(clips_dir),
         output_csv=str(birdnet_csv),
@@ -150,9 +151,10 @@ def step6_weather(raw_audio_dir, metadata_csv, outputs_dir):
     return weather_csv
 
 
-def step7_feature_engineering(acoustic_csv, birdnet_csv, metadata_csv, weather_csv, outputs_dir, meaningful_clips):
+def step7_feature_engineering(acoustic_csv, birdnet_csv, metadata_csv, weather_csv, outputs_dir, aed_csv):
     """
-    Encode sentinel species and engineer Patrick's cross-signal features, then keep meaningful clips only.
+    Encode sentinel species and engineer Patrick's cross-signal features, then mark every
+    clip with its AED result (not_meaningful_prob, predicted_label from aed_csv). No clip is dropped.
     weather_csv=None (--no_weather) leaves out the weather columns and Volume_Wind_Ratio.
     """
     if weather_csv is None:
@@ -160,14 +162,17 @@ def step7_feature_engineering(acoustic_csv, birdnet_csv, metadata_csv, weather_c
     else:
         log.info("STEP 7 — Feature engineering (sentinel species + Patrick's features)...")
     features_csv = outputs_dir / "features.csv"
-    run_feature_engineering(
+    df = run_feature_engineering(
         acoustic_csv=str(acoustic_csv),
         birdnet_csv=str(birdnet_csv),
         metadata_csv=str(metadata_csv),
         weather_csv=None if weather_csv is None else str(weather_csv),
         output_csv=str(features_csv),
-        keep_clips=meaningful_clips,
+        aed_csv=str(aed_csv),
     )
+    labels = df["predicted_label"].fillna("no AED result").value_counts()
+    log.info(f"Kept all {len(df):,} clips. AED labels: "
+             + ", ".join(f"{label} {n:,}" for label, n in labels.items()))
     log.info(f"Full feature set saved to: {features_csv}")
     return features_csv
 
@@ -222,7 +227,7 @@ def main():
     log.info("=" * 60)
 
     step1_split(raw_audio_dir, clips_dir)
-    meaningful_clips, _ = step2_filter(clips_dir, outputs_dir)
+    meaningful_clips, aed_csv = step2_filter(clips_dir, outputs_dir)
     birdnet_csv          = step3_birdnet(clips_dir, meaningful_clips, outputs_dir)
     acoustic_csv         = step4_acoustic(clips_dir, meaningful_clips, outputs_dir)
     metadata_csv         = step5_metadata(clips_dir, outputs_dir)
@@ -231,7 +236,7 @@ def main():
         weather_csv = None
     else:
         weather_csv = step6_weather(raw_audio_dir, metadata_csv, outputs_dir)
-    features_csv         = step7_feature_engineering(acoustic_csv, birdnet_csv, metadata_csv, weather_csv, outputs_dir, meaningful_clips)
+    features_csv         = step7_feature_engineering(acoustic_csv, birdnet_csv, metadata_csv, weather_csv, outputs_dir, aed_csv)
     step8_hp_model(features_csv, outputs_dir)
 
     log.info("=" * 60)

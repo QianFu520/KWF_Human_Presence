@@ -1,6 +1,12 @@
-# AED validation report — 20261016_044454
+# AED validation report — 20261105_225125
 
-**Result: FAIL** — 23 pass, 1 fail, 2 warn, 15 info.
+**Result: PASS** — 23 pass, 0 fail, 1 known exception, 2 warn, 15 info.
+
+## Known exceptions
+
+Explained differences that do not change any prediction. They do not fail the run, but anything outside the stated bounds does.
+
+- **C5** Digital Twin clip loader + clip_to_mel = training (48 kHz input): 4025/4027 clips within 0.001 dB; 2 clip(s) differ by up to 1.08e+00 dB in at most 1 of 32768 cells: ['Audio_Moth_3_20250320_045750.wav', 'Audio_Moth_3_20250320_050302.wav']. Known exception: the twin peak-normalises audio, which moves a cell across power_to_db's floor on near-silent clips; predictions unchanged.
 
 Command: `validation/validate_aed.py --aed_root . --manifest validation/field/manifest_heldout.csv --twin_backend ../../digital_twin_mvp/backend --out validation/results`
 
@@ -22,19 +28,19 @@ Environment: Python 3.13.13, torch 2.13.0, librosa 1.0.0, numpy 2.5.4, macOS-26.
 | C2 | Labelling notebook (06) = training (05) | PASS | bit-identical over 4027 clips |
 | C3 | CLI preprocess_clip = training | PASS | bit-identical over 4027 clips |
 | C4 | FastAPI compute_mel = training | PASS | bit-identical over 4027 clips |
-| C5 | Digital Twin clip loader + clip_to_mel = training (48 kHz input) | FAIL | max diff 1.08e+00 dB over 4027 clips (twin peak-normalises audio; dB is relative to clip max) |
+| C5 | Digital Twin clip loader + clip_to_mel = training (48 kHz input) | KNOWN | 4025/4027 clips within 0.001 dB; 2 clip(s) differ by up to 1.08e+00 dB in at most 1 of 32768 cells: ['Audio_Moth_3_20250320_045750.wav', 'Audio_Moth_3_20250320_050302.wav']. Known exception: the twin peak-normalises audio, which moves a cell across power_to_db's floor on near-silent clips; predictions unchanged. |
 | D0 | Target | INFO | in-process (FastAPI TestClient, same app object uvicorn serves) |
 | D1 | GET /health | PASS | 200 {'status': 'ok'} |
 | D2 | OpenAPI schema | PASS | paths=['/health', '/predict']; request multipart/form-data with 'file'; response fields=['label', 'not_meaningful_prob'] |
 | D3 | POST /predict on every readable clip | PASS | 4027 requests, 200 + valid schema + label consistent with threshold 0.5; problems: none |
 | D4 | Error handling | PASS | non-.wav filename -> 400; corrupt .wav -> 422; empty .wav -> 422; no file field -> 422; upper-case .WAV -> 200 |
 | D5 | Determinism | PASS | 5 identical requests -> 1 distinct response(s) |
-| D6 | Latency per request (this machine) | INFO | p50 5.2 ms, p95 5.6 ms, max 842.0 ms over 4027 requests |
+| D6 | Latency per request (this machine) | INFO | p50 5.5 ms, p95 6.1 ms, max 371.6 ms over 4027 requests |
 | E1 | CLI scored every readable clip | PASS | 4027 rows in CLI CSV for 4027 readable clips |
 | E2 | API vs CLI probability | PASS | max /diff/ 4.97e-05 over 4027 clips (API rounds to 4 dp; tol 0.0001) |
 | E3 | ONNX vs CLI probability | PASS | max /diff/ 7.75e-07 over 4027 clips |
 | E4 | Digital Twin gate vs CLI probability | PASS | max /diff/ 2.86e-06 over 4027 clips |
-| E5 | CLI vs API labels at the same threshold | PASS | 0 disagreements [] (CLI uses >=, API uses >) |
+| E5 | CLI vs API labels at the same threshold | PASS | 0 disagreements [] (both use >=) |
 | F1 | End-of-clip blind spot (0.2 s 5 kHz burst in noise, by onset) | WARN | 0.5s→0.000; 1.5s→0.000; 2.5s→0.003; 2.6s→0.066; 2.7s→1.000; 2.8s→1.000; noise alone→1.000. Frames kept cover 2.731 s of 3.0 s |
 | F2 | Gain invariance | PASS | amp 0.001→1.0000; amp 0.05→1.0000; amp 0.5→1.0000 |
 | F3 | Zero-padding changes the decision | INFO | 3 s noise → 1.000; first 1 s of same noise, zero-padded → 0.000 |

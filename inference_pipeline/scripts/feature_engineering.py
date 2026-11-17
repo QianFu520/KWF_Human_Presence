@@ -26,8 +26,13 @@ Without weather, Temperature, Windspeed, Humidity and Volume_Wind_Ratio are left
 (the 25-feature version in HP_Model/docs/feature_pipeline_progress.md).
 
 acoustic_features.csv must cover all clips, not only AED-meaningful ones, so
-Volume_Spike_15s sees each clip's real neighbours. Pass keep_clips to drop the
-non-meaningful clips after the features are computed.
+Volume_Spike_15s sees each clip's real neighbours.
+
+Pass aed_csv (tinycnn_predictions.csv from step 2) to mark every clip with its
+AED result: not_meaningful_prob and predicted_label are added as columns and no
+clip is dropped. They are not HP features (see hp_features.py). keep_clips,
+which drops every clip not listed, still works for older callers; the pipeline
+no longer uses it.
 """
 
 import ast
@@ -122,6 +127,29 @@ def engineer_patrick_features(df, with_weather=True):
     return df
 
 
+# AED result columns carried from tinycnn_predictions.csv, names unchanged.
+AED_COLUMNS = ['not_meaningful_prob', 'predicted_label']
+
+
+def add_aed_columns(df, aed_csv):
+    """Mark every clip with its AED result from step 2; no clip is dropped.
+
+    AED skips clips it can't read, so a clip with no AED row stays, with blank
+    AED columns, and a warning gives the count.
+    """
+    aed = pd.read_csv(aed_csv, usecols=['clip_name'] + AED_COLUMNS)
+    aed['clip_name'] = aed['clip_name'].str.replace('.wav', '', regex=False)
+    df = df.merge(aed, on='clip_name', how='left', validate='one_to_one')
+
+    n_missing = int(df['predicted_label'].isna().sum())
+    if n_missing:
+        print(f"WARNING: {n_missing:,} of {len(df):,} clips have no AED result "
+              "(unreadable during step 2); kept with blank AED columns.")
+    counts = df['predicted_label'].value_counts(dropna=False).to_dict()
+    print(f"Marked {len(df):,} clips with AED results: {counts}")
+    return df
+
+
 # ── Main ─────────────────────────────────────────────────────────────────────
 def run_feature_engineering(
     acoustic_csv,
@@ -130,6 +158,7 @@ def run_feature_engineering(
     weather_csv,
     output_csv,
     keep_clips=None,
+    aed_csv=None,
 ):
     with_weather = weather_csv is not None
 
@@ -162,6 +191,10 @@ def run_feature_engineering(
 
     print("Engineering Patrick's features...")
     df = engineer_patrick_features(df, with_weather=with_weather)
+
+    if aed_csv is not None:
+        print("Marking AED results...")
+        df = add_aed_columns(df, aed_csv)
 
     if keep_clips is not None:
         keep = {str(c).replace('.wav', '') for c in keep_clips}
