@@ -2,7 +2,7 @@
 
 This page says what goes into each step of the inference pipeline and what comes out.
 
-Checked on: one 87-minute recording from Audio Moth 5 (1,747 clips), using `run_pipeline.py` on `main` (commit `4104a17`). Items marked "not tested" were read from the code, not run.
+Checked on: one 87-minute recording from Audio Moth 5 (1,747 clips), using `run_pipeline.py` on `main` (commit `52835f3`). Items marked "not tested" were read from the code, not run.
 
 ## Overview
 
@@ -36,7 +36,9 @@ Checked on: one 87-minute recording from Audio Moth 5 (1,747 clips), using `run_
   - `not_meaningful_prob` (a number from 0 to 1)
   - `predicted_label` (`meaningful` or `not_meaningful`; a clip is `not_meaningful` if the number is 0.5 or higher)
   - `threshold` and `model_version`
-- **Good to know:** rows are not in time order.
+- **Good to know:**
+  - Rows are not in time order.
+  - Every clip is scored and nothing is dropped. Step 7 adds each clip's result to the final table.
 
 ## Step 3: BirdNET
 
@@ -85,9 +87,9 @@ Checked on: one 87-minute recording from Audio Moth 5 (1,747 clips), using `run_
 
 ## Step 7: Features
 
-- **In:** the Step 4, 3 and 5 files, the Step 6 file (optional), and the list of clips Step 2 called meaningful.
-- **Out:** `features.csv`, one row per meaningful clip, 34 columns:
-  - The 29 model features:
+- **In:** the Step 4, 3 and 5 files, the Step 6 file (optional), and Step 2's `tinycnn_predictions.csv`.
+- **Out:** `features.csv`, one row for every clip, 36 columns (32 with `--no_weather`):
+  - The 29 feature columns:
     - the 10 Step 4 features
     - `confidence` (the highest BirdNET confidence in the clip)
     - 10 yes/no columns for the sentinel species
@@ -95,10 +97,20 @@ Checked on: one 87-minute recording from Audio Moth 5 (1,747 clips), using `run_
     - `hour_sin` and `hour_cos` (the hour of day)
     - `Volume_Spike_15s` (a sudden jump in loudness compared with the previous 15 seconds)
     - `Volume_Wind_Ratio`, `Temperature`, `Windspeed`, `Humidity` (weather)
-  - 5 extra columns for reference: `clip_name`, `species`, `Recorder`, `Timestamp`, `Datetime`
+  - 2 columns with the Step 2 result: `not_meaningful_prob` and `predicted_label`
+  - 5 columns for reference: `clip_name`, `species`, `Recorder`, `Timestamp`, `Datetime`
+- **Which columns the model uses:** the feature lists in `scripts/hp_features.py` decide this, and `select_features` picks them in the right order.
+  - `HP_FEATURES_29`: with weather
+  - `HP_FEATURES_27`: the 29 without `hour_sin` and `hour_cos`
+  - `HP_FEATURES_25`: without weather
+  - `HP_FEATURES_23`: the 25 without `hour_sin` and `hour_cos`
+  - The current HP candidate uses the 23-feature list.
 - **Good to know:**
-  - With `--no_weather`, the four weather columns are left out, leaving 25 features (30 columns in the file).
+  - Every clip is kept and marked with the Step 2 result. Nothing is dropped. The two Step 2 columns are not model features.
+  - A clip that has no row in Step 2's file (for example, a file Step 2 could not read) is kept, with blank Step 2 columns and a warning.
+  - With `--no_weather`, the four weather-based columns (`Temperature`, `Windspeed`, `Humidity` and `Volume_Wind_Ratio`) are left out.
   - Step 7 removes `.wav` from clip names before joining, so the name differences between steps don't matter here.
+  - The order of the columns in `features.csv` differs from the order in the feature lists. This is fine when the model code uses `select_features`.
   - The sentinel species: Buff-rumped Warbler, Black-cheeked Ant-Tanager, Black-hooded Antshrike, Great Tinamou, Short-billed Pigeon, Yellow-throated Toucan, Blue-black Grosbeak, Rufous Piha, Band-tailed Barbthroat and Scarlet Macaw.
 
 ## Step 8: HP model
