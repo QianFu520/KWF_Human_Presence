@@ -112,6 +112,15 @@ class JobState(BaseModel):
     started_at: float | None = None
     finished_at: float | None = None
     error: str | None = None
+    skipped: int = Field(
+        0,
+        description="Number of files that could not be read or scored (wrong length, "
+                    "stereo, unreadable). Listed in `failures`.",
+    )
+    failures: list[str] = Field(
+        default_factory=list,
+        description="One message per skipped file, as '<file name>: <reason>'.",
+    )
     metrics: JobMetrics | None = None
     detections: list[Detection] = []
 

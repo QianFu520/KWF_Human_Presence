@@ -5,7 +5,9 @@ INTERFACE (what happens to input the API must not score)
   - stereo copies made from good clips
   - one mixed job (good + wrong length + stereo) to see what the caller gets back
   Gated rule C8: such files are never scored.
-  Reported rule C9 (known issue V-001, not gated): the caller is told the file was rejected.
+  Reported rule C9 (not gated): the caller is told which files were rejected, both when a
+  job has no scorable file (status error) and when only some files are skipped (status done,
+  `skipped` and `failures` set).
 
 PREPROCESSING (what the Digital Twin does to audio before BirdNET)
   Twin code (audio_event_common.py): audio / (peak + 1e-8), then soundfile.write
@@ -82,11 +84,11 @@ def classify(state: dict) -> tuple[str, bool]:
     """-> (outcome, caller_can_see_problem)."""
     if state["status"] == "rejected_at_submit":
         return "rejected_at_submit", True
-    if state["status"] == "error" or state.get("error"):
+    if state["status"] == "error" or state.get("error") or state.get("failures"):
         return "job_error", True
     if state["windows"] > 0:
         return "scored", False
-    return "skipped_silently", False        # done, 0 windows, no error (V-001)
+    return "skipped_silently", False        # done, 0 windows, no error: V-001 has regressed
 
 
 # ---------------------------------------------------------------- interface
@@ -107,6 +109,7 @@ def run_interface(client, good: list, wrong_dir: Path | None, work: Path) -> tup
         outcome, visible = classify(st)
         rows.append({"case": case, "file": path.name, **header(path), "status": st["status"],
                      "completed": st.get("completed"), "windows_scored": st["windows"],
+                     "skipped": st.get("skipped"), "failures": st.get("failures") or [],
                      "outcome": outcome, "caller_can_see_problem": visible,
                      "error": st.get("error") or ""})
 
@@ -130,6 +133,7 @@ def run_interface(client, good: list, wrong_dir: Path | None, work: Path) -> tup
         mixed = {"files": [good[0].name, wrong[0].name, stereo[0].name], "status": st["status"],
                  "completed": st.get("completed"), "total": st.get("total"),
                  "windows_scored": st["windows"], "good_clip_scored": good[0].name in by,
+                 "skipped": st.get("skipped"), "failures": st.get("failures") or [],
                  "error": st.get("error") or ""}
     return rows, mixed
 
@@ -218,9 +222,16 @@ def judge(rows: list, mixed: dict, criteria: dict, wrong_run: bool) -> list:
                          "detail": f"{len(rows) - len(bad)}/{len(rows)} bad files not scored"
                                    + ("" if wrong_run else " (wrong-length set not supplied: stereo only)")})
     if "C9" in meta:
-        verdicts.append({"id": "C9", "gate": meta["C9"]["gate"], "pass": not hidden and bool(rows),
-                         "known_issue": meta["C9"].get("known_issue"),
-                         "detail": f"{len(rows) - len(hidden)}/{len(rows)} rejections visible to the caller"})
+        # Partial skip: one good file plus two rejected files must end `done`, with both
+        # rejections listed. Skipped when the mixed job was not run.
+        mixed_ok = (not mixed) or (mixed["status"] == "done" and mixed.get("skipped") == 2
+                                   and len(mixed.get("failures") or []) == 2
+                                   and mixed["good_clip_scored"])
+        verdicts.append({"id": "C9", "gate": meta["C9"]["gate"],
+                         "pass": not hidden and bool(rows) and mixed_ok,
+                         "detail": f"{len(rows) - len(hidden)}/{len(rows)} rejections visible to the caller"
+                                   + (f"; mixed job: status={mixed['status']} skipped={mixed.get('skipped')}"
+                                      if mixed else "; mixed job not run")})
     return verdicts
 
 
@@ -260,7 +271,8 @@ def run(client, args) -> int:
               f"-> {r['outcome']}  (caller can see it: {r['caller_can_see_problem']})")
     if mixed:
         print(f"  mixed job (good + wrong length + stereo): status={mixed['status']} completed={mixed['completed']}/"
-              f"{mixed['total']} windows_scored={mixed['windows_scored']} good_clip_scored={mixed['good_clip_scored']}")
+              f"{mixed['total']} windows_scored={mixed['windows_scored']} good_clip_scored={mixed['good_clip_scored']} "
+              f"skipped={mixed.get('skipped')}")
     print("\nPREPROCESSING (Twin transforms vs unchanged clips; reported, not pass/fail)")
     for s in summaries:
         print(f"  {s['case']:<11} top-1 changed {s['top1_changed']}/{s['n_clips']}  det-set changed {s['det_set_changed']}  "

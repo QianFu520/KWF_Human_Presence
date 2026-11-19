@@ -1,15 +1,10 @@
 {
-  "_comment": "Copy to models.json and run. Paths are relative to src/bridge/, so this works from a fresh clone; use absolute paths if your models live elsewhere.",
+  "_comment": "Copy to models.json and run. Paths are relative to src/bridge/ and point to inference_pipeline/models/, so this works from a fresh clone; use absolute paths if your models live elsewhere.",
   "variants": {
     "fp16_pruned493": {
-      "model":  "../../models/birdnet_fp16_pruned493.onnx",
-      "labels": "../../models/birdnet_fp16_pruned493.labels.txt",
-      "allow_list": "../../models/geomodel_allowlist_218.txt"
-    },
-    "fp32_pruned493": {
-      "model":  "../../models/birdnet_fp32_pruned493.onnx",
-      "labels": "../../models/birdnet_fp32_pruned493.labels.txt",
-      "allow_list": "../../models/geomodel_allowlist_218.txt"
+      "model":  "../../../inference_pipeline/models/birdnet_fp16_pruned493.onnx",
+      "labels": "../../../inference_pipeline/models/birdnet_fp16_pruned493.labels.txt",
+      "allow_list": "../../../inference_pipeline/models/geomodel_allowlist_218.txt"
     }
   }
 }

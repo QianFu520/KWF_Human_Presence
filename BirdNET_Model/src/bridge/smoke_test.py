@@ -168,15 +168,24 @@ def main() -> int:
         ok &= check("POST /jobs accepted", r.status_code == 202)
         job_id = r.json()["job_id"]
 
-        state = {}
-        for _ in range(100):
-            state = client.get(f"/jobs/{job_id}").json()
-            if state["status"] in ("done", "error", "cancelled"):
-                break
-            time.sleep(0.1)
+        def wait_for(jid: str) -> dict:
+            st = {}
+            for _ in range(100):
+                st = client.get(f"/jobs/{jid}").json()
+                if st["status"] in ("done", "error", "cancelled"):
+                    break
+                time.sleep(0.1)
+            return st
+
+        state = wait_for(job_id)
 
         ok &= check("job completed", state.get("status") == "done", state.get("status"))
         ok &= check("all 7 files attempted", state.get("completed") == 7)
+
+        ok &= check("skipped file listed in failures",
+                    state.get("skipped") == 1 and len(state.get("failures", [])) == 1
+                    and "WRONG_LENGTH" in state["failures"][0],
+                    f"skipped={state.get('skipped')}")
 
         met = state.get("metrics") or {}
         ok &= check("bad clip excluded from metrics, run survived",
@@ -188,6 +197,16 @@ def main() -> int:
         dets = state.get("detections") or []
         ok &= check("detections carry allow-list flag",
                     all("in_allow_list" in d for d in dets), f"{len(dets)} detections")
+
+        # A job in which no file can be scored must end as an error, not as done.
+        r2 = client.post("/jobs", json={"paths": [str(fx["clips"] / "WRONG_LENGTH.wav")],
+                                        "variant": "fp16_pruned493"})
+        bad = wait_for(r2.json()["job_id"])
+        ok &= check("job with no scorable file ends as error", bad.get("status") == "error",
+                    bad.get("status"))
+        ok &= check("error names the skipped file",
+                    bad.get("skipped") == 1 and "WRONG_LENGTH" in (bad.get("error") or ""),
+                    (bad.get("error") or "")[:80])
 
         ok &= check("GET /jobs/{unknown} -> 404",
                     client.get("/jobs/nope").status_code == 404)

@@ -1,0 +1,16 @@
+Service vs ORIGINAL BirdNET reference | fp16_pruned493 | 709 clips
+
+  top-1 agrees with reference:        709/709  (100.000%)
+  confidence within 0.05:             709/709  (100.000%)
+  confidence within 0.01:             689/709  (97.179%)
+  max |service - reference|:          0.0293973880970001  (Audio_Moth_6_20250321_094620.wav)
+  reference species not returned:     0
+  det set == recorded FP16 (>=0.25):  709/709
+
+  Criteria (config/criteria.json):
+    C3 top1_agree_pct >= 99.8: 100.000  -> PASS
+    C4 conf_within_0.05_pct >= 99.9: 100.000  -> PASS
+    C5 conf_within_0.01_pct >= 98.6: 97.179  -> BELOW (not gated)
+    C6 det_set_vs_recorded_fp16_pct >= 100.0: 100.000  -> PASS
+
+OVERALL: PASS

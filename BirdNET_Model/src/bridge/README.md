@@ -37,7 +37,7 @@ laptop. Drop it to bind localhost only.
 | Method | Path | Purpose |
 |---|---|---|
 | `POST` | `/jobs` | Submit an analysis job. Returns a job id immediately. |
-| `GET` | `/jobs/{id}` | Status, metrics, detections. |
+| `GET` | `/jobs/{id}` | Status, metrics, detections, skipped files. |
 | `GET` | `/jobs/{id}/stream` | Live `progress` / `result` / `done` / `error` events (SSE). |
 | `DELETE` | `/jobs/{id}` | Cancel a running job. |
 | `GET` | `/health` | Readiness, loaded variants, ORT version and providers. |
@@ -70,7 +70,10 @@ verified every load rather than inherited.
 - **Wrong-length clips are rejected, not padded.** Anything that isn't an exact
   multiple of 144,000 samples raises. Padding would produce a plausible score for
   a window the reference pipeline never evaluated. Bad files are skipped, logged,
-  counted in `completed`, and excluded from `windows` and the latency stats.
+  counted in `completed`, and excluded from `windows` and the latency stats. Each
+  one is listed in `failures` (`<file>: <reason>`) on the job state, with the count
+  in `skipped`. A job ends `done` if at least one file was scored, and `error` if
+  none was; the error message names the first failure.
 - **Warm-up runs before timing.** ORT's first inference pays one-time allocation
   and kernel-selection cost several times steady-state. Three discarded runs make
   short and long jobs comparable.
@@ -97,6 +100,9 @@ python benchmark.py \
   --limit 2000 --out bench_pi4.json
 ```
 
+The FP32 file is not in the repo. Add an `fp32_pruned493` entry to `models.json` to
+run this comparison.
+
 Run it **on the target device**. Laptop numbers do not transfer to a Pi 4, and
 mixing the two is worse than having neither.
 
@@ -112,8 +118,10 @@ that remains the job of `verify_pruned_model.py` and the Phase 4 driver.
 
 ## Verified
 
-- **`smoke_test.py`: 16/16** on Python 3.11 / ORT 1.27.0 — plumbing, all four
-  startup gates, both audio gates. This proves nothing about numerical parity;
+- **`smoke_test.py`: 19/19** on Python 3.12.10 / ORT 1.27.0 / NumPy 1.26.4 /
+  FastAPI 0.143.2 — plumbing, all four startup gates, both audio gates, and the
+  skipped-file reporting (`skipped`, `failures`, job `error` when nothing is
+  scored). This proves nothing about numerical parity;
   that is a separate, narrower claim, made below.
 - **Preprocessing + inference parity (`verify_bridge_parity.py`): bit-exact.**
   Checked against **709 Audio_Moth_6 clips**, one (species, probability) pair

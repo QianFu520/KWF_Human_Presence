@@ -151,10 +151,12 @@ def run_job(client: httpx.Client, variant: str, paths: list[str]) -> dict:
 
     if state["status"] != "done":
         raise SystemExit(f"FATAL: job {job_id} ended as {state['status']}: {state.get('error')}")
-    if state["completed"] != len(paths):
+    if state["completed"] != len(paths) or state.get("skipped"):
         raise SystemExit(
-            f"FATAL: {state['completed']}/{len(paths)} files attempted -- "
-            f"some AM6 clips were skipped (see failures on the /jobs/{job_id} response). "
+            f"FATAL: {state['completed']}/{len(paths)} files attempted, "
+            f"{state.get('skipped', 0)} skipped -- "
+            f"some AM6 clips were not scored (see failures on the /jobs/{job_id} response: "
+            f"{(state.get('failures') or ['none listed'])[0]}). "
             f"This is itself a parity failure, not scored around."
         )
     return state
