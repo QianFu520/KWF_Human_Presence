@@ -1,6 +1,6 @@
 # Field scores
 
-Run: `validation/results/20261016_044454`  
+Run: `validation/results/20261105_225125`  
 Scores from: `p_api`  
 Clips in manifest: 4027; scored: 4027; errors: 0
 

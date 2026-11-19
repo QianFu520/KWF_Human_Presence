@@ -12,6 +12,8 @@ Checks (Patrick's proposed format + the extra keys):
   * trained_on is a non-empty string; sklearn_version == installed scikit-learn
   * val_metrics has precision, recall, fa_episodes_per_rec_day; threshold_rule and
     git_commit are non-empty
+  * role is "candidate" or "reference"; for a folder, exactly one bundle is the candidate
+    and it is the 23-feature set (hp-23)
   * optional --data: predict_proba on a few rows works and returns values in [0, 1]
 
 Usage (PowerShell):
@@ -39,7 +41,9 @@ EXPECTED = {"23": list(HP_FEATURES_23),  # no hour, no weather
             "27": list(HP_FEATURES_27),  # Qian's approved 27: weather, no hour
             "29": list(HP_FEATURES_29)}
 KEYS = ["model", "scaler", "features", "feature_set", "threshold", "version", "trained_on", "created",
-        "sklearn_version", "val_metrics", "threshold_rule", "git_commit"]
+        "sklearn_version", "val_metrics", "threshold_rule", "git_commit", "role"]
+ROLES = ("candidate", "reference")
+CANDIDATE_SET = "23"
 
 
 def check(path: Path, sample: pd.DataFrame | None) -> list[str]:
@@ -84,6 +88,8 @@ def check(path: Path, sample: pd.DataFrame | None) -> list[str]:
         errs.append(f"val_metrics {vm!r}")
     if not b["threshold_rule"] or not b["git_commit"]:
         errs.append("threshold_rule / git_commit empty")
+    if b["role"] not in ROLES:
+        errs.append(f"role {b['role']!r} not in {ROLES}")
     if sample is not None and not errs:
         p = m.predict_proba(sc.transform(sample[list(feats)]))[:, 1]
         if not (np.isfinite(p).all() and (p >= 0).all() and (p <= 1).all()):
@@ -98,15 +104,23 @@ def main():
     args = ap.parse_args()
     files = [args.bundles] if args.bundles.is_file() else sorted(args.bundles.glob("*.joblib"))
     sample = pd.read_csv(args.data, nrows=500) if args.data else None
-    bad = 0
+    bad, candidates = 0, []
     for f in files:
         errs = check(f, sample)
         b = joblib.load(f)
-        info = f"set {b.get('feature_set')}, {len(b.get('features', []))} features, threshold {b.get('threshold'):.4f}"
+        if b.get("role") == "candidate":
+            candidates.append((f.name, b.get("feature_set")))
+        info = (f"set {b.get('feature_set')}, {len(b.get('features', []))} features, "
+                f"threshold {b.get('threshold'):.4f}, role {b.get('role')}")
         print(f"{'OK  ' if not errs else 'FAIL'} {f.name}: {info}" + ("" if not errs else "\n     " + "\n     ".join(errs)))
         bad += bool(errs)
     print(f"{len(files) - bad}/{len(files)} bundles pass")
-    sys.exit(1 if bad or not files else 0)
+    set_ok = True
+    if args.bundles.is_dir():  # folder-level rule: exactly one candidate, and it is hp-23
+        set_ok = len(candidates) == 1 and candidates[0][1] == CANDIDATE_SET
+        print(f"{'OK  ' if set_ok else 'FAIL'} candidates: {candidates or 'none'} "
+              f"(need exactly one, feature set {CANDIDATE_SET})")
+    sys.exit(1 if bad or not files or not set_ok else 0)
 
 
 if __name__ == "__main__":

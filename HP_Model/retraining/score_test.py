@@ -188,7 +188,7 @@ def main():
                 "sklearn_version": sklearn.__version__,
                 "val_metrics": {"precision": v["precision"], "recall": v["recall"],
                                 "fa_episodes_per_rec_day": v["fa_episodes_per_rec_day"]},
-                "threshold_rule": rule, "git_commit": commit,
+                "threshold_rule": rule, "git_commit": commit, "role": ROLE[name],
             }
             args.bundles.mkdir(parents=True, exist_ok=True)
             path = args.bundles / f"{version}.joblib"
