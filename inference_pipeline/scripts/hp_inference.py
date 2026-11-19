@@ -29,7 +29,9 @@ log = logging.getLogger(__name__)
 FEATURE_LISTS = {"23": HP_FEATURES_23, "25": HP_FEATURES_25, "27": HP_FEATURES_27, "29": HP_FEATURES_29}
 WEATHER_SETS = {"27", "29"}
 REQUIRED_KEYS = ["model", "scaler", "features", "feature_set", "threshold", "version", "trained_on", "created"]
-PASS_THROUGH = ["not_meaningful_prob", "predicted_label"]  # AED columns from step 7, if present
+# Columns carried from step 7's features.csv when present: where and when (from metadata) and AED's result.
+PASS_THROUGH = ["Recorder", "Timestamp", "not_meaningful_prob", "predicted_label"]
+OUTPUT_ORDER = ["clip_name", "Recorder", "Timestamp", "probability", "label", "not_meaningful_prob", "predicted_label"]
 
 
 class BundleError(ValueError):
@@ -136,9 +138,11 @@ def with_wav(names):
 def predict(bundle, df):
     """Score every row of df with the bundle.
 
-    Returns one row per clip: clip_name (with .wav), probability (of human presence),
-    label (1 if probability >= the bundle threshold, else 0), plus not_meaningful_prob
-    and predicted_label when df has them. Raises KeyError naming missing columns.
+    Returns one row per clip, in this column order: clip_name (with .wav), Recorder,
+    Timestamp, probability (of human presence), label (1 if probability >= the bundle
+    threshold, else 0), not_meaningful_prob, predicted_label. Recorder, Timestamp and
+    the two AED columns are passed through only when df has them. Raises KeyError
+    naming missing columns.
     """
     if "clip_name" not in df.columns:
         raise KeyError("Missing column: clip_name")
@@ -153,7 +157,7 @@ def predict(bundle, df):
     for col in PASS_THROUGH:
         if col in df.columns:
             out[col] = df[col].to_numpy()
-    return out
+    return out[[col for col in OUTPUT_ORDER if col in out.columns]]
 
 
 def predict_csv(bundle, features_csv, output_csv):

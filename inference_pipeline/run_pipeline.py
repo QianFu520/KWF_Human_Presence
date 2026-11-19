@@ -183,8 +183,9 @@ def step7_feature_engineering(acoustic_csv, birdnet_csv, metadata_csv, weather_c
 def step8_hp_model(features_csv, outputs_dir, bundle):
     """
     Score every clip in features.csv with the HP bundle (loaded and checked by
-    hp_inference.load_bundle in main) and write predictions.csv: clip_name,
-    probability, label, plus the AED columns. Skipped when no bundle is given.
+    hp_inference.load_bundle in main) and write predictions.csv: clip_name, Recorder,
+    Timestamp, probability, label, not_meaningful_prob, predicted_label (Recorder,
+    Timestamp and the AED columns carried from features.csv). Skipped when no bundle is given.
     Warns when the bundle's role is "reference" (not for deployment).
     Feature names and order come only from the bundle and scripts/hp_features.py.
     """

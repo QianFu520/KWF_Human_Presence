@@ -71,7 +71,7 @@ One file written with `joblib.dump`, containing a dict.
 
 It logs the version, feature set, threshold and role, and warns (without failing) on a missing `role` or a different `sklearn_version`.
 
-`predict(bundle, df)` selects `features` with `select_features`, scales them, takes `predict_proba(...)[:, 1]` as the probability and sets `label = 1` when probability ≥ `threshold`. It returns one row per clip: `clip_name` (with `.wav`, added if missing), `probability` and `label`, plus `not_meaningful_prob` and `predicted_label` from AED when the input has them.
+`predict(bundle, df)` selects `features` with `select_features`, scales them, takes `predict_proba(...)[:, 1]` as the probability and sets `label = 1` when probability ≥ `threshold`. It returns one row per clip, with the columns `clip_name` (with `.wav`, added if missing), `Recorder`, `Timestamp`, `probability`, `label`, `not_meaningful_prob` and `predicted_label`. `Recorder` and `Timestamp` (from step 7's metadata) and the two AED columns are passed through only when the input has them.
 
 - **Pipeline step 8:** `run_pipeline.py --bundle <bundle_path>` loads and checks the bundle before step 1 and writes `outputs/predictions.csv`. A 23- or 25-feature bundle needs `--no_weather`; a 27- or 29-feature bundle needs weather. Otherwise the run stops at once with a message saying which to use. A `"reference"` bundle still runs, but step 8 logs a warning that it is not for deployment. Without `--bundle`, step 8 logs a warning and is skipped.
 - **HP service (planned):** loads the bundle once at startup from the `HP_BUNDLE` environment variable, with the same checks, and reports `version`, `feature_set`, `threshold` and `role` in `/health`.

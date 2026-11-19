@@ -163,11 +163,15 @@ def test_pipeline_refuses_weather_bundle_with_no_weather(tmp_path, monkeypatch, 
     assert not out.exists()  # stopped before step 1
 
 
-def step7_features(feature_set, names, with_aed=True):
-    """features.csv as step 7 writes it: clip_name without .wav, every feature, the AED columns."""
+def step7_features(feature_set, names, with_aed=True, with_context=True):
+    """features.csv as step 7 writes it: clip_name without .wav, every feature, Recorder and
+    Timestamp from metadata, and the AED columns."""
     df = features_df(hp_inference.FEATURE_LISTS[feature_set], n=len(names), seed=1)
     df.insert(0, "clip_name", names)
     df["species"] = "[]"
+    if with_context:
+        df["Recorder"] = "Audio_Moth_1"
+        df["Timestamp"] = [f"20250321_{125100 + 3 * i}" for i in range(len(names))]
     if with_aed:
         df["not_meaningful_prob"] = np.linspace(0, 1, len(names))
         df["predicted_label"] = np.where(df["not_meaningful_prob"] >= 0.5, "not_meaningful", "meaningful")
@@ -187,8 +191,11 @@ def test_step8_writes_predictions_csv(tmp_path, caplog):
 
     assert predictions_csv == tmp_path / "predictions.csv"
     written = pd.read_csv(predictions_csv)
-    assert list(written.columns) == ["clip_name", "probability", "label", "not_meaningful_prob", "predicted_label"]
+    assert list(written.columns) == ["clip_name", "Recorder", "Timestamp", "probability", "label",
+                                     "not_meaningful_prob", "predicted_label"]
     assert list(written["clip_name"]) == [f"{n}.wav" for n in names]
+    assert list(written["Recorder"]) == list(features["Recorder"])
+    assert list(written["Timestamp"].astype(str)) == list(features["Timestamp"])  # kept as text, e.g. 20250321_125100
     assert written["probability"].between(0, 1).all()
     assert (written["label"] == (written["probability"] >= bundle["threshold"]).astype(int)).all()
     pd.testing.assert_series_equal(written["predicted_label"], features["predicted_label"])
@@ -217,12 +224,26 @@ def test_step8_skips_without_bundle(tmp_path, caplog):
     assert not (tmp_path / "predictions.csv").exists()
 
 
-def test_predict_keeps_wav_and_works_without_aed_columns(tmp_path):
+def test_predict_keeps_wav_and_works_without_pass_through_columns(tmp_path):
     bundle = make_bundle("25")
     names = ["Audio_Moth_2_20250321_140200.wav", "Audio_Moth_2_20250321_140203"]
-    out = predict(bundle, step7_features("25", names, with_aed=False))
+    out = predict(bundle, step7_features("25", names, with_aed=False, with_context=False))
     assert list(out.columns) == ["clip_name", "probability", "label"]
     assert list(out["clip_name"]) == ["Audio_Moth_2_20250321_140200.wav", "Audio_Moth_2_20250321_140203.wav"]
+
+
+@pytest.mark.parametrize("with_context, with_aed, expected", [
+    (True, False, ["clip_name", "Recorder", "Timestamp", "probability", "label"]),
+    (False, True, ["clip_name", "probability", "label", "not_meaningful_prob", "predicted_label"]),
+    (True, True, ["clip_name", "Recorder", "Timestamp", "probability", "label",
+                  "not_meaningful_prob", "predicted_label"]),
+], ids=["context_only", "aed_only", "both"])
+def test_predict_column_order(with_context, with_aed, expected):
+    df = step7_features("23", ["a", "b", "c"], with_aed=with_aed, with_context=with_context)
+    out = predict(make_bundle("23"), df)
+    assert list(out.columns) == expected
+    for col in set(expected) - {"clip_name", "probability", "label"}:
+        assert list(out[col]) == list(df[col])
 
 
 def test_predict_names_missing_features(tmp_path):
